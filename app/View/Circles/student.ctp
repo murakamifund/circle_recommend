@@ -6,6 +6,8 @@
 <li><a href="#single">単品メニュー</a></li>
 <li><a href="#drink">ドリンクメニュー</a></li>
 <li><a href="#desert">デザートメニュー</a></li>
+<li><a href="#desert">デザートメニュー</a></li>
+<li><a href="#desert">デザートメニュー</a></li>
 </ul>
 
 条件を入力すればおすすめのサークルを表示します
