@@ -2,7 +2,7 @@
 
 
 <section>
-<h2>無料テンプレートのご利用前に必ずお読み下さい</h2>
+<h2>無料テンプレートのご利用前に必ずお読み下さい　村上</h2>
 <p>このテンプレートは<a href="http://template-party.com/">無料ホームページテンプレート配布サイトのTemplate Party</a>が配布している『カフェ向け 無料ホームページテンプレート tp_cafe10』です。<br>
 必ず<a href="http://template-party.com/read.html">利用規約</a>をご一読の上でご利用下さい。不明な点があれば<a href="http://template-party.com/faq.html">ＦＡＱコーナー</a>をご一読下さい。</p>
 <p><strong class="color1">■HP最下部の著作表示「Web Design:Template-Party」は無断で削除しないで下さい</strong><br>
