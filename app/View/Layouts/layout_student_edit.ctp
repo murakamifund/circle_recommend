@@ -16,10 +16,18 @@
 
 <?php
     echo $this->Html->meta('icon');
-	echo $this->html->css(array('style', 'bootstrap'));
+	echo $this->html->css(array('style', 'bootstrap','fullcalendar','fullcalendar.print'));
     echo $scripts_for_layout;
-	echo $this->Html->script(array('openclose.js','rollimg.js','scritp.js','slide_sample_pack.js'));
+	echo $this->Html->script(array('openclose.js','rollimg.js','scritp.js','slide_sample_pack.js','jquery.min.js'));
  ?>
+ 
+ <?php
+    echo $this->Html->css( 'fullcalendar/fullcalendar.css');
+    echo $this->Html->script( 'jquery.min.js');
+    echo $this->Html->script( 'fullcalendar/fullcalendar.min.js');
+?>
+ 
+
 
 <script type="text/javascript" src="js/openclose.js"></script>
 </head>
@@ -30,7 +38,7 @@
 
 <header>
 <h1><a href="home">サークルレコメンド</a></h1>
-<p id="logo"><a href="home"><img src="../img/logo.png" width="270" height="50" alt=""></a></p>　　<!-->これがロゴの画像<!-->
+<p id="logo"><a href="circle_logout_home"><img src="../img/logo.png" width="270" height="50" alt=""></a></p>　　<!-->これがロゴの画像<!-->
 </header>
 
 <nav id="menubar">
@@ -39,22 +47,10 @@
 <li ><a href="about">ABOUT</a></li>
 <li id="current"><a href="student">STUDENT</a></li>
 <li><a href="circle">CIRCLE</a></li>
-<li><a href="recruit">RECRUIT</a></li>
+<li><a href="home">RECRUIT</a></li>
 <li><a href="link">LINK</a></li>
 </ul>
 </nav>
-<!--
-<aside id="mainimg">
-<img class="slide_file" src="../img/1.jpg" title="home">
-<img class="slide_file" src="../img/2.jpg" title="home">
-<img class="slide_file" src="../img/3.jpg" title="home">
-<input type="hidden" id="slide_loop" value="0">
-
-<a href="home" id="slide_link">
-<img id="slide_image" src="../img/1.jpg" alt="" width="977" height="260" />
-<img id="slide_image2" src="../img/1.jpg" alt="" width="977" height="260" /></a>
--->
-</aside>
 
 <div id="contents">
 
@@ -64,22 +60,24 @@
 <!--ここに書き込めば全体の枠になります -->
 <?php echo $content_for_layout; ?>
 	
-
+</div>  <!-- main-->
 
 <div id="sub">
 
 <div class="box1 mb1em">
 
 <nav>
-<h2>新規登録はこちら</h2>
-	<p>
-	<div class="i-btnb">
-		<a href="../Students/student_resister">登録ページ</a>
-	</div>
-	</p>
+<h2>SUB MENU</h2>
+<ul>
+<li><a href="#">主要リンクサンプル</a></li>
+<li><a href="#">主要リンクサンプル</a></li>
+<li><a href="#">主要リンクサンプル</a></li>
+<li><a href="#">主要リンクサンプル</a></li>
+<li><a href="#">主要リンクサンプル</a></li>
+</ul>
 </nav>
 
-</div>
+
 <!--/box1-->
 
 <aside class="mb1em">

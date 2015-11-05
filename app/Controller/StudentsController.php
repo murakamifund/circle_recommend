@@ -124,7 +124,7 @@ class StudentsController extends AppController {
 	$this->Auth->logout();
             $this->Session->destroy(); //セッションを完全削除
             $this->Session->setFlash(__('ログアウトしました'));
-            $this->redirect(array('action' => '../Circles/home'));
+            $this->redirect(array('action' => 'home'));
 	}
   
   

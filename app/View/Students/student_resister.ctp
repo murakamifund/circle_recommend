@@ -1,20 +1,10 @@
-<h2 class="mb1em">新規登録</h2>
-
-<h3 class="mb1em">すでに登録済みの方はこちらのログインページへ</h3>
-
-	<!--<div Align="right">-->
-		<div class="i-btn">
-			<a href="student_login">ログインページ</a>
-		</div>
-	<!--</div>-->
-	
-	
+<h2 class="mb1em">新規登録・ログイン</h2>
 
 
-<div class="stop-bottom">
+
 
 <h3 class="mb1em">新規登録しよう</h3>
-	
+<div class="stop-bottom">
 	<div class ="stop-btm">
 		<?php echo $this->Form->create('Student'); 
 			  echo '<p>お名前　　　: ';
@@ -25,7 +15,7 @@
 			  echo $this->Form->input('password', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));
 			  echo '</p>';
 			  echo $this->Form->error('password');
-			  echo $this->Form->end(__('登録')); 
+			  echo $this->Form->end(__('新規登録')); 
 		?>
 		<div class="s-btn">
 		</div>
@@ -34,9 +24,17 @@
 		<?php echo $this->Session->flash(); ?>
 		</font>
 		</p>
-	</div>
+	</div><!-- stop-btm -->
 
-</div> <!-- stop-btm -->
+</div> <!-- stop-bottom-->
+
+<h3 class="mb1em">ログイン</h3>
+<div Align="right">
+		<div class="i-btn">
+			<a href="student_login">ログインページ</a>
+		</div>
+</div>
+
 
 
 <section id="lunch">

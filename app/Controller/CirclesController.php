@@ -26,12 +26,34 @@ class CirclesController extends AppController {
  
     public function beforeFilter() {
         // 各コントローラーの index と login を有効にする
-        $this->Auth->allow('circle','home','student','link','circle_login','about','recruit');
+        $this->Auth->allow('circle_login','circle_resister');
 		parent::beforeFilter();
 		AuthComponent::$sessionKey = 'Auth.circles';
     }
 	
+	public function circle_resister() {
 	
+    $this->modelClass = null;
+    $this->layout = "layout_circle";
+    $this->set("header_for_layout","circlr recommendation");
+    $this->set("footer_for_layout",
+        "copyright by 東京大学システム創成学科C. 2015.");
+    $this->set("msg", "Welcome to my layout!");
+	
+	// post時の処理
+	if ($this->request->is('post')) {
+            $this->data = Sanitize::clean($this->data, array('encode' => false));
+            $this->Circle->create();
+            if ($this->Circle->save($this->request->data)) {	//ここにfalseと入れればバリデーションを無視できる
+                $this->Session->setFlash(__('登録完了しました。サークル名とパスワードはサークル内で共有してください。新たな変更がある場合は、サークル管理者ページからログインしてサークル情報を編集してください。'));
+            } else {
+                $this->Session->setFlash(__('登録に失敗しました。もう一度やり直してください。'));
+				//debug($this->Circle->validationErrors);
+            }
+			
+    }
+   
+	}
 	
 	public function circle_edit(){
 	$id = $this->Auth->user('id');
@@ -88,6 +110,7 @@ class CirclesController extends AppController {
 		}
 	}
  
+	//サークルはログイン不要　あとで消す
 	//ログアウト_login
 	public function circle_logout() {
 	$this->Auth->logout();
@@ -101,7 +124,7 @@ class CirclesController extends AppController {
 	$this->Auth->logout();
             $this->Session->destroy(); //セッションを完全削除
             $this->Session->setFlash(__('ログアウトしました'));
-            $this->redirect(array('action' => 'home'));
+            $this->redirect(array('action' => '../Students/home'));
 	}
 	
 	

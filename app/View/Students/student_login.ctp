@@ -1,13 +1,10 @@
 <h2 class="mb1em">ログインページ</h2>
 
-
-<div class="stop-bottom">
-
 <h3 class="mb1em">ログインしよう</h3>
-	
+<div class="stop-bottom">
 	<div class ="stop-btm">
 		<?php echo $this->Form->create('Student'); 
-			  echo '<p>お名前　　　: ';
+			  echo '<p>お名前　: ';
 			  echo $this->Form->input('student_name', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));
 			  echo '</p>';
 			  echo $this->Form->error('student_name');
@@ -24,9 +21,9 @@
 		<?php echo $this->Session->flash(); ?>
 		</font>
 		</p>
-	</div>
+	</div><!-- stop-btm -->
 
-</div> <!-- stop-btm -->
+</div> <!-- stop-bottom -->
 
 
 <section id="lunch">

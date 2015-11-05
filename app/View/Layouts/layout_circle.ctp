@@ -35,12 +35,12 @@
 
 <nav id="menubar">
 <ul>
-<li><a href="home">HOME</a></li>
-<li ><a href="about">ABOUT</a></li>
-<li><a href="student">STUDENT</a></li>
-<li id="current"><a href="circle">CIRCLE</a></li>
-<li><a href="recruit">RECRUIT</a></li>
-<li><a href="link">LINK</a></li>
+<li><a href="../Students/home">HOME</a></li>
+<li ><a href="../Students/about">ABOUT</a></li>
+<li><a href="../Students/student">STUDENT</a></li>
+<li id="current"><a href="../Students/circle">CIRCLE</a></li>
+<li><a href="../Students/recruit">RECRUIT</a></li>
+<li><a href="../Students/link">LINK</a></li>
 </ul>
 </nav>
 
@@ -52,7 +52,7 @@
 <!--ここに書き込めば全体の枠になります -->
 <?php echo $content_for_layout; ?>
 	
-
+</div>
 
 <div id="sub">
 

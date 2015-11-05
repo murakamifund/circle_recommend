@@ -13,7 +13,7 @@ $(document).ready(function() {
 <p>
 	<div Align="right">
 		<div class="i-btn">
-			<a href="circle_logout">編集完了</a>
+			<a href="circle_logout">ログアウト</a>
 		</div>
 	</div>
 </p>    

@@ -44,11 +44,11 @@
 <nav id="menubar">
 <ul>
 <li><a href="circle_logout_home">HOME</a></li>
-<li ><a href="circle_logout_home">ABOUT</a></li>
-<li><a href="circle_logout_student">STUDENT</a></li>
+<li ><a href="circle_logout">ABOUT</a></li>
+<li><a href="circle_logout">STUDENT</a></li>
 <li id="current"><a href="circle_logout">CIRCLE</a></li>
-<li><a href="circle_logout_home">RECRUIT</a></li>
-<li><a href="circle_logout_link">LINK</a></li>
+<li><a href="circle_logout">RECRUIT</a></li>
+<li><a href="circle_logout">LINK</a></li>
 </ul>
 </nav>
 
