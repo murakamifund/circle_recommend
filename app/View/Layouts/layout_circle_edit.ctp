@@ -19,14 +19,13 @@
 	echo $this->html->css(array('style', 'bootstrap','fullcalendar','fullcalendar.print'));
     echo $scripts_for_layout;
 	echo $this->Html->script(array('openclose.js','rollimg.js','scritp.js','slide_sample_pack.js','jquery.min.js'));
+	echo $this->Html->css( 'fullcalendar/fullcalendar.css');
+    echo $this->Html->script( 'jquery-1.5.min.js');
+    echo $this->Html->script( 'fullcalendar/fullcalendar.min.js');
  ?>
  
- <?php
-    echo $this->Html->css( 'fullcalendar/fullcalendar.css');
-    echo $this->Html->script( 'jquery.min.js');
-    echo $this->Html->script( 'fullcalendar/fullcalendar.min.js');
-?>
  
+
 
 
 <script type="text/javascript" src="js/openclose.js"></script>

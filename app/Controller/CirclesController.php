@@ -4,7 +4,8 @@ App::uses('Sanitize', 'Utility');
 
 class CirclesController extends AppController {
 	var $uses = array('Circle');
-
+	
+	
 	
 	public $components = array(
         'Session',
@@ -58,7 +59,6 @@ class CirclesController extends AppController {
 	public function circle_edit(){
 	$id = $this->Auth->user('id');
 	$this->set('tmp', $id);
-	
 	$this->modelClass = null;
     $this->layout = "layout_circle_edit";
     $this->set("header_for_layout","circle recommendation");

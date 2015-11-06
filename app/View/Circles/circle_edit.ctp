@@ -1,12 +1,16 @@
 <h3>登録情報を編集</h3>
-	
 
-<div id="fc1" class="fc"></div>  
+<div id="fc1" class="fc">
+
 <script type="text/javascript">
+
 $(document).ready(function() {
     $('#fc1').fullCalendar({})
 });
 </script>
+</div>  
+
+
 
 
 
