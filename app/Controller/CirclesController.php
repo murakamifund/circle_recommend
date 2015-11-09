@@ -68,6 +68,9 @@ class CirclesController extends AppController {
 	
     $this->Circle->id=$id;
 	
+	
+   
+	
     if ($this->request->is('post') || $this->request->is('put')) {
             $this->data = Sanitize::clean($this->data, array('encode' => false));
 			//debug($this->request->data);
@@ -75,13 +78,13 @@ class CirclesController extends AppController {
             if ($this->Circle->save($this->request->data, array('validate' => false))) {
 				// $this->redirect(array('action'=>'follow')); //twitter
                 $this->Session->setFlash(__('更新完了しました。'));
+				//更新したらloginページに移動させる
+				$this->redirect(array('action' => 'circle_login'));
             } else {
                 $this->Session->setFlash(__('更新に失敗しました。'));
 				
             }
             
-
-
     }
     else
     {
@@ -109,6 +112,23 @@ class CirclesController extends AppController {
 			}
 		}
 	}
+	
+	public function del($id) {
+  
+    $this->layout = "layout_circle_edit";
+   
+    $this->Circle->id = $id;
+
+    if ($this->request->is('post') || $this->request->is('put')) {
+      $this->data = Sanitize::clean($this->data, array('encode' => false));
+      $this->Circle->delete($this->request->data('Circle.id'));
+	  $this->Session->destroy();
+      $this->redirect(array('action'=>'circle_login'));
+    } else {
+      $this->request->data = 
+          $this->Circle->read(null, $id);
+    }
+  }
  
 	//サークルはログイン不要　あとで消す
 	//ログアウト_login

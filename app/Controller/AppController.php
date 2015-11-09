@@ -32,7 +32,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	
+	var $uses = array('Circle');
 
 //homeページのコントローラー
   public function home() {
