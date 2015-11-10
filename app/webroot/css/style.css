@@ -26,11 +26,65 @@ input,textarea,select {
 form {
 	margin: 0px;
 }
+/*
 table {
 	border-collapse:collapse;
 	font-size: 100%;
 	border-spacing: 0;
 }
+*/
+/*分割なしのテーブル*/
+table.type01 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-left: 3px solid #369;
+}
+table.type01 th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #153d73;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc; 
+
+}
+table.type01 td {
+    width: 450px;
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+/*2分割のテーブル*/
+table.type02 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-left: 3px solid #369;
+}
+table.type02 th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #153d73;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc; 
+
+}
+table.type02 td {
+    width: 225px;
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+
 
 /*リンク（全般）設定
 ---------------------------------------------------------------------------*/
@@ -479,7 +533,7 @@ input[type="reset"]:hover {
 	margin-right:23px;
 }
 .stop-btm input[type="text"]{
-  	width: 60.2%;
+  	width: 75.2%;
   	font-size: 14px;
   	margin: 1px auto;
   	color: #474747;
@@ -495,7 +549,7 @@ input[type="reset"]:hover {
   	font-family: 'Open Sans', sans-serif;
 }
 .stop-btm input[type="password"]{
-  	width: 60.2%;
+  	width: 75.2%;
   	font-size: 14px;
   	margin: 1px auto;
   	color: #474747;

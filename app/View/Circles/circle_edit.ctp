@@ -3,16 +3,22 @@
 <div class="stop-bottom">
 
 <div class="stop-btm">
-	<?php echo $this->Form->create('Circle'); 
-			echo $this->Form->input('id', array('type' => 'hidden'));  
-			echo '<p>サークル名 : ';
-			echo $this->Form->input('circle_name', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));
-			echo '</p>';
-			echo '<p>サークルサイトURL : ';
-			echo $this->Form->input('url', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));
-			echo '</p>';
-			echo '<p>活動内容 ';
-			echo $this->Form->select('activity',
+	<table class="type01">
+		<tbody>
+	<?php echo $this->Form->create('Circle');  ?>
+			<?php echo $this->Form->input('id', array('type' => 'hidden')); ?> 
+		
+		<tr>
+			 <th scope="row">サークル名</th>
+			<td><?php echo $this->Form->input('circle_name', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
+		</tr>
+		<tr>
+			<th scope="row">URL</th>
+			<td><?php echo $this->Form->input('url', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
+		</tr>
+		<tr>
+			<th scope="row">活動内容</th>
+			<td><?php echo $this->Form->select('activity',
 				array(
 					"0"=>'テニス',
 					"1"=>'合唱',
@@ -21,10 +27,12 @@
 					"4"=>'その他'
 				),
 				array('size'=>1, 'label'=>false, 'error'=>false, 'div'=>false)
-				);
-			echo '</p>';
-			echo '<p>活動日 ';
-			echo '月';
+				);?></td>
+		</tr>
+	
+		<tr>
+			<th scope="row">活動曜日</th>
+		<td><?php echo '月';
 			echo $this->Form->checkbox('day1',array('lavel'=>false,'error'=>false,'div'=>false));
 			echo '火';
 			echo $this->Form->checkbox('day2',array('lavel'=>false,'error'=>false,'div'=>false));
@@ -37,38 +45,54 @@
 			echo '土';
 			echo $this->Form->checkbox('day6',array('lavel'=>false,'error'=>false,'div'=>false));
 			echo '日';
-			echo $this->Form->checkbox('day7',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '</p>';
-			echo '<p>';
-			echo $this->Form->radio('place',
+			echo $this->Form->checkbox('day7',array('lavel'=>false,'error'=>false,'div'=>false));?></td>
+		<tr>
+			<th scope="row">主な活動場所</th>
+			<td><?php echo $this->Form->radio('place',
 				array(
 					'駒場'=>'駒場',
 					'本郷'=>'本郷',
 					'その他'=>'その他'
 				),
-				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false)
+				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
 				);
-			echo '</p>';
-			echo '<p>';
-			echo $this->Form->radio('intercollege',
+			?></td>
+		</tr>
+	</tbody>
+	</table>
+	<table class="type02">
+	<tbody>
+		<tr>
+			<th scope="row">男女比</th>
+			
+			<!--<td>男性人数</td> -->
+			<td><?php echo $this->Form->input('man', array('size'=>50, 'label'=>"男性　", 'error'=>false, 'div'=>false)); ?></td>
+			
+			<!-- <td>女性人数</td>-->
+			<td><?php echo $this->Form->input('woman', array('size'=>50, 'label'=>"女性　", 'error'=>false, 'div'=>false));?></td>
+		</tr>
+	</tbody>
+	</table>
+	<table class="type01">
+		<tbody>
+		<tr>
+			<th scope="row">構成</th>
+			<td><?php echo $this->Form->radio('intercollege',
 				array(
 					'学内'=>'学内',
-					'インカレ'=>'インカレ',
+					'インカレ'=>'インカレ'
 				),
-				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false)
-				);
-				echo '</p>';
-				echo '<p>男性人数 ';
-				echo $this->Form->input('man', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));
-				echo '</p>';
-				echo '<p>女性人数 ';
-				echo $this->Form->input('woman', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));
-				echo '</p>';
-				echo '<p>活動費 ';
-				echo $this->Form->input('cost', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));
-				echo '</p>';
-				echo '<p>';
-				echo $this->Form->radio('nomi',
+				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
+				); 
+			?></td>
+		</tr>
+		<tr>
+			<th scope="row">活動費</th>
+				<td><?php echo $this->Form->input('cost', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false)); ?></td>
+		</tr>
+		<tr>
+			<th scope="row">飲み会</th>
+				<td><?php echo $this->Form->radio('nomi',
 				array(
 					'1'=>'1',
 					'2'=>'2',
@@ -81,12 +105,14 @@
 					'9'=>'9',
 					'10'=>'10',
 				),
-				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false)
-				);
-				echo '←ゆるい　　　　　　　　激しい→';
-				echo '</p>';
-				echo '<p>';
-				echo $this->Form->radio('mazime',
+				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
+				);?>
+				<br>←ゆるい　　　　　　　　激しい→
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">雰囲気</th>
+			<td><?php echo $this->Form->radio('mazime',
 				array(
 					'1'=>'1',
 					'2'=>'2',
@@ -99,13 +125,16 @@
 					'9'=>'9',
 					'10'=>'10',
 				),
-				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false)
-				);
-				echo '←ワイワイ　　　　　　　　ガチ→';
-				echo '</p>';
+				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
+				);?>
+				<br>←ワイワイ　　　　　　　　ガチ→
 				
-				?>
-
+				
+				
+		
+				</td>
+	</tbody>
+	</table>
 
 
 
