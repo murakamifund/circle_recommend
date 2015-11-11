@@ -119,3 +119,6 @@ CakePlugin::load('FullCalendar');
 CakePlugin::load('headshrinker');
 
 ?>
+=======
+/*CakePlugin::load('FullCalendar');*/
+>>>>>>> a3794b992e2d7b0f13f22aa62bdeb77314ce6d93
