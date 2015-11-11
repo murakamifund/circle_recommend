@@ -13,6 +13,10 @@
 			<td><?php echo $this->Form->input('circle_name', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
 		</tr>
 		<tr>
+			<th scope="row">TwitterアカウントのID</th>
+			<td><?php echo $this->Form->input('twitterid', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
+		</tr>
+		<tr>
 			<th scope="row">URL</th>
 			<td><?php echo $this->Form->input('url', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
 		</tr>
@@ -29,7 +33,10 @@
 				array('size'=>1, 'label'=>false, 'error'=>false, 'div'=>false)
 				);?></td>
 		</tr>
-	
+		<tr>
+			<th scope="row">PR文</th>
+			<td><?php echo $this->Form->input('pr', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
+		</tr>
 		<tr>
 			<th scope="row">活動曜日</th>
 		<td><?php echo '月';
@@ -47,6 +54,10 @@
 			echo '日';
 			echo $this->Form->checkbox('day7',array('lavel'=>false,'error'=>false,'div'=>false));?></td>
 		<tr>
+		</tbody>
+		</table>
+		<table class="type02">
+			<tbody>
 			<th scope="row">主な活動場所</th>
 			<td><?php echo $this->Form->radio('place',
 				array(
@@ -57,11 +68,8 @@
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
 				);
 			?></td>
+			<td><?php echo $this->Form->input('placetext', array('size'=>100, 'label'=>"場所詳細", 'error'=>false, 'div'=>false));?></td>
 		</tr>
-	</tbody>
-	</table>
-	<table class="type02">
-	<tbody>
 		<tr>
 			<th scope="row">男女比</th>
 			
@@ -86,10 +94,19 @@
 				); 
 			?></td>
 		</tr>
+		</tbody>
+	</table>
+		<table class="type02">
+			<tbody>
 		<tr>
 			<th scope="row">活動費</th>
-				<td><?php echo $this->Form->input('cost', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false)); ?></td>
+			<td><?php echo $this->Form->input('cost_in', array('size'=>50, 'label'=>"入会費", 'error'=>false, 'div'=>false)); ?></td>
+				<td><?php echo $this->Form->input('cost', array('size'=>50, 'label'=>"年間費", 'error'=>false, 'div'=>false)); ?></td>
 		</tr>
+		</tbody>
+	</table>
+	<table class="type01">
+		<tbody>
 		<tr>
 			<th scope="row">飲み会</th>
 				<td><?php echo $this->Form->radio('nomi',
