@@ -14,6 +14,7 @@
 		</tr>
 		<tr>
 			<th scope="row">TwitterアカウントのID</th>
+
 			<td><?php echo $this->Form->input('twitterid', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
 		</tr>
 		<tr>
@@ -34,7 +35,7 @@
 				);?></td>
 		</tr>
 		<tr>
-			<th scope="row">PR文</th>
+		 <th scope="row">PR文</th>
 			<td><?php echo $this->Form->input('pr', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
 		</tr>
 		<tr>
@@ -53,7 +54,13 @@
 			echo $this->Form->checkbox('day6',array('lavel'=>false,'error'=>false,'div'=>false));
 			echo '日';
 			echo $this->Form->checkbox('day7',array('lavel'=>false,'error'=>false,'div'=>false));?></td>
+		</tr>
+		</tbody>
+	</table>
+	<table class="type02">
+		<tbody>
 		<tr>
+
 		</tbody>
 		</table>
 		<table class="type02">
@@ -65,7 +72,7 @@
 					'本郷'=>'本郷',
 					'その他'=>'その他'
 				),
-				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
+				array('size'=>50, 'label'=>"キャンパス　", 'error'=>false, 'div'=>false,'legend' => false)
 				);
 			?></td>
 			<td><?php echo $this->Form->input('placetext', array('size'=>100, 'label'=>"場所詳細", 'error'=>false, 'div'=>false));?></td>
@@ -124,7 +131,7 @@
 				),
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
 				);?>
-				<br>←ゆるい　　　　　　　　激しい→
+				<br>←少ない　　　　　　　　多い→
 			</td>
 		</tr>
 		<tr>
@@ -144,12 +151,13 @@
 				),
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
 				);?>
-				<br>←ワイワイ　　　　　　　　ガチ→
+				<br>←楽しい　　　　　　　　ガチ→
 				
 				
 				
 		
 				</td>
+		</tr>
 	</tbody>
 	</table>
 

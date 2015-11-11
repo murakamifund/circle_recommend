@@ -2,7 +2,6 @@
 
 
 <h3 class="mb1em">登録フォームに入力しよう</h3>
-<div class="stop-bottom">
 	<div class ="stop-btm">
 	
 		<?php echo $this->Form->create('Circle'); 
@@ -26,9 +25,6 @@
 	</div><!-- stop-btm -->
 
 </div> <!--stop-bottom  --> 
-
-
-
 
 
 <h3 class="mb1em">個人ページに戻る</h3>
