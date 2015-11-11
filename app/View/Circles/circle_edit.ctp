@@ -60,7 +60,8 @@
 		<tbody>
 		<tr>
 			<th scope="row">活動場所</th>
-			<td><?php echo $this->Form->radio('place',
+			<td>キャンパス<br>
+				<?php echo $this->Form->radio('place',
 				array(
 					'駒場'=>'駒場',
 					'本郷'=>'本郷',
@@ -69,7 +70,7 @@
 				array('size'=>50, 'label'=>"キャンパス　", 'error'=>false, 'div'=>false,'legend' => false)
 				);
 			?></td>
-			<td><?php echo $this->Form->input('placetext', array('size'=>100, 'label'=>"主な活動場所　", 'error'=>false, 'div'=>false));?></td>
+			<td><?php echo $this->Form->input('placetext', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
 		</tr>
 	</tbody>
 	</table>
@@ -104,7 +105,7 @@
 	<table class="type02">
 	<tbody>
 		<tr>
-			<th scope="row">経費</th>
+			<th scope="row">費用</th>
 				<td><?php echo $this->Form->input('cost_in', array('size'=>50, 'label'=>"入会費", 'error'=>false, 'div'=>false)); ?></td>
 				<td><?php echo $this->Form->input('cost', array('size'=>50, 'label'=>"年会費", 'error'=>false, 'div'=>false)); ?></td>
 		</tr>
@@ -129,7 +130,7 @@
 				),
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
 				);?>
-				<br>←ゆるい　　　　　　　　激しい→
+				<br>←少ない　　　　　　　　多い→
 			</td>
 		</tr>
 		<tr>
@@ -149,7 +150,7 @@
 				),
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
 				);?>
-				<br>←ワイワイ　　　　　　　　ガチ→
+				<br>←楽しい　　　　　　　　ガチ→
 				
 				
 				
