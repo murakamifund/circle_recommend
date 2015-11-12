@@ -46,14 +46,28 @@ class CirclesController extends AppController {
             $this->data = Sanitize::clean($this->data, array('encode' => false));
             $this->Circle->create();
             if ($this->Circle->save($this->request->data)) {	//ここにfalseと入れればバリデーションを無視できる
-			$this->redirect(array('action' => '../Students/student_edit'));
-            $this->Session->setFlash(__('登録完了しました。サークル名とパスワードはサークル内で共有してください。新たな変更がある場合は、サークル管理者ページからログインしてサークル情報を編集してください。'));
+			$this->Session->setFlash(__('登録完了しました。サークル名とパスワードはサークル内で共有してください。新たな変更がある場合は、サークル管理者ページからログインしてサークル情報を編集してください。'));
+			$this->redirect(array('action' => 'circle_resister_finish'));
+           
             } else {
                 $this->Session->setFlash(__('登録に失敗しました。もう一度やり直してください。'));
 				//debug($this->Circle->validationErrors);
             }
 			
     }
+   
+	}
+	
+	public function circle_resister_finish() {
+	
+    $this->modelClass = null;
+    $this->layout = "layout_circle_edit";
+    $this->set("header_for_layout","circle recommendation");
+    $this->set("footer_for_layout",
+        "copyright by 東京大学システム創成学科C. 2015.");
+    $this->set("msg", "Welcome to my layout!");
+	
+	
    
 	}
 	
