@@ -24,9 +24,9 @@
 		<?php echo $this->Session->flash(); ?>
 		</font>
 		</p>
-	</div>
+	</div> <!-- stop-btm -->
 
-</div> <!-- stop-btm -->
+</div> <!-- stop-bottom -->
 
 
 <section id="lunch">
@@ -34,5 +34,3 @@
 
 
 <!--/lunch-->
-</div> <!--<div class="stop-bottom"> -->
-</div>

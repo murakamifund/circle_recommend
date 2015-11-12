@@ -190,11 +190,11 @@ if($this->request->data){
 		<td bgcolor="#bcfffe">
 			<?php 
 				$string = "https://twitter.com/";	
-				$string .= $datum['Circle']['circle_name'];	
+				$string .= $datum['Circle']['twitterid'];	
 			?>	
 			<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
 				Follow 
-				<?php echo $datum['Circle']['twitter_id']; ?>
+				<?php echo $datum['Circle']['twitterid']; ?>
 			</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 			</script>
