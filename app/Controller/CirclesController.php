@@ -46,7 +46,8 @@ class CirclesController extends AppController {
             $this->data = Sanitize::clean($this->data, array('encode' => false));
             $this->Circle->create();
             if ($this->Circle->save($this->request->data)) {	//ここにfalseと入れればバリデーションを無視できる
-                $this->Session->setFlash(__('登録完了しました。サークル名とパスワードはサークル内で共有してください。新たな変更がある場合は、サークル管理者ページからログインしてサークル情報を編集してください。'));
+			$this->redirect(array('action' => '../Students/student_edit'));
+            $this->Session->setFlash(__('登録完了しました。サークル名とパスワードはサークル内で共有してください。新たな変更がある場合は、サークル管理者ページからログインしてサークル情報を編集してください。'));
             } else {
                 $this->Session->setFlash(__('登録に失敗しました。もう一度やり直してください。'));
 				//debug($this->Circle->validationErrors);

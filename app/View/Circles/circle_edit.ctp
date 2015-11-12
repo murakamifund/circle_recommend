@@ -60,11 +60,6 @@
 	<table class="type02">
 		<tbody>
 		<tr>
-
-		</tbody>
-		</table>
-		<table class="type02">
-			<tbody>
 			<th scope="row">主な活動場所</th>
 			<td><?php echo $this->Form->radio('place',
 				array(
@@ -103,8 +98,8 @@
 		</tr>
 		</tbody>
 	</table>
-		<table class="type02">
-			<tbody>
+	<table class="type02">
+	<tbody>
 		<tr>
 			<th scope="row">活動費</th>
 			<td><?php echo $this->Form->input('cost_in', array('size'=>50, 'label'=>"入会費", 'error'=>false, 'div'=>false)); ?></td>
