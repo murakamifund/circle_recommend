@@ -29,18 +29,16 @@
 </div> <!-- stop-bottom-->
 
 <h3 class="mb1em">すでに登録している方はこちらからログイン</h3>
+<p>
 <div Align="right">
 		<div class="i-btn">
 			<a href="student_login">ログインページ</a>
 		</div>
 </div>
-
+</p>
 
 
 <section id="lunch">
 
 <h3 class="mb1em">ランチメニュー</h3>
 
-<!--/lunch-->
-</div> <!--<div class="stop-bottom"> -->
-</div>

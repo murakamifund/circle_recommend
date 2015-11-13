@@ -64,7 +64,7 @@
 <!--ここに書き込めば全体の枠になります -->
 <?php echo $content_for_layout; ?>
 	
-
+</div>
 
 <div id="sub">
 

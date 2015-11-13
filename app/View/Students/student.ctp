@@ -239,7 +239,89 @@ endforeach ?>
 <a href = "https://twitter.com/share" data-hashtags= <?php echo $string; ?> data-text = 'このサークルの新歓に行く人は一緒に行こう！' data-url = '' data-size = 'large' class="twitter-hashtag-button" >Tweet #circlerecommend</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>	
 <br></br>
 <!--<?php print_r($count_data); ?> -->
+
+
+<?php foreach ($data as $datum): ?>
+
+<section class="list">
+<h3> <!--サークルの名前-->
+	<?php if($datum['Circle']['url']): ?>
+		<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
+		<font><?php echo $datum['Circle']['circle_name']; ?></font>
+		</a>
+	<?php else: ?>
+		<font><?php echo $datum['Circle']['circle_name']; ?></font>
+	<?php endif; ?></h3>
+<figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>
+<h4><!--サークルの名前-->
+	<?php if($datum['Circle']['url']): ?>
+		<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
+		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
+		</a>
+	<?php else: ?>
+		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
+	<?php endif; ?>
+	
+	<?php 
+		$string = "https://twitter.com/";	
+		$string .= $datum['Circle']['twitterid'];	
+	?>	
+		<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
+			Follow 
+		<?php echo $datum['Circle']['twitterid']; ?>
+		</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+		</script>
+	
+</h4>
+<p>
+<!--table type03を定義しておく?-->
+<table class = "type03">
+	<tbody>
+	<tr>
+		<th scope="row">活動内容</th>
+		<td><?php echo $act[$act2]; ?></td>
+	</tr>
+	<tr>
+		<th scope="row">ひとこと</th>
+		<td><?php echo $datum['Circle']['pr']; ?></td>
+	</tr>
+
+	<tr>
+		<th scope="row">場所</th>
+		<td><?php echo $datum['Circle']['place']; ?> : <?php echo $datum['Circle']['placetext']; ?></td>
+	</tr>
+	<tr>
+		<th scope="row">基本曜日</th>
+		<td>
+		<?php
+			for ($i=0;$i<7;$i++):
+				if ($day[$i]=="1"):
+					if ($c==0):
+						echo $day2[$i];
+						$c=$c+1;
+					else:
+						echo ",";
+						echo $day2[$i];
+					endif;
+				endif;
+			endfor;
+		?>
+		</td>
+	</tr>
+	</tbody>
+</table>
+</p>
+
+
+<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"></p>
+</section>
+
+
+<?php endforeach; ?>
+<!-- ここで　if文に対応した部分が表示される-->
 <?php endif; ?>
+
 
 <section class="list">
 <figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>
