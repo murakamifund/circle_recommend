@@ -1,4 +1,6 @@
-<h2>サークルの情報を管理</h2>
+<h2> <?php echo $circle_name; ?>の情報を管理</h2>
+
+
 <h3>情報を編集</h3>
 <div class="stop-bottom">
 <div class="stop-btm">

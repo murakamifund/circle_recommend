@@ -73,7 +73,8 @@ class CirclesController extends AppController {
 	
 	public function circle_edit_main(){
 		$id = $this->Auth->user('id');
-		$this->set('tmp', $id);
+		$circle_name = $this->Auth->user('circle_name');
+		$this->set('tmp', $id);	//これでビュー側でtmpと指定してidを表示
 		$this->modelClass = null;
 		$this->layout = "layout_circle_edit";
 		$this->set("header_for_layout","circle recommendation");
@@ -82,6 +83,11 @@ class CirclesController extends AppController {
 		$this->set("msg", "Welcome to my layout!");
 	
 		$this->Circle->id=$id;
+	
+		$this->set("circle_name",$circle_name);//view側にデータをセット
+		/*
+		view側で$circle_name['Circle]['circle_name']をechoで表示
+		*/
 	}
 	
 	
@@ -96,7 +102,8 @@ class CirclesController extends AppController {
     $this->set("msg", "Welcome to my layout!");
 	
     $this->Circle->id=$id;
-	
+	$circle_name = $this->Auth->user('circle_name');
+	$this->set("circle_name",$circle_name);//view側にデータをセット
 	
    
 	
@@ -135,7 +142,8 @@ class CirclesController extends AppController {
 	
     $this->Circle->id=$id;
 	
-	
+	$circle_name = $this->Auth->user('circle_name');
+	$this->set("circle_name",$circle_name);//view側にデータをセット
    
 	
     if ($this->request->is('post') || $this->request->is('put')) {
