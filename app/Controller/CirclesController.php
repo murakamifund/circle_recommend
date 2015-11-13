@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
 
 class CirclesController extends AppController {
-	var $uses = array('Circle');
+	var $uses = array('Circle','Event');
 	
 	
 	
@@ -19,7 +19,7 @@ class CirclesController extends AppController {
             
 			),
             // ログイン後にジャンプ
-            'loginRedirect' => array('controller' => 'Circles', 'action' => 'circle_edit'),
+            'loginRedirect' => array('controller' => 'Circles', 'action' => 'circle_edit_main'),
 			//array('action'=>'edit',$data['User']['id'])
             // ログアウト後に /circles/circle_login へジャンプ
             'logoutRedirect' => array('controller' => 'Circles', 'action' => 'circle_login'))
@@ -71,6 +71,58 @@ class CirclesController extends AppController {
    
 	}
 	
+	public function circle_edit_main(){
+		$id = $this->Auth->user('id');
+		$this->set('tmp', $id);
+		$this->modelClass = null;
+		$this->layout = "layout_circle_edit";
+		$this->set("header_for_layout","circle recommendation");
+		$this->set("footer_for_layout",
+        "copyright by 東京大学システム創成学科C. 2015.");
+		$this->set("msg", "Welcome to my layout!");
+	
+		$this->Circle->id=$id;
+	}
+	
+	
+	public function circle_edit_cal(){
+	$id = $this->Auth->user('id');
+	$this->set('tmp', $id);
+	$this->modelClass = null;
+    $this->layout = "layout_circle_edit";
+    $this->set("header_for_layout","circle recommendation");
+    $this->set("footer_for_layout",
+        "copyright by 東京大学システム創成学科C. 2015.");
+    $this->set("msg", "Welcome to my layout!");
+	
+    $this->Circle->id=$id;
+	
+	
+   
+	
+    if ($this->request->is('post') || $this->request->is('put')) {
+            $this->data = Sanitize::clean($this->data, array('encode' => false));
+			//debug($this->request->data);
+			
+            if ($this->Event->save($this->request->data, array('validate' => false))) {
+				// $this->redirect(array('action'=>'follow')); //twitter
+                $this->Session->setFlash(__('更新完了しました。'));
+				//更新したらloginページに移動させる
+				$this->redirect(array('action' => 'circle_edit_main'));
+            } else {
+                $this->Session->setFlash(__('更新に失敗しました。'));
+				
+            }
+            
+    }
+    else
+    {
+        $this->request->data=$this->Event->read(null,$id);//更新画面の表示
+		
+		
+    }
+	}
+	
 	public function circle_edit(){
 	$id = $this->Auth->user('id');
 	$this->set('tmp', $id);
@@ -94,7 +146,7 @@ class CirclesController extends AppController {
 				// $this->redirect(array('action'=>'follow')); //twitter
                 $this->Session->setFlash(__('更新完了しました。'));
 				//更新したらloginページに移動させる
-				$this->redirect(array('action' => 'circle_login'));
+				$this->redirect(array('action' => 'circle_edit_main'));
             } else {
                 $this->Session->setFlash(__('更新に失敗しました。'));
 				

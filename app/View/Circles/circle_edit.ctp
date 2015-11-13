@@ -1,4 +1,10 @@
-<h3>登録情報を編集</h3>
+<?php
+	echo $this->html->css(array('fullcalendar', 'bootstrap','headshrinker'));
+	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
+ ?>
+
+<h2>サークルの情報を管理</h2>
+<h3>情報を編集</h3>
 <p>
 <div class="stop-bottom">
 
@@ -172,18 +178,6 @@
 </div><!--stop-bottom-->
 </p>   
 
-<p>
-	<div Align="right">
-	<?php echo $this->Form->postLink('サークル情報を削除',array(
-		'action'=>'del',
-		$tmp),array('class'=>'btn btn-info'),'サークル情報を消去してもよろしいですか?');?>
-	</div>
-</p>
-<p>
-	<font size="3" color="#0000ff">
-		<?php echo $this->Session->flash(); ?>
-	</font>
-</p>
 
 
  
