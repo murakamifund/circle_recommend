@@ -91,6 +91,7 @@ class CirclesController extends AppController {
 	}
 	
 	
+	
 	public function circle_edit_cal(){
 	$id = $this->Auth->user('id');
 	$this->set('id', $id);
@@ -105,7 +106,7 @@ class CirclesController extends AppController {
 	$circle_name = $this->Auth->user('circle_name');
 	$this->set("circle_name",$circle_name);//view側にデータをセット
 	
-   
+	$data = $this->Event->find('all' , array('conditions' => array('Event.circle_id' => $id)));	//Eventのテーブルから、circle_idが一致するものを検索してデータを配列に入れる
 	
     if ($this->request->is('post') || $this->request->is('put')) {
             $this->data = Sanitize::clean($this->data, array('encode' => false));
@@ -128,6 +129,32 @@ class CirclesController extends AppController {
 		
 		
     }
+	
+	
+	
+		//circleのIdに一致するイベントを列挙
+		$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $id)));
+		$count = $this->Event->find( 'count', array( 'conditions' => array('Event.circle_id' => $id)));
+		$title = array();
+		$day = array();
+		
+		// SQLのレスポンスをもとにデータ作成
+		$rows = array();
+		for ( $a=0; count( $events) > $a; $a++) {
+			$rows[] = array(
+            //'id' => $events[$a]['Event']['id'],
+			//'circle_id' => $events[$a]['Event']['circle_id'],
+			//'circle_name' => $events[$a]['Event']['circle_name'],
+            'title' => $events[$a]['Event']['title'],
+            'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
+            'end' => $events[$a]['Event']['day'],
+            //'allDay' => $events[$a]['Event']['allday'],
+        );
+		}
+		
+		// JSONへ変換
+		$this->set("json", json_encode($rows));
+	
 	}
 	
 	public function circle_edit(){
