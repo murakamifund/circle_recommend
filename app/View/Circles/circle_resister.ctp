@@ -6,6 +6,7 @@
 	<table class = "type01">
 	<tbody>
 		<?php echo $this->Form->create('Circle'); ?>
+		<?php echo $this->Form->input('id', array('type' => 'hidden',)); ?>
 		<tr>
 			<th scope="row">サークル名</th>
 			<td><?php echo $this->Form->input('circle_name', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));?>

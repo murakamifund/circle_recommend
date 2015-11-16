@@ -93,7 +93,7 @@ class CirclesController extends AppController {
 	
 	public function circle_edit_cal(){
 	$id = $this->Auth->user('id');
-	$this->set('tmp', $id);
+	$this->set('id', $id);
 	$this->modelClass = null;
     $this->layout = "layout_circle_edit";
     $this->set("header_for_layout","circle recommendation");
@@ -115,7 +115,7 @@ class CirclesController extends AppController {
 				// $this->redirect(array('action'=>'follow')); //twitter
                 $this->Session->setFlash(__('更新完了しました。'));
 				//更新したらloginページに移動させる
-				$this->redirect(array('action' => 'circle_edit_main'));
+				$this->redirect(array('action' => 'circle_edit_cal'));
             } else {
                 $this->Session->setFlash(__('更新に失敗しました。'));
 				
