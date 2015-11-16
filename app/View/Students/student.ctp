@@ -1,3 +1,5 @@
+<aside class="mb1em"><img src="../img/banner1.jpg" width="700" height="99" alt="ランチタイムパン食べ放題" class="wa"></aside>
+<!-- 上の画像で、サークルの新規登録を促す -->
 <h2>サークルを探そう</h2>
 
 <ul class="navmenu">
@@ -31,54 +33,74 @@
 	<input type="checkbox" name="check5" id="activity5" value="1" />
 	<lavel for="activity5">その他</lavel>
 	<br>
-	活動場所<br>
-	<input type="radio" value="0" name="radio1" id="komaba" />
-	<lavel for="komaba">駒場</lavel>
-	<input type="radio" value="1" name="radio1" id="honngou" />
-	<lavel for="honngou">本郷</lavel>
-	<input type="radio" value="2" name="radio1" id="uninterested1" checked="true" />
-	<lavel for="uninterested1">どこでも</lavel>
-	<br>
-	構成人員<br>
-	<input type="radio" value="0" name="radio2" id="gakunai" />
-	<lavel for="gakunai">学内</lavel>
-	<input type="radio" value="1" name="radio2" id="inter" />
-	<lavel for="inter">インカレ</lavel>
-	<input type="radio" value="2" name="radio2" id="uninterested2" checked="true"  />
-	<lavel for="uninterested2">どちらでも</lavel>
-	<br>
-	総人数<br><input type="text" name="all" value="0"/>人以上<br>
-	男性<br><input type="text" name="man" value="0"/>人以上<br>
-	女性<br><input type="text" name="woman" value="0" />人以上<br>
-	活動費<br><input type="text" name="cost" value="50000" />円以下<br>
-	飲み<br>
-	←ゆるい
-	<input type="radio" value="1" name="radio3" id="nomi1" />
-	<lavel for="nomi1">１</lavel>
-	<input type="radio" value="2" name="radio3" id="nomi2" />
-	<lavel for="nomi2">２</lavel>
-	<input type="radio" value="3" name="radio3" id="nomi3" checked="true" />
-	<lavel for="nomi3">３</lavel>
-	<input type="radio" value="4" name="radio3" id="nomi4" />
-	<lavel for="nomi4">４</lavel>
-	<input type="radio" value="5" name="radio3" id="nomi5" />
-	<lavel for="nomi5">５</lavel>
-	→激しい
-	<br>
-	真面目さ<br>
-	←ワイワイ
-	<input type="radio" value="1" name="radio4" id="mazime1" />
-	<lavel for="mazime1">１</lavel>
-	<input type="radio" value="2" name="radio4" id="mazime2" />
-	<lavel for="mazime2">２</lavel>
-	<input type="radio" value="3" name="radio4" id="mazime3" checked="true" />
-	<lavel for="mazime3">３</lavel>
-	<input type="radio" value="4" name="radio4" id="mazime4" />
-	<lavel for="mazime4">４</lavel>
-	<input type="radio" value="5" name="radio4" id="mazime5" />
-	<lavel for="mazime5">５</lavel>
-	→ガチ
-	<br>
+	<table class = "type01">
+	<tbody>
+	<tr>
+	<th scope="row">活動場所</th>
+		<td><input type="radio" value="0" name="radio1" id="komaba" />
+		<lavel for="komaba">駒場</lavel>
+		<input type="radio" value="1" name="radio1" id="honngou" />
+		<lavel for="honngou">本郷</lavel>
+		<input type="radio" value="2" name="radio1" id="uninterested1" checked="true" />
+		<lavel for="uninterested1">どこでも</lavel>
+		</td>
+	</tr>
+	<tr>
+	<th scope="row">構成</th>
+		<td><input type="radio" value="0" name="radio2" id="gakunai" />
+		<lavel for="gakunai">学内</lavel>
+		<input type="radio" value="1" name="radio2" id="inter" />
+		<lavel for="inter">インカレ</lavel>
+		<input type="radio" value="2" name="radio2" id="uninterested2" checked="true"  />
+		<lavel for="uninterested2">どちらでも</lavel>
+		</td>
+	</tr>
+	<tr>
+	<th scope="row">人数</th>
+		<td>総勢<input type="text" name="all" value="0"/>人以上<br>
+		男性<input type="text" name="man" value="0"/>人以上<br>
+		女性<input type="text" name="woman" value="0" />人以上
+		</td>
+	</tr>
+	<tr>
+	<th scope="row">活動費</th>
+		<td><input type="text" name="cost" value="50000" />円以下
+		</td>
+	</tr>
+	<tr>
+	<th scope="row">飲み</th>
+		<td>←ゆるい
+		<input type="radio" value="1" name="radio3" id="nomi1" />
+		<lavel for="nomi1">1</lavel>
+		<input type="radio" value="2" name="radio3" id="nomi2" />
+		<lavel for="nomi2">2</lavel>
+		<input type="radio" value="3" name="radio3" id="nomi3" checked="true" />
+		<lavel for="nomi3">3</lavel>
+		<input type="radio" value="4" name="radio3" id="nomi4" />
+		<lavel for="nomi4">4</lavel>
+		<input type="radio" value="5" name="radio3" id="nomi5" />
+		<lavel for="nomi5">5</lavel>
+		→激しい
+		</td>
+	</tr>
+	<tr>
+	<th scope="row">真面目さ</th>
+		<td>←ワイワイ
+		<input type="radio" value="1" name="radio4" id="mazime1" />
+		<lavel for="mazime1">1</lavel>
+		<input type="radio" value="2" name="radio4" id="mazime2" />
+		<lavel for="mazime2">2</lavel>
+		<input type="radio" value="3" name="radio4" id="mazime3" checked="true" />
+		<lavel for="mazime3">3</lavel>
+		<input type="radio" value="4" name="radio4" id="mazime4" />
+		<lavel for="mazime4">4</lavel>
+		<input type="radio" value="5" name="radio4" id="mazime5" />
+		<lavel for="mazime5">5</lavel>
+		→ガチ
+		</td>
+	</tr>
+	</tbody>
+	</table>
 	<input type="submit" value="送信" />
 	<br>
 	<br>
@@ -168,11 +190,11 @@ if($this->request->data){
 		<td bgcolor="#bcfffe">
 			<?php 
 				$string = "https://twitter.com/";	
-				$string .= $datum['Circle']['circle_name'];	
+				$string .= $datum['Circle']['twitterid'];	
 			?>	
 			<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
 				Follow 
-				<?php echo $datum['Circle']['twitter_id']; ?>
+				<?php echo $datum['Circle']['twitterid']; ?>
 			</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 			</script>
@@ -217,7 +239,89 @@ endforeach ?>
 <a href = "https://twitter.com/share" data-hashtags= <?php echo $string; ?> data-text = 'このサークルの新歓に行く人は一緒に行こう！' data-url = '' data-size = 'large' class="twitter-hashtag-button" >Tweet #circlerecommend</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>	
 <br></br>
 <!--<?php print_r($count_data); ?> -->
+
+
+<?php foreach ($data as $datum): ?>
+
+<section class="list">
+<h3> <!--サークルの名前-->
+	<?php if($datum['Circle']['url']): ?>
+		<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
+		<font><?php echo $datum['Circle']['circle_name']; ?></font>
+		</a>
+	<?php else: ?>
+		<font><?php echo $datum['Circle']['circle_name']; ?></font>
+	<?php endif; ?></h3>
+<figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>
+<h4><!--サークルの名前-->
+	<?php if($datum['Circle']['url']): ?>
+		<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
+		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
+		</a>
+	<?php else: ?>
+		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
+	<?php endif; ?>
+	
+	<?php 
+		$string = "https://twitter.com/";	
+		$string .= $datum['Circle']['twitterid'];	
+	?>	
+		<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
+			Follow 
+		<?php echo $datum['Circle']['twitterid']; ?>
+		</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+		</script>
+	
+</h4>
+<p>
+<!--table type03を定義しておく?-->
+<table class = "type03">
+	<tbody>
+	<tr>
+		<th scope="row">活動内容</th>
+		<td><?php echo $act[$act2]; ?></td>
+	</tr>
+	<tr>
+		<th scope="row">ひとこと</th>
+		<td><?php echo $datum['Circle']['pr']; ?></td>
+	</tr>
+
+	<tr>
+		<th scope="row">場所</th>
+		<td><?php echo $datum['Circle']['place']; ?> : <?php echo $datum['Circle']['placetext']; ?></td>
+	</tr>
+	<tr>
+		<th scope="row">基本曜日</th>
+		<td>
+		<?php
+			for ($i=0;$i<7;$i++):
+				if ($day[$i]=="1"):
+					if ($c==0):
+						echo $day2[$i];
+						$c=$c+1;
+					else:
+						echo ",";
+						echo $day2[$i];
+					endif;
+				endif;
+			endfor;
+		?>
+		</td>
+	</tr>
+	</tbody>
+</table>
+</p>
+
+
+<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"></p>
+</section>
+
+
+<?php endforeach; ?>
+<!-- ここで　if文に対応した部分が表示される-->
 <?php endif; ?>
+
 
 <section class="list">
 <figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>

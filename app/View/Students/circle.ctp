@@ -1,13 +1,13 @@
 <h2 class="mb1em">サークルを登録しよう</h2>
  
 <h3 class="mb1em">すでに登録済みのサークルの編集はこちら</h3>
-
+<p>
 	<!--<div Align="right">-->
 		<div class="i-btn">
 			<a href="../Circles/circle_login">編集ページ</a>
 		</div>
 	<!--</div>-->
-	
+</p>
 	
 <h3 class="mb1em">Why use? How use?</h3>
 
@@ -20,5 +20,3 @@
 <h3 class="mb1em">ランチメニュー</h3>
 
 <!--/lunch-->
-</div> <!--<div class="stop-bottom"> -->
-</div>

@@ -64,18 +64,22 @@
 <!--ここに書き込めば全体の枠になります -->
 <?php echo $content_for_layout; ?>
 	
-
+</div>
 
 <div id="sub">
 
 <div class="box1 mb1em">
 
 <nav>
-<h2>新規登録はこちら</h2>
+<h2><a href="../Students/student_resister"><font color ="#66ccff">新規登録しよう</font></a></h2>
 	<p>
-	<div class="i-btnb">
+	<!--<div class="i-btnb">
 		<a href="../Students/student_resister">登録ページ</a>
-	</div>
+	</div> -->
+	<a href="../Students/student_resister"><font color ="#66ccff">新規登録</font></a>することでできること<br>
+	(1)サークルのお気に入り、予定確認<br>
+	(2)サークルの新規登録<br>
+	(3)バイト、インターンのオファーの受け取り
 	</p>
 </nav>
 

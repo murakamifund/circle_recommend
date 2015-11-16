@@ -30,10 +30,89 @@ input,textarea,select {
 form {
 	margin: 0px;
 }
+/*
 table {
 	border-collapse:collapse;
 	font-size: 100%;
 	border-spacing: 0;
+}
+*/
+/*分割なしのテーブル*/
+table.type01 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-left: 3px solid #369;
+}
+table.type01 th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #153d73;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc; 
+
+}
+table.type01 td {
+    width: 450px;
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+/*2分割のテーブル*/
+table.type02 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-left: 3px solid #369;
+}
+table.type02 th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #153d73;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc; 
+
+}
+table.type02 td {
+    width: 225px;
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+/*検索結果内のテーブル*/
+table.type03 {
+    font-size: 75%;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-left: 3px solid #369;
+}
+table.type03 th {
+    width: 75px;
+    padding: 3px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #153d73;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc; 
+
+}
+table.type03 td {
+    width: 220px;
+    padding: 3px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
 /*リンク（全般）設定
@@ -310,13 +389,13 @@ footer a {
 	height: 420px;	/*ボックスの高さ*/
 	width: 325px;	/*ボックスの幅*/
 	border-radius: 10px;	/*角丸のサイズ*/
-	-webkit-box-shadow: 0px 2px 5px #bcbcbc;	/*影の設定。それぞれ右へ、下へ、ぼかし幅、色の設定。*/
+	-webkit-box-shadow: 0px 2px 5px #fffacd;	/*影の設定。それぞれ右へ、下へ、ぼかし幅、色の設定。*/
 	box-shadow: 0px 2px 5px #bcbcbc;			/*同上*/
-	background-color: #add8e6;	/*背景色（古いブラウザだとここの色のみが出ます）*/
+	background-color: #fffacd;	/*背景色（古いブラウザだとここの色のみが出ます）*/
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#add8e6), to(#e0ffff));	/*グラデーション*/
 	background-image: -webkit-linear-gradient(#add8e6, #e0ffff);	/*同上*/
-	background-image: linear-gradient(#add8e6, #e0ffff);			/*同上*/
-	padding: 23px;	/*ボックス内の余白*/
+	background-image: linear-gradient(#deb887, #fffacd);			/*同上*/
+	padding: 13px;	/*ボックス内の余白*/
 	float: left;
 	margin: 0px 10px 1em;
 	border: 1px solid #CCC;
@@ -506,7 +585,7 @@ input[type="reset"]:hover {
 	margin-right:23px;
 }
 .stop-btm input[type="text"]{
-  	width: 60.2%;
+  	width: 75.2%;
   	font-size: 14px;
   	margin: 1px auto;
   	color: #474747;
@@ -522,7 +601,7 @@ input[type="reset"]:hover {
   	font-family: 'Open Sans', sans-serif;
 }
 .stop-btm input[type="password"]{
-  	width: 60.2%;
+  	width: 75.2%;
   	font-size: 14px;
   	margin: 1px auto;
   	color: #474747;
