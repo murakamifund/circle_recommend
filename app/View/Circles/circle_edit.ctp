@@ -9,12 +9,24 @@
 			<?php echo $this->Form->input('id', array('type' => 'hidden')); ?> 
 		
 		<tr>
+			<th scope="row">写真</th>
+			<td><?php echo $this->Form->input('photo', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
+		</tr>
+		<tr>
 			 <th scope="row">サークル名</th>
 			<td><?php echo $this->Form->input('circle_name', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
 		</tr>
 		<tr>
 			<th scope="row">URL</th>
 			<td><?php echo $this->Form->input('url', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
+		</tr>
+		<tr>
+			<th scope="row">twitter_id</th>
+			<td><?php echo $this->Form->input('twitter_id', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
+		</tr>
+		<tr>
+			<th scope="row">紹介文</th>
+			<td><?php echo $this->Form->input('PR', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
 		</tr>
 		<tr>
 			<th scope="row">活動内容</th>
@@ -48,7 +60,7 @@
 			echo $this->Form->checkbox('day7',array('lavel'=>false,'error'=>false,'div'=>false));?></td>
 		<tr>
 			<th scope="row">主な活動場所</th>
-			<td><?php echo $this->Form->radio('place',
+			<td><?php echo $this->Form->radio('place1',
 				array(
 					'駒場'=>'駒場',
 					'本郷'=>'本郷',
@@ -57,6 +69,10 @@
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
 				);
 			?></td>
+		</tr>
+		<tr>
+			<th scope="row">活動場所</th>
+			<td><?php echo $this->Form->input('place2', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
 		</tr>
 	</tbody>
 	</table>
@@ -73,6 +89,19 @@
 		</tr>
 	</tbody>
 	</table>
+	<table class="type02">
+	<tbody>
+		<tr>
+			<th scope="row">活動費</th>
+			
+			<!--<td>入会費</td> -->
+			<td><?php echo $this->Form->input('cost1', array('size'=>50, 'label'=>"入会費　", 'error'=>false, 'div'=>false)); ?></td>
+			
+			<!-- <td>年会費</td>-->
+			<td><?php echo $this->Form->input('cost2', array('size'=>50, 'label'=>"年会費　", 'error'=>false, 'div'=>false));?></td>
+		</tr>
+	</tbody>
+	</table>
 	<table class="type01">
 		<tbody>
 		<tr>
@@ -85,10 +114,6 @@
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
 				); 
 			?></td>
-		</tr>
-		<tr>
-			<th scope="row">活動費</th>
-				<td><?php echo $this->Form->input('cost', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false)); ?></td>
 		</tr>
 		<tr>
 			<th scope="row">飲み会</th>
