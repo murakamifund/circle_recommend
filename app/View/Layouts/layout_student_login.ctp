@@ -16,10 +16,18 @@
 
 <?php
     echo $this->Html->meta('icon');
-	echo $this->html->css(array('style', 'bootstrap'));
+	echo $this->html->css(array('style', 'bootstrap','fullcalendar','fullcalendar.print'));
     echo $scripts_for_layout;
-	echo $this->Html->script(array('openclose.js','rollimg.js','scritp.js','slide_sample_pack.js'));
+	echo $this->Html->script(array('openclose.js','rollimg.js','scritp.js','slide_sample_pack.js','jquery.min.js'));
  ?>
+ 
+ <?php
+    echo $this->Html->css( 'fullcalendar/fullcalendar.css');
+    echo $this->Html->script( 'jquery.min.js');
+    echo $this->Html->script( 'fullcalendar/fullcalendar.min.js');
+?>
+ 
+
 
 <script type="text/javascript" src="js/openclose.js"></script>
 </head>
@@ -30,17 +38,17 @@
 
 <header>
 <h1><a href="home">サークルレコメンド</a></h1>
-<p id="logo"><a href="home"><img src="../img/logo.png" width="270" height="50" alt=""></a></p>　　<!-->これがロゴの画像<!-->
+<p id="logo"><a href="circle_logout_home"><img src="../img/logo.png" width="270" height="50" alt=""></a></p>　　<!-->これがロゴの画像<!-->
 </header>
 
 <nav id="menubar">
 <ul>
-<li><a href="../Students/home">HOME</a></li>
-<li ><a href="../Students/about">ABOUT</a></li>
-<li><a href="../Students/student">STUDENT</a></li>
-<li id="current"><a href="../Students/circle">CIRCLE</a></li>
-<li><a href="../Students/student_resister">新規登録</a></li>
-<li><a href="../Students/Student_login">ログイン</a></li>
+<li><a href="home">HOME</a></li>
+<li ><a href="about">ABOUT</a></li>
+<li><a href="student">STUDENT</a></li>
+<li><a href="circle">CIRCLE</a></li>
+<li><a href="student_resister">新規登録</a></li>
+<li id="current"><a href="student_login">ログイン</a></li>
 </ul>
 </nav>
 
@@ -52,26 +60,24 @@
 <!--ここに書き込めば全体の枠になります -->
 <?php echo $content_for_layout; ?>
 	
-</div>
+</div>  <!-- main-->
 
 <div id="sub">
 
 <div class="box1 mb1em">
 
 <nav>
-<h2><a href="../Students/student_resister"><font color ="#66ccff">新規登録しよう</font></a></h2>
-	<p>
-	<!--<div class="i-btnb">
-		<a href="../Students/student_resister">登録ページ</a>
-	</div> -->
-	<a href="../Students/student_resister"><font color ="#66ccff">新規登録</font></a>することでできること<br>
-	(1)サークルのお気に入り、予定確認<br>
-	(2)サークルの新規登録<br>
-	(3)バイト、インターンのオファーの受け取り
-	</p>
+<h2>SUB MENU</h2>
+<ul>
+<li><a href="#">主要リンクサンプル</a></li>
+<li><a href="#">主要リンクサンプル</a></li>
+<li><a href="#">主要リンクサンプル</a></li>
+<li><a href="#">主要リンクサンプル</a></li>
+<li><a href="#">主要リンクサンプル</a></li>
+</ul>
 </nav>
 
-</div>
+
 <!--/box1-->
 
 <aside class="mb1em">
