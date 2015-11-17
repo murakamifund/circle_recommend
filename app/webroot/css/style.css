@@ -6,10 +6,14 @@
 body {
 	color: #666;	/*全体の文字色*/
 	margin: 0px;
-	padding: 0px;
+	padding: 0 0 0 0;
 	font: 14px/2 "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro";/*文字サイズ・行間・フォント設定*/
 	background: #FFF;	/*背景色*/
 }
+* html body{  
+    overflow: hidden;  
+} 
+
 h1,h2,h3,h4,h5,p,ul,ol,li,dl,dt,dd,form,figure{
 	margin: 0px;
 	padding: 0px;
@@ -132,8 +136,14 @@ a:hover {
 /*ヘッダー（サイト名ロゴが入ったブロック）
 ---------------------------------------------------------------------------*/
 header {
+//	position: fixed !important;  
+//  position: absolute;  
+	background-color: #ffffff;
+//  top: 0;  
+//  left: 0;  
+//	z-index: 4;
 	width: 100%;	/*ブロックの幅*/
-	height: 95px;	/*ブロックの高さ*/
+	height: 50px;	/*ブロックの高さ*/
 	background: url(../img/header_bg.jpg) no-repeat right bottom;	/*背景画像の読み込み＆リピートしない＆右側下部に配置*/
 	position: relative;
 }
@@ -152,17 +162,27 @@ header h1 a, header h1 a:hover {
 header #logo {
 	position: absolute;
 	left: 20px;	/*ヘッダーブロックに対して左から20pxの場所に配置*/
-	top: 20px;	/*ヘッダーブロックに対して上から20pxの場所に配置*/
+	top: 0px;	/*ヘッダーブロックに対して上から20pxの場所に配置*/
 }
 
 /*上部のメインメニュー
 ---------------------------------------------------------------------------*/
 /*メニュー１個ごとの設定*/
+
+nav#menubar{
+//	position: fixed !important;  
+//    position: absolute;  
+//    top: 45px;  
+//   left: 0px;
+//	z-index: 4;  
+
+}
 nav#menubar ul li {
 	float: left;
 	border-top: 4px solid rgba(0,0,0,0);	/*上の線の幅、線種、色。rgbaはRGBカラー(0,0,0は黒)に透明度(0は0％の事、1で100%の事になります。)を追加しています。*/
 	margin-left: 1px;
 }
+
 nav#menubar ul li a {
 	color: #837768;
 	text-decoration: none;
@@ -198,6 +218,13 @@ nav#menubar ul li#current a {
 	background-image: linear-gradient(#FFF, #e6e6e6);			/*同上*/
 }
 
+nav#menubar ul#ul_mobile{
+	display: none;
+}
+
+.fixed {
+	position: fixed;
+}
 /*トップページのスライドショー
 ---------------------------------------------------------------------------*/
 #mainimg {
@@ -832,6 +859,14 @@ header h1 {
 /*上部のメインメニュー
 ---------------------------------------------------------------------------*/
 /*メニュー１個ごとの設定*/
+
+nav#menubar ul#ul_pc{
+	display: none;
+}
+nav#menubar ul#ul_mobile{
+	display: block;
+}
+
 nav#menubar ul li {
 	width: 49%;
 	margin: 0 0 5px 1%;
@@ -935,6 +970,14 @@ header #logo img {
 /*上部のメインメニュー
 ---------------------------------------------------------------------------*/
 /*メニュー１個ごとの設定*/
+nav#menubar ul#ul_pc{
+	display: none;
+}
+nav#menubar ul#ul_mobile{
+	display: block;
+}
+
+
 nav#menubar ul li {
 	width: 49%;
 	margin: 0 0 5px 1%;
