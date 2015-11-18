@@ -27,7 +27,7 @@ class CirclesController extends AppController {
  
     public function beforeFilter() {
         // 各コントローラーの index と login を有効にする
-        $this->Auth->allow('circle_login','circle_resister');
+        $this->Auth->allow('circle_login','circle_resister','circle_resister_finish');
 		parent::beforeFilter();
 		AuthComponent::$sessionKey = 'Auth.circles';
     }
@@ -142,12 +142,13 @@ class CirclesController extends AppController {
 		$rows = array();
 		for ( $a=0; count( $events) > $a; $a++) {
 			$rows[] = array(
-            //'id' => $events[$a]['Event']['id'],
+            'id' => $events[$a]['Event']['id'],
 			//'circle_id' => $events[$a]['Event']['circle_id'],
 			//'circle_name' => $events[$a]['Event']['circle_name'],
             'title' => $events[$a]['Event']['circle_name'].":".$events[$a]['Event']['title'],
             'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
             'end' => $events[$a]['Event']['day'],
+			//'url' => del_cal,
             //'allDay' => $events[$a]['Event']['allday'],
         );
 		}
@@ -229,6 +230,24 @@ class CirclesController extends AppController {
     } else {
       $this->request->data = 
           $this->Circle->read(null, $id);
+    }
+  }
+  
+  
+  public function del_cal($id) {
+  
+    $this->layout = "layout_circle_edit_cal";
+   
+    $this->Event->id = $id;
+
+    if ($this->request->is('post') || $this->request->is('put')) {
+      $this->data = Sanitize::clean($this->data, array('encode' => false));
+      $this->Event->delete($this->request->data('Event.id'));
+	  $this->Session->destroy();
+  
+    } else {
+      $this->request->data = 
+          $this->Event->read(null, $id);
     }
   }
  

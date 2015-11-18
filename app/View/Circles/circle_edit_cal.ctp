@@ -55,8 +55,6 @@
 </div>
 
 <script>
-	
-	
 
 	
 	$('#fc1').fullCalendar({
