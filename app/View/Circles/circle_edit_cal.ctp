@@ -55,18 +55,24 @@
 </div>
 
 <script>
-	
-	
 
+
+
+	
+	
 	
 	$('#fc1').fullCalendar({
 		defaultDate: '2015-11-12',
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
+			selectable: true,
 			events:<?php echo  $json; ?>
 			
 			
 	});
+	
+	// イベントをクリックしたら予定変更する
+    
 </script>
 </p>
 
