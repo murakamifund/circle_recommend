@@ -39,8 +39,8 @@
 <li ><a href="../Students/about">ABOUT</a></li>
 <li><a href="../Students/student">STUDENT</a></li>
 <li id="current"><a href="../Students/circle">CIRCLE</a></li>
-<li><a href="../Students/recruit">RECRUIT</a></li>
-<li><a href="../Students/link">LINK</a></li>
+<li><a href="../Students/student_resister">新規登録</a></li>
+<li><a href="../Students/Student_login">ログイン</a></li>
 </ul>
 </nav>
 
@@ -59,14 +59,16 @@
 <div class="box1 mb1em">
 
 <nav>
-<h2>SUB MENU</h2>
-<ul>
-<li><a href="#">主要リンクサンプル</a></li>
-<li><a href="#">主要リンクサンプル</a></li>
-<li><a href="#">主要リンクサンプル</a></li>
-<li><a href="#">主要リンクサンプル</a></li>
-<li><a href="#">主要リンクサンプル</a></li>
-</ul>
+<h2><a href="../Students/student_resister"><font color ="#66ccff">新規登録しよう</font></a></h2>
+	<p>
+	<!--<div class="i-btnb">
+		<a href="../Students/student_resister">登録ページ</a>
+	</div> -->
+	<a href="../Students/student_resister"><font color ="#66ccff">新規登録</font></a>することでできること<br>
+	(1)サークルのお気に入り、予定確認<br>
+	(2)サークルの新規登録<br>
+	(3)バイト、インターンのオファーの受け取り
+	</p>
 </nav>
 
 </div>
