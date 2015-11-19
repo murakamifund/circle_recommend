@@ -16,12 +16,13 @@
 
 <?php
     echo $this->Html->meta('icon');
-	echo $this->html->css(array('style', 'bootstrap'));
+	echo $this->html->css(array('style','style_inner','bootstrap'));
     echo $scripts_for_layout;
-	echo $this->Html->script(array('openclose.js','rollimg.js','scritp.js','slide_sample_pack.js'));
+	echo $this->Html->script(array('myfunc.js','openclose.js','rollimg.js','scritp.js','slide_sample_pack.js'));
  ?>
 
 <script type="text/javascript" src="js/openclose.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -29,29 +30,38 @@
 <div id="container">
 
 <header>
-<h1><a href="home">サークルレコメンド</a></h1>
-<p id="logo"><a href="home"><img src="../img/logo.png" width="270" height="50" alt=""></a></p>　　<!-->これがロゴの画像<!-->
+<ul class="header_ul"><li><div onclick="display_popup()">ログイン</a></li><li><div href="student_login">新規登録</a></li></ul>
+<p id="logo"><a href="home"><img src="../img/logo03.png" width="250" height="50" alt=""></a></p>
 </header>
 
-<nav id="menubar">
+<nav class="menubar" id="menubar_pc">
 <ul>
-<li id="current"><a href="home">HOME</a></li>
-<li><a href="about">ABOUT</a></li>
-<li><a href="student">STUDENT</a></li>
-<li><a href="circle">CIRCLE</a></li>
-<li><a href="student_resister">新規登録</a></li>
-<li><a href="student_login">ログイン</a></li>
+<li id="current"><a class="menu_pc" href="home">HOME</a></li>
+<li><a class="menu_pc" href="about">ABOUT</a></li>
+<li><a class="menu_pc" href="student">STUDENT</a></li>
+<li><a class="menu_pc" href="circle">CIRCLE</a></li>
+<li><a class="menu_pc" href="student_resister">新規登録</a></li>
+<li><a class="menu_pc" href="student_login">ログイン</a></li>
 </ul>
 </nav>
 
+<nav class="menubar" id="menubar_mobile">
+<ul>
+<li id="current"><a class="menu_mobile" href="home">HOME</a></li>
+<li><a class="menu_mobile" href="about">ABOUT</a></li>
+<li><a class="menu_mobile" href="student">STUDENT</a></li>
+<li><a class="menu_mobile" href="circle">CIRCLE</a></li>
+<li><a class="menu_mobile" href="student_resister">新規登録</a></li>
+<li><a class="menu_mobile" href="student_login">ログイン</a></li>
+</ul>
+</nav>
+
+
+
 <aside id="mainimg">
-<img class="slide_file" src="../img/1.jpg" title="home">
-<img class="slide_file" src="../img/2.jpg" title="home">
-<img class="slide_file" src="../img/3.jpg" title="home">
-<input type="hidden" id="slide_loop" value="0">
 <a href="home" id="slide_link">
-<img id="slide_image" src="../img/1.jpg" alt="" width="977" height="260" />
-<img id="slide_image2" src="../img/1.jpg" alt="" width="977" height="260" /></a>
+<img id="slide_image" src="../img/4.jpg" alt="" width="977" height="260" />
+</a>
 </aside>
 
 <div id="contents">
@@ -84,36 +94,21 @@
 </div>
 <!--/box1-->
 
-<aside class="mb1em">
-<h2>関連情報</h2>
-<ul>
-<li><a href="#">関連情報リンク</a></li>
-<li><a href="#">関連情報リンク</a></li>
-<li><a href="#">関連情報リンク</a></li>
-<li><a href="#">関連情報リンク</a></li>
-<li><a href="#">関連情報リンク</a></li>
-</ul>
-</aside>
-
-<div class="box1 mb1em">
-
-<section>
-<h2>当ブロック内に画像を置く場合</h2>
-<p>幅240pxまで。</p>
-</section>
-
+<aside class="box1 mb1em">
+<h2>Twitterアカウント</h2>
+<div id="twitter_box">
+ここにツイッター
 </div>
-<!--/box1-->
 
-<section>
-<h2>box1の外は</h2>
-<p>こんな感じです。ここに画像を置く場合、幅260pxまで。</p>
-</section>
+
+</aside>
+<!--/box1-->
 
 </div>
 <!--/sub-->
 
 <p id="pagetop"><a href="#">↑ PAGE TOP</a></p>
+
 
 </div>
 <!--/contents-->
@@ -123,8 +118,31 @@
 <span class="pr"><a href="http://template-party.com/" target="_blank">Web Design:Template-Party</a></span>
 </footer>
 
+
 </div>
 <!--/container-->
+
+
+<div id="popup">
+<h2>CIRCLE RECOMMENDERにログインしよう！</h2>
+<p>ログインすると、もっとたくさんの写真が見れたり、気になるサークルの最新の新歓情報を受け取れたり、見比べたり出来るよ！</p>
+<div id="popup_login_twitter">
+	<p>Twitterから</p>
+	<div><a href=""><img src="../img/twitter01.jpg" width="200" height="60"></a></div> 
+</div>
+<div id="popup_login_address">
+	<p>メールアドレスから</p>
+	<form action="" method="post">
+	<input type="text" class="popup_login_form" name="address" value="メールアドレス" size="30"><br>
+	<input type="text" class="popup_login_form" name="password" value="パスワード" size="20"><br>
+	<div><a id="popup_remake_pass" href="">パスワードを忘れた方はこちら</a></div>
+	<input id="popup_login_btn" type="submit" value="ログインする">
+	</form>
+</div>
+<div><a href="" id="popup_to_register">未登録の方はこちら</a></div>
+<div><a href="home" id="popup_close" onclick="close_popup()">もどる</a></div>
+</div>
+
 
 <!--スライドショースクリプト-->
 <script type="text/javascript" src="js/slide_simple_pack.js"></script>

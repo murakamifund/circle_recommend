@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+
+/*home‚ÅŽg‚¤*/
+
+#main p span.strong_num{
+	color: red;
+	font-size: 30px;
+	font-style: italic;
+}
+
+#main div a.access_btn{
+	display: block;
+	margin-bottom: 10px;
+	margin-right: 5px;
+	border-radius: 10px;
+	border: 2px solid #330000;
+	width: 80px;
+	line-height: 1.8;
+	text-align: center;
+	color: #eeeeee;
+	background-color: #333;
+	float: left;
+	clear: left;
+}
+
+#main div a.access_btn:hover{
+	text-decoration: none;
+	background-color: #837768;
+	border-color: #837768;
+	color: #eeeeee;
+}
+
+#main div.btn_nav{
+	border-bottom: 1px dashed #000000;
+	min-height: 35px;
+	margin-bottom: 10px;
+//	padding-left: 90px;
+	font-size: 12px;
+}
+
+#main div.btn_nav:last-child{
+	margin-bottom: 30px;
+}
+
