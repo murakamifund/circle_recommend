@@ -69,7 +69,7 @@
 <nav>
 <h2>SUB MENU</h2>
 <ul>
-<li><a href="#">主要リンクサンプル</a></li>
+
 <li><a href="#">主要リンクサンプル</a></li>
 <li><a href="#">主要リンクサンプル</a></li>
 <li><a href="#">主要リンクサンプル</a></li>
