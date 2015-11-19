@@ -25,7 +25,6 @@ public $validate = array(
 			'message'=>'パスワードを正しく入力してください。'
         ),
 		
-		
         
     );
      

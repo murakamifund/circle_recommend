@@ -1,3 +1,5 @@
+<aside class="mb1em"><img src="../img/banner1.jpg" width="700" height="99" alt="ランチタイムパン食べ放題" class="wa"></aside>
+<!-- 上の画像で、サークルの新規登録を促す -->
 <h2>サークルを探そう</h2>
 
 <ul class="navmenu">
@@ -14,60 +16,37 @@
 <br><br>
 
 <form method="post" action="./student" name=form1>
-	種目 (選択必須)<br>
-	インドア　全選択<br>
-	<input type="checkbox" name="check2" id="activity2" value="1" />
-	<lavel for="activity2">合唱</lavel>
-	<br>
-	アウトドア　全選択<br>
-	<input type="checkbox" name="check1" id="activity1" value="1" />
-	<lavel for="activity1">テニス</lavel>
-	<input type="checkbox" name="check3" id="activity3" value="1" />
-	<lavel for="activity3">卓球</lavel>
-	<input type="checkbox" name="check4" id="activity4" value="1" />
-	<lavel for="activity4">サッカー</lavel>
-	<br>
-	その他<br>
-	<input type="checkbox" name="check5" id="activity5" value="1" />
-	<lavel for="activity5">その他</lavel>
-	<br>
 	<table class = "type01">
 	<tbody>
 	<tr>
-	<th scope="row">活動場所</th>
-		<td><input type="radio" value="0" name="radio1" id="komaba" />
-		<lavel for="komaba">駒場</lavel>
-		<input type="radio" value="1" name="radio1" id="honngou" />
-		<lavel for="honngou">本郷</lavel>
-		<input type="radio" value="2" name="radio1" id="uninterested1" checked="true" />
-		<lavel for="uninterested1">どこでも</lavel>
+	<th scope="row">キーワード検索</th>
+		<td>
+		<input type="textbox" name="keyword" id="word" size="40" />
+		</td>
+	<tr>
+	<th scope="row">種目</th>
+		<td>
+		インドア<br>
+			<input type="checkbox" name="check2" id="activity2" value="1" />
+			<lavel for="activity2">合唱</lavel>
+			<br><br>
+		アウトドア<br>
+			<input type="checkbox" name="check1" id="activity1" value="1" />
+			<lavel for="activity1">テニス</lavel>
+			<input type="checkbox" name="check3" id="activity3" value="1" />
+			<lavel for="activity3">卓球</lavel>
+			<input type="checkbox" name="check4" id="activity4" value="1" />
+			<lavel for="activity4">サッカー</lavel>
+			<br><br>
+		その他<br>
+			<input type="checkbox" name="check5" id="activity5" value="1" />
+			<lavel for="activity5">その他</lavel>
 		</td>
 	</tr>
 	<tr>
-	<th scope="row">構成</th>
-		<td><input type="radio" value="0" name="radio2" id="gakunai" />
-		<lavel for="gakunai">学内</lavel>
-		<input type="radio" value="1" name="radio2" id="inter" />
-		<lavel for="inter">インカレ</lavel>
-		<input type="radio" value="2" name="radio2" id="uninterested2" checked="true"  />
-		<lavel for="uninterested2">どちらでも</lavel>
-		</td>
-	</tr>
-	<tr>
-	<th scope="row">人数</th>
-		<td>総勢<input type="text" name="all" value="0"/>人以上<br>
-		男性<input type="text" name="man" value="0"/>人以上<br>
-		女性<input type="text" name="woman" value="0" />人以上
-		</td>
-	</tr>
-	<tr>
-	<th scope="row">活動費</th>
-		<td><input type="text" name="cost" value="50000" />円以下
-		</td>
-	</tr>
-	<tr>
-	<th scope="row">飲み</th>
-		<td>←ゆるい
+	<th scope="row">飲み会</th>
+		<td>
+		←少ない
 		<input type="radio" value="1" name="radio3" id="nomi1" />
 		<lavel for="nomi1">1</lavel>
 		<input type="radio" value="2" name="radio3" id="nomi2" />
@@ -78,12 +57,13 @@
 		<lavel for="nomi4">4</lavel>
 		<input type="radio" value="5" name="radio3" id="nomi5" />
 		<lavel for="nomi5">5</lavel>
-		→激しい
+		→多い
 		</td>
 	</tr>
 	<tr>
 	<th scope="row">真面目さ</th>
-		<td>←ワイワイ
+		<td>
+		←楽しい
 		<input type="radio" value="1" name="radio4" id="mazime1" />
 		<lavel for="mazime1">1</lavel>
 		<input type="radio" value="2" name="radio4" id="mazime2" />
@@ -188,11 +168,11 @@ if($this->request->data){
 		<td bgcolor="#bcfffe">
 			<?php 
 				$string = "https://twitter.com/";	
-				$string .= $datum['Circle']['circle_name'];	
+				$string .= $datum['Circle']['twitterid'];	
 			?>	
 			<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
 				Follow 
-				<?php echo $datum['Circle']['twitter_id']; ?>
+				<?php echo $datum['Circle']['twitterid']; ?>
 			</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 			</script>
@@ -237,7 +217,94 @@ endforeach ?>
 <a href = "https://twitter.com/share" data-hashtags= <?php echo $string; ?> data-text = 'このサークルの新歓に行く人は一緒に行こう！' data-url = '' data-size = 'large' class="twitter-hashtag-button" >Tweet #circlerecommend</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>	
 <br></br>
 <!--<?php print_r($count_data); ?> -->
+
+
+<?php foreach ($data as $datum): ?>
+
+<section class="list">
+<h3> <!--サークルの名前-->
+	<?php if($datum['Circle']['url']): ?>
+		<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
+		<font><?php echo $datum['Circle']['circle_name']; ?></font>
+		</a>
+	<?php else: ?>
+		<font><?php echo $datum['Circle']['circle_name']; ?></font>
+	<?php endif; ?></h3>
+	<?php if($datum['Circle']['photo_name'] != ""): ?>
+	<?php var_dump($datum['Circle']['photo_name']); ?>
+		<figure><img src="../img/".$datum['Circle']['photo_name'] width="280" height="210" alt="" /></figure>
+	<?php else: ?>
+		<figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>
+	<?php endif; ?>
+<h4><!--サークルの名前-->
+	<?php if($datum['Circle']['url']): ?>
+		<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
+		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
+		</a>
+	<?php else: ?>
+		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
+	<?php endif; ?>
+	
+	<?php 
+		$string = "https://twitter.com/";	
+		$string .= $datum['Circle']['twitterid'];	
+	?>	
+		<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
+			Follow 
+		<?php echo $datum['Circle']['twitterid']; ?>
+		</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+		</script>
+	
+</h4>
+<p>
+<!--table type03を定義しておく?-->
+<table class = "type03">
+	<tbody>
+	<tr>
+		<th scope="row">活動内容</th>
+		<td><?php echo $act[$act2]; ?></td>
+	</tr>
+	<tr>
+		<th scope="row">ひとこと</th>
+		<td><?php echo $datum['Circle']['pr']; ?></td>
+	</tr>
+
+	<tr>
+		<th scope="row">場所</th>
+		<td><?php echo $datum['Circle']['place']; ?> : <?php echo $datum['Circle']['placetext']; ?></td>
+	</tr>
+	<tr>
+		<th scope="row">基本曜日</th>
+		<td>
+		<?php
+			for ($i=0;$i<7;$i++):
+				if ($day[$i]=="1"):
+					if ($c==0):
+						echo $day2[$i];
+						$c=$c+1;
+					else:
+						echo ",";
+						echo $day2[$i];
+					endif;
+				endif;
+			endfor;
+		?>
+		</td>
+	</tr>
+	</tbody>
+</table>
+</p>
+
+
+<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"></p>
+</section>
+
+
+<?php endforeach; ?>
+<!-- ここで　if文に対応した部分が表示される-->
 <?php endif; ?>
+
 
 <section class="list">
 <figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>

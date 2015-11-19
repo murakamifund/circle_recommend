@@ -114,4 +114,10 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 
-/*CakePlugin::load('FullCalendar');*/
+//CakePlugin::load('FullCalendar');
+// CakePlugin::load('FullCalendar2');
+//CakePlugin::load('headshrinker');
+
+?>
+
+

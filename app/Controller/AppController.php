@@ -32,7 +32,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	var $uses = array('Circle');
+	var $uses = array('Circle','Event');
 
 //homeページのコントローラー
   public function home() {
@@ -78,11 +78,9 @@ class AppController extends Controller {
 	$check5 = isset($this -> data["check5"]) ?
 	 "On" : "Off";
 	if ($this -> request -> data){
-		$radio1 = $this -> data["radio1"];
-		$radio2 = $this -> data["radio2"];
-		$man = $this -> data["man"];
-		$woman = $this -> data["woman"];
-		$cost = $this -> data["cost"];
+		if($this -> data["keyword"]){
+			$word = $this -> data["keyword"];
+		}
 		$nomi = $this -> data["radio3"];
 		$mazime = $this ->data["radio4"];
 	}
@@ -134,24 +132,29 @@ class AppController extends Controller {
 	$p=array("駒場","本郷","");
 	$in=array("学内","インカレ","");
 	if ($this -> request -> data){
-		$opt = array(
-			'Circle.man >=' => $man,
-			'Circle.woman >=' => $woman,
-			'Circle.cost <=' => $cost,
-			'OR' => array(
-				"Circle.intercollege" => $in[$radio2],
-				$radio2==2
-			),
-			"OR" => array (
-				"Circle.place" => $p[$radio1],
-				$radio1==2
-			),
-			'Circle.activity' => $activity2,
-			'Circle.nomi <=' => $nomi+2,
-			'Circle.nomi >=' => $nomi-2,
-			'Circle.mazime <=' => $mazime+2,
-			'Circle.mazime >=' => $mazime-2,
-		);
+		if($this -> data["keyword"]){
+			$opt = array(
+				'OR' => array(
+					'Circle.circle_name' => $word,
+					array(
+						'Circle.activity' => $activity2,
+						'Circle.nomi <=' => $nomi+2,
+						'Circle.nomi >=' => $nomi-2,
+						'Circle.mazime <=' => $mazime+2,
+						'Circle.mazime >=' => $mazime-2,
+					)
+				),
+			);
+		}
+		else{
+			$opt = array(
+				'Circle.activity' => $activity2,
+				'Circle.nomi <=' => $nomi+2,
+				'Circle.nomi >=' => $nomi-2,
+				'Circle.mazime <=' => $mazime+2,
+				'Circle.mazime >=' => $mazime-2,
+			);
+		}
 		$data = $this->Circle->find('all' , array('conditions' => $opt));
 		/*$count_data = $this->Circle2->find('all');
 		$activity3=array(
@@ -254,11 +257,6 @@ class AppController extends Controller {
 			$this -> set("day",$day);
 			$this -> set("day2",$day2);
 		endif;
-		$this -> set("radio1",$radio1);
-		$this -> set("radio2",$radio2);
-		$this -> set("man",$man);
-		$this -> set("woman",$woman);
-		$this -> set("cost",$cost);
 		$this -> set("nomi",$nomi);
 		$this -> set("mazime",$mazime);
 		$this -> set("p",$p);
