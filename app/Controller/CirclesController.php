@@ -184,10 +184,7 @@ class CirclesController extends AppController {
 			$uploadfile = $this->data['Circle']['photo'];
 			var_dump(getcwd());
 			$data = $this->data;
-			$data["Circle"]["photo_name"] = $uploadfile["name"];
-			$data["Circle"]["photo_type"] = $uploadfile["type"];
-			$data["Circle"]["photo_size"] = $uploadfile["size"];
-			$data["Circle"]["photo_tmp_name"] = $uploadfile["tmp_name"];
+			$data["Circle"]["photo"] = $uploadfile["name"];
 			var_dump($data);
 			if(move_uploaded_file($uploadfile['tmp_name'],$uploaddir.DS.$uploadfile["name"])){
 				var_dump("successed");
