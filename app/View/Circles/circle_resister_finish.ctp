@@ -1,4 +1,4 @@
-<h3 class="mb1em">登録完了</h3>
+<h2 class="mb1em">登録完了</h3>
 <p>
 	<font size="6" color="#0000ff">
 		・登録完了しました。サークル名とパスワードはサークル内で共有してください。<br>
@@ -6,6 +6,14 @@
 		・登録情報フォームを全て埋めていただくと、検索などにおいて有利になります。
 	</font>
 </p>
+
+<h3 class="mb1em">サークルの予定を登録しよう</h3>
+
+<div class="i-btn">
+	<a href="circle_login">予定の登録</a>
+</div>
+
+</br>
 
 <h3 class="mb1em">個人ページに戻る</h3>
 <div Align="right">
