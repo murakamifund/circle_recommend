@@ -45,10 +45,10 @@
 <ul>
 <li><a href="home">HOME</a></li>
 <li ><a href="about">ABOUT</a></li>
-<li id="current"><a href="student">STUDENT</a></li>
+<li><a href="student">STUDENT</a></li>
 <li><a href="circle">CIRCLE</a></li>
-<li><a href="home">RECRUIT</a></li>
-<li><a href="link">LINK</a></li>
+<li id="current"><a href="student_resister">新規登録</a></li>
+<li><a href="student_login">ログイン</a></li>
 </ul>
 </nav>
 
@@ -69,7 +69,7 @@
 <nav>
 <h2>SUB MENU</h2>
 <ul>
-
+<li><a href="#">主要リンクサンプル</a></li>
 <li><a href="#">主要リンクサンプル</a></li>
 <li><a href="#">主要リンクサンプル</a></li>
 <li><a href="#">主要リンクサンプル</a></li>

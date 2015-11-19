@@ -1,10 +1,11 @@
-<h2 class="mb1em">サークルログインページ</h2>
-
-
+<h2 class="mb1em">サークル情報・予定を編集しよう</h2>
+<p>
+サークル登録時に送信したサークル名とパスワードを入力してください。<br>
+パスワードなどがわからない場合は、サークル登録者に問い合わせてください。
+<br>
+</P>
+<h3 class="mb1em">編集ページの認証</h3>
 <div class="stop-bottom">
-
-<h3 class="mb1em">ログインしよう</h3>
-	
 	<div class ="stop-btm">
 		<?php echo $this->Form->create('Circle'); 
 			  echo '<p>サークル名　: ';

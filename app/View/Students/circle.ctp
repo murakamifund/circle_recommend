@@ -8,6 +8,9 @@
 		</div>
 	<!--</div>-->
 </p>
+<p>
+	<font color ="blue">(注)サークルの登録はMYページから行うことができます。<br>サークルが未登録の場合、お手数ですが、<font color ="black"><a href="student_resister">アカウント登録　</a></font>を行ってサークルを登録してください。</font>
+</P>
 	
 <h3 class="mb1em">Why use? How use?</h3>
 

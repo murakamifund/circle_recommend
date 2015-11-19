@@ -31,5 +31,3 @@
 <h3 class="mb1em">ランチメニュー</h3>
 
 <!--/lunch-->
-</div> <!--<div class="stop-bottom"> -->
-</div>

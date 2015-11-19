@@ -27,7 +27,7 @@ class CirclesController extends AppController {
  
     public function beforeFilter() {
         // 各コントローラーの index と login を有効にする
-        $this->Auth->allow('circle_login','circle_resister');
+        $this->Auth->allow('circle_login','circle_resister','circle_resister_finish');
 		parent::beforeFilter();
 		AuthComponent::$sessionKey = 'Auth.circles';
     }
@@ -141,13 +141,16 @@ class CirclesController extends AppController {
 		// SQLのレスポンスをもとにデータ作成
 		$rows = array();
 		for ( $a=0; count( $events) > $a; $a++) {
+			
 			$rows[] = array(
-            //'id' => $events[$a]['Event']['id'],
+            'id' => $events[$a]['Event']['id'],
 			//'circle_id' => $events[$a]['Event']['circle_id'],
 			//'circle_name' => $events[$a]['Event']['circle_name'],
             'title' => $events[$a]['Event']['circle_name'].":".$events[$a]['Event']['title'],
             'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
             'end' => $events[$a]['Event']['day'],
+			'url' => "edit_event/".$events[$a]['Event']['id'],
+		
             //'allDay' => $events[$a]['Event']['allday'],
         );
 		}
@@ -245,6 +248,60 @@ class CirclesController extends AppController {
     } else {
       $this->request->data = 
           $this->Circle->read(null, $id);
+    }
+  }
+  
+  
+  public function edit_event($id) {
+  
+    $this->layout = "layout_circle_edit";
+   
+    $this->Event->id = $id;
+	$this->set("event_id",$id);//view側にデータをセット
+	
+	$events = $this->Event->find('first',array(
+		'conditions' => array('Event.id' => $id)));
+	$circle_name = $events['Event']['circle_name'];
+	$this->set("circle_name",$circle_name);//view側にデータをセット
+	$title = $events['Event']['title'];
+	$this->set("title",$title);//view側にデータをセット
+	
+    if ($this->request->is('post') || $this->request->is('put')) {
+            $this->data = Sanitize::clean($this->data, array('encode' => false));
+			//debug($this->request->data);
+			
+            if ($this->Event->save($this->request->data, array('validate' => false))) {
+				// $this->redirect(array('action'=>'follow')); //twitter
+                $this->Session->setFlash(__('更新完了しました。'));
+				//更新したらloginページに移動させる
+				$this->redirect(array('action' => 'circle_edit_cal'));
+            } else {
+                $this->Session->setFlash(__('更新に失敗しました。'));
+				
+            }
+            
+    }
+    else
+    {
+        $this->request->data=$this->Event->read(null,$id);//更新画面の表示
+		
+		
+    }
+  }
+  
+  public function delete($id) {
+  
+    $this->layout = "layout_circle_edit_cal";
+   
+    $this->Event->id = $id;
+	$this->set("event_id",$id);//view側にデータをセット
+    if ($this->request->is('post') || $this->request->is('put')) {
+      $this->data = Sanitize::clean($this->data, array('encode' => false));
+      $this->Event->delete($this->request->data('Event.id'));
+	  $this->redirect(array('action' => 'circle_edit_cal'));
+    } else {
+      $this->request->data = 
+          $this->Event->read(null, $id);
     }
   }
  

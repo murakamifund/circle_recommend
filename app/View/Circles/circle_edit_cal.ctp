@@ -47,7 +47,7 @@
 
 <h3>予定を編集・削除</h3>
 
-
+予定をクリックすると編集できます。
 
 <p>
 <div id="fc1" class="fc">
@@ -55,18 +55,24 @@
 </div>
 
 <script>
-	
-	
 
+
+
+	
+	
 	
 	$('#fc1').fullCalendar({
 		defaultDate: '2015-11-12',
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
+			selectable: true,
 			events:<?php echo  $json; ?>
 			
 			
 	});
+	
+	
+    
 </script>
 </p>
 

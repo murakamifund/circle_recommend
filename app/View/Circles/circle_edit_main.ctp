@@ -37,7 +37,7 @@
 <div class="stop-btm">
 	<div Align="right">
 		<div class="i-btn">
-			<a href="circle_logout">ログアウト</a>
+			<a href="circle_logout">編集を完了</a>
 		</div>
 	</div>
 </div>
