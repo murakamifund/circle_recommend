@@ -28,10 +28,18 @@
 	</div> <!-- stop-btm -->
 
 </div> <!-- stop-bottom -->
+<p>
+	<font color ="blue">(注)サークルの登録はMYページから行うことができます。<br>サークルが未登録の場合、お手数ですが、<font color ="black"><a href="student_resister">アカウント登録　</a></font>を行ってサークルを登録してください。</font>
+</P>
+	
+<h3 class="mb1em">Why use? How use?</h3>
+
+<iframe style="border:none" src="http://files.photosnack.com/iframejs/embed.html?hash=pdzp2m8jo&t=1444874503" width="576" height="384" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>
+
 
 
 <section id="lunch">
 
-
+<h3 class="mb1em">ランチメニュー</h3>
 
 <!--/lunch-->

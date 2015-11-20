@@ -22,15 +22,40 @@ class CirclesController extends AppController {
             'loginRedirect' => array('controller' => 'Circles', 'action' => 'circle_edit_main'),
 			//array('action'=>'edit',$data['User']['id'])
             // ログアウト後に /circles/circle_login へジャンプ
-            'logoutRedirect' => array('controller' => 'Circles', 'action' => 'circle_login'))
+            'logoutRedirect' => array('controller' => 'Circles', 'action' => 'circle'))
         );
  
     public function beforeFilter() {
         // 各コントローラーの index と login を有効にする
-        $this->Auth->allow('circle_login','circle_resister','circle_resister_finish');
+        $this->Auth->allow('circle','circle_login','circle_resister','circle_resister_finish');
 		parent::beforeFilter();
 		AuthComponent::$sessionKey = 'Auth.circles';
     }
+	
+	//circleページのコントローラー
+	public function circle() {
+	
+    $this->modelClass = null;
+    $this->layout = "layout_circle";
+    $this->set("header_for_layout","circlr recommendation");
+    $this->set("footer_for_layout",
+        "copyright by 東京大学システム創成学科C. 2015.");
+    $this->set("msg", "Welcome to my layout!");
+	
+	if ($this->request->is('post')) {
+                      $this->data = Sanitize::clean($this->data, array('encode' => false));
+			if ($this->Auth->login()) {
+				 $this->redirect($this->Auth->redirect());
+			} else {
+				$this->Session->setFlash(__('サークル名かパスワードが間違っています。'));
+			}
+		}
+	
+   
+	}
+	
+	
+	
 	
 	public function circle_resister() {
 	
@@ -212,24 +237,7 @@ class CirclesController extends AppController {
     }
 	}
 	
-	//サークルのログイン
-	public function circle_login() {
-	$this->modelClass = null;
-    $this->layout = "layout_circle";
-    $this->set("header_for_layout","circle recommendation");
-    $this->set("footer_for_layout",
-        "copyright by 東京大学システム創成学科C. 2015.");
-    $this->set("msg", "Welcome to my layout!");
 	
-	if ($this->request->is('post')) {
-                      $this->data = Sanitize::clean($this->data, array('encode' => false));
-			if ($this->Auth->login()) {
-				 $this->redirect($this->Auth->redirect());
-			} else {
-				$this->Session->setFlash(__('サークル名かパスワードが間違っています。'));
-			}
-		}
-	}
 	
 	public function del($id) {
   
@@ -241,7 +249,7 @@ class CirclesController extends AppController {
       $this->data = Sanitize::clean($this->data, array('encode' => false));
       $this->Circle->delete($this->request->data('Circle.id'));
 	  $this->Session->destroy();
-      $this->redirect(array('action'=>'circle_login'));
+      $this->redirect(array('action'=>'circle'));
     } else {
       $this->request->data = 
           $this->Circle->read(null, $id);
@@ -308,7 +316,7 @@ class CirclesController extends AppController {
 	$this->Auth->logout();
             $this->Session->destroy(); //セッションを完全削除
             $this->Session->setFlash(__('ログアウトしました'));
-            $this->redirect(array('action' => 'circle_login'));
+            $this->redirect(array('action' => 'circle'));
 	}
 	
 	//ログアウト_home

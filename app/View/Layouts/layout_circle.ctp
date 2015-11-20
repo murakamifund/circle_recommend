@@ -38,7 +38,7 @@
 <li><a href="../Students/home">HOME</a></li>
 <li ><a href="../Students/about">ABOUT</a></li>
 <li><a href="../Students/student">STUDENT</a></li>
-<li id="current"><a href="../Students/circle">CIRCLE</a></li>
+<li id="current"><a href="circle">CIRCLE</a></li>
 <li><a href="../Students/student_resister">新規登録</a></li>
 <li><a href="../Students/Student_login">ログイン</a></li>
 </ul>

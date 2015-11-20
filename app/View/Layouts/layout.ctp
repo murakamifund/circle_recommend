@@ -39,7 +39,7 @@
 <li id="current"><a class="menu_pc" href="home">HOME</a></li>
 <li><a class="menu_pc" href="about">ABOUT</a></li>
 <li><a class="menu_pc" href="student">STUDENT</a></li>
-<li><a class="menu_pc" href="circle">CIRCLE</a></li>
+<li><a class="menu_pc" href="../Circles/circle">CIRCLE</a></li>
 <li><a class="menu_pc" href="student_resister">新規登録</a></li>
 <li><a class="menu_pc" href="student_login">ログイン</a></li>
 </ul>

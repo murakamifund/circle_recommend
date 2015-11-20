@@ -46,7 +46,7 @@
 <li><a href="home">HOME</a></li>
 <li ><a href="about">ABOUT</a></li>
 <li id="current"><a href="student">STUDENT</a></li>
-<li><a href="circle">CIRCLE</a></li>
+<li><a href="../Circles/circle">CIRCLE</a></li>
 <li><a href="home">RECRUIT</a></li>
 <li><a href="link">LINK</a></li>
 </ul>
