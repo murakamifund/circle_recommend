@@ -138,9 +138,15 @@ a:hover {
 
 /*ヘッダー（サイト名ロゴが入ったブロック）
 ---------------------------------------------------------------------------*/
+#fixing_box{
+	position: fixed;
+	top: 0px;
+	z-index: 5;
+}
+
 header {
 	width: 100%;	/*ブロックの幅*/
-	height: 70px;	/*ブロックの高さ*/
+	height: 50px;	/*ブロックの高さ*/
 	background: url(../img/header_img04.png) no-repeat right bottom;	/*背景画像の読み込み＆リピートしない＆右側下部に配置*/
 	position: relative;
 }
@@ -157,11 +163,11 @@ header h1 a, header h1 a:hover {
 }
 
 header p#logo{
-	margin-top: 10px;
+	margin-top: 0px;
 }
 
 header ul{
-	padding-top: 18px;
+	padding-top: 8px;
 	margin-right: 30px;
 }
 header ul li{
@@ -207,7 +213,7 @@ nav#menubar_mobile{
 
 nav.menubar ul li {
 	float: left;
-	border-top: 4px solid rgba(0,0,0,0);	/*上の線の幅、線種、色。rgbaはRGBカラー(0,0,0は黒)に透明度(0は0％の事、1で100%の事になります。)を追加しています。*/
+	border-top: 4px solid #ffffff;	/*上の線の幅、線種、色。rgbaはRGBカラー(0,0,0は黒)に透明度(0は0％の事、1で100%の事になります。)を追加しています。*/
 	margin-left: 1px;
 }
 
@@ -246,16 +252,15 @@ nav.menubar ul li#current a {
 	background-image: linear-gradient(#FFF, #e6e6e6);			/*同上*/
 }
 
-.fixed {
-	position: fixed;
-}
 /*トップページのスライドショー
 ---------------------------------------------------------------------------*/
 #mainimg {
 	clear: left;
+	margin-top: 80px;
 	width: 977px;
 	height: 260px;
 	position: relative;
+	display: none;
 }
 #mainimg .slide_file {
 	display: none;

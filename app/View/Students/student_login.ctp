@@ -1,3 +1,10 @@
+<script>
+onload = function(){
+	func_student_login();	
+}
+</script>
+
+
 <h2 class="mb1em">ログインページ</h2>
 
 <h3 class="mb1em">ログインしよう</h3>

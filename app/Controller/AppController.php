@@ -62,7 +62,7 @@ class AppController extends Controller {
 	public function student() {
 	
     $this->modelClass = null;
-    $this->layout = "layout_student";
+    $this->layout = "layout";
     $this->set("header_for_layout","circlr recommendation");
     $this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
@@ -281,59 +281,7 @@ class AppController extends Controller {
    
 	}
 	
-	
-	
-	
-	//recruitページのコントローラー
-	/*
-	public function recruit() {
-	
-    $this->modelClass = null;
-    $this->layout = "layout_recruit";
-    $this->set("header_for_layout","circlr recommendation");
-    $this->set("footer_for_layout",
-        "copyright by 東京大学システム創成学科C. 2015.");
-    $this->set("msg", "Welcome to my layout!");
-   
-	}
-	*/
-	
-	//linkページのコントローラー
-	/*
-	public function link() {
-	
-    $this->modelClass = null;
-    $this->layout = "layout_link";
-    $this->set("header_for_layout","circlr recommendation");
-    $this->set("footer_for_layout",
-        "copyright by 東京大学システム創成学科C. 2015.");
-    $this->set("msg", "Welcome to my layout!");
-   
-	}
-*/
-	/*
-	public $components = array(
-        'Session',
-        'Auth' => array(
-			'authenticate' => array(
-                'Form' => array(
-                    'userModel' => 'Circle',//ここをCirclesにしなきゃいけない?
-                    'fields' => array('circle_name' => 'circle_name','password' => 'password')
-                )
-            
-			),
-            // ログイン後にジャンプ
-            'loginRedirect' => array('controller' => 'Circles', 'action' => 'circle_edit'),
-			//array('action'=>'edit',$data['User']['id'])
-            // ログアウト後に /players/home へジャンプ
-            'logoutRedirect' => array('controller' => 'Circles', 'action' => 'circle_login'))
-        );
- 
-    public function beforeFilter() {
-        // 各コントローラーの index と login を有効にする
-        $this->Auth->allow('circle','home','student','link','circle_login','about','recruit');
-    }
-	*/
+
 }
 
 ?>

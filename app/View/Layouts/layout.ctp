@@ -8,7 +8,7 @@
 <meta name="description" content="東京大学の部活動、サークル活動を紹介する情報サイト。その他東大生の大学生活に役に立つバイト情報やインターン情報を提供。">
 <meta name="keywords" content="東大,部活,サークル,バイト,インターン,大学">
 
-<!-- <link rel="stylesheet" href="css/style.css">  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
 
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -22,13 +22,14 @@
  ?>
 
 <script type="text/javascript" src="js/openclose.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
+
 </head>
 
 <body>
 
 <div id="container">
 
+<div id="fixing_box">
 <header>
 <ul class="header_ul"><li><div onclick="display_popup()">ログイン</a></li><li><div href="student_login">新規登録</a></li></ul>
 <p id="logo"><a href="home"><img src="../img/logo03.png" width="250" height="50" alt=""></a></p>
@@ -37,11 +38,11 @@
 <nav class="menubar" id="menubar_pc">
 <ul>
 <li id="current"><a class="menu_pc" href="home">HOME</a></li>
-<li><a class="menu_pc" href="about">ABOUT</a></li>
-<li><a class="menu_pc" href="student">STUDENT</a></li>
+<li><a class="menu_pc" href="../Students/about">ABOUT</a></li>
+<li><a class="menu_pc" href="../Students/student">STUDENT</a></li>
 <li><a class="menu_pc" href="../Circles/circle">CIRCLE</a></li>
-<li><a class="menu_pc" href="student_resister">新規登録</a></li>
-<li><a class="menu_pc" href="student_login">ログイン</a></li>
+<li><a class="menu_pc" href="../Students/student_resister">新規登録</a></li>
+<li><a class="menu_pc" href="../Students/student_login">ログイン</a></li>
 </ul>
 </nav>
 
@@ -55,8 +56,7 @@
 <li><a class="menu_mobile" href="student_login">ログイン</a></li>
 </ul>
 </nav>
-
-
+</div>
 
 <aside id="mainimg">
 <a href="home" id="slide_link">

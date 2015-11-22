@@ -1,9 +1,8 @@
-<?php
-	echo $this->html->css(array('fullcalendar', 'bootstrap','headshrinker'));
-	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
- ?>
-
-
+<script>
+onload = function(){
+	func_about();
+}
+</script>
 
 <section>
 <h2>レスポンシブWEBデザインについて</h2>
@@ -129,17 +128,6 @@ slide_simple_pack.jsファイルがアップロードされているかご確認
 <p>IE8以下でのレイアウト崩れをさせない為に読み込んでいる「html5.js」にやトップページのスライドショーのjsファイル対して出る警告ですが、WEB上では警告は出ません。また、この警告が出ている間は効果も見る事ができないので、警告を解除してあげて下さい。これにより効果がちゃんと見れるようになります。</p>
 </section>
 
-<section>
-<h2>カレンダー</h2>
-<p>
-<div id="fc1" class="fc">
-</div>
-
-<script>
-$('#fc1').fullCalendar({});
-</script>
-</p>
-</section>
 
 
 </div>

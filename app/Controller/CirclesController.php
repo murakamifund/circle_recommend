@@ -36,7 +36,7 @@ class CirclesController extends AppController {
 	public function circle() {
 	
     $this->modelClass = null;
-    $this->layout = "layout_circle";
+    $this->layout = "layout";
     $this->set("header_for_layout","circlr recommendation");
     $this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
@@ -60,7 +60,7 @@ class CirclesController extends AppController {
 	public function circle_resister() {
 	
     $this->modelClass = null;
-    $this->layout = "layout_circle";
+    $this->layout = "layout";
     $this->set("header_for_layout","circlr recommendation");
     $this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
@@ -86,7 +86,7 @@ class CirclesController extends AppController {
 	public function circle_resister_finish() {
 	
     $this->modelClass = null;
-    $this->layout = "layout_circle_edit";
+    $this->layout = "layout";
     $this->set("header_for_layout","circle recommendation");
     $this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
@@ -101,7 +101,7 @@ class CirclesController extends AppController {
 		$circle_name = $this->Auth->user('circle_name');
 		$this->set('tmp', $id);	//これでビュー側でtmpと指定してidを表示
 		$this->modelClass = null;
-		$this->layout = "layout_circle_edit";
+		$this->layout = "layout";
 		$this->set("header_for_layout","circle recommendation");
 		$this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
@@ -121,7 +121,7 @@ class CirclesController extends AppController {
 	$id = $this->Auth->user('id');
 	$this->set('id', $id);
 	$this->modelClass = null;
-    $this->layout = "layout_circle_edit";
+    $this->layout = "layout";
     $this->set("header_for_layout","circle recommendation");
     $this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
@@ -189,7 +189,7 @@ class CirclesController extends AppController {
 	$id = $this->Auth->user('id');
 	$this->set('tmp', $id);
 	$this->modelClass = null;
-    $this->layout = "layout_circle_edit";
+    $this->layout = "layout";
     $this->set("header_for_layout","circle recommendation");
     $this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
@@ -259,7 +259,7 @@ class CirclesController extends AppController {
   
   public function edit_event($id) {
   
-    $this->layout = "layout_circle_edit";
+   $this->layout = "layout";
    
     $this->Event->id = $id;
 	$this->set("event_id",$id);//view側にデータをセット
@@ -295,8 +295,6 @@ class CirclesController extends AppController {
   }
   
   public function delete($id) {
-  
-    $this->layout = "layout_circle_edit_cal";
    
     $this->Event->id = $id;
 	$this->set("event_id",$id);//view側にデータをセット

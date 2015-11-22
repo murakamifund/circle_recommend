@@ -1,3 +1,10 @@
+<script>
+onload = function(){
+	func_circle();	
+}
+</script>
+
+
 <h2 class="mb1em">サークル情報・予定を編集しよう</h2>
 <p>
 サークル登録時に送信したサークル名とパスワードを入力してください。<br>

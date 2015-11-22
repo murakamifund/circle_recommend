@@ -33,7 +33,7 @@ class StudentsController extends AppController {
 	public function student_resister() {
 	
     $this->modelClass = null;
-    $this->layout = "layout_student";
+    $this->layout = "layout";
     $this->set("header_for_layout","circle recommendation");
     $this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
@@ -59,7 +59,7 @@ class StudentsController extends AppController {
 	$this->set('tmp', $id);
 	
 	$this->modelClass = null;
-    $this->layout = "layout_student";
+    $this->layout = "layout";
     $this->set("header_for_layout","circle recommendation");
     $this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
@@ -95,7 +95,7 @@ class StudentsController extends AppController {
 	//生徒のログインを別のコントローラーで扱う必要あり
 	public function student_login() {
 	$this->modelClass = null;
-    $this->layout = "layout_student";
+    $this->layout = "layout";
     $this->set("header_for_layout","circle recommendation");
     $this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
