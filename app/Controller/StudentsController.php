@@ -79,8 +79,6 @@ class StudentsController extends AppController {
 				
             }
             
-
-
     }
     else
     {

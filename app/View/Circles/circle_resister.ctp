@@ -1,4 +1,5 @@
 <h2 class="mb1em">サークルを登録しよう</h2>
+
 <br>
 <h3 class="mb1em">登録フォームに入力しよう</h3>
 	<div class ="stop-btm">
@@ -179,6 +180,6 @@
 <h3 class="mb1em">個人ページに戻る</h3>
 <div Align="right">
 		<div class="i-btn">
-			<a href="../Students/student_edit">個人ページに戻る</a>
+			<a href="../../Students/student_edit">個人ページに戻る</a>
 		</div>
 </div>
