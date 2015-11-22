@@ -1,7 +1,14 @@
 <?php
 	echo $this->html->css(array('fullcalendar', 'bootstrap','headshrinker'));
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
+
+$nomi_custom = array('飲まない','あまり飲まない','普通','飲む','かなり飲む');
+$nomi_chosen = $nomi_custom[$nomi-1];
+
  ?>
+ 
+ 
+ 
 <h2> <?php echo $circle_name; ?></h2>
 
 <h3>情報</h3>
@@ -86,7 +93,7 @@
 		<tbody>
 		<tr>
 			<th scope="row">飲み会</th>
-				<td><?php echo $nomi; ?></td>
+				<td><?php echo $nomi_chosen; ?></td>
 		</tr>
 		<tr>
 			<th scope="row">雰囲気</th>
