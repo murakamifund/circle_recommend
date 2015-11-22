@@ -10,7 +10,7 @@
 <h3 class="mb1em">サークルの予定を登録しよう</h3>
 
 <div class="i-btn">
-	<a href="circle_login">予定の登録</a>
+	<a href="circle">予定の登録</a>
 </div>
 
 </br>
