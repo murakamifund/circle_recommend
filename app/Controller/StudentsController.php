@@ -116,7 +116,7 @@ class StudentsController extends AppController {
 			//$this->redirect(array('action' => 'student_edit'));
 			//die();
 		}
-		$this->redirect(array('action' => 'student_edit'));
+		$this->redirect(array('action' => 'student_edit'),$id);
 	}
 	
 	public function student_tw_logout(){
