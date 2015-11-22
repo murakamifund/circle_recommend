@@ -164,7 +164,7 @@ class CirclesController extends AppController {
   }
 	
 	
-	public function circle_resister() {
+	public function circle_resister($id) {
 	
     $this->modelClass = null;
     $this->layout = "layout_circle";
@@ -172,6 +172,8 @@ class CirclesController extends AppController {
     $this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
     $this->set("msg", "Welcome to my layout!");
+	
+	$this->set('student_id', $id);	//これでビュー側でstudent_idと指定してidを表示
 	
 	// post時の処理
 	if ($this->request->is('post')) {

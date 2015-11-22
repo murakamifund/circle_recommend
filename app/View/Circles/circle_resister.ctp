@@ -1,12 +1,12 @@
 <h2 class="mb1em">サークルを登録しよう</h2>
-
-
+<br>
 <h3 class="mb1em">登録フォームに入力しよう</h3>
 	<div class ="stop-btm">
 	<table class = "type01">
 	<tbody>
 		<?php echo $this->Form->create('Circle'); ?>
 		<?php echo $this->Form->input('id', array('type' => 'hidden',)); ?>
+		<?php echo $this->Form->input('student_id', array('type' => 'hidden','value' => $student_id)); ?>
 		<tr>
 			<th scope="row">サークル名</th>
 			<td><?php echo $this->Form->input('circle_name', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));?>
@@ -20,8 +20,9 @@
 			 <br>(注)パスワードはサークル情報の更新に必要です。きちんと管理し、サークル情報編集者で共有してください。
 			 <?php echo $this->Form->error('password');  ?></td>
 		</tr>
+		
 		<tr>
-			<th scope="row">TwitterアカウントID</th>
+			<th scope="row">サークルTwitterアカウントID</th>
 			 <td><?php echo $this->Form->input('twitterid', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false)); ?></td>
 		</tr>
 		<tr>

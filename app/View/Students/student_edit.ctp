@@ -5,7 +5,7 @@
 <p>
 	<div Align="right">
 		<div class="i-btn">
-			<a href="../Circles/circle_resister">サークル登録</a>
+			<?php echo $this->Html->link('サークル登録',array('action' => '../Circles/circle_resister',$id));?>
 		</div>
 	</div>
 </p>
