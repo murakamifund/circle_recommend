@@ -39,7 +39,7 @@ class AppController extends Controller {
 	
     $this->modelClass = null;
     $this->layout = "layout";
-    $this->set("header_for_layout","circlr recommendation");
+    $this->set("header_for_layout","circle recommendation");
     $this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
     $this->set("msg", "Welcome to my layout!");
@@ -50,7 +50,7 @@ class AppController extends Controller {
 	public function about() {
 	
     $this->modelClass = null;
-    $this->layout = "layout_about";
+    $this->layout = "layout";
     $this->set("header_for_layout","circlr recommendation");
     $this->set("footer_for_layout",
         "copyright by 東京大学システム創成学科C. 2015.");
@@ -285,6 +285,7 @@ class AppController extends Controller {
 	
 	
 	//recruitページのコントローラー
+	/*
 	public function recruit() {
 	
     $this->modelClass = null;
@@ -295,8 +296,10 @@ class AppController extends Controller {
     $this->set("msg", "Welcome to my layout!");
    
 	}
+	*/
 	
 	//linkページのコントローラー
+	/*
 	public function link() {
 	
     $this->modelClass = null;
@@ -307,7 +310,7 @@ class AppController extends Controller {
     $this->set("msg", "Welcome to my layout!");
    
 	}
-
+*/
 	/*
 	public $components = array(
         'Session',
