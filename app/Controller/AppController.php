@@ -281,30 +281,7 @@ class AppController extends Controller {
    
 	}
 	
-	//circleページのコントローラー
-	public function circle() {
 	
-    $this->modelClass = null;
-    $this->layout = "layout_circle";
-    $this->set("header_for_layout","circlr recommendation");
-    $this->set("footer_for_layout",
-        "copyright by 東京大学システム創成学科C. 2015.");
-    $this->set("msg", "Welcome to my layout!");
-	
-	// post時の処理
-	if ($this->request->is('post')) {
-            $this->data = Sanitize::clean($this->data, array('encode' => false));
-            $this->Circle->create();
-            if ($this->Circle->save($this->request->data)) {	//ここにfalseと入れればバリデーションを無視できる
-                $this->Session->setFlash(__('登録完了しました。管理者ログインページからサークル情報を編集してください。'));
-            } else {
-                $this->Session->setFlash(__('登録に失敗しました。もう一度やり直してください。'));
-				//debug($this->Circle->validationErrors);
-            }
-			
-    }
-   
-	}
 	
 	
 	//recruitページのコントローラー
