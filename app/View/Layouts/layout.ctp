@@ -58,6 +58,9 @@
 </nav>
 </div>
 
+<div id="dummy_div">
+</div>
+
 <aside id="mainimg">
 <a href="home" id="slide_link">
 <img id="slide_image" src="../img/4.jpg" alt="" width="977" height="260" />

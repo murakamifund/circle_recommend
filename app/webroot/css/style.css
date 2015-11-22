@@ -254,9 +254,13 @@ nav.menubar ul li#current a {
 
 /*トップページのスライドショー
 ---------------------------------------------------------------------------*/
+#dummy_div{
+	height: 83px;
+}
+
+
 #mainimg {
 	clear: left;
-	margin-top: 80px;
 	width: 977px;
 	height: 260px;
 	position: relative;

@@ -4,13 +4,6 @@ onload = function(){
 }
 </script>
 
-
-<aside id="mainimg">
-<a href="home" id="slide_link">
-<img id="slide_image" src="../img/4.jpg" alt="" width="977" height="260" />
-</a>
-</aside>
-
 <section>
 <h2>Welcome to CIRCLE RECOMMENDER!!</h2>
 
