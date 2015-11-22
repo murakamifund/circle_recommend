@@ -281,8 +281,8 @@ class CirclesController extends AppController {
 			//'circle_id' => $events[$a]['Event']['circle_id'],
 			//'circle_name' => $events[$a]['Event']['circle_name'],
             'title' => $events[$a]['Event']['circle_name'].":".$events[$a]['Event']['title'],
-            'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
-            'end' => $events[$a]['Event']['day'],
+            'start' => date('Y-m-d H:i', strtotime($events[$a]['Event']['day'])),
+            //'end' => $events[$a]['Event']['day'],
 			'url' => "edit_event/".$events[$a]['Event']['id'],
 		
             //'allDay' => $events[$a]['Event']['allday'],

@@ -229,13 +229,10 @@ endforeach ?>
 
 <section class="list">
 <h3> <!--サークルの名前-->
-	<?php if($datum['Circle']['url']): ?>
-		<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
-		<font><?php echo $datum['Circle']['circle_name']; ?></font>
-		</a>
-	<?php else: ?>
-		<font><?php echo $datum['Circle']['circle_name']; ?></font>
-	<?php endif; ?></h3>
+<a href="../Circles/circle_id/<?php echo $datum['Circle']['id']; ?>">
+	<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
+</a>
+</h3>
 	<?php if($datum['Circle']['photo_name'] != ""): ?>
 	<?php var_dump($datum['Circle']['photo_name']); ?>
 		<figure><img src="../img/".$datum['Circle']['photo_name'] width="280" height="210" alt="" /></figure>
@@ -245,7 +242,7 @@ endforeach ?>
 <h4><!--サークルの名前-->
 	<a href="../Circles/circle_id/<?php echo $datum['Circle']['id']; ?>">
 		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
-		</a>
+	</a>
 	<!--
 	<?php if($datum['Circle']['url']): ?>
 		<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
