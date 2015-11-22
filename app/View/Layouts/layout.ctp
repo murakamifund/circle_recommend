@@ -37,7 +37,7 @@
 
 <nav class="menubar" id="menubar_pc">
 <ul>
-<li id="current"><a class="menu_pc" href="home">HOME</a></li>
+<li id="current"><a class="menu_pc" href="../Students/home">HOME</a></li>
 <li><a class="menu_pc" href="../Students/about">ABOUT</a></li>
 <li><a class="menu_pc" href="../Students/student">STUDENT</a></li>
 <li><a class="menu_pc" href="../Circles/circle">CIRCLE</a></li>
