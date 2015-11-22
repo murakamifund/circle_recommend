@@ -42,7 +42,7 @@
 
 <nav id="menubar">
 <ul>
-<li><a href="circle_logout_home">HOME</a></li>
+<li><a href="../../Students/home">HOME</a></li>
 <li ><a href="circle_logout">ABOUT</a></li>
 <li><a href="circle_logout">STUDENT</a></li>
 <li id="current"><a href="circle_logout">CIRCLE</a></li>

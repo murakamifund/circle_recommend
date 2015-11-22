@@ -58,6 +58,7 @@ class AppController extends Controller {
    
 	}
 	
+	
 	//studentページのコントローラー
 	public function student() {
 	

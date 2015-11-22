@@ -35,7 +35,7 @@
 
 <nav id="menubar">
 <ul>
-<li><a href="../Students/home">HOME</a></li>
+<li><a href="../../Students/home">HOME</a></li>
 <li ><a href="../Students/about">ABOUT</a></li>
 <li><a href="../Students/student">STUDENT</a></li>
 <li id="current"><a href="circle">CIRCLE</a></li>

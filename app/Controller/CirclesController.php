@@ -27,7 +27,7 @@ class CirclesController extends AppController {
  
     public function beforeFilter() {
         // 各コントローラーの index と login を有効にする
-        $this->Auth->allow('circle','circle_login','circle_resister','circle_resister_finish');
+        $this->Auth->allow('circle','circle_login','circle_resister','circle_resister_finish','circle_id','event_id');
 		parent::beforeFilter();
 		AuthComponent::$sessionKey = 'Auth.circles';
     }
@@ -54,7 +54,114 @@ class CirclesController extends AppController {
    
 	}
 	
+	//circle個別ページのコントローラー
+	public function circle_id($id) {
 	
+	$this->layout = "layout_circle_edit";
+   
+    $this->Circle->id = $id;
+	$this->set("circle_id",$id);//view側にデータをセット
+	
+	$data = $this->Circle->find('first',array(
+		'conditions' => array('Circle.id' => $id)));
+	$circle_name = $data['Circle']['circle_name'];
+	$this->set("circle_name",$circle_name);//view側にデータをセット
+	$twitterid = $data['Circle']['twitterid'];
+	$this->set("twitterid",$twitterid);//view側にデータをセット
+	$url = $data['Circle']['url'];
+	$this->set("url",$url);//view側にデータをセット
+	$activity = $data['Circle']['activity'];
+	$this->set("activity",$activity);//view側にデータをセット
+	$place = $data['Circle']['place'];
+	$this->set("place",$place);//view側にデータをセット
+	$placetext = $data['Circle']['placetext'];
+	$this->set("placetext",$placetext);//view側にデータをセット
+	$intercollege = $data['Circle']['intercollege'];
+	$this->set("intercollege",$intercollege);//view側にデータをセット
+	$all = $data['Circle']['all'];
+	$this->set("all",$all);//view側にデータをセット
+	$man = $data['Circle']['man'];
+	$this->set("man",$man);//view側にデータをセット
+	$woman = $data['Circle']['woman'];
+	$this->set("woman",$woman);//view側にデータをセット
+	$cost_in = $data['Circle']['cost_in'];
+	$this->set("cost_in",$cost_in);//view側にデータをセット
+	$cost = $data['Circle']['cost'];
+	$this->set("cost",$cost);//view側にデータをセット
+	$cost = $data['Circle']['cost'];
+	$this->set("cost",$cost);//view側にデータをセット
+	$cost = $data['Circle']['cost'];
+	$this->set("cost",$cost);//view側にデータをセット
+	$nomi = $data['Circle']['nomi'];
+	$this->set("nomi",$nomi);//view側にデータをセット
+	$mazime = $data['Circle']['mazime'];
+	$this->set("mazime",$mazime);//view側にデータをセット
+	$day1 = $data['Circle']['day1'];
+	$this->set("day1",$day1);//view側にデータをセット
+	$day2 = $data['Circle']['day2'];
+	$this->set("day2",$day2);//view側にデータをセット
+	$day3 = $data['Circle']['day3'];
+	$this->set("day3",$day3);//view側にデータをセット
+	$day4 = $data['Circle']['day4'];
+	$this->set("day4",$day4);//view側にデータをセット
+	$day5 = $data['Circle']['day5'];
+	$this->set("day5",$day5);//view側にデータをセット
+	$day6 = $data['Circle']['day6'];
+	$this->set("day6",$day6);//view側にデータをセット
+	$day7 = $data['Circle']['day7'];
+	$this->set("day7",$day7);//view側にデータをセット
+	$pr = $data['Circle']['pr'];
+	$this->set("pr",$pr);//view側にデータをセット
+	
+	//circleのIdに一致するイベントを列挙
+		$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $id)));
+		$count = $this->Event->find( 'count', array( 'conditions' => array('Event.circle_id' => $id)));
+		$title = array();
+		$day = array();
+		
+		// SQLのレスポンスをもとにデータ作成
+		$rows = array();
+		for ( $a=0; count( $events) > $a; $a++) {
+			
+			$rows[] = array(
+            'id' => $events[$a]['Event']['id'],
+			//'circle_id' => $events[$a]['Event']['circle_id'],
+			//'circle_name' => $events[$a]['Event']['circle_name'],
+            'title' => $events[$a]['Event']['circle_name'].":".$events[$a]['Event']['title'],
+            'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
+            'end' => $events[$a]['Event']['day'],
+			'url' => "../event_id/".$events[$a]['Event']['id'],
+		
+            //'allDay' => $events[$a]['Event']['allday'],
+        );
+		}
+		
+		// JSONへ変換
+		$this->set("json", json_encode($rows));
+    
+  }
+	
+	
+	//circle個別ページのコントローラー
+	public function event_id($id) {
+	
+	$this->layout = "layout_circle_edit";
+   
+    $this->Event->id = $id;
+	$this->set("event_id",$id);//view側にデータをセット
+	
+	$events = $this->Event->find('first',array(
+		'conditions' => array('Event.id' => $id)));
+	$circle_name = $events['Event']['circle_name'];
+	$this->set("circle_name",$circle_name);//view側にデータをセット
+	$title = $events['Event']['title'];
+	$this->set("title",$title);//view側にデータをセット
+	$day= $events['Event']['day'];
+	$this->set("day",$day);//view側にデータをセット
+	
+    
+    
+  }
 	
 	
 	public function circle_resister() {
