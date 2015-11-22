@@ -25,6 +25,7 @@
 				'maxYear' => date('Y') + 1,
 				'minYear' => date('Y'),
 				'monthNames' => false,
+				'timeFormat' => '24',
 				'value' => array('year' => date('Y'), 'month' => date('M'), 'day' => date('d')),
 				'separator' => array('年', '月', '日'),
 			));

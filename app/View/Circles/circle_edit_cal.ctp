@@ -28,10 +28,12 @@
 		<td><?php
 			echo $this->Form->dateTime('day', 'YMD', 'NONE',  array(
 				'type' => 'datetime',
+				'dateFormat' => 'YMD',
 				'monthNames' => 'false',
 				'maxYear' => date('Y') + 1,
 				'minYear' => date('Y'),
 				'monthNames' => false,
+				'timeFormat' => '24',
 				'value' => array('year' => date('Y'), 'month' => date('M'), 'day' => date('d'), 'hour' => date('h'), 'minute' => date('m')),
 				'separator' => array('年', '月', '日','時','分'),
 			));
