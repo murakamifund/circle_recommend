@@ -40,6 +40,15 @@ onload = function(){
 
 </p>
 
+<h3 class="mb1em">ツイッターで新規登録</h3>
+<p>
+
+		<div class="i-btn">
+			<a href="student_tw_callback">ツイッターで新規登録</a>
+		</div>
+
+</p>
+
 
 <section id="lunch">
 

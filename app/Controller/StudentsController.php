@@ -7,6 +7,7 @@ class StudentsController extends AppController {
 
 	public $components = array(
         'Session',
+		'Cookie',
         'Auth' => array(
 			'authenticate' => array(
                 'Form' => array(
@@ -25,10 +26,108 @@ class StudentsController extends AppController {
  
     public function beforeFilter() {
         // 各コントローラーの index と login を有効にする
-        $this->Auth->allow('circle','home','student','link','studnet_login','about','recruit','student_login','student_resister');
+        $this->Auth->allow('circle','home','student','link','student_login','student_tw_callback','about','recruit','student_login','student_resister','student_edit','student_tw_logout');
 		parent::beforeFilter();
 		AuthComponent::$sessionKey = 'Auth.students';
     }
+	public function student_tw_callback(){
+		//ユーザー認証をする関数
+		require_once('config.php');
+		require_once('codebird.php');
+		session_start();
+		
+
+		\Codebird\Codebird::setConsumerKey(CONSUMER_KEY, CONSUMER_SECRET);
+		$cb = \Codebird\Codebird::getInstance();
+
+		if (! isset($_SESSION['oauth_token'])) { //まだデータが渡されていないときは（認証前）
+		// get the request token
+		$reply = $cb->oauth_requestToken([
+			'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
+		]);
+    
+		// store the token
+		$cb->setToken($reply->oauth_token, $reply->oauth_token_secret);
+		$_SESSION['oauth_token'] = $reply->oauth_token;
+		$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
+		$_SESSION['oauth_verify'] = true;
+
+		// redirect to auth website
+		$auth_url = $cb->oauth_authorize(); //Twitterの認証画面に飛ばしている
+		header('Location: ' . $auth_url);
+		die();
+
+		} elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
+			// verify the token
+			$cb->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+			unset($_SESSION['oauth_verify']);
+
+			// get the access token
+			$reply = $cb->oauth_accessToken([
+				'oauth_verifier' => $_GET['oauth_verifier']
+			]);
+			// store the token (which is different from the request token!)
+			//$_SESSION['oauth_token'] = $reply->oauth_token;
+			//$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
+			$cb->setToken($reply->oauth_token,$reply->oauth_token_secret);
+			$me = $cb->account_verifyCredentials(); //$meの中にアカウントの情報を入れる
+
+			//データベースにアカウント情報を格納
+			try{ //まずはデータベースに接続
+				$dbh = new PDO('mysql:host=127.0.0.1;dbname=circlerecommend;charset=utf8','root','');
+			}catch(PDOException $e){
+				echo $e->getMessage();
+			exit;
+			}
+    
+			$sql = "select * from students where tw_user_id = :tw_user_id limit 1"; 
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
+			$user = $stmt->fetch(); //結果を返す 
+			if(!$user){ //取得したユーザーの情報がデータベースになければ 
+				$sql = "insert into students 
+				(tw_user_id,tw_screen_name,tw_profile_image_url,tw_access_token,tw_access_token_secret) 
+				values
+				(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_access_token,:tw_access_token_secret)";
+				$stmt = $dbh->prepare($sql);
+				$params = array(
+					":tw_user_id" => $me->id_str,
+					":tw_screen_name" => $me->screen_name,
+					":tw_profile_image_url" => $me->profile_image_url,
+					":tw_access_token" => $reply->oauth_token,
+					":tw_access_token_secret" => $reply->oauth_token_secret
+				);
+				$stmt->execute($params);
+
+				$sql = "select * from students where tw_user_id = :tw_user_id limit 1"; 
+				$stmt = $dbh->prepare($sql);
+				$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
+				$user = $stmt->fetch();
+			}
+    
+			//ログイン処理をする。ユーザー情報をセッションに格納する。
+			if(!empty($user) && !isset($_SESSION['tw_user'])){
+				session_regenerate_id(true); //セキュリティのためのおまじない
+				$_SESSION['tw_user'] = $user; //ユーザー情報をセッションに格納
+			}
+    
+    
+			// send to same URL, without oauth GET parameters
+			//$this->redirect(array('action' => 'student_edit'));
+			//die();
+		}
+		$this->redirect(array('action' => 'student_edit'));
+	}
+	
+	public function student_tw_logout(){
+            $this->Auth->logout();
+            $this->Session->destroy(); //セッションを完全削除
+            $this->Session->setFlash(__('ログアウトしました'));
+			if (isset($_COOKIE["PHPSESSID"])) {
+				setcookie("PHPSESSID", '', time() - 1800, '/');
+			}
+		$this->redirect(array('action' => 'student_resister'));
+	}
 	
 	public function student_resister() {
 	
