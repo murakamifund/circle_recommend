@@ -19,9 +19,17 @@
 <tr>
 	<th scope="row">予定日</th>
 		<td><?php
-			echo $this->Form->date('day');
-			echo $this->Form->error('day');
-		?> (注)右側の矢印をクリック
+			echo $this->Form->dateTime('day', 'YMD', 'NONE',  array(
+				'type' => 'datetime',
+				'monthNames' => 'false',
+				'maxYear' => date('Y') + 1,
+				'minYear' => date('Y'),
+				'monthNames' => false,
+				'value' => array('year' => date('Y'), 'month' => date('M'), 'day' => date('d')),
+				'separator' => array('年', '月', '日'),
+			));
+			//echo $this->Form->error('day');
+		?> 
 		</td>
 </tr>
 </tbody>
