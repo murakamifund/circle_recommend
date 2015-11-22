@@ -153,8 +153,8 @@ class StudentsController extends AppController {
    
 	}
 	
-	public function student_edit(){
-	$id = $this->Auth->user('id');
+	public function student_edit($id){
+	
 	$this->set('id', $id);
 	
 	$this->modelClass = null;
