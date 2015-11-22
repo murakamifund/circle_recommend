@@ -56,7 +56,7 @@ class StudentsController extends AppController {
 	
 	public function student_edit(){
 	$id = $this->Auth->user('id');
-	$this->set('tmp', $id);
+	$this->set('id', $id);
 	
 	$this->modelClass = null;
     $this->layout = "layout";
@@ -65,7 +65,6 @@ class StudentsController extends AppController {
         "copyright by 東京大学システム創成学科C. 2015.");
     $this->set("msg", "Welcome to my layout!");
 	
-    $this->Student->id=$id;
 	
     if ($this->request->is('post') || $this->request->is('put')) {
 			//ここでサニタイズする

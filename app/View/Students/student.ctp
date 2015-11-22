@@ -243,6 +243,10 @@ endforeach ?>
 		<figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>
 	<?php endif; ?>
 <h4><!--サークルの名前-->
+	<a href="../Circles/circle_id/<?php echo $datum['Circle']['id']; ?>">
+		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
+		</a>
+	<!--
 	<?php if($datum['Circle']['url']): ?>
 		<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
 		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
@@ -250,7 +254,7 @@ endforeach ?>
 	<?php else: ?>
 		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
 	<?php endif; ?>
-	
+	-->
 	<?php 
 		$string = "https://twitter.com/";	
 		$string .= $datum['Circle']['twitterid'];	
