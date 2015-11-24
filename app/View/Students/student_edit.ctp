@@ -17,7 +17,7 @@
 <p>
 	<div Align="right">
 		<div class="i-btn">
-			<a href="student_tw_logout">ログアウト</a>
+			<a href="../student_tw_logout">ログアウト</a>
 		</div>
 	</div>
 </p>    
