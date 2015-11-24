@@ -225,7 +225,7 @@ class AppController extends Controller {
 	$a = 0;
 	for($i=0;$i<37;$i++):
 		if($activity[$i]=="On"):
-			$activity2[$a]=$i;
+			$activity2[$a]=$i+1;
 			$a = $a+1;
 		endif;
 	endfor;
