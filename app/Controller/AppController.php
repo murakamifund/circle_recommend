@@ -78,10 +78,75 @@ class AppController extends Controller {
 	 "On" : "Off";
 	$check5 = isset($this -> data["check5"]) ?
 	 "On" : "Off";
+	$check6 = isset($this -> data["check6"]) ?
+	 "On" : "Off";
+	$check7 = isset($this -> data["check7"]) ?
+	 "On" : "Off";
+	$check8 = isset($this -> data["check8"]) ?
+	 "On" : "Off";
+	$check9 = isset($this -> data["check9"]) ?
+	 "On" : "Off";
+	$check10 = isset($this -> data["check10"]) ?
+	 "On" : "Off";
+	$check11 = isset($this -> data["check11"]) ?
+	 "On" : "Off";
+	$check12 = isset($this -> data["check12"]) ?
+	 "On" : "Off";
+	$check13 = isset($this -> data["check13"]) ?
+	 "On" : "Off";
+	$check14 = isset($this -> data["check14"]) ?
+	 "On" : "Off";
+	$check15 = isset($this -> data["check15"]) ?
+	 "On" : "Off";
+	$check31 = isset($this -> data["check31"]) ?
+	 "On" : "Off";
+	$check32 = isset($this -> data["check32"]) ?
+	 "On" : "Off";
+	$check33 = isset($this -> data["check33"]) ?
+	 "On" : "Off";
+	$check34 = isset($this -> data["check34"]) ?
+	 "On" : "Off";
+	$check35 = isset($this -> data["check35"]) ?
+	 "On" : "Off";
+	$check36 = isset($this -> data["check36"]) ?
+	 "On" : "Off";
+	$check37 = isset($this -> data["check37"]) ?
+	 "On" : "Off";
+	$check38 = isset($this -> data["check38"]) ?
+	 "On" : "Off";
+	$check51 = isset($this -> data["check51"]) ?
+	 "On" : "Off";
+	$check52 = isset($this -> data["check52"]) ?
+	 "On" : "Off";
+	$check53 = isset($this -> data["check53"]) ?
+	 "On" : "Off";
+	$check54 = isset($this -> data["check54"]) ?
+	 "On" : "Off";
+	$check61 = isset($this -> data["check61"]) ?
+	 "On" : "Off";
+	$check62 = isset($this -> data["check62"]) ?
+	 "On" : "Off";
+	$check63 = isset($this -> data["check63"]) ?
+	 "On" : "Off";
+	$check64 = isset($this -> data["check64"]) ?
+	 "On" : "Off";
+	$check71 = isset($this -> data["check71"]) ?
+	 "On" : "Off";
+	$check72 = isset($this -> data["check72"]) ?
+	 "On" : "Off";
+	$check73 = isset($this -> data["check73"]) ?
+	 "On" : "Off";
+	$check74 = isset($this -> data["check74"]) ?
+	 "On" : "Off";
+	$check75 = isset($this -> data["check75"]) ?
+	 "On" : "Off";
+	$check81 = isset($this -> data["check81"]) ?
+	 "On" : "Off";
 	if ($this -> request -> data){
 		if($this -> data["keyword"]){
 			$word = $this -> data["keyword"];
 		}
+		$place = $this -> data["radio1"];
 		$nomi = $this -> data["radio3"];
 		$mazime = $this ->data["radio4"];
 	}
@@ -123,26 +188,67 @@ class AppController extends Controller {
 		$check3,
 		$check4,
 		$check5,
+		$check6,
+		$check7,
+		$check8,
+		$check9,
+		$check10,
+		$check11,
+		$check12,
+		$check13,
+		$check14,
+		$check15,
+		$check31,
+		$check32,
+		$check33,
+		$check34,
+		$check35,
+		$check36,
+		$check37,
+		$check38,
+		$check51,
+		$check52,
+		$check53,
+		$check54,
+		$check61,
+		$check62,
+		$check63,
+		$check64,
+		$check71,
+		$check72,
+		$check73,
+		$check74,
+		$check75,
+		$check81,
 	);
 	$activity2 = array();
-	for($i=0;$i<5;$i++):
+	$a = 0;
+	for($i=0;$i<37;$i++):
 		if($activity[$i]=="On"):
-			$activity2[]=$i;
+			$activity2[$a]=$i;
+			$a = $a+1;
 		endif;
 	endfor;
 	$p=array("駒場","本郷","");
 	$in=array("学内","インカレ","");
 	if ($this -> request -> data){
-		if($this -> data["keyword"]){
+		if($this -> data["keyword"] != ""){
 			$opt = array(
 				'OR' => array(
-					'Circle.circle_name' => $word,
+					'OR' => array(
+						'Circle.circle_name' => $word,
+						'Circle.pr' => $word
+					),
 					array(
-						'Circle.activity' => $activity2,
-						'Circle.nomi <=' => $nomi+2,
-						'Circle.nomi >=' => $nomi-2,
-						'Circle.mazime <=' => $mazime+2,
-						'Circle.mazime >=' => $mazime-2,
+						in_array(Circle.activity,$activity2),
+						'OR' => array(
+							'Circle.place' => $place,
+							'Circle.place' => "その他",
+						),
+						'Circle.nomi <=' => $nomi+1,
+						'Circle.nomi >=' => $nomi-1,
+						'Circle.mazime <=' => $mazime+1,
+						'Circle.mazime >=' => $mazime-1,
 					)
 				),
 			);
@@ -150,10 +256,23 @@ class AppController extends Controller {
 		else{
 			$opt = array(
 				'Circle.activity' => $activity2,
-				'Circle.nomi <=' => $nomi+2,
-				'Circle.nomi >=' => $nomi-2,
-				'Circle.mazime <=' => $mazime+2,
-				'Circle.mazime >=' => $mazime-2,
+				'OR' => array(
+					'Circle.place' => $place,
+					'Circle.place' => "その他",
+				),
+				'Circle.nomi <=' => $nomi+1,
+				'Circle.nomi >=' => $nomi-1,
+				'Circle.mazime <=' => $mazime+1,
+				'Circle.mazime >=' => $mazime-1,
+			);
+		}
+		if($place == "任意"){
+			$opt = array(
+				'Circle.activity' => $activity2,
+				'Circle.nomi <=' => $nomi+1,
+				'Circle.nomi >=' => $nomi-1,
+				'Circle.mazime <=' => $mazime+1,
+				'Circle.mazime >=' => $mazime-1,
 			);
 		}
 		$data = $this->Circle->find('all' , array('conditions' => $opt));

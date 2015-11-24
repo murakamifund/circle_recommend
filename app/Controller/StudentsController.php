@@ -115,11 +115,8 @@ class StudentsController extends AppController {
 			// send to same URL, without oauth GET parameters
 			//$this->redirect(array('action' => 'student_edit'));
 			//die();
-			$id = $me->id_str; //個人ページに飛ぶためidをとってきている
 		}
-		
-		$this->redirect(array('action' => 'student_edit/'.$id.''));
-
+		$this->redirect(array('action' => 'student_edit'),$id);
 	}
 	
 	public function student_tw_logout(){
@@ -157,6 +154,7 @@ class StudentsController extends AppController {
 	}
 	
 	public function student_edit($id){
+	
 	$this->set('id', $id);
 	
 	$this->modelClass = null;

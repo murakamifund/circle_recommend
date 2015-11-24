@@ -32,36 +32,121 @@ onload = function(){
 	<tr>
 	<th scope="row">種目</th>
 		<td>
-		インドア<br>
-			<input type="checkbox" name="check2" id="activity2" value="1" />
-			<lavel for="activity2">合唱</lavel>
-			<br><br>
-		アウトドア<br>
+		スポーツ<br>
 			<input type="checkbox" name="check1" id="activity1" value="1" />
-			<lavel for="activity1">テニス</lavel>
+			<lavel for="activity1">テニス　</lavel>
+			<input type="checkbox" name="check2" id="activity2" value="1" />
+			<lavel for="activity2">卓球　</lavel>
 			<input type="checkbox" name="check3" id="activity3" value="1" />
-			<lavel for="activity3">卓球</lavel>
+			<lavel for="activity3">サッカー　</lavel>
 			<input type="checkbox" name="check4" id="activity4" value="1" />
-			<lavel for="activity4">サッカー</lavel>
+			<lavel for="activity4">野球　</lavel>
+			<br>
+			<input type="checkbox" name="check5" id="activity5" value="1" />
+			<lavel for="activity5">バスケ　</lavel>
+			<input type="checkbox" name="check6" id="activity6" value="1" />
+			<lavel for="activity6">バレー　</lavel>
+			<input type="checkbox" name="check7" id="activity7" value="1" />
+			<lavel for="activity7">バドミントン　</lavel>
+			<input type="checkbox" name="check8" id="activity8" value="1" />
+			<lavel for="activity8">ラグビー　</lavel>
+			<br>
+			<input type="checkbox" name="check9" id="activity9" value="1" />
+			<lavel for="activity9">ホッケー　</lavel>
+			<input type="checkbox" name="check10" id="activity10" value="1" />
+			<lavel for="activity10">水泳　</lavel>
+			<input type="checkbox" name="check11" id="activity11" value="1" />
+			<lavel for="activity11">武道　</lavel>
+			<input type="checkbox" name="check12" id="activity12" value="1" />
+			<lavel for="activity12">ダンス　</lavel>
+			<br>
+			<input type="checkbox" name="check13" id="activity13" value="1" />
+			<lavel for="activity13">登山　</lavel>
+			<input type="checkbox" name="check14" id="activity14" value="1" />
+			<lavel for="activity14">乗り物　</lavel>
+			<input type="checkbox" name="check15" id="activity15" value="1" />
+			<lavel for="activity15">スキー　</lavel>
+			<br><br>
+		アカデミー<br>
+			<input type="checkbox" name="check31" id="activity31" value="1" />
+			<lavel for="activity31">政治・経済　</lavel>
+			<input type="checkbox" name="check32" id="activity32" value="1" />
+			<lavel for="activity32">放送・広告　</lavel>
+			<input type="checkbox" name="check33" id="activity33" value="1" />
+			<lavel for="activity33">語学　</lavel>
+			<input type="checkbox" name="check34" id="activity34" value="1" />
+			<lavel for="activity34">国際　</lavel>
+			<br>
+			<input type="checkbox" name="check35" id="activity35" value="1" />
+			<lavel for="activity35">コンピュータ　</lavel>
+			<input type="checkbox" name="check36" id="activity36" value="1" />
+			<lavel for="activity36">自然科学　</lavel>
+			<input type="checkbox" name="check37" id="activity37" value="1" />
+			<lavel for="activity37">法学　</lavel>
+			<input type="checkbox" name="check38" id="activity38" value="1" />
+			<lavel for="activity38">企業　</lavel>
+			<br><br>
+		音楽<br>
+			<input type="checkbox" name="check51" id="activity51" value="1" />
+			<lavel for="activity51">ロック　</lavel>
+			<input type="checkbox" name="check52" id="activity52" value="1" />
+			<lavel for="activity52">ジャズ　</lavel>
+			<input type="checkbox" name="check53" id="activity53" value="1" />
+			<lavel for="activity53">クラシック　</lavel>
+			<input type="checkbox" name="check54" id="activity54" value="1" />
+			<lavel for="activity54">コーラス　</lavel>
+			<br><br>
+		アート<br>
+			<input type="checkbox" name="check61" id="activity61" value="1" />
+			<lavel for="activity61">映画・写真　</lavel>
+			<input type="checkbox" name="check62" id="activity62" value="1" />
+			<lavel for="activity62">演劇・お笑い　</lavel>
+			<input type="checkbox" name="check63" id="activity63" value="1" />
+			<lavel for="activity63">美術　</lavel>
+			<input type="checkbox" name="check64" id="activity64" value="1" />
+			<lavel for="activity64">文芸　</lavel>
+			<br><br>
+		趣味<br>
+			<input type="checkbox" name="check71" id="activity71" value="1" />
+			<lavel for="activity71">旅行　</lavel>
+			<input type="checkbox" name="check72" id="activity72" value="1" />
+			<lavel for="activity72">アウトドア　</lavel>
+			<input type="checkbox" name="check73" id="activity73" value="1" />
+			<lavel for="activity73">ゲーム　</lavel>
+			<input type="checkbox" name="check74" id="activity74" value="1" />
+			<lavel for="activity74">グルメ　</lavel>
+			<br>
+			<input type="checkbox" name="check75" id="activity75" value="1" />
+			<lavel for="activity75">芸能　</lavel>
 			<br><br>
 		その他<br>
-			<input type="checkbox" name="check5" id="activity5" value="1" />
-			<lavel for="activity5">その他</lavel>
+			<input type="checkbox" name="check81" id="activity81" value="1" />
+			<lavel for="activity81">その他　</lavel>
+		</td>
+	</tr>
+	<th scope="row">活動場所</th>
+		<td>
+		<input type="radio" value="駒場" name="radio1" id="komaba" />
+		<lavel for="mazime1">駒場　</lavel>
+		<input type="radio" value="本郷" name="radio1" id="hongou" />
+		<lavel for="mazime2">本郷　</lavel>
+		<input type="radio" value="任意" name="radio1" id="any" checked="true" />
+		<lavel for="mazime3">どちらでも　</lavel>
 		</td>
 	</tr>
 	<tr>
 	<th scope="row">飲み会</th>
 		<td>
 		←少ない
-		<input type="radio" value="1" name="radio3" id="nomi1" />
+		<input type="radio" value="1  " name="radio3" id="nomi1" />
 		<lavel for="nomi1">1</lavel>
-		<input type="radio" value="2" name="radio3" id="nomi2" />
+		<input type="radio" value="2  " name="radio3" id="nomi2" />
 		<lavel for="nomi2">2</lavel>
-		<input type="radio" value="3" name="radio3" id="nomi3" checked="true" />
+		<input type="radio" value="3  " name="radio3" id="nomi3" checked="true" />
 		<lavel for="nomi3">3</lavel>
-		<input type="radio" value="4" name="radio3" id="nomi4" />
+		<input type="radio" value="4  " name="radio3" id="nomi4" />
 		<lavel for="nomi4">4</lavel>
-		<input type="radio" value="5" name="radio3" id="nomi5" />
+		<input type="radio" value="5  " name="radio3" id="nomi5" />
 		<lavel for="nomi5">5</lavel>
 		→多い
 		</td>
@@ -70,15 +155,15 @@ onload = function(){
 	<th scope="row">真面目さ</th>
 		<td>
 		←楽しい
-		<input type="radio" value="1" name="radio4" id="mazime1" />
+		<input type="radio" value="1  " name="radio4" id="mazime1" />
 		<lavel for="mazime1">1</lavel>
-		<input type="radio" value="2" name="radio4" id="mazime2" />
+		<input type="radio" value="2  " name="radio4" id="mazime2" />
 		<lavel for="mazime2">2</lavel>
-		<input type="radio" value="3" name="radio4" id="mazime3" checked="true" />
+		<input type="radio" value="3  " name="radio4" id="mazime3" checked="true" />
 		<lavel for="mazime3">3</lavel>
-		<input type="radio" value="4" name="radio4" id="mazime4" />
+		<input type="radio" value="4  " name="radio4" id="mazime4" />
 		<lavel for="mazime4">4</lavel>
-		<input type="radio" value="5" name="radio4" id="mazime5" />
+		<input type="radio" value="5  " name="radio4" id="mazime5" />
 		<lavel for="mazime5">5</lavel>
 		→ガチ
 		</td>
@@ -111,7 +196,7 @@ $act=array(
 );
 $d=0;	
 if($this->request->data){	
-	for($i=0;$i<5;$i++):	
+	for($i=0;$i<37;$i++):	
 		if($activity[$i]=="On"):	
 			$d=$d+1;	
 		endif;	
