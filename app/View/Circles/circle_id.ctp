@@ -43,6 +43,25 @@ $act=array(
 	"75"=>'芸能',
 	"81"=>'その他'
 );
+$day =array(
+	$day1,
+	$day2,
+	$day3,
+	$day4,
+	$day5,
+	$day6,
+	$day7
+);
+$day2=array(
+	"月",
+	"火",
+	"水",
+	"木",
+	"金",
+	"土",
+	"日"
+);
+$c=0;
 
  ?>
  
@@ -80,12 +99,26 @@ $act=array(
 			<td><?php echo $act[$activity]; ?></td>
 		</tr>
 		<tr>
-		 <th scope="row">PR文</th>
+			<th scope="row">PR文</th>
 			<td><?php echo $pr; ?></td>
 		</tr>
 		<tr>
 			<th scope="row">活動曜日</th>
-		<td></td>
+			<td>
+			<?php
+				for ($i=0;$i<7;$i++):
+					if ($day[$i]=="1"):
+						if ($c==0):
+							echo $day2[$i];
+							$c=$c+1;
+						else:
+							echo ",";
+							echo $day2[$i];
+						endif;
+					endif;
+				endfor;
+			?>
+			</td>
 		</tr>
 		</tbody>
 	</table>
