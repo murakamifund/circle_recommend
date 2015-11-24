@@ -221,58 +221,93 @@ class AppController extends Controller {
 		$check75,
 		$check81,
 	);
+	$counts = array(
+		1,2,3,4,5,6,7,8,9,10,
+		11,12,13,14,15,31,32,33,34,35,
+		36,37,38,51,52,53,54,61,62,63,
+		64,71,72,73,74,75,81);
 	$activity2 = array();
 	$a = 0;
 	for($i=0;$i<37;$i++):
 		if($activity[$i]=="On"):
-			$activity2[$a]=$i+1;
+			$activity2[$a]=$counts[$i];
 			$a = $a+1;
 		endif;
 	endfor;
 	$p=array("駒場","本郷","");
 	$in=array("学内","インカレ","");
 	if ($this -> request -> data){
-		if($this -> data["keyword"] != ""){
+		if($this -> data["keyword"] != "" && $place == "任意"){
 			$opt = array(
-				'OR' => array(
+				array(
 					'OR' => array(
-						'Circle.circle_name' => $word,
-						'Circle.pr' => $word
-					),
-					array(
-						in_array(Circle.activity,$activity2),
-						'OR' => array(
-							'Circle.place' => $place,
-							'Circle.place' => "その他",
+						array(
+							'OR' => array(
+								array('Circle.circle_name' => $word),
+								array('Circle.pr' => $word)
+							)
 						),
-						'Circle.nomi <=' => $nomi+1,
-						'Circle.nomi >=' => $nomi-1,
-						'Circle.mazime <=' => $mazime+1,
-						'Circle.mazime >=' => $mazime-1,
-					)
+						array(
+							array('Circle.activity' => $activity2),
+							array('Circle.nomi <=' => $nomi+1),
+							array('Circle.nomi >=' => $nomi-1),
+							array('Circle.mazime <=' => $mazime+1),
+							array('Circle.mazime >=' => $mazime-1),
+						)
+					),
 				),
+			);
+		}
+		else if($this -> data["keyword"] != ""){
+			$opt = array(
+				array(
+					'OR' => array(
+						array(
+							'OR' => array(
+								array('Circle.circle_name' => $word),
+								array('Circle.pr' => $word)
+							)
+						),
+						array(
+							array('Circle.activity' => $activity2),
+							array(
+								'OR' => array(
+									array('Circle.place' => $place),
+									array('Circle.place' => "その他"),
+								)
+							),
+							array('Circle.nomi <=' => $nomi+1),
+							array('Circle.nomi >=' => $nomi-1),
+							array('Circle.mazime <=' => $mazime+1),
+							array('Circle.mazime >=' => $mazime-1),
+						)
+					),
+				),
+			);
+		}
+		else if($place == "任意"){
+		var_dump($activity2);
+			$opt = array(
+				array('Circle.activity' => $activity2),
+				array('Circle.nomi <=' => $nomi+1),
+				array('Circle.nomi >=' => $nomi-1),
+				array('Circle.mazime <=' => $mazime+1),
+				array('Circle.mazime >=' => $mazime-1),
 			);
 		}
 		else{
 			$opt = array(
-				'Circle.activity' => $activity2,
-				'OR' => array(
-					'Circle.place' => $place,
-					'Circle.place' => "その他",
+				array('Circle.activity' => $activity2),
+				array(
+					'OR' => array(
+						array('Circle.place' => $place),
+						array('Circle.place' => "その他"),
+					)
 				),
-				'Circle.nomi <=' => $nomi+1,
-				'Circle.nomi >=' => $nomi-1,
-				'Circle.mazime <=' => $mazime+1,
-				'Circle.mazime >=' => $mazime-1,
-			);
-		}
-		if($place == "任意"){
-			$opt = array(
-				'Circle.activity' => $activity2,
-				'Circle.nomi <=' => $nomi+1,
-				'Circle.nomi >=' => $nomi-1,
-				'Circle.mazime <=' => $mazime+1,
-				'Circle.mazime >=' => $mazime-1,
+				array('Circle.nomi <=' => $nomi+1),
+				array('Circle.nomi >=' => $nomi-1),
+				array('Circle.mazime <=' => $mazime+1),
+				array('Circle.mazime >=' => $mazime-1),
 			);
 		}
 		$data = $this->Circle->find('all' , array('conditions' => $opt));
