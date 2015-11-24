@@ -165,7 +165,7 @@ class StudentsController extends AppController {
         "copyright by 東京大学システム創成学科C. 2015.");
     $this->set("msg", "Welcome to my layout!");
 	
-	
+	/*
     if ($this->request->is('post') || $this->request->is('put')) {
 			//ここでサニタイズする
             $this->data = Sanitize::clean($this->data, array('encode' => false));
@@ -186,6 +186,7 @@ class StudentsController extends AppController {
 		
 		
     }
+	*/
 	}
 	
 	//生徒のログイン
