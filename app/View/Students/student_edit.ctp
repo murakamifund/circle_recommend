@@ -5,7 +5,7 @@
 <p>
 	<div Align="right">
 		<div class="i-btn">
-			<?php echo $this->Html->link('サークル登録',array('action' => '../Circles/circle_resister',$id));?>
+			<?php echo $this->Html->link('サークル登録',array('action' => '../Circles/circle_resister/'.$id.''));?>
 		</div>
 	</div>
 </p>
@@ -17,7 +17,7 @@
 <p>
 	<div Align="right">
 		<div class="i-btn">
-			<a href="student_tw_logout">ログアウト</a>
+			<a href="../student_tw_logout">ログアウト</a>
 		</div>
 	</div>
 </p>    

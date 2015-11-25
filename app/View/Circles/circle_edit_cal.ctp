@@ -26,17 +26,18 @@
 <tr>
 	<th scope="row">予定日</th>
 		<td><?php
-			echo $this->Form->dateTime('day', 'YMD', 'NONE',  array(
-				'type' => 'datetime',
-				'dateFormat' => 'YMD',
-				'monthNames' => 'false',
-				'maxYear' => date('Y') + 1,
-				'minYear' => date('Y'),
-				'monthNames' => false,
-				'timeFormat' => '24',
-				'value' => array('year' => date('Y'), 'month' => date('M'), 'day' => date('d'), 'hour' => date('h'), 'minute' => date('m')),
-				'separator' => array('年', '月', '日','時','分'),
-			));
+			echo $this->Form->input('day', array(
+    'type' => 'datetime',
+    'label' => false,
+    'dateFormat' => 'YMD',
+    'monthNames' => false,
+    'minYear' => date('Y')-1,
+    'maxYear' => date('Y')+1,
+    'timeFormat' => '24',       //時刻を24時間表記
+    'empty' => true,            //空選択可能
+	'separator' => array('年', '月', '日','時','分'),
+    'default' => date('Y-m-d H:i', strtotime("2015-11-20 12:33")),  //初期値指定
+));
 			//echo $this->Form->error('day');
 		?>
 		</td>
