@@ -76,7 +76,7 @@ $act=array(
 	</div>
 	<div id="circle_photo">
 		<img id="circle_photo_base" src="../../img/noimage.jpg" width="400" height="300" alt="NO IMAGE" >
-		<img id="circle_photo_on"src="../../img/sample_photo6.jpg" width="400" height="300">
+		<img id="circle_photo_on"src="../../img/sample_photo2.jpg" width="400" height="300">
 	</div>
 	<div id="circle_pr">
 		<?php echo $pr; ?>
@@ -84,7 +84,7 @@ $act=array(
 </div>
 <div id="circle_right">
 	<h4>活動内容</h4>
-	<div><?php echo $activity; ?></div>
+	<div><?php echo $act["$activity"];?></div>
 	<h4>場所</h4>
 	<div><?php echo $place; ?>　<?php echo $placetext; ?></div>
 	<h4>曜日</h4>

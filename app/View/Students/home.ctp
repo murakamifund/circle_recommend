@@ -15,13 +15,13 @@ onload = function(){
 <section>
 <h2>What's CIRCLE RECOMMENDER??</h2>
 <p>サークルレコメンダーは、東京大学内のサークルを東大生に紹介するサービスです。サークル選びに困っている学生さんはメニューの「STUDENT」よりサークル検索を！</p>
-<div><a class="access_btn" href="">STUDENT</a></div>
+<div><a class="access_btn" href="student">STUDENT</a></div>
 <div class="btn_nav">サークルを探したい学生はこちら！活動内容、雰囲気などから、自分にぴったりのサークルを見つけることが出来ます。</div>
 
-<div><a class="access_btn" href="">CIRCLE</a></div>
+<div><a class="access_btn" href="../Circles/circle">CIRCLE</a></div>
 <div class="btn_nav">サークルの登録・サークル情報の編集などはこちら！（サークル登録をするには、まず「新規登録」から学生の登録をしてください。）</div>
 
-<div><a class="access_btn" href="">新規登録</a></div>
+<div><a class="access_btn" href="student_resister">新規登録</a></div>
 <div class="btn_nav">もっと充実した機能を使いたい学生さんはこちら！学生登録をすることで、お気に入りサークルの登録などが出来ます。</div>
 
 </section>
