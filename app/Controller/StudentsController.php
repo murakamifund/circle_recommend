@@ -132,11 +132,6 @@ class StudentsController extends AppController {
 	public function student_resister() {
 	
     $this->modelClass = null;
-    $this->layout = "layout";
-    $this->set("header_for_layout","circle recommendation");
-    $this->set("footer_for_layout",
-        "copyright by 東京大学システム創成学科C. 2015.");
-    $this->set("msg", "Welcome to my layout!");
 	
 	// post時の処理
 	if ($this->request->is('post')) {
@@ -158,12 +153,6 @@ class StudentsController extends AppController {
 	$this->set('id', $id);
 	
 	$this->modelClass = null;
-    $this->layout = "layout";
-    $this->set("header_for_layout","circle recommendation");
-    $this->set("footer_for_layout",
-        "copyright by 東京大学システム創成学科C. 2015.");
-    $this->set("msg", "Welcome to my layout!");
-	
 	
     if ($this->request->is('post') || $this->request->is('put')) {
 			//ここでサニタイズする
@@ -190,15 +179,10 @@ class StudentsController extends AppController {
 	//生徒のログイン
 	//生徒のログインを別のコントローラーで扱う必要あり
 	public function student_login() {
-	$this->modelClass = null;
-    $this->layout = "layout";
-    $this->set("header_for_layout","circle recommendation");
-    $this->set("footer_for_layout",
-        "copyright by 東京大学システム創成学科C. 2015.");
-    $this->set("msg", "Welcome to my layout!");
-	
+
+	$this->modelClass = null;	
 	if ($this->request->is('post')) {
-                      $this->data = Sanitize::clean($this->data, array('encode' => false));
+			$this->data = Sanitize::clean($this->data, array('encode' => false));
 			if ($this->Auth->login()) {
 				 $this->redirect($this->Auth->redirect());
 			} else {

@@ -33,28 +33,26 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
 	var $uses = array('Circle','Event');
+	
+	public function beforeFilter(){
+		$this->layout = "layout";
+		$this->set("header_for_layout","circle recommendation");
+    	$this->set("footer_for_layout",
+        "copyright by 東京大学システム創成学科C. 2015.");
+        $this->set("msg", "Welcome to my layout!");
+	}
 
 //homeページのコントローラー
   public function home() {
 	
     $this->modelClass = null;
-    $this->layout = "layout";
-    $this->set("header_for_layout","circle recommendation");
-    $this->set("footer_for_layout",
-        "copyright by 東京大学システム創成学科C. 2015.");
-    $this->set("msg", "Welcome to my layout!");
-   
+    
 	}
 	
 	//aboutページのコントローラー
 	public function about() {
 	
     $this->modelClass = null;
-    $this->layout = "layout";
-    $this->set("header_for_layout","circlr recommendation");
-    $this->set("footer_for_layout",
-        "copyright by 東京大学システム創成学科C. 2015.");
-    $this->set("msg", "Welcome to my layout!");
    
 	}
 	
@@ -63,11 +61,7 @@ class AppController extends Controller {
 	public function student() {
 	
     $this->modelClass = null;
-    $this->layout = "layout";
-    $this->set("header_for_layout","circlr recommendation");
-    $this->set("footer_for_layout",
-        "copyright by 東京大学システム創成学科C. 2015.");
-    $this->set("msg", "Welcome to my layout!");
+    
     $check1 = isset($this -> data["check1"]) ?
 	 "On" : "Off";
 	$check2 = isset($this -> data["check2"]) ?

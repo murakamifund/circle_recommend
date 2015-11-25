@@ -47,7 +47,12 @@ function func_student_login(){
 	
 }
 
-
+function func_circle_id(man,woman){
+	var sum = man + woman ; 
+	var maxwidth= 250;
+	document.getElementById('man_ratio').style.width = man*maxwidth/sum+"px";
+	document.getElementById('woman_ratio').style.width = woman*maxwidth/sum+"px";
+}
 
 
 
@@ -117,3 +122,7 @@ function close_popup(){
 	document.getElementById('container').style.disabled = null;
 	document.getElementById('popup').style.display = "none";
 }
+
+
+
+
