@@ -239,6 +239,9 @@ if($this->request->data){
 			$d=$d+1;	
 		endif;	
 	endfor;	
+	if($word != ""):
+		$d=$d+1;
+	endif;
 }
 ?>
 

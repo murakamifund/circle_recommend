@@ -219,6 +219,7 @@ class AppController extends Controller {
 		$check75,
 		$check81,
 	);
+	$this->set("word",$word);
 	$counts = array(
 		1,2,3,4,5,6,7,8,9,10,
 		11,12,13,14,15,31,32,33,34,35,
