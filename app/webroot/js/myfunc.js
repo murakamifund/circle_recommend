@@ -75,7 +75,6 @@ function func_circle_id(man,woman){
 	var maxwidth= 250;
 	document.getElementById('man_ratio').style.width = man*maxwidth/sum+"px";
 	document.getElementById('woman_ratio').style.width = woman*maxwidth/sum+"px";
-	
 	menu_backtwice();
 }
 
@@ -159,5 +158,8 @@ function menu_backtwice(){
 	document.getElementsByClassName('menu_mobile')[3].href = "../../Circles/circle";
 	document.getElementsByClassName('menu_mobile')[4].href = "../../Students/student_resister";
 	document.getElementsByClassName('menu_mobile')[5].href = "../../Students/student_login";
+
+	document.getElementById('logo').childNodes[0].childNodes[0].src = "../../img/logo03.png";
+	document.getElementById('popup_login_twitter').childNodes[3].childNodes[0].childNodes[0].src = "../../img/twitter01.jpg";
 }
 

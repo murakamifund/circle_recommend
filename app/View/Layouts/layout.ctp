@@ -31,7 +31,7 @@
 
 <div id="fixing_box">
 <header>
-<ul class="header_ul"><li><div onclick="display_popup()">ログイン</a></li><li><div href="student_login">新規登録</a></li></ul>
+<ul class="header_ul"><li><div onclick="display_popup()">ログイン</div></li><li><div href="student_login">新規登録</div></li></ul>
 <p id="logo"><a href="home"><img src="../img/logo03.png" width="250" height="50" alt=""></a></p>
 </header>
 
