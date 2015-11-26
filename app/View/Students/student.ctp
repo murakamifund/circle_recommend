@@ -269,7 +269,7 @@ onload = function(){
 		→多い
 		<br>
 		<input type="checkbox" name="nochoice1" id="nochoice1" value="1" checked="true" />
-		<lavel for="activity81">飲みを検索条件から外す　</lavel>
+		<lavel for="nochoice1">飲みを検索条件から外す　</lavel>
 		</td>
 	</tr>
 	<tr>
@@ -289,7 +289,7 @@ onload = function(){
 		→ガチ
 		<br>
 		<input type="checkbox" name="nochoice2" id="nochoice2" value="1" checked="true" />
-		<lavel for="activity81">真面目さを検索条件から外す　</lavel>
+		<lavel for="nochoice2">真面目さを検索条件から外す　</lavel>
 		</td>
 	</tr>
 	</tbody>
@@ -359,6 +359,9 @@ if($this->request->data){
 			$d=$d+1;	
 		endif;	
 	endfor;	
+	if($word != ""):
+		$d=$d+1;
+	endif;
 }
 ?>
 
