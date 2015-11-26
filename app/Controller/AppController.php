@@ -144,9 +144,16 @@ class AppController extends Controller {
 		if($this -> data["keyword"]){
 			$word = $this -> data["keyword"];
 		}
+		else{
+			$word = "";
+		}
+		var_dump($word);
 		$place = $this -> data["radio1"];
 		$nomi = $this -> data["radio3"];
 		$mazime = $this ->data["radio4"];
+	}
+	else{
+		$word = "";
 	}
 	if (isset($data)):
 		$day =array(
@@ -219,7 +226,9 @@ class AppController extends Controller {
 		$check75,
 		$check81,
 	);
-	$this->set("word",$word);
+	if($word != ""){
+		$this->set("word",$word);
+	}
 	$counts = array(
 		1,2,3,4,5,6,7,8,9,10,
 		11,12,13,14,15,31,32,33,34,35,
