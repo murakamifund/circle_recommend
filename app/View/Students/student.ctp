@@ -149,6 +149,9 @@ onload = function(){
 		<input type="radio" value="5  " name="radio3" id="nomi5" />
 		<lavel for="nomi5">5</lavel>
 		→多い
+		<br>
+		<input type="checkbox" name="nochoice1" id="nochoice1" value="1" checked="true" />
+		<lavel for="activity81">飲みを検索条件から外す　</lavel>
 		</td>
 	</tr>
 	<tr>
@@ -166,6 +169,9 @@ onload = function(){
 		<input type="radio" value="5  " name="radio4" id="mazime5" />
 		<lavel for="mazime5">5</lavel>
 		→ガチ
+		<br>
+		<input type="checkbox" name="nochoice2" id="nochoice2" value="1" checked="true" />
+		<lavel for="activity81">真面目さを検索条件から外す　</lavel>
 		</td>
 	</tr>
 	</tbody>
