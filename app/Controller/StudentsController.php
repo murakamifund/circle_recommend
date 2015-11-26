@@ -32,6 +32,7 @@ class StudentsController extends AppController {
     }
 	public function student_tw_callback(){
 		//ユーザー認証をする関数
+		
 		require_once('config.php');
 		require_once('codebird.php');
 		session_start();
