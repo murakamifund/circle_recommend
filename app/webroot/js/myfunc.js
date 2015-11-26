@@ -47,7 +47,14 @@ function func_student_login(){
 	
 }
 
-
+function func_circle_id(man,woman){
+	var sum = man + woman ; 
+	var maxwidth= 250;
+	document.getElementById('man_ratio').style.width = man*maxwidth/sum+"px";
+	document.getElementById('woman_ratio').style.width = woman*maxwidth/sum+"px";
+	
+	menu_backtwice();
+}
 
 
 
@@ -117,3 +124,20 @@ function close_popup(){
 	document.getElementById('container').style.disabled = null;
 	document.getElementById('popup').style.display = "none";
 }
+
+
+function menu_backtwice(){
+	document.getElementsByClassName('menu_pc')[0].href = "../../Students/home";
+	document.getElementsByClassName('menu_pc')[1].href = "../../Students/about";
+	document.getElementsByClassName('menu_pc')[2].href = "../../Students/student";
+	document.getElementsByClassName('menu_pc')[3].href = "../../Circles/circle";
+	document.getElementsByClassName('menu_pc')[4].href = "../../Students/student_resister";
+	document.getElementsByClassName('menu_pc')[5].href = "../../Students/student_login";
+	document.getElementsByClassName('menu_mobile')[0].href = "../../Students/home";
+	document.getElementsByClassName('menu_mobile')[1].href = "../../Students/about";
+	document.getElementsByClassName('menu_mobile')[2].href = "../../Students/student";
+	document.getElementsByClassName('menu_mobile')[3].href = "../../Circles/circle";
+	document.getElementsByClassName('menu_mobile')[4].href = "../../Students/student_resister";
+	document.getElementsByClassName('menu_mobile')[5].href = "../../Students/student_login";
+}
+
