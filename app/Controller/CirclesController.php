@@ -284,6 +284,34 @@ class CirclesController extends AppController {
 				var_dump("failed");
 			}
 			
+			$circle_value = 0;
+			if($data["Circle"]["photo"] != ""){
+				$circle_value += 5;
+			}
+			if($data["Circle"]["url"] != ""){
+				$circle_value += 5;
+			}
+			if($data["Circle"]["pr"] != ""){
+				$circle_value += 5;
+			}
+			if($data["Circle"]["placetext"] != ""){
+				$circle_value += 1;
+			}
+			if($data["Circle"]["man"] > 0){
+				$circle_value += 1;
+			}
+			if($data["Circle"]["woman"] > 0){
+				$circle_value += 1;
+			}
+			if($data["Circle"]["cost_in"] > 0){
+				$circle_value += 1;
+			}
+			if($data["Circle"]["cost"] > 0){
+				$circle_value += 1;
+			}
+			//お気に入り数をvalueに加える
+			$data["Circle"]["value"] = $circle_value;
+			
             if ($this->Circle->save($data, array('validate' => false))) {
 				// $this->redirect(array('action'=>'follow')); //twitter
 				$this->Session->setFlash(__('更新完了しました。'));

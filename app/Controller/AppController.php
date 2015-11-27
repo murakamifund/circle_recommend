@@ -147,7 +147,6 @@ class AppController extends Controller {
 		else{
 			$word = "";
 		}
-		var_dump($word);
 		$place = $this -> data["radio1"];
 		$nomi = $this -> data["radio3"];
 		$mazime = $this ->data["radio4"];
@@ -226,9 +225,7 @@ class AppController extends Controller {
 		$check75,
 		$check81,
 	);
-	if($word != ""){
-		$this->set("word",$word);
-	}
+	$this->set("word",$word);
 	$counts = array(
 		1,2,3,4,5,6,7,8,9,10,
 		11,12,13,14,15,31,32,33,34,35,
@@ -252,8 +249,8 @@ class AppController extends Controller {
 						'OR' => array(
 							array(
 								'OR' => array(
-									array('Circle.circle_name' => $word),
-									array('Circle.pr' => $word)
+									array('Circle.circle_name LIKE' => '%'.$word.'%'),
+									array('Circle.pr LIKE' => '%'.$word.'%')
 								)
 							),
 							array(
@@ -269,8 +266,8 @@ class AppController extends Controller {
 						'OR' => array(
 							array(
 								'OR' => array(
-									array('Circle.circle_name' => $word),
-									array('Circle.pr' => $word)
+									array('Circle.circle_name LIKE' => '%'.$word.'%'),
+									array('Circle.pr LIKE' => '%'.$word.'%')
 								)
 							),
 							array(
@@ -288,8 +285,8 @@ class AppController extends Controller {
 						'OR' => array(
 							array(
 								'OR' => array(
-									array('Circle.circle_name' => $word),
-									array('Circle.pr' => $word)
+									array('Circle.circle_name LIKE' => '%'.$word.'%'),
+									array('Circle.pr LIKE' => '%'.$word.'%')
 								)
 							),
 							array(
@@ -307,8 +304,8 @@ class AppController extends Controller {
 						'OR' => array(
 							array(
 								'OR' => array(
-									array('Circle.circle_name' => $word),
-									array('Circle.pr' => $word)
+									array('Circle.circle_name LIKE' => '%'.$word.'%'),
+									array('Circle.pr LIKE' => '%'.$word.'%')
 								)
 							),
 							array(
@@ -330,8 +327,8 @@ class AppController extends Controller {
 						'OR' => array(
 							array(
 								'OR' => array(
-									array('Circle.circle_name' => $word),
-									array('Circle.pr' => $word)
+									array('Circle.circle_name LIKE' => '%'.$word.'%'),
+									array('Circle.pr LIKE' => '%'.$word.'%')
 								)
 							),
 							array(
@@ -353,8 +350,8 @@ class AppController extends Controller {
 						'OR' => array(
 							array(
 								'OR' => array(
-									array('Circle.circle_name' => $word),
-									array('Circle.pr' => $word)
+									array('Circle.circle_name LIKE' => '%'.$word.'%'),
+									array('Circle.pr LIKE' => '%'.$word.'%')
 								)
 							),
 							array(
@@ -378,8 +375,8 @@ class AppController extends Controller {
 						'OR' => array(
 							array(
 								'OR' => array(
-									array('Circle.circle_name' => $word),
-									array('Circle.pr' => $word)
+									array('Circle.circle_name LIKE' =>'%'. $word.'%'),
+									array('Circle.pr LIKE' => '%'.$word.'%')
 								)
 							),
 							array(
@@ -403,8 +400,8 @@ class AppController extends Controller {
 						'OR' => array(
 							array(
 								'OR' => array(
-									array('Circle.circle_name' => $word),
-									array('Circle.pr' => $word)
+									array('Circle.circle_name LIKE' => '%'.$word.'%'),
+									array('Circle.pr LIKE' => '%'.$word.'%')
 								)
 							),
 							array(
@@ -509,7 +506,7 @@ class AppController extends Controller {
 				);
 			}
 		}
-		$data = $this->Circle->find('all' , array('conditions' => $opt));
+		$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
 		/*$count_data = $this->Circle2->find('all');
 		$activity3=array(
 			$count_data[0]['Circle2']['activity1'],
