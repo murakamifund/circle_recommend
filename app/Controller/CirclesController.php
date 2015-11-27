@@ -208,7 +208,7 @@ class CirclesController extends AppController {
             $this->data = Sanitize::clean($this->data, array('encode' => false));
 			//debug($this->request->data);
 			
-            if ($this->Event->save($this->request->data, array('validate' => false))) {
+            if ($this->Event->save($this->request->data)) {
 				// $this->redirect(array('action'=>'follow')); //twitter
                 $this->Session->setFlash(__('更新完了しました。'));
 				//更新したらloginページに移動させる
