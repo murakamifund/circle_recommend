@@ -42,7 +42,7 @@ onload = function(){
     'timeFormat' => '24',       //時刻を24時間表記
     'empty' => true,            //空選択可能
 	'separator' => array('年', '月', '日','時','分'),
-    'default' => date('Y-m-d H:i', strtotime("2015-11-20 12:33")),  //初期値指定
+    'default' => date('Y-m-d H:i'),  //初期値指定
 ));
 			//echo $this->Form->error('day');
 		?>
@@ -75,7 +75,6 @@ onload = function(){
 
 
 
-	
 	
 	
 	$('#fc1').fullCalendar({
