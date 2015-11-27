@@ -207,7 +207,7 @@ $act=array(
 	
 	$('#fc1').fullCalendar({
 		defaultDate: '2015-11-12',
-			editable: true,
+			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			selectable: true,
 			events:<?php echo  $json; ?>
