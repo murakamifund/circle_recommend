@@ -53,7 +53,7 @@ onload = function(){
 	<th scope="row">新歓かどうか</th>
 	<td><?php echo $this->Form->radio('for_newcomer',
 				array(
-					'1'=>'新歓',
+					'1'=>'新歓　　　　',
 					'0'=>'新歓ではない'
 				),
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
