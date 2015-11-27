@@ -72,8 +72,6 @@ class CirclesController extends AppController {
 	$this->set("placetext",$placetext);//view側にデータをセット
 	$intercollege = $data['Circle']['intercollege'];
 	$this->set("intercollege",$intercollege);//view側にデータをセット
-	$all = $data['Circle']['all'];
-	$this->set("all",$all);//view側にデータをセット
 	$man = $data['Circle']['man'];
 	$this->set("man",$man);//view側にデータをセット
 	$woman = $data['Circle']['woman'];
