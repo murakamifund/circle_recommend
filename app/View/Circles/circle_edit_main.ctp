@@ -1,3 +1,10 @@
+<script>
+onload = function(){
+	func_circle_edit_main();	
+}
+</script>
+
+
 <h2> <?php echo $circle_name; ?>の情報を管理</h2>
 
 

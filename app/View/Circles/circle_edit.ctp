@@ -3,6 +3,12 @@
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
  ?>
 
+<script>
+onload = function(){
+	func_circle_edit();	
+}
+</script>
+
 <h2> <?php echo $circle_name; ?>の情報を管理</h2>
 <h3>情報を編集</h3>
 <p>

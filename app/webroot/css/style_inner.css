@@ -119,3 +119,56 @@
 	padding-right: 10px;
 
 }
+
+
+/* Students/student‚ÅŽg‚¤ */
+
+#search_keyword{
+	padding:10px;
+	border:solid 1px #666;
+	margin-left: 3px 0 3px 0;
+	border-radius: 5px;
+}
+
+.search_group{
+	clear: left;
+	padding-top: 15px;
+//	border-top: 1px dashed #999999;
+}
+
+.search_title{
+	width: 15%;
+	font-size: 16px;
+	font-weight: 800;
+	float: left;
+}
+
+.search_forms , .search_forms2{
+	width: 80%;
+	margin-left: auto;
+	
+}
+
+.search_forms lavel{
+	display: block;
+	float: left;
+	width: 110px;
+}
+
+input#search_submit{
+	font-weight: 800;
+	font-size: 20px;
+	color: #ffffff;
+	background-image: none;
+	background-color: #dd0000;
+	border-width: 0px;
+	display: block;
+	width: 100px;
+	padding: 5px;
+	margin-left: auto;
+}
+
+input#search_submit:hover{
+	background-color: #ff3333;
+}
+

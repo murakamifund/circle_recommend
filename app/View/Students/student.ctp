@@ -8,20 +8,138 @@ onload = function(){
 <!-- 上の画像で、サークルの新規登録を促す -->
 <h2>サークルを探そう</h2>
 
-<ul class="navmenu">
-<li><a href="#lunch">ランチメニュー</a></li>
-<li><a href="#course">コースメニュー</a></li>
-<li><a href="#single">単品メニュー</a></li>
-<li><a href="#drink">ドリンクメニュー</a></li>
-<li><a href="#desert">デザートメニュー</a></li>
-<li><a href="#desert">デザートメニュー</a></li>
-<li><a href="#desert">デザートメニュー</a></li>
-</ul>
 
-条件を入力すればおすすめのサークルを表示します
-<br><br>
+
 
 <form method="post" action="./student" name=form1>
+
+
+
+	<h4>キーワードから探す</h4>
+	<div class="search_group">
+	<div class="search_title">キーワード：</div>
+	<div class="search_forms2"><input type="textbox" name="keyword" id="search_keyword" size="60" /></div>
+	</div>
+	<br>
+	<h4>カテゴリから探す</h4>
+	<div class="search_group">
+	<div class="search_title">スポーツ</div>
+	<div class="search_forms">
+			<lavel><input type="checkbox" name="check1" id="activity1" value="1" />テニス</lavel>
+			<lavel><input type="checkbox" name="check2" id="activity2" value="1" />卓球</lavel>
+			<lavel><input type="checkbox" name="check3" id="activity3" value="1" />サッカー</lavel>
+			<lavel><input type="checkbox" name="check4" id="activity4" value="1" />野球</lavel>
+			<lavel><input type="checkbox" name="check5" id="activity5" value="1" />バスケ</lavel>
+			<lavel><input type="checkbox" name="check6" id="activity6" value="1" />バレー</lavel>
+			<lavel><input type="checkbox" name="check7" id="activity7" value="1" />バドミントン</lavel>
+			<lavel><input type="checkbox" name="check8" id="activity8" value="1" />ラグビー</lavel>
+			<lavel><input type="checkbox" name="check9" id="activity9" value="1" />ホッケー</lavel>
+			<lavel><input type="checkbox" name="check10" id="activity10" value="1" />水泳</lavel>
+			<lavel><input type="checkbox" name="check11" id="activity11" value="1" />武道</lavel>
+			<lavel><input type="checkbox" name="check12" id="activity12" value="1" />ダンス</lavel>
+			<lavel><input type="checkbox" name="check13" id="activity13" value="1" />登山</lavel>
+			<lavel><input type="checkbox" name="check14" id="activity14" value="1" />乗り物</lavel>
+			<lavel><input type="checkbox" name="check15" id="activity15" value="1" />スキー</lavel>
+		</div>
+		</div>
+		<div class="search_group">
+		<div class="search_title">アカデミー</div>
+		<div class="search_forms">
+			<lavel><input type="checkbox" name="check31" id="activity31" value="1" />政治・経済</lavel>
+			<lavel><input type="checkbox" name="check32" id="activity32" value="1" />放送・広告</lavel>
+			<lavel><input type="checkbox" name="check33" id="activity33" value="1" />語学</lavel>
+			<lavel><input type="checkbox" name="check34" id="activity34" value="1" />国際</lavel>
+			<lavel><input type="checkbox" name="check35" id="activity35" value="1" />コンピュータ</lavel>
+			<lavel><input type="checkbox" name="check36" id="activity36" value="1" />自然科学</lavel>
+			<lavel><input type="checkbox" name="check37" id="activity37" value="1" />法学</lavel>
+			<lavel><input type="checkbox" name="check38" id="activity38" value="1" />企業</lavel>
+		</div>
+		</div>
+		<div class="search_group">
+		<div class="search_title">音楽</div>
+		<div class="search_forms">
+			<lavel><input type="checkbox" name="check51" id="activity51" value="1" />ロック</lavel>
+			<lavel><input type="checkbox" name="check52" id="activity52" value="1" />ジャズ</lavel>
+			<lavel><input type="checkbox" name="check53" id="activity53" value="1" />クラシック</lavel>
+			<lavel><input type="checkbox" name="check54" id="activity54" value="1" />コーラス</lavel>
+		</div>
+		</div>
+		<div class="search_group">
+		<div class="search_title">アート</div>
+		<div class="search_forms">
+			<lavel><input type="checkbox" name="check61" id="activity61" value="1" />映画・写真</lavel>
+			<lavel><input type="checkbox" name="check62" id="activity62" value="1" />演劇・お笑い</lavel>
+			<lavel><input type="checkbox" name="check63" id="activity63" value="1" />美術</lavel>
+			<lavel><input type="checkbox" name="check64" id="activity64" value="1" />文芸</lavel>
+		</div>
+		</div>
+		<div class="search_group">
+		<div class="search_title">趣味</div>
+		<div class="search_forms">
+			<lavel><input type="checkbox" name="check71" id="activity71" value="1" />旅行</lavel>
+			<lavel><input type="checkbox" name="check72" id="activity72" value="1" />アウトドア</lavel>
+			<lavel><input type="checkbox" name="check73" id="activity73" value="1" />ゲーム</lavel>
+			<lavel><input type="checkbox" name="check74" id="activity74" value="1" />グルメ</lavel>
+			<lavel><input type="checkbox" name="check75" id="activity75" value="1" />芸能</lavel>
+		</div>
+		</div>
+		<div class="search_group">
+		<div class="search_title">その他</div>
+		<div class="search_forms">
+			<lavel><input type="checkbox" name="check81" id="activity81" value="1" />その他</lavel>
+		</div>
+		</div>
+		<br><br>
+		
+		<h4>特徴から探す</h4>
+
+		<div class="search_group">
+		<div class="search_title">活動場所</div>
+		<div class="search_forms2">
+		<lavel><input type="radio" value="駒場" name="radio1" id="komaba" />駒場　</lavel>
+		<lavel><input type="radio" value="本郷" name="radio1" id="hongou" />本郷　</lavel>
+		<lavel><input type="radio" value="任意" name="radio1" id="any" checked="true" />どちらでも</lavel>
+		
+		</div>
+		</div>
+		<div class="search_group">
+		<div class="search_title">飲み会</div>
+		<div class="search_forms2">
+		←少ない　
+		<lavel><input type="radio" value="1  " name="radio3" id="nomi1" />1　</lavel>
+		<lavel><input type="radio" value="2  " name="radio3" id="nomi2" />2　</lavel>
+		<lavel><input type="radio" value="3  " name="radio3" id="nomi3" checked="true" />3　</lavel>
+		<lavel><input type="radio" value="4  " name="radio3" id="nomi4" />4　</lavel>
+		<lavel><input type="radio" value="5  " name="radio3" id="nomi5" />5　</lavel>
+		→多い　
+		<lavel><input type="checkbox" name="nochoice1" id="nochoice1" value="1" checked="true" />飲みを検索条件から外す</lavel>
+
+		</div>
+		</div>
+		<div class="search_group">
+		<div class="search_title">真面目さ</div>
+		<div class="search_forms2">
+		←楽しい　
+		<lavel><input type="radio" value="1  " name="radio4" id="mazime1" />1　</lavel>
+		<lavel><input type="radio" value="2  " name="radio4" id="mazime2" />2　</lavel>
+		<lavel><input type="radio" value="3  " name="radio4" id="mazime3" checked="true" />3　</lavel>
+		<lavel><input type="radio" value="4  " name="radio4" id="mazime4" />4　</lavel>
+		<lavel><input type="radio" value="5  " name="radio4" id="mazime5" />5　</lavel>
+		→ガチ　
+		<lavel><input type="checkbox" name="nochoice2" id="nochoice2" value="1" checked="true" />真面目さを検索条件から外す</lavel>
+		</div>
+		</div>
+	<br>
+	<input type="submit" value="検索" id="search_submit"/>
+	<br>
+</form>
+
+
+
+
+
+
+<!--
 	<table class = "type01">
 	<tbody>
 	<tr>
@@ -149,6 +267,9 @@ onload = function(){
 		<input type="radio" value="5  " name="radio3" id="nomi5" />
 		<lavel for="nomi5">5</lavel>
 		→多い
+		<br>
+		<input type="checkbox" name="nochoice1" id="nochoice1" value="1" checked="true" />
+		<lavel for="nochoice1">飲みを検索条件から外す　</lavel>
 		</td>
 	</tr>
 	<tr>
@@ -166,14 +287,19 @@ onload = function(){
 		<input type="radio" value="5  " name="radio4" id="mazime5" />
 		<lavel for="mazime5">5</lavel>
 		→ガチ
+		<br>
+		<input type="checkbox" name="nochoice2" id="nochoice2" value="1" checked="true" />
+		<lavel for="nochoice2">真面目さを検索条件から外す　</lavel>
 		</td>
 	</tr>
 	</tbody>
 	</table>
-	<input type="submit" value="送信" />
+	<input type="submit" value="送信"  />
 	<br>
 	<br>
 </form>
+
+-->
 
 <section id="lunch">
 
@@ -233,6 +359,9 @@ if($this->request->data){
 			$d=$d+1;	
 		endif;	
 	endfor;	
+	if($word != ""):
+		$d=$d+1;
+	endif;
 }
 ?>
 

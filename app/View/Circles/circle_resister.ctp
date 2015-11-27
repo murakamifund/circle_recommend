@@ -1,3 +1,9 @@
+<script>
+onload = function(){
+	func_circle_resister();	
+}
+</script>
+
 <h2 class="mb1em">サークルを登録しよう</h2>
 
 <br>

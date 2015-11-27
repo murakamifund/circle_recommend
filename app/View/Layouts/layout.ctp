@@ -31,7 +31,7 @@
 
 <div id="fixing_box">
 <header>
-<ul class="header_ul"><li><div onclick="display_popup()">ログイン</a></li><li><div href="student_login">新規登録</a></li></ul>
+<ul class="header_ul"><li><div onclick="display_popup()">ログイン</div></li><li><div href="student_login">新規登録</div></li></ul>
 <p id="logo"><a href="home"><img src="../img/logo03.png" width="250" height="50" alt=""></a></p>
 </header>
 
@@ -56,6 +56,7 @@
 <li><a class="menu_mobile" href="student_login">ログイン</a></li>
 </ul>
 </nav>
+
 </div>
 
 <div id="dummy_div">
@@ -113,6 +114,7 @@
 <p id="pagetop"><a href="#">↑ PAGE TOP</a></p>
 
 
+
 </div>
 <!--/contents-->
 
@@ -120,10 +122,6 @@
 <small>Copyright&copy; 2014 <a href="home">SAMPLE CAFE</a>　All Rights Reserved.</small>
 <span class="pr"><a href="http://template-party.com/" target="_blank">Web Design:Template-Party</a></span>
 </footer>
-
-
-</div>
-<!--/container-->
 
 
 <div id="popup">
@@ -142,10 +140,17 @@
 	<input id="popup_login_btn" type="submit" value="ログインする">
 	</form>
 </div>
-<div><a href="" id="popup_to_register">未登録の方はこちら</a></div>
+<div><a href="student_resister" id="popup_to_register">未登録の方はこちら</a></div>
 <div><a href="home" id="popup_close" onclick="close_popup()">もどる</a></div>
 </div>
 
+
+
+</div>
+<!--/container-->
+
+
+<div id="overlay" onclick="close_popup();"></div>
 
 <!--スライドショースクリプト-->
 <script type="text/javascript" src="js/slide_simple_pack.js"></script>

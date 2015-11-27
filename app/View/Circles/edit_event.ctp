@@ -1,3 +1,9 @@
+<script>
+onload = function(){
+	func_edit_event();	
+}
+</script>
+
 <h2> <?php echo $circle_name; ?>の<?php echo $title; ?>の予定を編集</h2>
 
 

@@ -1,3 +1,9 @@
+<script>
+onload = function(){
+	func_event_id();	
+}
+</script>
+
 <h2> <?php echo $circle_name; ?>の<?php echo $title; ?>の情報</h2>
 
 
