@@ -140,6 +140,23 @@ class CirclesController extends AppController {
 	$day= $events['Event']['day'];
 	$this->set("day",$day);//view側にデータをセット
 	
+	$place= $events['Event']['place'];
+	$this->set("place",$place);//view側にデータをセット
+	$money= $events['Event']['money'];
+	$this->set("money",$money);//view側にデータをセット
+	$for_newcomer= $events['Event']['for_newcomer'];
+	$this->set("for_newcomer",$for_newcomer);//view側にデータをセット
+	$practice= $events['Event']['practice'];
+	$this->set("practice",$practice);//view側にデータをセット
+	$game= $events['Event']['game'];
+	$this->set("game",$game);//view側にデータをセット
+	$camp= $events['Event']['camp'];
+	$this->set("camp",$camp);//view側にデータをセット
+	$party= $events['Event']['party'];
+	$this->set("party",$party);//view側にデータをセット
+	$other= $events['Event']['other'];
+	$this->set("other",$other);//view側にデータをセット
+	
     
     
   }
