@@ -310,7 +310,7 @@ onload = function(){
 <section id="lunch">
 
 <h3 class="mb1em">カレンダー</h3>
-イベントをクリックすると、イベントの詳細に飛べます。
+団体名をクリックすると、その団体の詳細に飛べます。
 
 <p>
 <div id="fc1" class="fc" >

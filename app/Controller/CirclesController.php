@@ -136,6 +136,8 @@ class CirclesController extends AppController {
 	
 	$events = $this->Event->find('first',array(
 		'conditions' => array('Event.id' => $id)));
+	$circleid = $events['Event']['circle_id'];
+	$this->set("circleid",$circleid);//view側にデータをセット
 	$circle_name = $events['Event']['circle_name'];
 	$this->set("circle_name",$circle_name);//view側にデータをセット
 	$title = $events['Event']['title'];
