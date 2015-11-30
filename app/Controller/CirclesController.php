@@ -280,18 +280,33 @@ class CirclesController extends AppController {
 	
 	$circle_name = $this->Auth->user('circle_name');
 	$this->set("circle_name",$circle_name);//view側にデータをセット
+	if($this->Auth->user('photo') != ""){
+		$circle_photo = $this->Auth->user('photo');
+	}
+	else{
+		$circle_photo = "";
+	}
+	$this->set("circle_photo",$circle_photo);
    
 	
     if ($this->request->is('post') || $this->request->is('put')) {
             $this->data = Sanitize::clean($this->data, array('encode' => false));
 			//debug($this->request->data);
 			
+			if($this->data['Circle']['photo']['name'] != ""){
+				$circle_photo = $this->data['Circle']['photo']['name'];
+			}
+			else{
+				$circle_photo = "";
+			}
+			$this->set("circle_photo",$circle_photo);
 			$uploaddir = '../img';
 			$uploadfile = $this->data['Circle']['photo'];
 			var_dump(getcwd());
+			var_dump($this->data);
 			$data = $this->data;
 			$data["Circle"]["photo"] = $uploadfile["name"];
-			var_dump($data);
+			var_dump($uploadfile['tmp_name']);
 			if(move_uploaded_file($uploadfile['tmp_name'],$uploaddir.DS.$uploadfile["name"])){
 				var_dump("successed");
 			}

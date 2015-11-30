@@ -479,11 +479,10 @@ endforeach ?>
 	<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
 </a>
 </h3>
-	<?php if($datum['Circle']['photo_name'] != ""): ?>
-	<?php var_dump($datum['Circle']['photo_name']); ?>
-		<figure><img src="../img/".$datum['Circle']['photo_name'] width="280" height="210" alt="" /></figure>
+	<?php if($datum['Circle']['photo'] != ""): ?>
+		<figure><img src="../img/sample_photo2.jpg" width="280" height="210" alt="" /></figure>
 	<?php else: ?>
-		<figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>
+		<?php echo "NO IMAGE"; ?>
 	<?php endif; ?>
 <h4><!--サークルの名前-->
 	<a href="../Circles/circle_id/<?php echo $datum['Circle']['id']; ?>">
