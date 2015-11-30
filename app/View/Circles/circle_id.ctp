@@ -67,6 +67,7 @@ $act=array(
 
 <!--ここからhtml-->
 
+
 <div id="circle_left">
 	<div id="circle_name">
 		<a href="<?php echo $url; ?>"><?php echo $circle_name; ?></a>

@@ -95,32 +95,35 @@ class CirclesController extends AppController {
 	$pr = $data['Circle']['pr'];
 	$this->set("pr",$pr);//view側にデータをセット
 	
+	//カレンダーの機能
+	
 	//circleのIdに一致するイベントを列挙
-		$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $id)));
-		$count = $this->Event->find( 'count', array( 'conditions' => array('Event.circle_id' => $id)));
-		$title = array();
-		$day = array();
+	$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $id)));
+	$count = $this->Event->find( 'count', array( 'conditions' => array('Event.circle_id' => $id)));
+	$title = array();
+	$day = array();
+	
+	// SQLのレスポンスをもとにデータ作成
+	$rows = array();
+	for ( $a=0; count( $events) > $a; $a++) {
 		
-		// SQLのレスポンスをもとにデータ作成
-		$rows = array();
-		for ( $a=0; count( $events) > $a; $a++) {
-			
-			$rows[] = array(
-            'id' => $events[$a]['Event']['id'],
-			//'circle_id' => $events[$a]['Event']['circle_id'],
-			//'circle_name' => $events[$a]['Event']['circle_name'],
+		$rows[] = array(
+			'id' => $events[$a]['Event']['id'],
+		//'circle_id' => $events[$a]['Event']['circle_id'],
+		//'circle_name' => $events[$a]['Event']['circle_name'],
             'title' => $events[$a]['Event']['circle_name'].":".$events[$a]['Event']['title'],
             'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
             'end' => $events[$a]['Event']['day'],
 			'url' => "../event_id/".$events[$a]['Event']['id'],
 		
             //'allDay' => $events[$a]['Event']['allday'],
-        );
-		}
-		
-		// JSONへ変換
-		$this->set("json", json_encode($rows));
-    
+	);
+	}
+	
+	// JSONへ変換
+	$this->set("json", json_encode($rows));
+	
+	
   }
 	
 	

@@ -229,6 +229,10 @@ class StudentsController extends AppController {
 	public function student() {
 	
     $this->modelClass = null;
+	
+	
+	
+	//検索アルゴリズム
     
     $check1 = isset($this -> data["check1"]) ?
 	 "On" : "Off";
@@ -675,95 +679,7 @@ class StudentsController extends AppController {
 			}
 		}
 		$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
-		/*$count_data = $this->Circle2->find('all');
-		$activity3=array(
-			$count_data[0]['Circle2']['activity1'],
-			$count_data[0]['Circle2']['activity2'],
-			$count_data[0]['Circle2']['activity3'],
-			$count_data[0]['Circle2']['activity4'],
-			$count_data[0]['Circle2']['activity5'],
-		);
-		$komaba=$count_data[0]['Circle2']['komaba'];
-		$honngou=$count_data[0]['Circle2']['honngou'];
-		$anyplace=$count_data[0]['Circle2']['anyplace'];
-		$gakunai=$count_data[0]['Circle2']['gakunai'];
-		$inter=$count_data[0]['Circle2']['inter'];
-		$man2=$count_data[0]['Circle2']['man'];
-		$mancount=$count_data[0]['Circle2']['mancount'];
-		$woman2=$count_data[0]['Circle2']['woman'];
-		$womancount=$count_data[0]['Circle2']['womancount'];
-		$cost2=$count_data[0]['Circle2']['cost'];
-		$costcount=$count_data[0]['Circle2']['costcount'];
-		$nomi2=$count_data[0]['Circle2']['nomi'];
-		$nomicount=$count_data[0]['Circle2']['nomicount'];
-		$mazime2=$count_data[0]['Circle2']['mazime'];
-		$mazimecount=$count_data[0]['Circle2']['mazime'];
-		if ($this->request->is('post') || $this->request->is('put')) {
-			for ($i=0;$i<5;$i++):
-				if ($activity[$i]=="On"):
-					$activity3[$i]=$activity3[$i]+1;
-				endif;
-			endfor;
-			if ($radio1==0):
-				$komaba=$komaba+1;
-			endif;
-			if ($radio1==1):
-				$honngou=$honngou+1;
-			endif;
-			if ($radio1==2):
-				$anyplace=$anyplace+1;
-			endif;
-			if ($radio2==0):
-				$gakunai=$gakunai+1;
-			endif;
-			if ($radio2==1):
-				$inter=$inter+1;
-			endif;
-			if (isset($man)):
-				$man2=$man2+$man;
-				$mancount=$mancount+1;
-			endif;
-			if (isset($woman)):
-				$woman2=$woman2+$man;
-				$womancount=$womancount+1;
-			endif;
-			if (isset($cost)):
-				$cost2=$cost2+$cost;
-				$costcount=$costcount+1;
-			endif;
-			if (isset($nomi)):
-				$nomi2=$nomi2+$nomi;
-				$nomicount=$nomicount+1;
-			endif;
-			if (isset($mazime)):
-				$mazime2=$mazime2+$mazime;
-				$mazimecount=$mazimecount+1;
-			endif;
-			$data2=array(
-				'id'=>1,
-				'activity1'=>$activity3[0],
-				'activity2'=>$activity3[1],
-				'activity3'=>$activity3[2],
-				'activity4'=>$activity3[3],
-				'activity5'=>$activity3[4],
-				'komaba'=>$komaba,
-				'honngou'=>$honngou,
-				'anyplace'=>$anyplace,
-				'gakunai'=>$gakunai,
-				'inter'=>$inter,
-				'man'=>$man2,
-				'mancount'=>$mancount,
-				'woman'=>$woman2,
-				'womancount'=>$womancount,
-				'cost'=>$cost2,
-				'costcount'=>$costcount,
-				'nomi'=>$nomi2,
-				'nomicount'=>$nomicount,
-				'mazime'=>$mazime2,
-				'mazimecount'=>$mazimecount,
-			);
-			$this->Circle2->save($data2);
-		}*/
+		
 		$this -> set('data',$data);
 		//$this -> set('count_data',$count_data);
 		$this -> set("check1",$check1);
@@ -780,30 +696,59 @@ class StudentsController extends AppController {
 		$this -> set("mazime",$mazime);
 		$this -> set("p",$p);
 		$this -> set("in",$in);
-		/*$this -> set("activity3",$activity3);
-		$this -> set("komaba",$komaba);
-		$this -> set("honngou",$honngou);
-		$this -> set("anyplace",$anyplace);
-		$this -> set("gakunai",$gakunai);
-		$this -> set("inter",$inter);
-		$this -> set("man2",$man2);
-		$this -> set("mancount",$mancount);
-		$this -> set("woman2",$woman2);
-		$this -> set("womancount",$womancount);
-		$this -> set("cost2",$cost2);
-		$this -> set("costcount",$costcount);
-		$this -> set("nomi2",$nomi2);
-		$this -> set("nomicount",$nomicount);
-		$this -> set("mazime2",$mazime2);
-		$this -> set("mazimecount",$mazimecount);*/
+		
+		
+		//検索結果カレンダー
+	
+	//circleのIdに一致するイベントを列挙
+	$count = 10;		//10このサークルの予定だけを表示
+	$circles = $this->Circle->find( 'list', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
+	//10個のサークルのidを配列に入れる
+	
+	
+	
+	//circleのIdに一致するイベントを列挙
+	
+
+	$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $circles)));
+	//var_dump($events);
+	
+	//$events = $this->Event->find('all');
+	$title = array();
+	$day = array();
+	
+	// SQLのレスポンスをもとにデータ作成
+	$rows = array();
+	for ( $a=0; count( $events) > $a; $a++) {
+		
+		$rows[] = array(
+			'id' => $events[$a]['Event']['id'],
+		//'circle_id' => $events[$a]['Event']['circle_id'],
+		//'circle_name' => $events[$a]['Event']['circle_name'],
+            'title' => $events[$a]['Event']['circle_name'].":".$events[$a]['Event']['title'],
+            'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
+            'end' => $events[$a]['Event']['day'],
+			'url' => "../Circles/event_id/".$events[$a]['Event']['id'],
+		
+            //'allDay' => $events[$a]['Event']['allday'],
+	);
 	}
+	//var_dump($rows);
+	// JSONへ変換
+	$this->set("json", json_encode($rows));
+		
+		
+	}
+	
+	
+	
    
 	}
 	
 
 
 
-}
+}//クラス
 	
 
 ?>
