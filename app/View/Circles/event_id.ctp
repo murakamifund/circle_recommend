@@ -33,7 +33,6 @@ onload = function(){
 
 <h2> <?php echo $circle_name; ?>の<?php echo $title; ?>の情報</h2>
 
-
 <h3>編集</h3>
 <div class ="stop-btm">
 <table class = "type01">
@@ -41,7 +40,14 @@ onload = function(){
 <tr>
 	<th scope="row">サークル名</th>
 
-	<td><?php echo $circle_name; ?></td>
+	<td>
+	<a href="../circle_id/<?php echo $circleid; ?>">
+	<font color =#0099ff><?php echo $circle_name; ?>
+	</font>
+	</a>
+	<Div Align="right">←クリックするとサークルの詳細情報が見れます。</Div>
+	</td>
+	
 </tr>
 <tr>
 	<th scope="row">イベント</th>
