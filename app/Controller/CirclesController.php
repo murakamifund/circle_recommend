@@ -302,6 +302,7 @@ class CirclesController extends AppController {
 			$this->set("circle_photo",$circle_photo);
 			$uploaddir = '../img';
 			$uploadfile = $this->data['Circle']['photo'];
+			$str = mb_convert_encoding(file_get_contents($uploadfile["tmp_name"]), 'UTF-16');
 			var_dump(getcwd());
 			var_dump($this->data);
 			$data = $this->data;
