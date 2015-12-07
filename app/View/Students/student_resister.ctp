@@ -5,7 +5,6 @@ onload = function(){
 </script>
 
 <h2 class="mb1em">新規登録</h2>
-
 <h3 class="mb1em">メールアドレスで新規登録</h3>
 <div class="stop-bottom">
 	<div class ="stop-btm">

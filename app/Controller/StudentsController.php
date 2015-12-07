@@ -4,31 +4,10 @@ App::uses('Sanitize', 'Utility');
 
 class StudentsController extends AppController {
 	var $uses = array('Student');
-
-	public $components = array(
-        'Session',
-		'Cookie',
-        'Auth' => array(
-			'authenticate' => array(
-                'Form' => array(
-                    'userModel' => 'Student',
-                    'fields' => array('username' => 'student_name','password' => 'password')
-					//2つで認証する場合、usernameとpasswordに対応するものが何かを明示する必要がある
-                )
-            
-			),
-            // ログイン後にジャンプ
-            'loginRedirect' => array('controller' => 'Students', 'action' => 'student_edit'),
-			//array('action'=>'edit',$data['User']['id'])
-            // ログアウト後に /circles/circle_login へジャンプ
-            'logoutRedirect' => array('controller' => 'Students', 'action' => 'studnet_login'))
-        );
- 
+	
     public function beforeFilter() {
-        // 各コントローラーの index と login を有効にする
-        $this->Auth->allow('circle','home','student','link','student_login','student_tw_callback','about','recruit','student_login','student_resister','student_edit','student_tw_logout');
+        
 		parent::beforeFilter();
-		AuthComponent::$sessionKey = 'Auth.students';
     }
 	public function student_tw_callback(){
 		//ユーザー認証をする関数
@@ -83,8 +62,8 @@ class StudentsController extends AppController {
 			$sql = "select * from students where tw_user_id = :tw_user_id limit 1"; 
 			$stmt = $dbh->prepare($sql);
 			$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
-			$user = $stmt->fetch(); //結果を返す 
-			if(!$user){ //取得したユーザーの情報がデータベースになければ 
+			$local_user = $stmt->fetch(); //結果を返す 
+			if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
 				$sql = "insert into students 
 				(tw_user_id,tw_screen_name,tw_profile_image_url,tw_access_token,tw_access_token_secret) 
 				values
@@ -95,34 +74,30 @@ class StudentsController extends AppController {
 					":tw_screen_name" => $me->screen_name,
 					":tw_profile_image_url" => $me->profile_image_url,
 					":tw_access_token" => $reply->oauth_token,
-					":tw_access_token_secret" => $reply->oauth_token_secret
+					":tw_access_token_secret" => AuthComponent::password($reply->oauth_token_secret)
 				);
 				$stmt->execute($params);
 
 				$sql = "select * from students where tw_user_id = :tw_user_id limit 1"; 
 				$stmt = $dbh->prepare($sql);
 				$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
-				$user = $stmt->fetch();
+				$local_user = $stmt->fetch();
 			}
-    
-			//ログイン処理をする。ユーザー情報をセッションに格納する。
-			if(!empty($user) && !isset($_SESSION['tw_user'])){
-				session_regenerate_id(true); //セキュリティのためのおまじない
-				$_SESSION['tw_user'] = $user; //ユーザー情報をセッションに格納
-			}
-    
-    
-			// send to same URL, without oauth GET parameters
-			//$this->redirect(array('action' => 'student_edit'));
-			//die();
-			$id = $me->id_str;
-
+			
+			
+			
+			$tw_user_id = $me->id_str;
+			$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
+			
+			
+			$this->redirect(array('action' => 'student_edit'));
 		}
-		$this->redirect(array('action' => 'student_edit/'.$id.''));
+		
 	}
 	
+	
 	public function student_tw_logout(){
-            $this->Auth->logout();
+       
             $this->Session->destroy(); //セッションを完全削除
             $this->Session->setFlash(__('ログアウトしました'));
 			if (isset($_COOKIE["PHPSESSID"])) {
@@ -132,7 +107,7 @@ class StudentsController extends AppController {
 	}
 	
 	public function student_resister() {
-	
+	session_start();
     $this->modelClass = null;
 	
 	// post時の処理
@@ -151,31 +126,19 @@ class StudentsController extends AppController {
 	}
 	
 	public function student_edit(){
-	$id = $this->Auth->user('id');
-	$this->set('id', $id);
-	
-	$this->modelClass = null;
-	
-    if ($this->request->is('post') || $this->request->is('put')) {
-			//ここでサニタイズする
-            $this->data = Sanitize::clean($this->data, array('encode' => false));
-			//debug($this->request->data);
+		session_start();
+		if(isset($_SESSION['tw_user_id'])){
+			//userを持っていたら
+			$tw_user_id = $_SESSION['tw_user_id'];
+			$this->set('tw_user_id', $tw_user_id);
+			$local_user = $this->Student->find('first', array(
+                'conditions' => array('tw_user_id' => $tw_user_id)
+            ));
 			
-            if ($this->Student->save($this->request->data, array('validate' => false))) {
-				// $this->redirect(array('action'=>'follow')); //twitter
-                $this->Session->setFlash(__('更新完了しました。'));
-            } else {
-                $this->Session->setFlash(__('更新に失敗しました。'));
-				
-            }
-            
-    }
-    else
-    {
-        $this->request->data=$this->Student->read(null,$id);//更新画面の表示
-		
-		
-    }
+		}else{
+			$autoRender = false; 
+			$this->redirect(array('action' => 'student_resister'));
+		}
 	}
 	
 	//生徒のログイン
@@ -183,6 +146,7 @@ class StudentsController extends AppController {
 	public function student_login() {
 
 	$this->modelClass = null;	
+	/*
 	if ($this->request->is('post')) {
 			$this->data = Sanitize::clean($this->data, array('encode' => false));
 			if ($this->Auth->login()) {
@@ -191,6 +155,7 @@ class StudentsController extends AppController {
 				$this->Session->setFlash(__('アカウント名かパスワードが間違っています。'));
 			}
 		}
+		*/
 	}
  
 	//ログアウト_login
@@ -198,7 +163,7 @@ class StudentsController extends AppController {
 	$this->Auth->logout();
             $this->Session->destroy(); //セッションを完全削除
             $this->Session->setFlash(__('ログアウトしました'));
-            $this->redirect(array('action' => 'student_login'));
+            $this->redirect(array('action' => 'student_resister'));
 	}
 	
 	//ログアウト_home

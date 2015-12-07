@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
  * Authentication component
  *
@@ -602,6 +602,20 @@ class AuthComponent extends Component {
  * @return bool True on login success, false on failure
  * @link http://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#identifying-users-and-logging-them-in
  */
+ 
+	 public function login($user = null) {
+		$this->_setDefaults();
+
+		if (empty($user)) {
+			$user = $this->identify($this->request, $this->response);
+		}
+		if ($user) {
+			$this->Session->renew();
+			$this->Session->write(self::$sessionKey, $user);
+		}
+		return $this->loggedIn();
+	}
+	 /*
 	public function login($user = null) {
 		$this->_setDefaults();
 
@@ -616,6 +630,7 @@ class AuthComponent extends Component {
 		}
 		return (bool)$this->user();
 	}
+	*/
 
 /**
  * Log a user out.
