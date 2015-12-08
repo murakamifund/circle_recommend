@@ -18,7 +18,9 @@ class StudentsController extends AppController {
 
 		\Codebird\Codebird::setConsumerKey(CONSUMER_KEY, CONSUMER_SECRET);
 		$cb = \Codebird\Codebird::getInstance();
-
+		
+	if(! isset($_SESSION['tw_user_id'])){
+	
 		if (! isset($_SESSION['oauth_token'])) { //まだデータが渡されていないときは（認証前）
 		// get the request token
 		$reply = $cb->oauth_requestToken([
@@ -92,7 +94,9 @@ class StudentsController extends AppController {
 			
 			$this->redirect(array('action' => 'student_edit'));
 		}
-		
+	}else{
+		$this->redirect(array('action' => 'student_edit'));
+	}	
 	}
 	
 	
