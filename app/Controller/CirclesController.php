@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
 
 class CirclesController extends AppController {
-	var $uses = array('Circle','Event');
+	var $uses = array('Circle','Event','Favorite','Student');
 	
 	
 	
@@ -27,7 +27,7 @@ class CirclesController extends AppController {
  
     public function beforeFilter() {
         // 各コントローラーの index と login を有効にする
-        $this->Auth->allow('circle','circle_login','circle_resister','circle_resister_finish','circle_id','event_id');
+        $this->Auth->allow('circle','circle_login','circle_resister','circle_resister_finish','circle_id','event_id','fav');
 		parent::beforeFilter();
 		AuthComponent::$sessionKey = 'Auth.circles';
     }
@@ -51,8 +51,16 @@ class CirclesController extends AppController {
 	
 	//circle個別ページのコントローラー
 	public function circle_id($id) {
+	//session
+	session_start();
+	if(isset($_SESSION['tw_user_id'])){
+			//userを持っていたら
+			$tw_user_id = $_SESSION['tw_user_id'];
+			$this->set('tw_user_id', $tw_user_id);
+			
+			
+	}
 	
-   
     $this->Circle->id = $id;
 	$this->set("circle_id",$id);//view側にデータをセット
 	
@@ -125,7 +133,42 @@ class CirclesController extends AppController {
 	
 	
   }
+	public function fav($id = null){
+		if ($this->request->is('post') || $this->request->is('put')) {
+			//session
+			session_start();
+			if(isset($_SESSION['tw_user_id'])){
+				//userを持っていたら
+				$tw_user_id = $_SESSION['tw_user_id'];
+				$this->set('tw_user_id', $tw_user_id );
+				$fav_circles = $this->Favorite->find('all', array(
+					'conditions' => array('user_id' => $tw_user_id,'circle_id' => $id)
+				));
+				
+				if (!empty($fav_circles)) {
+					$this->Session->setFlash(__('すでにお気に入り登録されています'));
+				}else{
+					//$this->Favorite->create();
+					
+					$this->Favorite->save([
+					  'user_id' => $tw_user_id,
+					  'circle_id' => $id,
+					]);
+					
+					
+					
+					$this->Session->setFlash(__('お気に入り登録しました'));
+				}
+				$this->redirect(array('action'=>'circle_id/'.$id));
+			}else{
+				$this->redirect(array('action'=>'circle_id/'.$id));
+				$this->Session->setFlash(__('Twitterでログインしてください'));
+			}
+		}else{
+		
+		}
 	
+	}
 	
 	//circle個別ページのコントローラー
 	public function event_id($id) {

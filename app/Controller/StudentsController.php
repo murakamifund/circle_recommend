@@ -76,7 +76,7 @@ class StudentsController extends AppController {
 					":tw_screen_name" => $me->screen_name,
 					":tw_profile_image_url" => $me->profile_image_url,
 					":tw_access_token" => $reply->oauth_token,
-					":tw_access_token_secret" => AuthComponent::password($reply->oauth_token_secret)
+					":tw_access_token_secret" => $reply->oauth_token_secret
 				);
 				$stmt->execute($params);
 
@@ -138,6 +138,8 @@ class StudentsController extends AppController {
 			$local_user = $this->Student->find('first', array(
                 'conditions' => array('tw_user_id' => $tw_user_id)
             ));
+			$user_name = $local_user['Student']['tw_screen_name'];
+			$this->set('user_name', $user_name);
 			
 		}else{
 			$autoRender = false; 

@@ -2,6 +2,7 @@
 	
 <h3 class="mb1em">サークルを登録しよう</h3>
 <h3 class="mb1em"><?php echo $tw_user_id;?></h3>
+<h3 class="mb1em"><?php echo $user_name;?></h3>
 <p>
 	<div Align="right">
 		<div class="i-btn">

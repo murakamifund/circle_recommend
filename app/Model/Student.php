@@ -5,7 +5,7 @@ class Student extends AppModel {
 	 /**
  * 保存時にパスワードをハッシュ化する
  */
-	 /*
+	 
    public function beforeSave($options = array()) {
     if (isset($this->data[$this->alias]['tw_access_token_secret'])) {
         $passwordHasher = new SimplePasswordHasher();
@@ -13,7 +13,7 @@ class Student extends AppModel {
     }
     return true;
 }
-*/
+
 public $validate = array(
         'tw_user_id' => array(
           'rule'=>array('isUnique'),
