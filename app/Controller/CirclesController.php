@@ -364,6 +364,13 @@ class CirclesController extends AppController {
 			}
 			
 			$circle_value = 0;
+			$circle_value1 = 0;
+			$circle_value2 = 0;
+			$circle_value3 = 0;
+			$circle_value4 = 0;
+			$circle_value5 = 0;
+			$circle_value6 = 0;
+			$circle_value7 = 0;
 			if($data["Circle"]["photo"] != ""){
 				$circle_value += 5;
 			}

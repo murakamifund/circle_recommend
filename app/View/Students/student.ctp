@@ -98,43 +98,31 @@ onload = function(){
 		<br><br>
 		
 		<h4>特徴から探す</h4>
-
-		<div class="search_group">
-		<div class="search_title">活動場所</div>
-		<div class="search_forms2">
-		<lavel><input type="radio" value="駒場" name="radio1" id="komaba" />駒場　</lavel>
-		<lavel><input type="radio" value="本郷" name="radio1" id="hongou" />本郷　</lavel>
-		<lavel><input type="radio" value="任意" name="radio1" id="any" checked="true" />どちらでも</lavel>
 		
-		</div>
-		</div>
 		<div class="search_group">
-		<div class="search_title">飲み会</div>
-		<div class="search_forms2">
-		←少ない　
-		<lavel><input type="radio" value="1  " name="radio3" id="nomi1" />1　</lavel>
-		<lavel><input type="radio" value="2  " name="radio3" id="nomi2" />2　</lavel>
-		<lavel><input type="radio" value="3  " name="radio3" id="nomi3" checked="true" />3　</lavel>
-		<lavel><input type="radio" value="4  " name="radio3" id="nomi4" />4　</lavel>
-		<lavel><input type="radio" value="5  " name="radio3" id="nomi5" />5　</lavel>
-		→多い　
-		<lavel><input type="checkbox" name="nochoice1" id="nochoice1" value="1" checked="true" />飲みを検索条件から外す</lavel>
+		<div class="search_title">検索条件</div>
+		<td>
+		<input type="radio" value="1" name="radio1" id="mazime" />
+		<lavel for="sort1">練習したい　</lavel>
+		<input type="radio" value="2" name="radio1" id="yurui" />
+		<lavel for="sort2">楽な方がいい　</lavel>
+		<input type="radio" value="3" name="radio1" id="nomi" />
+		<lavel for="sort3">飲みたい　</lavel>
+		<input type="radio" value="4" name="radio1" id="nomanai" />
+		<lavel for="sort4">飲みたくない　</lavel>
+		<br>
+		<input type="radio" value="5" name="radio1" id="inter" />
+		<lavel for="sort5">インカレがいい　</lavel>
+		<input type="radio" value="6" name="radio1" id="gakunai" />
+		<lavel for="sort6">学内がいい　</lavel>
+		<input type="radio" value="7" name="radio1" id="people" />
+		<lavel for="sort7">人数重視　</lavel>
+		<input type="radio" value="8" name="radio1" id="default" checked="true" />
+		<lavel for="sort8">デフォルト　</lavel>
+		</td>
+		</div>
 
-		</div>
-		</div>
-		<div class="search_group">
-		<div class="search_title">真面目さ</div>
-		<div class="search_forms2">
-		←楽しい　
-		<lavel><input type="radio" value="1  " name="radio4" id="mazime1" />1　</lavel>
-		<lavel><input type="radio" value="2  " name="radio4" id="mazime2" />2　</lavel>
-		<lavel><input type="radio" value="3  " name="radio4" id="mazime3" checked="true" />3　</lavel>
-		<lavel><input type="radio" value="4  " name="radio4" id="mazime4" />4　</lavel>
-		<lavel><input type="radio" value="5  " name="radio4" id="mazime5" />5　</lavel>
-		→ガチ　
-		<lavel><input type="checkbox" name="nochoice2" id="nochoice2" value="1" checked="true" />真面目さを検索条件から外す</lavel>
-		</div>
-		</div>
+		
 	<br>
 	<input type="submit" value="検索" id="search_submit"/>
 	<br>
@@ -248,54 +236,22 @@ onload = function(){
 			<lavel for="activity81">その他　</lavel>
 		</td>
 	</tr>
-	<th scope="row">活動場所</th>
+	<th scope="row">検索条件</th>
 		<td>
-		<input type="radio" value="駒場" name="radio1" id="komaba" />
-		<lavel for="mazime1">駒場　</lavel>
-		<input type="radio" value="本郷" name="radio1" id="hongou" />
-		<lavel for="mazime2">本郷　</lavel>
-		<input type="radio" value="任意" name="radio1" id="any" checked="true" />
-		<lavel for="mazime3">どちらでも　</lavel>
-		</td>
-	</tr>
-	<tr>
-	<th scope="row">飲み会</th>
-		<td>
-		←少ない
-		<input type="radio" value="1  " name="radio3" id="nomi1" />
-		<lavel for="nomi1">1</lavel>
-		<input type="radio" value="2  " name="radio3" id="nomi2" />
-		<lavel for="nomi2">2</lavel>
-		<input type="radio" value="3  " name="radio3" id="nomi3" checked="true" />
-		<lavel for="nomi3">3</lavel>
-		<input type="radio" value="4  " name="radio3" id="nomi4" />
-		<lavel for="nomi4">4</lavel>
-		<input type="radio" value="5  " name="radio3" id="nomi5" />
-		<lavel for="nomi5">5</lavel>
-		→多い
-		<br>
-		<input type="checkbox" name="nochoice1" id="nochoice1" value="1" checked="true" />
-		<lavel for="nochoice1">飲みを検索条件から外す　</lavel>
-		</td>
-	</tr>
-	<tr>
-	<th scope="row">真面目さ</th>
-		<td>
-		←楽しい
-		<input type="radio" value="1  " name="radio4" id="mazime1" />
-		<lavel for="mazime1">1</lavel>
-		<input type="radio" value="2  " name="radio4" id="mazime2" />
-		<lavel for="mazime2">2</lavel>
-		<input type="radio" value="3  " name="radio4" id="mazime3" checked="true" />
-		<lavel for="mazime3">3</lavel>
-		<input type="radio" value="4  " name="radio4" id="mazime4" />
-		<lavel for="mazime4">4</lavel>
-		<input type="radio" value="5  " name="radio4" id="mazime5" />
-		<lavel for="mazime5">5</lavel>
-		→ガチ
-		<br>
-		<input type="checkbox" name="nochoice2" id="nochoice2" value="1" checked="true" />
-		<lavel for="nochoice2">真面目さを検索条件から外す　</lavel>
+		<input type="radio" value="活動頻度重視" name="radio1" id="mazime" />
+		<lavel for="sort1">練習したい　</lavel>
+		<input type="radio" value="ゆるさ重視" name="radio1" id="yurui" />
+		<lavel for="sort2">楽な方がいい　</lavel>
+		<input type="radio" value="飲みたい" name="radio1" id="nomi" />
+		<lavel for="sort3">飲みたい　</lavel>
+		<input type="radio" value="飲みたくない重視" name="radio1" id="nomanai" />
+		<lavel for="sort4">飲みたくない　</lavel>
+		<input type="radio" value="人数重視" name="radio1" id="people" />
+		<lavel for="sort5">人数重視　</lavel>
+		<input type="radio" value="インカレ重視" name="radio1" id="inter" />
+		<lavel for="sort6">インカレがいい　</lavel>
+		<input type="radio" value="学内重視" name="radio1" id="gakunai" />
+		<lavel for="sort7">学内がいい　</lavel>
 		</td>
 	</tr>
 	</tbody>

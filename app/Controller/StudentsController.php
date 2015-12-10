@@ -290,9 +290,7 @@ class StudentsController extends AppController {
 		else{
 			$word = "";
 		}
-		$place = $this -> data["radio1"];
-		$nomi = $this -> data["radio3"];
-		$mazime = $this ->data["radio4"];
+		$sort = $this -> data["radio1"];//検索条件決定用変数
 	}
 	else{
 		$word = "";
@@ -649,15 +647,33 @@ class StudentsController extends AppController {
 				);
 			}
 		}
-		$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
+		if($sort == 1){
+			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value1 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		if($sort == 2){
+			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value2 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		if($sort == 3){
+			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value3 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		if($sort == 4){
+			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value4 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		if($sort == 5){
+			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value5 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		if($sort == 6){
+			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value6 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		if($sort == 7){
+			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value7 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		if($sort == 8){
+			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
+		}
 		
 		$this -> set('data',$data);
 		//$this -> set('count_data',$count_data);
-		$this -> set("check1",$check1);
-		$this -> set("check2",$check2);
-		$this -> set("check3",$check3);
-		$this -> set("check4",$check4);
-		$this -> set("check5",$check5);
 		$this -> set("activity",$activity);
 		if (isset($day)):
 			$this -> set("day",$day);
