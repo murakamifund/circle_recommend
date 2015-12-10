@@ -27,5 +27,20 @@ public $validate = array(
 		
         
     );
+    
+    /*public $actsAs = [
+        'Upload.Upload' => [
+            'photo' => [
+                'fields' => [
+                    'dir' => 'photo_dir'
+                ],
+            "path" => "{ROOT}webroot{DS}files{DS}{model}{DS}{field}{DS}",
+            "rootDir" => ROOT . DS . APP_DIR . DS,
+            "pathMethod" => "primaryKey"
+            ]
+        ]
+    ];*/
+
      
 }
+?>
