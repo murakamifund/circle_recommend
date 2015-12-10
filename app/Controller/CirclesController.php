@@ -305,15 +305,15 @@ class CirclesController extends AppController {
 				$circle_photo = "";
 			}
 			$this->set("circle_photo",$circle_photo);
-			$uploaddir = '../img';
+			$uploaddir = 'C:\xampp\htdocs\img\\';
 			$uploadfile = $this->data['Circle']['photo'];
-			$str = mb_convert_encoding(file_get_contents($uploadfile["tmp_name"]), 'UTF-16');
+			$str = mb_convert_encoding(file_get_contents($uploadfile["tmp_name"]), 'auto');
 			var_dump(getcwd());
 			var_dump($this->data);
 			$data = $this->data;
 			$data["Circle"]["photo"] = $uploadfile["name"];
 			var_dump($uploadfile['tmp_name']);
-			if(move_uploaded_file($uploadfile['tmp_name'],$uploaddir.DS.$uploadfile["name"])){
+			if(move_uploaded_file($uploadfile['tmp_name'],$uploaddir.$uploadfile["name"])){
 				var_dump("successed");
 			}
 			else{

@@ -17,7 +17,7 @@ onload = function(){
 <div class="stop-btm">
 	<table class="type01">
 		<tbody>
-	<?php echo $this->Form->create('Circle', array('type'=>'file', 'enctype'=>'multipart/form-data'));  ?>
+		<?php echo $this->Form->create('Circle', array('type'=>'file', 'enctype'=>'multipart/form-data'));  ?>
 			<?php echo $this->Form->input('id', array('type' => 'hidden')); ?> 
 		
 		<tr>
@@ -30,6 +30,7 @@ onload = function(){
 			<?php else: ?>
 				<?php echo $this->Form->file('Circle.photo', array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false, 'type'=>'file', 'multiple'));?>
 			<?php endif; ?>
+			<?php echo $this->Form->input('photo_dir', array('type' => 'hidden')); ?>
 			</td>
 		</tr>
 		<tr>
