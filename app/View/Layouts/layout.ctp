@@ -141,7 +141,7 @@
 	</form>
 </div>
 <div><a href="student_resister" id="popup_to_register">未登録の方はこちら</a></div>
-<div><a href="home" id="popup_close" onclick="close_popup()">もどる</a></div>
+<div><a href="#" id="popup_close" onclick="close_popup()">もどる</a></div>
 </div>
 
 

@@ -551,8 +551,8 @@ nav.fixed {
 ---------------------------------------------------------------------------*/
 /*各ボックスの設定*/
 #main section.list {
-	height: 420px;	/*ボックスの高さ*/
-	width: 325px;	/*ボックスの幅*/
+//	height: 420px;	/*ボックスの高さ*/
+	width: 100%;	/*ボックスの幅*/
 	border-radius: 10px;	/*角丸のサイズ*/
 	-webkit-box-shadow: 0px 2px 5px #fffacd;	/*影の設定。それぞれ右へ、下へ、ぼかし幅、色の設定。*/
 	box-shadow: 0px 2px 5px #bcbcbc;			/*同上*/
