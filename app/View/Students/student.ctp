@@ -566,100 +566,32 @@ endforeach ?>
 <img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"></p>
 </section>
 
-<section class="list">
-<figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>
-<h4>ランチプレート　1,300円</h4>
-<p>左の「おすすめ」マーク同様に、画像をhtml側に直接置き、class=&quot;icon&quot;を指定して下さい。
-<img src="../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon"></p>
+<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
+
 </section>
 
-<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
+<section class="list">
+<div class="list_top">
+	<div class="list_catch_phrase"></div>
+	<div class="list_tags"></div>
+	<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"></p>
+	<div class="list_name"></div>
+	<div class="list_twitter"></div>
+</div>
+<div class="list_body">
+	<div class="list_image"><img src="../img/sample_photo1.jpg" width="300" height="150" alt="" /></div>
+	<div class="list_pr"></div>
+	<div class="list_bottan"></div>
+</div>
+
+</div>
+</section>
 
 </section>
 <!--/lunch-->
 
-<section id="course">
 
-<h3 class="mb1em">コースメニュー</h3>
 
-<section class="list">
-<figure><img src="../img/sample_photo2.jpg" width="280" height="210" alt="" /></figure>
-<h4>コース　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
 
-<section class="list">
-<figure><img src="../img/sample_photo2.jpg" width="280" height="210" alt="" /></figure>
-<h4>コーA　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
-
-</section>
-<!--/course-->
-
-<section id="single">
-
-<h3 class="mb1em">単品メニュー</h3>
-
-<section class="list">
-<figure><img src="../img/sample_photo3.jpg" width="280" height="210" alt="" /></figure>
-<h4>サンプル　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<section class="list">
-<figure><img src="../img/sample_photo3.jpg" width="280" height="210" alt="" /></figure>
-<h4>サンプル　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
-
-</section>
-<!--/single-->
-
-<section id="drink">
-
-<h3 class="mb1em">ドリンクメニュー</h3>
-
-<section class="list">
-<figure><img src="../img/sample_photo4.jpg" width="280" height="210" alt="" /></figure>
-<h4>ドリンク　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<section class="list">
-<figure><img src="../img/sample_photo4.jpg" width="280" height="210" alt="" /></figure>
-<h4>ドリンク　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
-
-</section>
-<!--/drink-->
-
-<section id="desert">
-
-<h3 class="mb1em">デザートメニュー</h3>
-
-<section class="list">
-<figure><img src="../img/sample_photo5.jpg" width="280" height="210" alt="" /></figure>
-<h4>デザート　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<section class="list">
-<figure><img src="../img/sample_photo5.jpg" width="280" height="210" alt="" /></figure>
-<h4>デザート　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
-
-</section>
-<!--/desert-->
 
 </div>
