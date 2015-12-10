@@ -66,7 +66,7 @@ $act=array(
  
 
 <!--ここからhtml-->
-<?php echo $tw_user_id;?>
+<!--<?php echo $tw_user_id;?>-->
 
 <div id="circle_left">
 	<div id="circle_name">
