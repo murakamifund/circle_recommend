@@ -1142,7 +1142,11 @@ nav#menubar_pc{
 	display: none;
 }
 nav#menubar_mobile{
-	display: block;
+	display: none;	//エラー表示のため
+}
+
+#fixing_box{
+	display: none;	//エラー表示のため
 }
 
 
