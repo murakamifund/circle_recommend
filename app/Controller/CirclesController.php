@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
 
 class CirclesController extends AppController {
-	var $uses = array('Circle','Event');
+	var $uses = array('Circle','Event','Favorite','Student');
 	
 	
 	
@@ -27,7 +27,7 @@ class CirclesController extends AppController {
  
     public function beforeFilter() {
         // 各コントローラーの index と login を有効にする
-        $this->Auth->allow('circle','circle_login','circle_resister','circle_resister_finish','circle_id','event_id');
+        $this->Auth->allow('circle','circle_login','circle_resister','circle_resister_finish','circle_id','event_id','fav');
 		parent::beforeFilter();
 		AuthComponent::$sessionKey = 'Auth.circles';
     }
@@ -51,8 +51,16 @@ class CirclesController extends AppController {
 	
 	//circle個別ページのコントローラー
 	public function circle_id($id) {
+	//session
+	session_start();
+	if(isset($_SESSION['tw_user_id'])){
+			//userを持っていたら
+			$tw_user_id = $_SESSION['tw_user_id'];
+			$this->set('tw_user_id', $tw_user_id);
+			
+			
+	}
 	
-   
     $this->Circle->id = $id;
 	$this->set("circle_id",$id);//view側にデータをセット
 	
@@ -72,8 +80,6 @@ class CirclesController extends AppController {
 	$this->set("placetext",$placetext);//view側にデータをセット
 	$intercollege = $data['Circle']['intercollege'];
 	$this->set("intercollege",$intercollege);//view側にデータをセット
-	$all = $data['Circle']['all'];
-	$this->set("all",$all);//view側にデータをセット
 	$man = $data['Circle']['man'];
 	$this->set("man",$man);//view側にデータをセット
 	$woman = $data['Circle']['woman'];
@@ -97,34 +103,72 @@ class CirclesController extends AppController {
 	$pr = $data['Circle']['pr'];
 	$this->set("pr",$pr);//view側にデータをセット
 	
+	//カレンダーの機能
+	
 	//circleのIdに一致するイベントを列挙
-		$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $id)));
-		$count = $this->Event->find( 'count', array( 'conditions' => array('Event.circle_id' => $id)));
-		$title = array();
-		$day = array();
+	$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $id)));
+	$count = $this->Event->find( 'count', array( 'conditions' => array('Event.circle_id' => $id)));
+	$title = array();
+	$day = array();
+	
+	// SQLのレスポンスをもとにデータ作成
+	$rows = array();
+	for ( $a=0; count( $events) > $a; $a++) {
 		
-		// SQLのレスポンスをもとにデータ作成
-		$rows = array();
-		for ( $a=0; count( $events) > $a; $a++) {
-			
-			$rows[] = array(
-            'id' => $events[$a]['Event']['id'],
-			//'circle_id' => $events[$a]['Event']['circle_id'],
-			//'circle_name' => $events[$a]['Event']['circle_name'],
+		$rows[] = array(
+			'id' => $events[$a]['Event']['id'],
+		//'circle_id' => $events[$a]['Event']['circle_id'],
+		//'circle_name' => $events[$a]['Event']['circle_name'],
             'title' => $events[$a]['Event']['circle_name'].":".$events[$a]['Event']['title'],
             'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
             'end' => $events[$a]['Event']['day'],
 			'url' => "../event_id/".$events[$a]['Event']['id'],
 		
             //'allDay' => $events[$a]['Event']['allday'],
-        );
-		}
-		
-		// JSONへ変換
-		$this->set("json", json_encode($rows));
-    
-  }
+	);
+	}
 	
+	// JSONへ変換
+	$this->set("json", json_encode($rows));
+	
+	
+  }
+	public function fav($id = null){
+		if ($this->request->is('post') || $this->request->is('put')) {
+			//session
+			session_start();
+			if(isset($_SESSION['tw_user_id'])){
+				//userを持っていたら
+				$tw_user_id = $_SESSION['tw_user_id'];
+				$this->set('tw_user_id', $tw_user_id );
+				$fav_circles = $this->Favorite->find('all', array(
+					'conditions' => array('user_id' => $tw_user_id,'circle_id' => $id)
+				));
+				
+				if (!empty($fav_circles)) {
+					$this->Session->setFlash(__('すでにお気に入り登録されています'));
+				}else{
+					//$this->Favorite->create();
+					
+					$this->Favorite->save([
+					  'user_id' => $tw_user_id,
+					  'circle_id' => $id,
+					]);
+					
+					
+					
+					$this->Session->setFlash(__('お気に入り登録しました'));
+				}
+				$this->redirect(array('action'=>'circle_id/'.$id));
+			}else{
+				$this->redirect(array('action'=>'circle_id/'.$id));
+				$this->Session->setFlash(__('Twitterでログインしてください'));
+			}
+		}else{
+		
+		}
+	
+	}
 	
 	//circle個別ページのコントローラー
 	public function event_id($id) {
@@ -135,12 +179,31 @@ class CirclesController extends AppController {
 	
 	$events = $this->Event->find('first',array(
 		'conditions' => array('Event.id' => $id)));
+	$circleid = $events['Event']['circle_id'];
+	$this->set("circleid",$circleid);//view側にデータをセット
 	$circle_name = $events['Event']['circle_name'];
 	$this->set("circle_name",$circle_name);//view側にデータをセット
 	$title = $events['Event']['title'];
 	$this->set("title",$title);//view側にデータをセット
 	$day= $events['Event']['day'];
 	$this->set("day",$day);//view側にデータをセット
+	
+	$place= $events['Event']['place'];
+	$this->set("place",$place);//view側にデータをセット
+	$money= $events['Event']['money'];
+	$this->set("money",$money);//view側にデータをセット
+	$for_newcomer= $events['Event']['for_newcomer'];
+	$this->set("for_newcomer",$for_newcomer);//view側にデータをセット
+	$practice= $events['Event']['practice'];
+	$this->set("practice",$practice);//view側にデータをセット
+	$game= $events['Event']['game'];
+	$this->set("game",$game);//view側にデータをセット
+	$camp= $events['Event']['camp'];
+	$this->set("camp",$camp);//view側にデータをセット
+	$party= $events['Event']['party'];
+	$this->set("party",$party);//view側にデータをセット
+	$other= $events['Event']['other'];
+	$this->set("other",$other);//view側にデータをセット
 	
     
     
@@ -208,7 +271,7 @@ class CirclesController extends AppController {
             $this->data = Sanitize::clean($this->data, array('encode' => false));
 			//debug($this->request->data);
 			
-            if ($this->Event->save($this->request->data, array('validate' => false))) {
+            if ($this->Event->save($this->request->data)) {
 				// $this->redirect(array('action'=>'follow')); //twitter
                 $this->Session->setFlash(__('更新完了しました。'));
 				//更新したらloginページに移動させる
@@ -265,24 +328,68 @@ class CirclesController extends AppController {
 	
 	$circle_name = $this->Auth->user('circle_name');
 	$this->set("circle_name",$circle_name);//view側にデータをセット
+	if($this->Auth->user('photo') != ""){
+		$circle_photo = $this->Auth->user('photo');
+	}
+	else{
+		$circle_photo = "";
+	}
+	$this->set("circle_photo",$circle_photo);
    
 	
     if ($this->request->is('post') || $this->request->is('put')) {
             $this->data = Sanitize::clean($this->data, array('encode' => false));
 			//debug($this->request->data);
 			
+			if($this->data['Circle']['photo']['name'] != ""){
+				$circle_photo = $this->data['Circle']['photo']['name'];
+			}
+			else{
+				$circle_photo = "";
+			}
+			$this->set("circle_photo",$circle_photo);
 			$uploaddir = '../img';
 			$uploadfile = $this->data['Circle']['photo'];
+			$str = mb_convert_encoding(file_get_contents($uploadfile["tmp_name"]), 'UTF-16');
 			var_dump(getcwd());
+			var_dump($this->data);
 			$data = $this->data;
 			$data["Circle"]["photo"] = $uploadfile["name"];
-			var_dump($data);
+			var_dump($uploadfile['tmp_name']);
 			if(move_uploaded_file($uploadfile['tmp_name'],$uploaddir.DS.$uploadfile["name"])){
 				var_dump("successed");
 			}
 			else{
 				var_dump("failed");
 			}
+			
+			$circle_value = 0;
+			if($data["Circle"]["photo"] != ""){
+				$circle_value += 5;
+			}
+			if($data["Circle"]["url"] != ""){
+				$circle_value += 5;
+			}
+			if($data["Circle"]["pr"] != ""){
+				$circle_value += 5;
+			}
+			if($data["Circle"]["placetext"] != ""){
+				$circle_value += 1;
+			}
+			if($data["Circle"]["man"] > 0){
+				$circle_value += 1;
+			}
+			if($data["Circle"]["woman"] > 0){
+				$circle_value += 1;
+			}
+			if($data["Circle"]["cost_in"] > 0){
+				$circle_value += 1;
+			}
+			if($data["Circle"]["cost"] > 0){
+				$circle_value += 1;
+			}
+			//お気に入り数をvalueに加える
+			$data["Circle"]["value"] = $circle_value;
 			
             if ($this->Circle->save($data, array('validate' => false))) {
 				// $this->redirect(array('action'=>'follow')); //twitter

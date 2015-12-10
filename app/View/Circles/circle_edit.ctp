@@ -22,7 +22,15 @@ onload = function(){
 		
 		<tr>
 			<th scope="row">写真</th>
-			<td><?php echo $this->Form->input('photo', array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false, 'type'=>'file'));?></td>
+			<td>
+			<?php if($circle_photo != ""): ?>
+				<figure><img src="../img/sample_photo2.jpg" width="280" height="210" alt="アップロード用" /></figure>
+				<br>
+				<?php echo $this->Form->file('Circle.photo', array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false, 'value'=>"../img/アップロード用.png",  'type'=>'file', 'multiple'));?>
+			<?php else: ?>
+				<?php echo $this->Form->file('Circle.photo', array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false, 'type'=>'file', 'multiple'));?>
+			<?php endif; ?>
+			</td>
 		</tr>
 		<tr>
 			 <th scope="row">サークル名</th>
@@ -207,10 +215,8 @@ onload = function(){
 	<div Align="right">
 		
 			<?php
-				echo '<p> ';
-				//echo $this->Form->error('name');
-				echo '</p>';
-				echo $this->Form->end(__('更新')); 
+				echo $this->Form->submit('更新', array('name' => 'submit'));
+				echo $this->Form->end(); 
 			?>
 		
 	</div>

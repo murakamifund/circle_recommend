@@ -66,6 +66,7 @@ $act=array(
  
 
 <!--ここからhtml-->
+<!--<?php echo $tw_user_id;?>-->
 
 <div id="circle_left">
 	<div id="circle_name">
@@ -100,6 +101,17 @@ $act=array(
 
 </div>
 
+<h4> お気に入り </h4>
+
+<?php echo $this->Form->postLink('お気に入り登録',array(
+		'action'=>'fav',$circle_id),
+array('class'=>'btn btn-info'),'お気に入りに登録しますか?');?>
+
+<br>
+
+<font size="3" color="#0000ff">
+		<?php echo $this->Session->flash(); ?>
+		</font>
 
 <!--
 <p>
@@ -207,7 +219,7 @@ $act=array(
 	
 	$('#fc1').fullCalendar({
 		defaultDate: '2015-11-12',
-			editable: true,
+			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			selectable: true,
 			events:<?php echo  $json; ?>

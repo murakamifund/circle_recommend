@@ -1,3 +1,9 @@
+<?php
+	echo $this->html->css(array('fullcalendar', 'bootstrap','headshrinker'));
+	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
+?>
+
+
 <script>
 onload = function(){
 	func_student();	
@@ -303,8 +309,34 @@ onload = function(){
 
 <section id="lunch">
 
+<h3 class="mb1em">カレンダー</h3>
+団体名をクリックすると、その団体の詳細に飛べます。
 
-<h3 class="mb1em">ランチメニュー</h3>
+<p>
+<div id="fc1" class="fc" >
+
+</div>
+
+<script>
+
+	
+	$('#fc1').fullCalendar({
+		defaultDate: '2015-11-12',
+			editable: false,
+			eventLimit: true, // allow "more" link when too many events
+			selectable: true,
+			events:<?php echo  $json; ?>
+			
+			
+	});
+	
+	
+    
+</script>
+</p>
+
+
+<h3 class="mb1em">サークル一覧</h3>
 
 <?php
 $year =date("Y",time());
@@ -479,11 +511,10 @@ endforeach ?>
 	<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
 </a>
 </h3>
-	<?php if($datum['Circle']['photo_name'] != ""): ?>
-	<?php var_dump($datum['Circle']['photo_name']); ?>
-		<figure><img src="../img/".$datum['Circle']['photo_name'] width="280" height="210" alt="" /></figure>
+	<?php if($datum['Circle']['photo'] != ""): ?>
+		<figure><img src="../img/sample_photo2.jpg" width="280" height="210" alt="" /></figure>
 	<?php else: ?>
-		<figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>
+		<?php echo "NO IMAGE"; ?>
 	<?php endif; ?>
 <h4><!--サークルの名前-->
 	<a href="../Circles/circle_id/<?php echo $datum['Circle']['id']; ?>">
