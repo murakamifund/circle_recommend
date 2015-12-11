@@ -364,39 +364,63 @@ class CirclesController extends AppController {
 			}
 			
 			$circle_value = 0;
-			$circle_value1 = 0;
-			$circle_value2 = 0;
-			$circle_value3 = 0;
-			$circle_value4 = 0;
-			$circle_value5 = 0;
-			$circle_value6 = 0;
-			$circle_value7 = 0;
+			$circle_value1 = 0;//練習したい
+			$circle_value2 = 0;//楽な方がいい
+			$circle_value3 = 0;//飲みたい
+			$circle_value4 = 0;//飲みたくない
+			$circle_value5 = 0;//インカレがいい
+			$circle_value6 = 0;//学内がいい
+			$circle_value7 = 0;//人数重視
 			if($data["Circle"]["photo"] != ""){
 				$circle_value += 5;
+				$circle_value1 += 5;
+				$circle_value2 += 5;
+				$circle_value3 += 5;
+				$circle_value4 += 5;
+				$circle_value5 += 5;
+				$circle_value6 += 5;
+				$circle_value7 += 5;
 			}
 			if($data["Circle"]["url"] != ""){
 				$circle_value += 5;
+				$circle_value1 += 5;
+				$circle_value2 += 5;
+				$circle_value3 += 5;
+				$circle_value4 += 5;
+				$circle_value5 += 5;
+				$circle_value6 += 5;
+				$circle_value7 += 5;
 			}
 			if($data["Circle"]["pr"] != ""){
 				$circle_value += 5;
+				$circle_value1 += 5;
+				$circle_value2 += 5;
+				$circle_value3 += 5;
+				$circle_value4 += 5;
+				$circle_value5 += 5;
+				$circle_value6 += 5;
+				$circle_value7 += 5;
 			}
-			if($data["Circle"]["placetext"] != ""){
-				$circle_value += 1;
+			if($data["Circle"]["intercollege"] = "学内"){
+				$circle_value6 += 10;
 			}
-			if($data["Circle"]["man"] > 0){
-				$circle_value += 1;
+			if($data["Circle"]["intercollege"] = "インカレ"){
+				$circle_value5 += 10;
 			}
-			if($data["Circle"]["woman"] > 0){
-				$circle_value += 1;
-			}
-			if($data["Circle"]["cost_in"] > 0){
-				$circle_value += 1;
-			}
-			if($data["Circle"]["cost"] > 0){
-				$circle_value += 1;
-			}
+			$circle_value7 += $data["Circle"]["man"] + $data["Circle"]["woman"];
+			$circle_value1 += $data["Circle"]["mazime"] * 5;
+			$circle_value3 += $data["Circle"]["nomi"] * 5;
+			$circle_value2 += 25 - $data["Circle"]["mazime"] * 5;
+			$circle_value4 += 25 - $data["Circle"]["nomi"] * 5;
 			//お気に入り数をvalueに加える
 			$data["Circle"]["value"] = $circle_value;
+			$data["Circle"]["value1"] = $circle_value1;
+			$data["Circle"]["value2"] = $circle_value2;
+			$data["Circle"]["value3"] = $circle_value3;
+			$data["Circle"]["value4"] = $circle_value4;
+			$data["Circle"]["value5"] = $circle_value5;
+			$data["Circle"]["value6"] = $circle_value6;
+			$data["Circle"]["value7"] = $circle_value7;
 			
             if ($this->Circle->save($data, array('validate' => false))) {
 				// $this->redirect(array('action'=>'follow')); //twitter
