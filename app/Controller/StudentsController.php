@@ -183,7 +183,7 @@ class StudentsController extends AppController {
 			$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
 			
 			
-			$this->redirect(array('action' => 'circle_edit_main'));
+			$this->redirect(array('action' => 'circle_resister'));
 		}
 	}else{
 		//ログイン済み
@@ -649,11 +649,11 @@ class StudentsController extends AppController {
 	}//circle_editの終わり
 	
 	
-	
+	//サークル情報の削除
 	public function del($id) {
    
     $this->Circle->id = $id;
-
+	$this->Session->destroy();
     if ($this->request->is('post') || $this->request->is('put')) {
       $this->data = Sanitize::clean($this->data, array('encode' => false));
       $this->Circle->delete($this->request->data('Circle.id'));
