@@ -408,11 +408,11 @@ if($this->request->data){
 		<td bgcolor="#bcfffe">
 			<?php 
 				$string = "https://twitter.com/";	
-				$string .= $datum['Circle']['twitterid'];	
+				$string .= $datum['Circle']['tw_screen_name'];	
 			?>	
 			<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
 				Follow 
-				<?php echo $datum['Circle']['twitterid']; ?>
+				<?php echo $datum['Circle']['tw_screen_name']; ?>
 			</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 			</script>
@@ -463,17 +463,19 @@ endforeach ?>
 
 <section class="list">
 <h3> <!--サークルの名前-->
-<a href="../Circles/circle_id/<?php echo $datum['Circle']['id']; ?>">
+<a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">
 	<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
 </a>
 </h3>
+	<!--
 	<?php if($datum['Circle']['photo'] != ""): ?>
 		<figure><img src="../img/sample_photo2.jpg" width="280" height="210" alt="" /></figure>
 	<?php else: ?>
 		<?php echo "NO IMAGE"; ?>
 	<?php endif; ?>
+	-->
 <h4><!--サークルの名前-->
-	<a href="../Circles/circle_id/<?php echo $datum['Circle']['id']; ?>">
+	<a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">
 		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
 	</a>
 	<!--
@@ -487,11 +489,11 @@ endforeach ?>
 	-->
 	<?php 
 		$string = "https://twitter.com/";	
-		$string .= $datum['Circle']['twitterid'];	
+		$string .= $datum['Circle']['tw_screen_name'];	
 	?>	
 		<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
 			Follow 
-		<?php echo $datum['Circle']['twitterid']; ?>
+		<?php echo $datum['Circle']['tw_screen_name']; ?>
 		</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 		</script>

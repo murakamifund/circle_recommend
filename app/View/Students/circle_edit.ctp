@@ -18,8 +18,9 @@ onload = function(){
 	<table class="type01">
 		<tbody>
 		<?php echo $this->Form->create('Circle', array('type'=>'file', 'enctype'=>'multipart/form-data'));  ?>
-			<?php echo $this->Form->input('id', array('type' => 'hidden')); ?> 
-		
+			<?php echo $this->Form->input('id', array('type' => 'hidden','value' => $id)); ?> 
+			
+		<!--
 		<tr>
 			<th scope="row">写真</th>
 			<td>
@@ -33,14 +34,10 @@ onload = function(){
 			<?php echo $this->Form->input('photo_dir', array('type' => 'hidden')); ?>
 			</td>
 		</tr>
+		-->
 		<tr>
 			 <th scope="row">サークル名</th>
 			<td><?php echo $this->Form->input('circle_name', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
-		</tr>
-		<tr>
-			<th scope="row">TwitterアカウントのID</th>
-
-			<td><?php echo $this->Form->input('twitterid', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
 		</tr>
 		<tr>
 			<th scope="row">URL</th>

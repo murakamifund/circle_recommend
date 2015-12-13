@@ -12,25 +12,12 @@ onload = function(){
 	<table class = "type01">
 	<tbody>
 		<?php echo $this->Form->create('Circle'); ?>
-		<?php echo $this->Form->input('id', array('type' => 'hidden',)); ?>
-		<?php echo $this->Form->input('student_id', array('type' => 'hidden','value' => $student_id)); ?>
+		<?php echo $this->Form->input('id', array('type' => 'hidden','value' => $circleid)); ?>
 		<tr>
 			<th scope="row">サークル名</th>
 			<td><?php echo $this->Form->input('circle_name', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));?>
 			<?php echo $this->Form->error('circle_name');?>
-			<br>(注)サークル名はサークル情報の更新に必要です。サークル情報編集者で共有してください。
 			</td>
-		</tr>
-		<tr>
-			<th scope="row">パスワード</th>
-			 <td><?php echo $this->Form->input('password', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false)); ?>
-			 <br>(注)パスワードはサークル情報の更新に必要です。きちんと管理し、サークル情報編集者で共有してください。
-			 <?php echo $this->Form->error('password');  ?></td>
-		</tr>
-		
-		<tr>
-			<th scope="row">サークルTwitterアカウントID</th>
-			 <td><?php echo $this->Form->input('twitterid', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false)); ?></td>
 		</tr>
 		<tr>
 			<th scope="row">URL</th>
@@ -212,12 +199,3 @@ onload = function(){
 		</p>
 	</div><!-- stop-btm -->
 
-
-
-
-<h3 class="mb1em">個人ページに戻る</h3>
-<div Align="right">
-		<div class="i-btn">
-			<a href="../../Students/student_edit">個人ページに戻る</a>
-		</div>
-</div>

@@ -2,7 +2,7 @@
 App::uses('AppModel', 'Model');
 App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 class Student extends AppModel {
-	 /**
+ /**
  * 保存時にパスワードをハッシュ化する
  */
 	 

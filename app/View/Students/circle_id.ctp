@@ -12,7 +12,7 @@ $nomi_custom = array('飲まない','あまり飲まない','普通','飲む','�
 $nomi_chosen = $nomi_custom[$nomi-1];
 
 $mazime_custom = array('楽しくワイワイ','少しゆるい','普通','厳しめ','かなり厳しい');
-$mazime_chosen = $mazime_custom[$mazime-1];
+$mazime_chosen = $mazime_custom[$mazime-2];
 
 $day_custom = array('月','火','水','木','金','土','日');
 $day_chosen = "";
@@ -73,7 +73,7 @@ $act=array(
 		<a href="<?php echo $url; ?>"><?php echo $circle_name; ?></a>
 	</div>
 	<div id="circle_twitter">
-		<a href="https://twitter.com/<?php echo $twitterid; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true">@twitterさんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true">@twitterさんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 	</div>
 	<div id="circle_photo">
 		<img id="circle_photo_base" src="../../img/noimage.jpg" width="400" height="300" alt="NO IMAGE" >
