@@ -45,8 +45,6 @@ class CirclesController extends AppController {
 				$this->Session->setFlash(__('サークル名かパスワードが間違っています。'));
 			}
 		}
-	
-   
 	}
 	
 	//circle個別ページのコントローラー
@@ -155,8 +153,6 @@ class CirclesController extends AppController {
 					  'circle_id' => $id,
 					]);
 					
-					
-					
 					$this->Session->setFlash(__('お気に入り登録しました'));
 				}
 				$this->redirect(array('action'=>'circle_id/'.$id));
@@ -212,12 +208,12 @@ class CirclesController extends AppController {
 	
 	public function circle_resister($id) {
 	
-    $this->modelClass = null;
+		$this->modelClass = null;
 	
-	$this->set('student_id', $id);	//これでビュー側でstudent_idと指定してidを表示
+		$this->set('student_id', $id);	//これでビュー側でstudent_idと指定してidを表示
 	
-	// post時の処理
-	if ($this->request->is('post')) {
+		// post時の処理
+		if ($this->request->is('post')) {
             $this->data = Sanitize::clean($this->data, array('encode' => false));
             $this->Circle->create();
             if ($this->Circle->save($this->request->data)) {	//ここにfalseと入れればバリデーションを無視できる
@@ -228,16 +224,11 @@ class CirclesController extends AppController {
                 $this->Session->setFlash(__('登録に失敗しました。もう一度やり直してください。'));
 				//debug($this->Circle->validationErrors);
             }
-			
-    }
-   
-	}
+		}
+	}//circle_resisterの終わり
 	
 	public function circle_resister_finish() {
-	
-    $this->modelClass = null;
-	
-   
+		$this->modelClass = null;
 	}
 	
 	public function circle_edit_main(){
