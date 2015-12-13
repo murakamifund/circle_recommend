@@ -175,15 +175,20 @@ class StudentsController extends AppController {
 				$stmt = $dbh->prepare($sql);
 				$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
 				$local_user = $stmt->fetch();
+				
+				$tw_user_id = $me->id_str;
+				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
+			
+			
+				$this->redirect(array('action' => 'circle_resister'));
 			}
-			
-			
 			
 			$tw_user_id = $me->id_str;
 			$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
 			
+			$this->redirect(array('action' => 'circle_edit_main'));
 			
-			$this->redirect(array('action' => 'circle_resister'));
+			
 		}
 	}else{
 		//ログイン済み
