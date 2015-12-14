@@ -4,6 +4,7 @@ App::uses('Sanitize', 'Utility');
 
 class StudentsController extends AppController {
 	var $uses = array('Circle','Event','Favorite','Student');
+	//public $components = array('Security');
 	
     public function beforeFilter() {
         
@@ -211,9 +212,7 @@ class StudentsController extends AppController {
 	}
 	
 	public function student_resister() {
-		session_start();
-		$this->modelClass = null;
-
+		
 	}
 	
 	public function student_edit(){
@@ -271,7 +270,11 @@ class StudentsController extends AppController {
 	//homeページのコントローラー
 	public function home() {
 	
-    $this->modelClass = null;
+		$this->modelClass = null;
+		$total_user = $this->Student->find('count');
+		$this->set("total_user",$total_user);//view側にデータをセット
+		$total_circle = $this->Circle->find('count');
+		$this->set("total_circle",$total_circle);//view側にデータをセット
     
 	}
 	
@@ -954,6 +957,7 @@ class StudentsController extends AppController {
 	$p=array("駒場","本郷","");
 	$in=array("学内","インカレ","");
 	if ($this -> request -> data){
+		$this->data = Sanitize::clean($this->data, array('encode' => false));
 		if($this -> data["keyword"] != ""){
 			$opt = array(
 				array(
