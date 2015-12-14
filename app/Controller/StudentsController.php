@@ -672,7 +672,16 @@ class StudentsController extends AppController {
 				$circle_value3 += $local_user['Circle']['nomi'] * 5;
 				$circle_value2 += 25 - $local_user['Circle']['mazime'] * 5;
 				$circle_value4 += 25 - $local_user['Circle']['nomi'] * 5;
+				$favorite = $this->Favorite->find('count', array('conditions' => array('Favorite.circle_id' => $id)));
 				//お気に入り数をvalueに加える
+				$circle_value += $favorite;
+				$circle_value1 += $favorite;
+				$circle_value2 += $favorite;
+				$circle_value3 += $favorite;
+				$circle_value4 += $favorite;
+				$circle_value5 += $favorite;
+				$circle_value6 += $favorite;
+				$circle_value7 += $favorite;
 				$this->request->data['Circle']['id'] = $id;
 				$this->request->data['Circle']['value'] = $circle_value;
 				$this->request->data['Circle']['value1'] = $circle_value1;
