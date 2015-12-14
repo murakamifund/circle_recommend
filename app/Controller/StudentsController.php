@@ -17,8 +17,8 @@ class StudentsController extends AppController {
 		session_start();
 		
 
-		\Codebird\Codebird::setConsumerKey(CONSUMER_KEY, CONSUMER_SECRET);
-		//\Codebird\Codebird::setConsumerKey('CONSUMER_KEY', 'CONSUMER_SECRET');
+		//\Codebird\Codebird::setConsumerKey(CONSUMER_KEY, CONSUMER_SECRET);
+		\Codebird\Codebird::setConsumerKey('CONSUMER_KEY', 'CONSUMER_SECRET');
 		$cb = \Codebird\Codebird::getInstance();
 		
 	if(! isset($_SESSION['tw_user_id'])){
