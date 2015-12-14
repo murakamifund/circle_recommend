@@ -588,6 +588,47 @@ class StudentsController extends AppController {
 			if ($this->request->is('post') || $this->request->is('put')) {
 				$this->data = Sanitize::clean($this->data, array('encode' => false));
 				//debug($this->request->data);
+				$act=array(
+					"1"=>'テニス',
+					"2"=>'卓球',
+					"3"=>'サッカー',
+					"4"=>'野球',
+					"5"=>'バスケ',
+					"6"=>'バレー',
+					"7"=>'バドミントン',
+					"8"=>'ラグビー',
+					"9"=>'ホッケー',
+					"10"=>'水泳',
+					"11"=>'武道',
+					"12"=>'ダンス',
+					"13"=>'登山',
+					"14"=>'乗り物',
+					"15"=>'スキー',
+					"31"=>'政治・経済',
+					"32"=>'放送・広告',
+					"33"=>'語学',
+					"34"=>'国際',
+					"35"=>'コンピュータ',
+					"36"=>'自然科学',
+					"37"=>'法学',
+					"38"=>'企業',
+					"51"=>'ロック',
+					"52"=>'ジャズ',
+					"53"=>'クラシック',
+					"54"=>'コーラス',
+					"61"=>'映画・写真',
+					"62"=>'演劇・お笑い',
+					"63"=>'美術',
+					"64"=>'文芸',
+					"71"=>'旅行',
+					"72"=>'アウトドア',
+					"73"=>'ゲーム',
+					"74"=>'グルメ',
+					"75"=>'芸能',
+					"81"=>'その他'
+				);
+				$activity = $act[$local_user["Circle"]["activity"]];
+				$this->request->data['Circle']['activity'] = $activity;
 				$circle_value = 0;
 				$circle_value1 = 0;//練習したい
 				$circle_value2 = 0;//楽な方がいい
@@ -920,7 +961,9 @@ class StudentsController extends AppController {
 						array(
 							'OR' => array(
 								array('Circle.circle_name LIKE' => '%'.$word.'%'),
-								array('Circle.pr LIKE' => '%'.$word.'%')
+								array('Circle.pr LIKE' => '%'.$word.'%'),
+								array('Circle.activity LIKE' => '%'.$word.'%'),
+								array('Circle.phrase LIKE' => '%'.$word.'%'),
 							)
 						),
 						array(
