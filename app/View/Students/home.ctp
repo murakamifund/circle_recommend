@@ -5,15 +5,20 @@ onload = function(){
 </script>
 
 <section>
-<h2>Welcome to CIRCLE RECOMMENDER!!</h2>
-
-<p>サークルレコメンダーへようこそ！！</p>
-<p>現在、当サイトの登録学生数は <span class="strong_num">4</span> 名、登録サークル数は <span class="strong_num">3</span> 件です。<br>ページ右上の「新規登録」から学生の新規登録が可能です（登録しなくても、サービスを利用することは出来ます）。</p>
+<h2>Welcome to UT-Circle!!</h2>
+<p>
+UT-Circleをご利用いただきありがとうございます
+<br>
+<br>
+UT-Circleは、東京大学のサークルを紹介するWebサービスです。Twitterと連携し、「SNS上での新歓」というスタイリッシュな新歓を提供します。
+<br>
+現在、当サイトの登録ユーザー数は <span class="strong_num"><?php echo $total_user;?></span> 名、登録団体数は <span class="strong_num"><?php echo $total_circle;?></span> 件です。<br>
+</p>
 
 </section>
 
 <section>
-<h2>What's CIRCLE RECOMMENDER??</h2>
+<h2>How to use UT-Circle??</h2>
 <p>サークルレコメンダーは、東京大学内のサークルを東大生に紹介するサービスです。サークル選びに困っている学生さんはメニューの「STUDENT」よりサークル検索を！</p>
 <div><a class="access_btn" href="student">STUDENT</a></div>
 <div class="btn_nav">サークルを探したい学生はこちら！活動内容、雰囲気などから、自分にぴったりのサークルを見つけることが出来ます。</div>
