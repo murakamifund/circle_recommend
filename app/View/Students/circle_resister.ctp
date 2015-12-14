@@ -20,6 +20,12 @@ onload = function(){
 			</td>
 		</tr>
 		<tr>
+			<th scope="row">キャッチフレーズ</th>
+			<td><?php echo $this->Form->input('phrase', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));?>
+			<?php echo $this->Form->error('phrase');?>
+			</td>
+		</tr>
+		<tr>
 			<th scope="row">URL</th>
 			<td><?php echo $this->Form->input('url', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
 		</tr>

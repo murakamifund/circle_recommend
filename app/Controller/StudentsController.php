@@ -181,12 +181,16 @@ class StudentsController extends AppController {
 			
 			
 				$this->redirect(array('action' => 'circle_resister'));
+			}else{
+				
+				$tw_user_id = $me->id_str;
+				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
+			
+				$this->redirect(array('action' => 'circle_edit_main'));
+			
 			}
 			
-			$tw_user_id = $me->id_str;
-			$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
 			
-			$this->redirect(array('action' => 'circle_edit_main'));
 			
 			
 		}
