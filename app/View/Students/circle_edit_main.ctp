@@ -34,7 +34,7 @@ onload = function(){
 	<div Align="right">
 	<?php echo $this->Form->postLink('サークル情報を削除',array(
 		'action'=>'del',
-		$tmp),array('class'=>'btn btn-info'),'サークル情報を消去してもよろしいですか?');?>
+		$id),array('class'=>'btn btn-info'),'サークル情報を消去してもよろしいですか?');?>
 	</div>
 </p>
 
@@ -44,7 +44,7 @@ onload = function(){
 <div class="stop-btm">
 	<div Align="right">
 		<div class="i-btn">
-			<a href="circle_logout">編集を完了</a>
+			<a href="student_tw_logout">ログアウト</a>
 		</div>
 	</div>
 </div>

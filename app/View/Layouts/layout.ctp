@@ -40,7 +40,7 @@
 <li id="current"><a class="menu_pc" href="../Students/home">HOME</a></li>
 <li><a class="menu_pc" href="../Students/about">ABOUT</a></li>
 <li><a class="menu_pc" href="../Students/student">STUDENT</a></li>
-<li><a class="menu_pc" href="../Circles/circle">CIRCLE</a></li>
+<li><a class="menu_pc" href="../Students/circle">CIRCLE</a></li>
 <li><a class="menu_pc" href="../Students/student_resister">新規登録</a></li>
 <li><a class="menu_pc" href="../Students/student_login">ログイン</a></li>
 </ul>
@@ -141,7 +141,7 @@
 	</form>
 </div>
 <div><a href="student_resister" id="popup_to_register">未登録の方はこちら</a></div>
-<div><a href="home" id="popup_close" onclick="close_popup()">もどる</a></div>
+<div><a href="#" id="popup_close" onclick="close_popup()">もどる</a></div>
 </div>
 
 

@@ -1,3 +1,9 @@
+<?php
+	echo $this->html->css(array('fullcalendar', 'bootstrap','headshrinker'));
+	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
+?>
+
+
 <script>
 onload = function(){
 	func_student();	
@@ -92,43 +98,31 @@ onload = function(){
 		<br><br>
 		
 		<h4>特徴から探す</h4>
-
-		<div class="search_group">
-		<div class="search_title">活動場所</div>
-		<div class="search_forms2">
-		<lavel><input type="radio" value="駒場" name="radio1" id="komaba" />駒場　</lavel>
-		<lavel><input type="radio" value="本郷" name="radio1" id="hongou" />本郷　</lavel>
-		<lavel><input type="radio" value="任意" name="radio1" id="any" checked="true" />どちらでも</lavel>
 		
-		</div>
-		</div>
 		<div class="search_group">
-		<div class="search_title">飲み会</div>
-		<div class="search_forms2">
-		←少ない　
-		<lavel><input type="radio" value="1  " name="radio3" id="nomi1" />1　</lavel>
-		<lavel><input type="radio" value="2  " name="radio3" id="nomi2" />2　</lavel>
-		<lavel><input type="radio" value="3  " name="radio3" id="nomi3" checked="true" />3　</lavel>
-		<lavel><input type="radio" value="4  " name="radio3" id="nomi4" />4　</lavel>
-		<lavel><input type="radio" value="5  " name="radio3" id="nomi5" />5　</lavel>
-		→多い　
-		<lavel><input type="checkbox" name="nochoice1" id="nochoice1" value="1" checked="true" />飲みを検索条件から外す</lavel>
+		<div class="search_title">検索条件</div>
+		<td>
+		<input type="radio" value="1" name="radio1" id="mazime" />
+		<lavel for="sort1">練習したい　</lavel>
+		<input type="radio" value="2" name="radio1" id="yurui" />
+		<lavel for="sort2">楽な方がいい　</lavel>
+		<input type="radio" value="3" name="radio1" id="nomi" />
+		<lavel for="sort3">飲みたい　</lavel>
+		<input type="radio" value="4" name="radio1" id="nomanai" />
+		<lavel for="sort4">飲みたくない　</lavel>
+		<br>
+		<input type="radio" value="5" name="radio1" id="inter" />
+		<lavel for="sort5">インカレがいい　</lavel>
+		<input type="radio" value="6" name="radio1" id="gakunai" />
+		<lavel for="sort6">学内がいい　</lavel>
+		<input type="radio" value="7" name="radio1" id="people" />
+		<lavel for="sort7">人数重視　</lavel>
+		<input type="radio" value="8" name="radio1" id="default" checked="true" />
+		<lavel for="sort8">デフォルト　</lavel>
+		</td>
+		</div>
 
-		</div>
-		</div>
-		<div class="search_group">
-		<div class="search_title">真面目さ</div>
-		<div class="search_forms2">
-		←楽しい　
-		<lavel><input type="radio" value="1  " name="radio4" id="mazime1" />1　</lavel>
-		<lavel><input type="radio" value="2  " name="radio4" id="mazime2" />2　</lavel>
-		<lavel><input type="radio" value="3  " name="radio4" id="mazime3" checked="true" />3　</lavel>
-		<lavel><input type="radio" value="4  " name="radio4" id="mazime4" />4　</lavel>
-		<lavel><input type="radio" value="5  " name="radio4" id="mazime5" />5　</lavel>
-		→ガチ　
-		<lavel><input type="checkbox" name="nochoice2" id="nochoice2" value="1" checked="true" />真面目さを検索条件から外す</lavel>
-		</div>
-		</div>
+		
 	<br>
 	<input type="submit" value="検索" id="search_submit"/>
 	<br>
@@ -242,54 +236,22 @@ onload = function(){
 			<lavel for="activity81">その他　</lavel>
 		</td>
 	</tr>
-	<th scope="row">活動場所</th>
+	<th scope="row">検索条件</th>
 		<td>
-		<input type="radio" value="駒場" name="radio1" id="komaba" />
-		<lavel for="mazime1">駒場　</lavel>
-		<input type="radio" value="本郷" name="radio1" id="hongou" />
-		<lavel for="mazime2">本郷　</lavel>
-		<input type="radio" value="任意" name="radio1" id="any" checked="true" />
-		<lavel for="mazime3">どちらでも　</lavel>
-		</td>
-	</tr>
-	<tr>
-	<th scope="row">飲み会</th>
-		<td>
-		←少ない
-		<input type="radio" value="1  " name="radio3" id="nomi1" />
-		<lavel for="nomi1">1</lavel>
-		<input type="radio" value="2  " name="radio3" id="nomi2" />
-		<lavel for="nomi2">2</lavel>
-		<input type="radio" value="3  " name="radio3" id="nomi3" checked="true" />
-		<lavel for="nomi3">3</lavel>
-		<input type="radio" value="4  " name="radio3" id="nomi4" />
-		<lavel for="nomi4">4</lavel>
-		<input type="radio" value="5  " name="radio3" id="nomi5" />
-		<lavel for="nomi5">5</lavel>
-		→多い
-		<br>
-		<input type="checkbox" name="nochoice1" id="nochoice1" value="1" checked="true" />
-		<lavel for="nochoice1">飲みを検索条件から外す　</lavel>
-		</td>
-	</tr>
-	<tr>
-	<th scope="row">真面目さ</th>
-		<td>
-		←楽しい
-		<input type="radio" value="1  " name="radio4" id="mazime1" />
-		<lavel for="mazime1">1</lavel>
-		<input type="radio" value="2  " name="radio4" id="mazime2" />
-		<lavel for="mazime2">2</lavel>
-		<input type="radio" value="3  " name="radio4" id="mazime3" checked="true" />
-		<lavel for="mazime3">3</lavel>
-		<input type="radio" value="4  " name="radio4" id="mazime4" />
-		<lavel for="mazime4">4</lavel>
-		<input type="radio" value="5  " name="radio4" id="mazime5" />
-		<lavel for="mazime5">5</lavel>
-		→ガチ
-		<br>
-		<input type="checkbox" name="nochoice2" id="nochoice2" value="1" checked="true" />
-		<lavel for="nochoice2">真面目さを検索条件から外す　</lavel>
+		<input type="radio" value="活動頻度重視" name="radio1" id="mazime" />
+		<lavel for="sort1">練習したい　</lavel>
+		<input type="radio" value="ゆるさ重視" name="radio1" id="yurui" />
+		<lavel for="sort2">楽な方がいい　</lavel>
+		<input type="radio" value="飲みたい" name="radio1" id="nomi" />
+		<lavel for="sort3">飲みたい　</lavel>
+		<input type="radio" value="飲みたくない重視" name="radio1" id="nomanai" />
+		<lavel for="sort4">飲みたくない　</lavel>
+		<input type="radio" value="人数重視" name="radio1" id="people" />
+		<lavel for="sort5">人数重視　</lavel>
+		<input type="radio" value="インカレ重視" name="radio1" id="inter" />
+		<lavel for="sort6">インカレがいい　</lavel>
+		<input type="radio" value="学内重視" name="radio1" id="gakunai" />
+		<lavel for="sort7">学内がいい　</lavel>
 		</td>
 	</tr>
 	</tbody>
@@ -303,8 +265,34 @@ onload = function(){
 
 <section id="lunch">
 
+<h3 class="mb1em">カレンダー</h3>
+団体名をクリックすると、その団体の詳細に飛べます。
 
-<h3 class="mb1em">ランチメニュー</h3>
+<p>
+<div id="fc1" class="fc" >
+
+</div>
+
+<script>
+
+	
+	$('#fc1').fullCalendar({
+		defaultDate: '2015-11-12',
+			editable: false,
+			eventLimit: true, // allow "more" link when too many events
+			selectable: true,
+			events:<?php echo  $json; ?>
+			
+			
+	});
+	
+	
+    
+</script>
+</p>
+
+
+<h3 class="mb1em">サークル一覧</h3>
 
 <?php
 $year =date("Y",time());
@@ -370,92 +358,6 @@ if($this->request->data){
 <br>
 <h4><font color =#0099ff>サークル名をクリックするとそのサークルのホームページに移動できます</font></h4>
 <br>
-<table rules="all" border="3" bordercolor="#282828">
-<tr>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">サークル名</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">TwitterID</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">活動内容</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">活動日</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">活動場所</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">構成人員</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">男性人数</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">女性人数</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">活動費</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">飲み</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">真面目さ</font></th>
-</tr>
-<?php foreach ($data as $datum): ?>
-	<?php $act2=$datum['Circle']['activity']; ?>
-	<?php
-	$day =array(
-		$datum['Circle']['day1'],
-		$datum['Circle']['day2'],
-		$datum['Circle']['day3'],
-		$datum['Circle']['day4'],
-		$datum['Circle']['day5'],
-		$datum['Circle']['day6'],
-		$datum['Circle']['day7']
-	);
-	$day2=array(
-		"月",
-		"火",
-		"水",
-		"木",
-		"金",
-		"土",
-		"日"
-	);
-	$c=0;
-	?>
-	<tr>
-		<td bgcolor="#bcfffe">
-			<?php if($datum['Circle']['url']): ?>
-				<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
-					<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
-				</a>
-			<?php else: ?>
-				<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
-			<?php endif; ?>
-		</td>
-		<td bgcolor="#bcfffe">
-			<?php 
-				$string = "https://twitter.com/";	
-				$string .= $datum['Circle']['twitterid'];	
-			?>	
-			<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
-				Follow 
-				<?php echo $datum['Circle']['twitterid']; ?>
-			</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-			</script>
-		</td>
-		<td bgcolor="#bcfffe"><?php echo $act[$act2]; ?></td>
-		<td bgcolor="#bcfffe">
-		<?php
-			for ($i=0;$i<7;$i++):
-				if ($day[$i]=="1"):
-					if ($c==0):
-						echo $day2[$i];
-						$c=$c+1;
-					else:
-						echo ",";
-						echo $day2[$i];
-					endif;
-				endif;
-			endfor;
-		?>
-		</td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['place']; ?></td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['intercollege']; ?></td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['man']; ?></td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['woman']; ?></td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['cost']; ?></td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['nomi']; ?></td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['mazime']; ?></td>
-	</tr>
-<?php endforeach; ?>
-</table>
-<br></br>	
 <h5><font color =#0099ff>結果をツイートして友達を誘おう</font></h5>	
 <?php $string = "";	
 $i = 0;?>	
@@ -475,18 +377,19 @@ endforeach ?>
 
 <section class="list">
 <h3> <!--サークルの名前-->
-<a href="../Circles/circle_id/<?php echo $datum['Circle']['id']; ?>">
+<a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">
 	<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
 </a>
 </h3>
-	<?php if($datum['Circle']['photo_name'] != ""): ?>
-	<?php var_dump($datum['Circle']['photo_name']); ?>
-		<figure><img src="../img/".$datum['Circle']['photo_name'] width="280" height="210" alt="" /></figure>
+	<!--
+	<?php if($datum['Circle']['photo'] != ""): ?>
+		<figure><img src="../img/sample_photo2.jpg" width="280" height="210" alt="" /></figure>
 	<?php else: ?>
-		<figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>
+		<?php echo "NO IMAGE"; ?>
 	<?php endif; ?>
+	-->
 <h4><!--サークルの名前-->
-	<a href="../Circles/circle_id/<?php echo $datum['Circle']['id']; ?>">
+	<a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">
 		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
 	</a>
 	<!--
@@ -500,11 +403,11 @@ endforeach ?>
 	-->
 	<?php 
 		$string = "https://twitter.com/";	
-		$string .= $datum['Circle']['twitterid'];	
+		$string .= $datum['Circle']['tw_screen_name'];	
 	?>	
 		<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
 			Follow 
-		<?php echo $datum['Circle']['twitterid']; ?>
+		<?php echo $datum['Circle']['tw_screen_name']; ?>
 		</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 		</script>
@@ -516,7 +419,7 @@ endforeach ?>
 	<tbody>
 	<tr>
 		<th scope="row">活動内容</th>
-		<td><?php echo $act[$act2]; ?></td>
+		<td><?php echo $datum['Circle']['activity']; ?></td>
 	</tr>
 	<tr>
 		<th scope="row">ひとこと</th>
@@ -531,6 +434,25 @@ endforeach ?>
 		<th scope="row">基本曜日</th>
 		<td>
 		<?php
+			$day =array(
+				$datum['Circle']['day1'],
+				$datum['Circle']['day2'],
+				$datum['Circle']['day3'],
+				$datum['Circle']['day4'],
+				$datum['Circle']['day5'],
+				$datum['Circle']['day6'],
+				$datum['Circle']['day7']
+			);
+			$day2=array(
+				"月",
+				"火",
+				"水",
+				"木",
+				"金",
+				"土",
+				"日"
+			);
+			$c=0;
 			for ($i=0;$i<7;$i++):
 				if ($day[$i]=="1"):
 					if ($c==0):
@@ -566,100 +488,32 @@ endforeach ?>
 <img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"></p>
 </section>
 
-<section class="list">
-<figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>
-<h4>ランチプレート　1,300円</h4>
-<p>左の「おすすめ」マーク同様に、画像をhtml側に直接置き、class=&quot;icon&quot;を指定して下さい。
-<img src="../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon"></p>
+<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
+
 </section>
 
-<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
+<section class="list">
+<div class="list_top">
+	<div class="list_catch_phrase"></div>
+	<div class="list_tags"></div>
+	<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"></p>
+	<div class="list_name"></div>
+	<div class="list_twitter"></div>
+</div>
+<div class="list_body">
+	<div class="list_image"><img src="../img/sample_photo1.jpg" width="300" height="150" alt="" /></div>
+	<div class="list_pr"></div>
+	<div class="list_bottan"></div>
+</div>
+
+</div>
+</section>
 
 </section>
 <!--/lunch-->
 
-<section id="course">
 
-<h3 class="mb1em">コースメニュー</h3>
 
-<section class="list">
-<figure><img src="../img/sample_photo2.jpg" width="280" height="210" alt="" /></figure>
-<h4>コース　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
 
-<section class="list">
-<figure><img src="../img/sample_photo2.jpg" width="280" height="210" alt="" /></figure>
-<h4>コーA　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
-
-</section>
-<!--/course-->
-
-<section id="single">
-
-<h3 class="mb1em">単品メニュー</h3>
-
-<section class="list">
-<figure><img src="../img/sample_photo3.jpg" width="280" height="210" alt="" /></figure>
-<h4>サンプル　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<section class="list">
-<figure><img src="../img/sample_photo3.jpg" width="280" height="210" alt="" /></figure>
-<h4>サンプル　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
-
-</section>
-<!--/single-->
-
-<section id="drink">
-
-<h3 class="mb1em">ドリンクメニュー</h3>
-
-<section class="list">
-<figure><img src="../img/sample_photo4.jpg" width="280" height="210" alt="" /></figure>
-<h4>ドリンク　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<section class="list">
-<figure><img src="../img/sample_photo4.jpg" width="280" height="210" alt="" /></figure>
-<h4>ドリンク　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
-
-</section>
-<!--/drink-->
-
-<section id="desert">
-
-<h3 class="mb1em">デザートメニュー</h3>
-
-<section class="list">
-<figure><img src="../img/sample_photo5.jpg" width="280" height="210" alt="" /></figure>
-<h4>デザート　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<section class="list">
-<figure><img src="../img/sample_photo5.jpg" width="280" height="210" alt="" /></figure>
-<h4>デザート　1,300円</h4>
-<p>ここに説明を入れます。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。サンプルテキスト。</p>
-</section>
-
-<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
-
-</section>
-<!--/desert-->
 
 </div>

@@ -66,13 +66,14 @@ $act=array(
  
 
 <!--ここからhtml-->
+<!--<?php echo $tw_user_id;?>-->
 
 <div id="circle_left">
 	<div id="circle_name">
 		<a href="<?php echo $url; ?>"><?php echo $circle_name; ?></a>
 	</div>
 	<div id="circle_twitter">
-		<a href="https://twitter.com/<?php echo $twitterid; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true">@twitterさんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true">@twitterさんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 	</div>
 	<div id="circle_photo">
 		<img id="circle_photo_base" src="../../img/noimage.jpg" width="400" height="300" alt="NO IMAGE" >
@@ -84,7 +85,7 @@ $act=array(
 </div>
 <div id="circle_right">
 	<h4>活動内容</h4>
-	<div><?php echo $act["$activity"];?></div>
+	<div><?php echo $activity;?></div>
 	<h4>場所</h4>
 	<div><?php echo $place; ?>　<?php echo $placetext; ?></div>
 	<h4>曜日</h4>
@@ -100,6 +101,17 @@ $act=array(
 
 </div>
 
+<h4> お気に入り </h4>
+
+<?php echo $this->Form->postLink('お気に入り登録',array(
+		'action'=>'fav',$circle_id),
+array('class'=>'btn btn-info'),'お気に入りに登録しますか?');?>
+
+<br>
+
+<font size="3" color="#0000ff">
+		<?php echo $this->Session->flash(); ?>
+		</font>
 
 <!--
 <p>
@@ -194,7 +206,7 @@ $act=array(
 
 <br><br>
 
-<h4>イベント情報</h4>
+<h4 style="clear:left;">イベント情報</h4>
 イベントをクリックすると、イベントの詳細に飛べます。
 
 <p>
@@ -207,7 +219,7 @@ $act=array(
 	
 	$('#fc1').fullCalendar({
 		defaultDate: '2015-11-12',
-			editable: true,
+			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			selectable: true,
 			events:<?php echo  $json; ?>

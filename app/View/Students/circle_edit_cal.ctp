@@ -30,7 +30,7 @@ onload = function(){
 	</td>
 </tr>
 <tr>
-	<th scope="row">予定日</th>
+	<th scope="row">開始日時</th>
 		<td><?php
 			echo $this->Form->input('day', array(
     'type' => 'datetime',
@@ -42,12 +42,43 @@ onload = function(){
     'timeFormat' => '24',       //時刻を24時間表記
     'empty' => true,            //空選択可能
 	'separator' => array('年', '月', '日','時','分'),
-    'default' => date('Y-m-d H:i', strtotime("2015-11-20 12:33")),  //初期値指定
+    'default' => date('Y-m-d H:i'),  //初期値指定
 ));
 			//echo $this->Form->error('day');
 		?>
 		</td>
 </tr>
+<tr>
+	<th scope="row">集合場所</th>
+	<td><?php echo $this->Form->input('place',array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false)); ?></td>
+</tr>
+<tr>
+	<th scope="row">必要な金額</th>
+	<td><?php echo $this->Form->input('money',array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false)); ?> 円</td>
+</tr>
+<tr>
+	<th scope="row">新歓かどうか</th>
+	<td><?php echo $this->Form->radio('for_newcomer',
+				array(
+					'1'=>'新歓　　　　',
+					'0'=>'新歓ではない'
+				),
+				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
+				);
+	?></td>
+</tr>
+<tr>
+	<th scope="row">内容</th>
+	<td><?php echo '練習';
+			echo $this->Form->checkbox('practice',array('lavel'=>false,'error'=>false,'div'=>false));
+			echo '　　試合・本番';
+			echo $this->Form->checkbox('game',array('lavel'=>false,'error'=>false,'div'=>false));
+			echo '　　合宿';
+			echo $this->Form->checkbox('camp',array('lavel'=>false,'error'=>false,'div'=>false));
+			echo '　　その他';
+			echo $this->Form->checkbox('other',array('lavel'=>false,'error'=>false,'div'=>false));
+		?></td>
+	</tr>
 </tbody>
 </table><br>
 <?php
@@ -77,12 +108,11 @@ onload = function(){
 
 	
 	
-	
 	$('#fc1').fullCalendar({
 		defaultDate: '2015-11-12',
-			editable: true,
+			editable: false,
 			eventLimit: true, // allow "more" link when too many events
-			selectable: true,
+			selectable: false,
 			events:<?php echo  $json; ?>
 			
 			

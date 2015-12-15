@@ -125,17 +125,17 @@ class Codebird
     /**
      * Request timeout
      */
-    protected $_timeout = 10000;
+    protected $_timeout = 100000;
 
     /**
      * Connection timeout
      */
-    protected $_connectionTimeout = 3000;
+    protected $_connectionTimeout = 30000;
 
     /**
      * Remote media download timeout
      */
-    protected $_remoteDownloadTimeout = 5000;
+    protected $_remoteDownloadTimeout = 50000;
 
     /**
      * Proxy

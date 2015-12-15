@@ -1,37 +1,29 @@
-<?php
-	echo $this->html->css(array('fullcalendar', 'bootstrap','headshrinker'));
-	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
- ?>
-
 <script>
 onload = function(){
-	func_circle_edit();	
+	func_circle_resister();	
 }
 </script>
 
-<h2> <?php echo $circle_name; ?>の情報を管理</h2>
-<h3>情報を編集</h3>
-<p>
-<div class="stop-bottom">
+<h2 class="mb1em">サークルを登録しよう</h2>
 
-<div class="stop-btm">
-	<table class="type01">
-		<tbody>
-	<?php echo $this->Form->create('Circle', array('type'=>'file', 'enctype'=>'multipart/form-data'));  ?>
-			<?php echo $this->Form->input('id', array('type' => 'hidden')); ?> 
-		
+<br>
+<h3 class="mb1em">登録フォームに入力しよう</h3>
+	<div class ="stop-btm">
+	<table class = "type01">
+	<tbody>
+		<?php echo $this->Form->create('Circle'); ?>
+		<?php echo $this->Form->input('id', array('type' => 'hidden','value' => $circleid)); ?>
 		<tr>
-			<th scope="row">写真</th>
-			<td><?php echo $this->Form->input('photo', array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false, 'type'=>'file'));?></td>
+			<th scope="row">サークル名</th>
+			<td><?php echo $this->Form->input('circle_name', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));?>
+			<?php echo $this->Form->error('circle_name');?>
+			</td>
 		</tr>
 		<tr>
-			 <th scope="row">サークル名</th>
-			<td><?php echo $this->Form->input('circle_name', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
-		</tr>
-		<tr>
-			<th scope="row">TwitterアカウントのID</th>
-
-			<td><?php echo $this->Form->input('twitterid', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
+			<th scope="row">キャッチフレーズ</th>
+			<td><?php echo $this->Form->input('phrase', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));?>
+			<?php echo $this->Form->error('phrase');?>
+			</td>
 		</tr>
 		<tr>
 			<th scope="row">URL</th>
@@ -78,7 +70,6 @@ onload = function(){
 					"74"=>'グルメ',
 					"75"=>'芸能',
 					"81"=>'その他',
-					
 				),
 				array('size'=>1, 'label'=>false, 'error'=>false, 'div'=>false)
 				);?></td>
@@ -104,7 +95,7 @@ onload = function(){
 			echo '日';
 			echo $this->Form->checkbox('day7',array('lavel'=>false,'error'=>false,'div'=>false));?></td>
 		</tr>
-		</tbody>
+	</tbody>
 	</table>
 	<table class="type02">
 		<tbody>
@@ -121,18 +112,14 @@ onload = function(){
 			?></td>
 			<td><?php echo $this->Form->input('placetext', array('size'=>100, 'label'=>"場所詳細", 'error'=>false, 'div'=>false));?></td>
 		</tr>
-	</tbody>
-	</table>
-	<table class="type02">
-	<tbody>
 		<tr>
 			<th scope="row">男女比</th>
 			
 			<!--<td>男性人数</td> -->
-			<td><?php echo $this->Form->input('man', array('size'=>25, 'label'=>"男性　", 'error'=>false, 'div'=>false)); ?></td>
+			<td><?php echo $this->Form->input('man', array('size'=>50, 'label'=>"男性　", 'error'=>false, 'div'=>false)); ?></td>
 			
 			<!-- <td>女性人数</td>-->
-			<td><?php echo $this->Form->input('woman', array('size'=>25, 'label'=>"女性　", 'error'=>false, 'div'=>false));?></td>
+			<td><?php echo $this->Form->input('woman', array('size'=>50, 'label'=>"女性　", 'error'=>false, 'div'=>false));?></td>
 		</tr>
 	</tbody>
 	</table>
@@ -155,8 +142,8 @@ onload = function(){
 	<tbody>
 		<tr>
 			<th scope="row">活動費</th>
-			<td><?php echo $this->Form->input('cost_in', array('size'=>25, 'label'=>"入会費", 'error'=>false, 'div'=>false)); ?></td>
-				<td><?php echo $this->Form->input('cost', array('size'=>25, 'label'=>"年間費", 'error'=>false, 'div'=>false)); ?></td>
+			<td><?php echo $this->Form->input('cost_in', array('size'=>50, 'label'=>"入会費", 'error'=>false, 'div'=>false)); ?></td>
+				<td><?php echo $this->Form->input('cost', array('size'=>50, 'label'=>"年間費", 'error'=>false, 'div'=>false)); ?></td>
 		</tr>
 		</tbody>
 	</table>
@@ -164,36 +151,43 @@ onload = function(){
 		<tbody>
 		<tr>
 			<th scope="row">飲み会</th>
-				<td>
-				←少ない
-				<?php echo $this->Form->radio('nomi',
+				<td><?php echo $this->Form->radio('nomi',
 				array(
 					'1'=>'1',
 					'2'=>'2',
 					'3'=>'3',
 					'4'=>'4',
 					'5'=>'5',
+					'6'=>'6',
+					'7'=>'7',
+					'8'=>'8',
+					'9'=>'9',
+					'10'=>'10',
 				),
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
 				);?>
-				多い→
+				<br>←少ない　　　　　　　　多い→
 			</td>
 		</tr>
 		<tr>
 			<th scope="row">雰囲気</th>
-				<td>
-				←楽しい
-				<?php echo $this->Form->radio('mazime',
+			<td><?php echo $this->Form->radio('mazime',
 				array(
 					'1'=>'1',
 					'2'=>'2',
 					'3'=>'3',
 					'4'=>'4',
 					'5'=>'5',
+					'6'=>'6',
+					'7'=>'7',
+					'8'=>'8',
+					'9'=>'9',
+					'10'=>'10',
 				),
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
 				);?>
-				ガチ→				
+				<br>←楽しい　　　　　　　　ガチ→
+				
 				
 				
 		
@@ -201,23 +195,13 @@ onload = function(){
 		</tr>
 	</tbody>
 	</table>
+		<div class="s-btn">
+			<?php echo $this->Form->end(__('作成')); ?>
+		</div>
+		<p>
+		<font size="6" color="#0000ff">
+		<?php echo $this->Session->flash(); ?>
+		</font>
+		</p>
+	</div><!-- stop-btm -->
 
-
-
-	<div Align="right">
-		
-			<?php
-				echo '<p> ';
-				//echo $this->Form->error('name');
-				echo '</p>';
-				echo $this->Form->end(__('更新')); 
-			?>
-		
-	</div>
-</div><!--stop-btm-->
-</div><!--stop-bottom-->
-</p>   
-
-
-
- 
