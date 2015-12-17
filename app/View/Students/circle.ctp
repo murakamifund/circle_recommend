@@ -15,8 +15,11 @@ onload = function(){
 
 </p>
 
-<h3 class="mb1em">Why use? How use?</h3>
+<h2 class="mb1em">使い方</h2>
 
+
+
+<h2 class="mb1em">パワポ</h2>
 <iframe style="border:none" src="http://files.photosnack.com/iframejs/embed.html?hash=pdzp2m8jo&t=1444874503" width="576" height="384" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>
 
 

@@ -97,10 +97,15 @@ class StudentsController extends AppController {
 			
 			
 			$this->redirect(array('action' => 'student_edit'));
+		
+		}else{
+			$this->Session->destroy(); //セッションを完全削除
+			$this->redirect(array('action' => 'student_resister'));
 		}
 	}else{
 		$this->redirect(array('action' => 'student_edit'));
 	}	
+		//$this->redirect(array('action' => 'home'));
 	}//student_tw_callback終わり
 	
 	public function circle_tw_callback(){
@@ -193,11 +198,11 @@ class StudentsController extends AppController {
 				$this->redirect(array('action' => 'circle_edit_main'));
 			
 			}
-			
-			
-			
-			
-		}
+		
+		}else{
+			$this->Session->destroy(); //セッションを完全削除
+			$this->redirect(array('action' => 'student_resister'));
+		}	
 	}else{
 		//ログイン済み
 		$this->redirect(array('action' => 'circle_edit_main'));
