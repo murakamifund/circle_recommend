@@ -12,7 +12,7 @@ $nomi_custom = array('飲まない','あまり飲まない','普通','飲む','�
 $nomi_chosen = $nomi_custom[$nomi-1];
 
 $mazime_custom = array('楽しくワイワイ','少しゆるい','普通','厳しめ','かなり厳しい');
-$mazime_chosen = $mazime_custom[$mazime-2];
+$mazime_chosen = $mazime_custom[$mazime-1];
 
 $day_custom = array('月','火','水','木','金','土','日');
 $day_chosen = "";
@@ -85,7 +85,7 @@ $act=array(
 </div>
 <div id="circle_right">
 	<h4>活動内容</h4>
-	<div><?php echo $act["$activity"];?></div>
+	<div><?php echo $activity;?></div>
 	<h4>場所</h4>
 	<div><?php echo $place; ?>　<?php echo $placetext; ?></div>
 	<h4>曜日</h4>

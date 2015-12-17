@@ -227,92 +227,6 @@ if($this->request->data){
 <br>
 <h4><font color =#0099ff>サークル名をクリックするとそのサークルのホームページに移動できます</font></h4>
 <br>
-<table rules="all" border="3" bordercolor="#282828">
-<tr>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">サークル名</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">TwitterID</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">活動内容</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">活動日</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">活動場所</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">構成人員</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">男性人数</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">女性人数</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">活動費</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">飲み</font></th>
-	<th width="100" bgcolor="#45b887"><font color="#ffffff">真面目さ</font></th>
-</tr>
-<?php foreach ($data as $datum): ?>
-	<?php $act2=$datum['Circle']['activity']; ?>
-	<?php
-	$day =array(
-		$datum['Circle']['day1'],
-		$datum['Circle']['day2'],
-		$datum['Circle']['day3'],
-		$datum['Circle']['day4'],
-		$datum['Circle']['day5'],
-		$datum['Circle']['day6'],
-		$datum['Circle']['day7']
-	);
-	$day2=array(
-		"月",
-		"火",
-		"水",
-		"木",
-		"金",
-		"土",
-		"日"
-	);
-	$c=0;
-	?>
-	<tr>
-		<td bgcolor="#bcfffe">
-			<?php if($datum['Circle']['url']): ?>
-				<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
-					<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
-				</a>
-			<?php else: ?>
-				<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
-			<?php endif; ?>
-		</td>
-		<td bgcolor="#bcfffe">
-			<?php 
-				$string = "https://twitter.com/";	
-				$string .= $datum['Circle']['tw_screen_name'];	
-			?>	
-			<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
-				Follow 
-				<?php echo $datum['Circle']['tw_screen_name']; ?>
-			</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-			</script>
-		</td>
-		<td bgcolor="#bcfffe"><?php echo $act[$act2]; ?></td>
-		<td bgcolor="#bcfffe">
-		<?php
-			for ($i=0;$i<7;$i++):
-				if ($day[$i]=="1"):
-					if ($c==0):
-						echo $day2[$i];
-						$c=$c+1;
-					else:
-						echo ",";
-						echo $day2[$i];
-					endif;
-				endif;
-			endfor;
-		?>
-		</td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['place']; ?></td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['intercollege']; ?></td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['man']; ?></td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['woman']; ?></td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['cost']; ?></td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['nomi']; ?></td>
-		<td bgcolor="#bcfffe"><?php echo $datum['Circle']['mazime']; ?></td>
-	</tr>
-<?php endforeach; ?>
-</table>
-<br></br>	
 <h5><font color =#0099ff>結果をツイートして友達を誘おう</font></h5>	
 <?php $string = "";	
 $i = 0;?>	
@@ -374,7 +288,7 @@ endforeach ?>
 	<tbody>
 	<tr>
 		<th scope="row">活動内容</th>
-		<td><?php echo $act[$act2]; ?></td>
+		<td><?php echo $datum['Circle']['activity']; ?></td>
 	</tr>
 	<tr>
 		<th scope="row">ひとこと</th>
@@ -389,6 +303,25 @@ endforeach ?>
 		<th scope="row">基本曜日</th>
 		<td>
 		<?php
+			$day =array(
+				$datum['Circle']['day1'],
+				$datum['Circle']['day2'],
+				$datum['Circle']['day3'],
+				$datum['Circle']['day4'],
+				$datum['Circle']['day5'],
+				$datum['Circle']['day6'],
+				$datum['Circle']['day7']
+			);
+			$day2=array(
+				"月",
+				"火",
+				"水",
+				"木",
+				"金",
+				"土",
+				"日"
+			);
+			$c=0;
 			for ($i=0;$i<7;$i++):
 				if ($day[$i]=="1"):
 					if ($c==0):

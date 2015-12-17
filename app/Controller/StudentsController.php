@@ -10,8 +10,10 @@ class StudentsController extends AppController {
         
 		parent::beforeFilter();
     }
+	
 	public function student_tw_callback(){
 		//ユーザー認証をする関数
+		
 		require_once('config.php');
 		require_once('codebird.php');
 		session_start();
@@ -591,6 +593,47 @@ class StudentsController extends AppController {
 			if ($this->request->is('post') || $this->request->is('put')) {
 				$this->data = Sanitize::clean($this->data, array('encode' => false));
 				//debug($this->request->data);
+				$act=array(
+					"1"=>'テニス',
+					"2"=>'卓球',
+					"3"=>'サッカー',
+					"4"=>'野球',
+					"5"=>'バスケ',
+					"6"=>'バレー',
+					"7"=>'バドミントン',
+					"8"=>'ラグビー',
+					"9"=>'ホッケー',
+					"10"=>'水泳',
+					"11"=>'武道',
+					"12"=>'ダンス',
+					"13"=>'登山',
+					"14"=>'乗り物',
+					"15"=>'スキー',
+					"31"=>'政治・経済',
+					"32"=>'放送・広告',
+					"33"=>'語学',
+					"34"=>'国際',
+					"35"=>'コンピュータ',
+					"36"=>'自然科学',
+					"37"=>'法学',
+					"38"=>'企業',
+					"51"=>'ロック',
+					"52"=>'ジャズ',
+					"53"=>'クラシック',
+					"54"=>'コーラス',
+					"61"=>'映画・写真',
+					"62"=>'演劇・お笑い',
+					"63"=>'美術',
+					"64"=>'文芸',
+					"71"=>'旅行',
+					"72"=>'アウトドア',
+					"73"=>'ゲーム',
+					"74"=>'グルメ',
+					"75"=>'芸能',
+					"81"=>'その他'
+				);
+				$activity = $act[$local_user["Circle"]["activity"]];
+				$this->request->data['Circle']['activity'] = $activity;
 				$circle_value = 0;
 				$circle_value1 = 0;//練習したい
 				$circle_value2 = 0;//楽な方がいい
@@ -631,7 +674,16 @@ class StudentsController extends AppController {
 				$circle_value3 += $local_user['Circle']['nomi'] * 5;
 				$circle_value2 += 25 - $local_user['Circle']['mazime'] * 5;
 				$circle_value4 += 25 - $local_user['Circle']['nomi'] * 5;
+				$favorite = $this->Favorite->find('count', array('conditions' => array('Favorite.circle_id' => $id)));
 				//お気に入り数をvalueに加える
+				$circle_value += $favorite;
+				$circle_value1 += $favorite;
+				$circle_value2 += $favorite;
+				$circle_value3 += $favorite;
+				$circle_value4 += $favorite;
+				$circle_value5 += $favorite;
+				$circle_value6 += $favorite;
+				$circle_value7 += $favorite;
 				$this->request->data['Circle']['id'] = $id;
 				$this->request->data['Circle']['value'] = $circle_value;
 				$this->request->data['Circle']['value1'] = $circle_value1;
@@ -905,11 +957,50 @@ class StudentsController extends AppController {
 		11,12,13,14,15,31,32,33,34,35,
 		36,37,38,51,52,53,54,61,62,63,
 		64,71,72,73,74,75,81);
+	$act=array(
+		"1"=>'テニス',
+		"2"=>'卓球',
+		"3"=>'サッカー',
+		"4"=>'野球',
+		"5"=>'バスケ',
+		"6"=>'バレー',
+		"7"=>'バドミントン',
+		"8"=>'ラグビー',
+		"9"=>'ホッケー',
+		"10"=>'水泳',
+		"11"=>'武道',
+		"12"=>'ダンス',
+		"13"=>'登山',
+		"14"=>'乗り物',
+		"15"=>'スキー',
+		"31"=>'政治・経済',
+		"32"=>'放送・広告',
+		"33"=>'語学',
+		"34"=>'国際',
+		"35"=>'コンピュータ',
+		"36"=>'自然科学',
+		"37"=>'法学',
+		"38"=>'企業',
+		"51"=>'ロック',
+		"52"=>'ジャズ',
+		"53"=>'クラシック',
+		"54"=>'コーラス',
+		"61"=>'映画・写真',
+		"62"=>'演劇・お笑い',
+		"63"=>'美術',
+		"64"=>'文芸',
+		"71"=>'旅行',
+		"72"=>'アウトドア',
+		"73"=>'ゲーム',
+		"74"=>'グルメ',
+		"75"=>'芸能',
+		"81"=>'その他'
+	);
 	$activity2 = array();
 	$a = 0;
 	for($i=0;$i<37;$i++):
 		if($activity[$i]=="On"):
-			$activity2[$a]=$counts[$i];
+			$activity2[$a]=$act[$counts[$i]];
 			$a = $a+1;
 		endif;
 	endfor;
@@ -924,7 +1015,9 @@ class StudentsController extends AppController {
 						array(
 							'OR' => array(
 								array('Circle.circle_name LIKE' => '%'.$word.'%'),
-								array('Circle.pr LIKE' => '%'.$word.'%')
+								array('Circle.pr LIKE' => '%'.$word.'%'),
+								array('Circle.activity LIKE' => '%'.$word.'%'),
+								array('Circle.phrase LIKE' => '%'.$word.'%'),
 							)
 						),
 						array(
