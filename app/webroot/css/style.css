@@ -561,6 +561,7 @@ nav.fixed {
 	background-image: -webkit-linear-gradient(#add8e6, #e0ffff);	/*同上*/
 	background-image: linear-gradient(#deb887, #fffacd);			/*同上*/
 	padding: 13px;	/*ボックス内の余白*/
+	padding-top: 0px;
 	float: left;
 	margin: 0px 10px 1em;
 	border: 1px solid #CCC;
@@ -585,12 +586,8 @@ nav.fixed {
 	border-bottom: 2px dotted #837768;	/*下線の幅、線種、色*/
 	margin-bottom: 5px;
 }
-/*ふきだしアイコンの位置*/
-#main section.list img.icon {
-	position: absolute;
-	top: -10px;	/*ボックスに対して上から-10pxの位置に配置*/
-	right: 0px;	/*ボックスに対して右から0pxの位置に配置*/
-}
+
+
 /*menu内のページ内メニュー
 ---------------------------------------------------------------------------*/
 ul.navmenu {
