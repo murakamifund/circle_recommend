@@ -167,7 +167,7 @@ class StudentsController extends AppController {
 				$stmt = $dbh->prepare($sql);
 				$params = array(
 					":tw_user_id" => $me->id_str,
-					":tw_screen_name" => $me->screen_name,
+					":tw_screen_name" => tw_screen_name,
 					":tw_profile_image_url" => $me->profile_image_url,
 					":tw_access_token" => $reply->oauth_token,
 					":tw_access_token_secret" => $reply->oauth_token_secret
@@ -181,6 +181,7 @@ class StudentsController extends AppController {
 				
 				$tw_user_id = $me->id_str;
 				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
+				$_SESSION['tw_screen_name'] = tw_screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
 			
 			
 				$this->redirect(array('action' => 'circle_resister'));
@@ -188,7 +189,7 @@ class StudentsController extends AppController {
 				
 				$tw_user_id = $me->id_str;
 				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
-			
+				$_SESSION['tw_screen_name'] = tw_screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
 				$this->redirect(array('action' => 'circle_edit_main'));
 			
 			}
@@ -461,27 +462,34 @@ class StudentsController extends AppController {
 		session_start();
 		if(isset($_SESSION['tw_user_id'])){
 			//userを持っていたら(ここにくる場合は基本持っているはず)
-			$tw_user_id = $_SESSION['tw_user_id'];
-			$local_user = $this->Circle->find('first', array(
-                'conditions' => array('tw_user_id' => $tw_user_id)
-            ));
-			$circleid = $local_user['Circle']['id'];
-			$this->set('circleid', $circleid);
-			// post時の処理
-			if ($this->request->is('post')) {
-				$this->data = Sanitize::clean($this->data, array('encode' => false));
-				$this->Circle->create();
-				if ($this->Circle->save($this->request->data)) {	//ここにfalseと入れればバリデーションを無視できる
-					$this->redirect(array('action' => 'circle_edit_main'));
-           
-				} else {
-					$this->Session->setFlash(__('登録に失敗しました。もう一度やり直してください。'));
-					//debug($this->Circle->validationErrors);
+			if(isset($_SESSION['tw_screen_name'])){
+				//サークルかどうか
+				$tw_user_id = $_SESSION['tw_user_id'];
+				$local_user = $this->Circle->find('first', array(
+					'conditions' => array('tw_user_id' => $tw_user_id)
+				));
+				$circleid = $local_user['Circle']['id'];
+				$this->set('circleid', $circleid);
+				// post時の処理
+				if ($this->request->is('post')) {
+					$this->data = Sanitize::clean($this->data, array('encode' => false));
+					$this->Circle->create();
+					if ($this->Circle->save($this->request->data)) {	//ここにfalseと入れればバリデーションを無視できる
+						$this->redirect(array('action' => 'circle_edit_main'));
+				   
+					} else {
+						$this->Session->setFlash(__('登録に失敗しました。もう一度やり直してください。'));
+						//debug($this->Circle->validationErrors);
+					}
 				}
+			}else{
+				//サークルじゃなかったら
+				$this->redirect(array('action'=>'student_resister'));
 			}
+			
 		}else{
 			$this->redirect(array('action'=>'student_resister'));
-			$this->Session->setFlash(__('Twitterでログインしてください'));
+			$this->Session->setFlash(__('Twitterと連携してください'));
 		}
 		
 	}//circle_resisterの終わり
@@ -492,16 +500,24 @@ class StudentsController extends AppController {
 	
 	public function circle_edit_main(){
 		session_start();
+		
 		if(isset($_SESSION['tw_user_id'])){
 		//基本はsessionを持っているはず
-			$tw_user_id = $_SESSION['tw_user_id'];
-			$local_user = $this->Circle->find('first', array(
-                'conditions' => array('tw_user_id' => $tw_user_id)
-            ));
-			$circle_name = $local_user['Circle']['circle_name'];
-			$this->set("circle_name",$circle_name);//view側にデータをセット
-			$id = $local_user['Circle']['id'];
-			$this->set("id",$id);//view側にデータをセット
+			if(isset($_SESSION['tw_screen_name'])){
+				//サークルかどうか
+				$tw_user_id = $_SESSION['tw_user_id'];
+				$local_user = $this->Circle->find('first', array(
+					'conditions' => array('tw_user_id' => $tw_user_id)
+				));
+				$circle_name = $local_user['Circle']['circle_name'];
+				$this->set("circle_name",$circle_name);//view側にデータをセット
+				$id = $local_user['Circle']['id'];
+				$this->set("id",$id);//view側にデータをセット
+			}else{
+				//サークルじゃなかったら
+				$this->redirect(array('action'=>'student_edit'));
+			}
+			
 		}else{
 			$this->redirect(array('action'=>'student_resister'));
 			$this->Session->setFlash(__('Twitterでログインしてください'));
