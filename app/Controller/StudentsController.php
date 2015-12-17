@@ -400,6 +400,10 @@ class StudentsController extends AppController {
 					  'user_id' => $tw_user_id,
 					  'circle_id' => $id,
 					]);
+					$circle = $this->Circle->find('all', array('conditions' => array('id' => $id)));
+					$circle['favorite'] += 1;
+					var_dump($circle['favorite']);
+					$this->Circle->save($circle);
 					
 					$this->Session->setFlash(__('お気に入り登録しました'));
 				}
