@@ -23,6 +23,11 @@
 
 <script type="text/javascript" src="js/openclose.js"></script>
 
+<?php
+	if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == true) echo 'circle';
+	if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == false) echo 'student';
+?>
+
 </head>
 
 <body>
