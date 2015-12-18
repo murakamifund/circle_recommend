@@ -1,4 +1,5 @@
 <?php
+session_start();
 App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
 
@@ -16,10 +17,9 @@ class StudentsController extends AppController {
 		
 		require_once('config.php');
 		require_once('codebird.php');
-		session_start();
 		
 
-		\Codebird\Codebird::setConsumerKey(CONSUMER_KEY, CONSUMER_SECRET);
+		\Codebird\Codebird::setConsumerKey('hyj7wJ2xfSkADK6bhJfUFbhAd', 'w145AA0P8opGRji1OzdLlyxA2W6fdqwEONlryr6A0kfucE8NwS');
 		//\Codebird\Codebird::setConsumerKey('CONSUMER_KEY', 'CONSUMER_SECRET');
 		$cb = \Codebird\Codebird::getInstance();
 		
@@ -94,7 +94,7 @@ class StudentsController extends AppController {
 			
 			$tw_user_id = $me->id_str;
 			$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
-			
+			$_SESSION['is_circle'] = false;
 			
 			$this->redirect(array('action' => 'student_edit'));
 		
@@ -112,10 +112,9 @@ class StudentsController extends AppController {
 		//ユーザー認証をする関数
 		require_once('config.php');
 		require_once('codebird.php');
-		session_start();
 		
 
-		\Codebird\Codebird::setConsumerKey(CONSUMER_KEY, CONSUMER_SECRET);
+		\Codebird\Codebird::setConsumerKey('hyj7wJ2xfSkADK6bhJfUFbhAd', 'w145AA0P8opGRji1OzdLlyxA2W6fdqwEONlryr6A0kfucE8NwS');
 		$cb = \Codebird\Codebird::getInstance();
 		
 	if(! isset($_SESSION['tw_user_id'])){
@@ -131,6 +130,7 @@ class StudentsController extends AppController {
 		$_SESSION['oauth_token'] = $reply->oauth_token;
 		$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
 		$_SESSION['oauth_verify'] = true;
+		$_SESSION['is_circle'] = true;
 
 		// redirect to auth website
 		$auth_url = $cb->oauth_authorize(); //Twitterの認証画面に飛ばしている
@@ -186,6 +186,7 @@ class StudentsController extends AppController {
 				
 				$tw_user_id = $me->id_str;
 				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
+				$_SESSION['is_circle'] = true;
 				$_SESSION['tw_screen_name'] = tw_screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
 			
 			
@@ -224,7 +225,6 @@ class StudentsController extends AppController {
 	}
 	
 	public function student_edit(){
-		session_start();
 		if(isset($_SESSION['tw_user_id'])){
 			//userを持っていたら
 			$tw_user_id = $_SESSION['tw_user_id'];
@@ -389,8 +389,6 @@ class StudentsController extends AppController {
 	
 	public function fav($id = null){
 		if ($this->request->is('post') || $this->request->is('put')) {
-			//session
-			session_start();
 			if(isset($_SESSION['tw_user_id'])){
 				//userを持っていたら
 				$tw_user_id = $_SESSION['tw_user_id'];
@@ -464,7 +462,6 @@ class StudentsController extends AppController {
 	public function circle_resister() {
 	
 		$this->modelClass = null;
-		session_start();
 		if(isset($_SESSION['tw_user_id'])){
 			//userを持っていたら(ここにくる場合は基本持っているはず)
 			if(isset($_SESSION['tw_screen_name'])){
@@ -533,7 +530,6 @@ class StudentsController extends AppController {
 	
 	
 	public function circle_edit_cal(){
-		session_start();
 		$this->modelClass = null;
 		if(isset($_SESSION['tw_user_id'])){
 		//基本はsessionを持っているはず
@@ -598,7 +594,6 @@ class StudentsController extends AppController {
 	}//circle_edit_mainの終わり
 	
 	public function circle_edit(){
-		session_start();
 		$this->modelClass = null;
 		if(isset($_SESSION['tw_user_id'])){
 		//基本はsessionを持っているはず
