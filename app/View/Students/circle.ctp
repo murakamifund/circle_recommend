@@ -6,6 +6,7 @@ onload = function(){
 
 
 <h2 class="mb1em">サークルを登録しよう</h2>
+<aside class="mb1em"><img src="../img/image2.png" width="700" height="99" alt="" class="wa"></aside>
 <br>
 サークルのTwitterアカウントを登録することで、簡単にサークル登録を行えます。
 <p>

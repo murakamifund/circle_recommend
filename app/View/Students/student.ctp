@@ -13,7 +13,7 @@ onload = function(){
 }
 </script>
 
-<aside class="mb1em"><img src="../img/banner1.jpg" width="700" height="99" alt="ランチタイムパン食べ放題" class="wa"></aside>
+<aside class="mb1em"><img src="../img/image1.jpg" width="700" height="99" alt="" class="wa"></aside>
 <!-- 上の画像で、サークルの新規登録を促す -->
 <h2>サークルを探そう</h2>
 
