@@ -1,4 +1,5 @@
 <?php
+session_start();
 App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
 
@@ -16,95 +17,97 @@ class StudentsController extends AppController {
 		
 		require_once('config.php');
 		require_once('codebird.php');
-		session_start();
 		
 
-		\Codebird\Codebird::setConsumerKey(CONSUMER_KEY, CONSUMER_SECRET);
+		\Codebird\Codebird::setConsumerKey('hyj7wJ2xfSkADK6bhJfUFbhAd', 'w145AA0P8opGRji1OzdLlyxA2W6fdqwEONlryr6A0kfucE8NwS');
 		//\Codebird\Codebird::setConsumerKey('CONSUMER_KEY', 'CONSUMER_SECRET');
 		$cb = \Codebird\Codebird::getInstance();
 		
-	if(! isset($_SESSION['tw_user_id'])){
-	
-		if (! isset($_SESSION['oauth_token'])) { //まだデータが渡されていないときは（認証前）
-		// get the request token
-		$reply = $cb->oauth_requestToken([
-			'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
-		]);
-    
-		// store the token
-		$cb->setToken($reply->oauth_token, $reply->oauth_token_secret);
-		$_SESSION['oauth_token'] = $reply->oauth_token;
-		$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
-		$_SESSION['oauth_verify'] = true;
-
-		// redirect to auth website
-		$auth_url = $cb->oauth_authorize(); //Twitterの認証画面に飛ばしている
-		header('Location: ' . $auth_url);
-		die();
-
-		} elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
-			// verify the token
-			$cb->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
-			unset($_SESSION['oauth_verify']);
-
-			// get the access token
-			$reply = $cb->oauth_accessToken([
-				'oauth_verifier' => $_GET['oauth_verifier']
-			]);
-			// store the token (which is different from the request token!)
-			//$_SESSION['oauth_token'] = $reply->oauth_token;
-			//$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
-			$cb->setToken($reply->oauth_token,$reply->oauth_token_secret);
-			$me = $cb->account_verifyCredentials(); //$meの中にアカウントの情報を入れる
-
-			//データベースにアカウント情報を格納
-			try{ //まずはデータベースに接続
-				$dbh = new PDO('mysql:host=127.0.0.1;dbname=circlerecommend;charset=utf8','root','');
-			}catch(PDOException $e){
-				echo $e->getMessage();
-			exit;
+		if(! isset($_SESSION['tw_user_id'])){
+	/////////
+			if (isset($_SESSION['oauth_token'])){
+				$this->redirect(array('action' => 'student'));
 			}
+			if (! isset($_SESSION['oauth_token'])) { //まだデータが渡されていないときは（認証前）
+			// get the request token
+			$reply = $cb->oauth_requestToken([
+				'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
+			]);
     
-			$sql = "select * from students where tw_user_id = :tw_user_id limit 1"; 
-			$stmt = $dbh->prepare($sql);
-			$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
-			$local_user = $stmt->fetch(); //結果を返す 
-			if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
-				$sql = "insert into students 
-				(tw_user_id,tw_screen_name,tw_profile_image_url,tw_access_token,tw_access_token_secret) 
-				values
-				(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_access_token,:tw_access_token_secret)";
-				$stmt = $dbh->prepare($sql);
-				$params = array(
-					":tw_user_id" => $me->id_str,
-					":tw_screen_name" => $me->screen_name,
-					":tw_profile_image_url" => $me->profile_image_url,
-					":tw_access_token" => $reply->oauth_token,
-					":tw_access_token_secret" => $reply->oauth_token_secret
-				);
-				$stmt->execute($params);
+			// store the token
+			$cb->setToken($reply->oauth_token, $reply->oauth_token_secret);
+			$_SESSION['oauth_token'] = $reply->oauth_token;
+			$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
+			$_SESSION['oauth_verify'] = true;
 
+			// redirect to auth website
+			$auth_url = $cb->oauth_authorize(); //Twitterの認証画面に飛ばしている
+			header('Location: ' . $auth_url);
+			die();
+
+			} elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
+				// verify the token
+				$cb->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+				unset($_SESSION['oauth_verify']);
+
+				// get the access token
+				$reply = $cb->oauth_accessToken([
+					'oauth_verifier' => $_GET['oauth_verifier']
+				]);
+				// store the token (which is different from the request token!)
+				//$_SESSION['oauth_token'] = $reply->oauth_token;
+				//$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
+				$cb->setToken($reply->oauth_token,$reply->oauth_token_secret);
+				$me = $cb->account_verifyCredentials(); //$meの中にアカウントの情報を入れる
+
+				//データベースにアカウント情報を格納
+				try{ //まずはデータベースに接続
+					$dbh = new PDO('mysql:host=127.0.0.1;dbname=circlerecommend;charset=utf8','root','');
+				}catch(PDOException $e){
+					echo $e->getMessage();
+				exit;
+				}
+    
 				$sql = "select * from students where tw_user_id = :tw_user_id limit 1"; 
 				$stmt = $dbh->prepare($sql);
 				$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
-				$local_user = $stmt->fetch();
-			}
+				$local_user = $stmt->fetch(); //結果を返す 
+				if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
+					$sql = "insert into students 
+					(tw_user_id,tw_screen_name,tw_profile_image_url,tw_access_token,tw_access_token_secret) 
+					values
+					(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_access_token,:tw_access_token_secret)";
+					$stmt = $dbh->prepare($sql);
+					$params = array(
+						":tw_user_id" => $me->id_str,
+						":tw_screen_name" => $me->screen_name,
+						":tw_profile_image_url" => $me->profile_image_url,
+						":tw_access_token" => $reply->oauth_token,
+						":tw_access_token_secret" => $reply->oauth_token_secret
+					);
+					$stmt->execute($params);
+
+					$sql = "select * from students where tw_user_id = :tw_user_id limit 1"; 
+					$stmt = $dbh->prepare($sql);
+					$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
+					$local_user = $stmt->fetch();
+				}
 			
 			
 			
-			$tw_user_id = $me->id_str;
-			$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
+				$tw_user_id = $me->id_str;
+				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
+				$_SESSION['is_circle'] = false;
 			
-			
-			$this->redirect(array('action' => 'student_edit'));
+				$this->redirect(array('action' => 'student_edit'));
 		
+			}else{
+				$this->Session->destroy(); //セッションを完全削除
+				$this->redirect(array('action' => 'student_resister'));
+			}
 		}else{
-			$this->Session->destroy(); //セッションを完全削除
-			$this->redirect(array('action' => 'student_resister'));
-		}
-	}else{
-		$this->redirect(array('action' => 'student_edit'));
-	}	
+			$this->redirect(array('action' => 'student_edit'));
+		}	
 		//$this->redirect(array('action' => 'home'));
 	}//student_tw_callback終わり
 	
@@ -112,10 +115,9 @@ class StudentsController extends AppController {
 		//ユーザー認証をする関数
 		require_once('config.php');
 		require_once('codebird.php');
-		session_start();
 		
 
-		\Codebird\Codebird::setConsumerKey(CONSUMER_KEY, CONSUMER_SECRET);
+		\Codebird\Codebird::setConsumerKey('hyj7wJ2xfSkADK6bhJfUFbhAd', 'w145AA0P8opGRji1OzdLlyxA2W6fdqwEONlryr6A0kfucE8NwS');
 		$cb = \Codebird\Codebird::getInstance();
 		
 	if(! isset($_SESSION['tw_user_id'])){
@@ -131,6 +133,7 @@ class StudentsController extends AppController {
 		$_SESSION['oauth_token'] = $reply->oauth_token;
 		$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
 		$_SESSION['oauth_verify'] = true;
+		$_SESSION['is_circle'] = true;
 
 		// redirect to auth website
 		$auth_url = $cb->oauth_authorize(); //Twitterの認証画面に飛ばしている
@@ -172,7 +175,7 @@ class StudentsController extends AppController {
 				$stmt = $dbh->prepare($sql);
 				$params = array(
 					":tw_user_id" => $me->id_str,
-					":tw_screen_name" => tw_screen_name,
+					":tw_screen_name" => $me->screen_name,
 					":tw_profile_image_url" => $me->profile_image_url,
 					":tw_access_token" => $reply->oauth_token,
 					":tw_access_token_secret" => $reply->oauth_token_secret
@@ -186,7 +189,8 @@ class StudentsController extends AppController {
 				
 				$tw_user_id = $me->id_str;
 				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
-				$_SESSION['tw_screen_name'] = tw_screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
+				$_SESSION['is_circle'] = true;
+				$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
 			
 			
 				$this->redirect(array('action' => 'circle_resister'));
@@ -194,7 +198,7 @@ class StudentsController extends AppController {
 				
 				$tw_user_id = $me->id_str;
 				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
-				$_SESSION['tw_screen_name'] = tw_screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
+				$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
 				$this->redirect(array('action' => 'circle_edit_main'));
 			
 			}
@@ -224,7 +228,6 @@ class StudentsController extends AppController {
 	}
 	
 	public function student_edit(){
-		session_start();
 		if(isset($_SESSION['tw_user_id'])){
 			//userを持っていたら
 			$tw_user_id = $_SESSION['tw_user_id'];
@@ -389,8 +392,6 @@ class StudentsController extends AppController {
 	
 	public function fav($id = null){
 		if ($this->request->is('post') || $this->request->is('put')) {
-			//session
-			session_start();
 			if(isset($_SESSION['tw_user_id'])){
 				//userを持っていたら
 				$tw_user_id = $_SESSION['tw_user_id'];
@@ -468,7 +469,6 @@ class StudentsController extends AppController {
 	public function circle_resister() {
 	
 		$this->modelClass = null;
-		session_start();
 		if(isset($_SESSION['tw_user_id'])){
 			//userを持っていたら(ここにくる場合は基本持っているはず)
 			if(isset($_SESSION['tw_screen_name'])){
@@ -537,7 +537,6 @@ class StudentsController extends AppController {
 	
 	
 	public function circle_edit_cal(){
-		session_start();
 		$this->modelClass = null;
 		if(isset($_SESSION['tw_user_id'])){
 		//基本はsessionを持っているはず
@@ -602,7 +601,6 @@ class StudentsController extends AppController {
 	}//circle_edit_mainの終わり
 	
 	public function circle_edit(){
-		session_start();
 		$this->modelClass = null;
 		if(isset($_SESSION['tw_user_id'])){
 		//基本はsessionを持っているはず

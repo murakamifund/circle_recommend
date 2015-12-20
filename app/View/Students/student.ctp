@@ -13,7 +13,7 @@ onload = function(){
 }
 </script>
 
-<aside class="mb1em"><img src="../img/banner1.jpg" width="700" height="99" alt="ランチタイムパン食べ放題" class="wa"></aside>
+<aside class="mb1em"><img src="../img/image1.jpg" width="700" height="99" alt="" class="wa"></aside>
 <!-- 上の画像で、サークルの新規登録を促す -->
 <h2>サークルを探そう</h2>
 
@@ -286,6 +286,9 @@ endforeach ?>
 <!--table type03を定義しておく?-->
 <table class = "type03">
 	<tbody>
+	<!--ツイッターの埋め込み　よくわからんからここに置きます。大きさはwidthとheightをいじればできます。白井さんよろしく-->
+		<a class="twitter-timeline" href="https://twitter.com/<?php echo $datum['Circle']['tw_screen_name']; ?>" height="200" width="100"  data-chrome="nofooter" data-widget-id="667297834580836352">@<?php echo $datum['Circle']['tw_screen_name']; ?>さんのツイート</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	<tr>
 		<th scope="row">活動内容</th>
 		<td><?php echo $datum['Circle']['activity']; ?></td>

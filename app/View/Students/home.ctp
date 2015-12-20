@@ -7,7 +7,7 @@ onload = function(){
 <section>
 <h2>Welcome to UT-Circle!!</h2>
 <p>
-UT-Circleをご利用いただきありがとうございます
+UT-Circleをご利用いただきありがとうございます。
 <br>
 <br>
 UT-Circleは、東京大学のサークルを紹介するWebサービスです。Twitterと連携し、「SNS上での新歓」というスタイリッシュな新歓を提供します。
@@ -19,13 +19,28 @@ UT-Circleは、東京大学のサークルを紹介するWebサービスです�
 
 <section>
 <h2>How to use UT-Circle??</h2>
-<p>サークルレコメンダーは、東京大学内のサークルを東大生に紹介するサービスです。サークル選びに困っている学生さんはメニューの「STUDENT」よりサークル検索を！</p>
-<div><a class="access_btn" href="student">STUDENT</a></div>
-<div class="btn_nav">サークルを探したい学生はこちら！活動内容、雰囲気などから、自分にぴったりのサークルを見つけることが出来ます。</div>
+<h4>学生の方</h4>
 
+<aside class="mb1em"><a href="student"><img src="../img/image1.jpg" width="700" height="99" alt="" class="wa"></a></aside>
+<p>
+	サークル、部活を探したい学生はこちら!自分にあったサークルを見つけ、新歓の予定を確認しよう!<br>
+	
+</p>
+<!--
+<div><a class="access_btn" href="student">STUDENT</a></div>
+<div class="btn_nav">サークル、部活を探したい学生はこちら!自分にあったサークルを見つけ、新歓の予定を確認しよう!</div>
+-->
+<h4>サークル・部活の方</h4>
+
+<aside class="mb1em"><a href="circle"><img src="../img/image2.png" width="700" height="99" alt="" class="wa"></a></aside>
+<P>
+	サークル、部活のTwitterアカウントで連携することで、自分の団体を登録!</br>
+	団体の詳細情報や予定を共有することで、新入生にサークルの良さを見つけてもらうと同時に、Twitter上でのスマートな新歓を行おう!
+</p>
+<!--
 <div><a class="access_btn" href="../Circles/circle">CIRCLE</a></div>
 <div class="btn_nav">サークルの登録・サークル情報の編集などはこちら！（サークル登録をするには、まず「新規登録」から学生の登録をしてください。）</div>
-
+-->
 <div><a class="access_btn" href="student_resister">新規登録</a></div>
 <div class="btn_nav">もっと充実した機能を使いたい学生さんはこちら！学生登録をすることで、お気に入りサークルの登録などが出来ます。</div>
 

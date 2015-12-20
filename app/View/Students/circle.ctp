@@ -6,6 +6,7 @@ onload = function(){
 
 
 <h2 class="mb1em">サークルを登録しよう</h2>
+<aside class="mb1em"><img src="../img/image2.png" width="700" height="99" alt="" class="wa"></aside>
 <br>
 サークルのTwitterアカウントを登録することで、簡単にサークル登録を行えます。
 <p>
@@ -19,7 +20,8 @@ onload = function(){
 
 
 
-<h2 class="mb1em">パワポ</h2>
+<h2 class="mb1em">パワポ
+</h2>
 <iframe style="border:none" src="http://files.photosnack.com/iframejs/embed.html?hash=pdzp2m8jo&t=1444874503" width="576" height="384" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>
 
 
