@@ -24,7 +24,10 @@ class StudentsController extends AppController {
 		$cb = \Codebird\Codebird::getInstance();
 		
 	if(! isset($_SESSION['tw_user_id'])){
-	
+	/////////
+		if (isset($_SESSION['oauth_token'])){
+			$this->redirect(array('action' => 'student'));
+		}
 		if (! isset($_SESSION['oauth_token'])) { //まだデータが渡されていないときは（認証前）
 		// get the request token
 		$reply = $cb->oauth_requestToken([
@@ -100,7 +103,7 @@ class StudentsController extends AppController {
 		}
 	}else{
 		$this->redirect(array('action' => 'student_edit'));
-	}	
+	}
 	}//student_tw_callback終わり
 	
 	public function circle_tw_callback(){
