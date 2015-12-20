@@ -410,8 +410,9 @@ class StudentsController extends AppController {
 					  'circle_id' => $id,
 					]);
 					$circle = $this->Circle->find('all', array('conditions' => array('id' => $id)));
-					$circle['favorite'] += 1;
-					var_dump($circle['favorite']);
+					$favorite = (int)($circle[0]['Circle']['favorite']);
+					$favorite += 1;
+					$circle[0]['Circle']['favorite'] = (string)($favorite);
 					$this->Circle->save($circle);
 					
 					$this->Session->setFlash(__('お気に入り登録しました'));
@@ -655,7 +656,7 @@ class StudentsController extends AppController {
 					"75"=>'芸能',
 					"81"=>'その他'
 				);
-				$activity = $act[$local_user["Circle"]["activity"]];
+				$activity = $local_user["Circle"]["activity"];
 				$this->request->data['Circle']['activity'] = $activity;
 				$circle_value = 0;
 				$circle_value1 = 0;//練習したい
@@ -708,6 +709,7 @@ class StudentsController extends AppController {
 				$circle_value6 += $favorite;
 				$circle_value7 += $favorite;
 				$this->request->data['Circle']['id'] = $id;
+				$this->request->data['Circle']['favorite'] = $favorite;
 				$this->request->data['Circle']['value'] = $circle_value;
 				$this->request->data['Circle']['value1'] = $circle_value1;
 				$this->request->data['Circle']['value2'] = $circle_value2;
