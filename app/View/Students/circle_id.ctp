@@ -81,8 +81,9 @@ $act=array(
 		<img id="circle_photo_on"src="../../img/sample_photo2.jpg" width="400" height="300">
 		-->
 		<!-- ツイッターの埋め込み -->
-		<a class="twitter-timeline" href="https://twitter.com/<?php echo $tw_screen_name; ?>" data-widget-id="678425668590309381">@<?php echo $tw_screen_name; ?>さんのツイート</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		<a class="twitter-timeline" href="https://twitter.com/<?php echo $tw_screen_name; ?>" height="300" data-chrome="nofooter" data-widget-id="667297834580836352">@<?php echo $tw_screen_name; ?>さんのツイート</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
 	</div>
 	<div id="circle_pr">
 		<?php echo $pr; ?>
