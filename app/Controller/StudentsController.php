@@ -175,7 +175,7 @@ class StudentsController extends AppController {
 				$stmt = $dbh->prepare($sql);
 				$params = array(
 					":tw_user_id" => $me->id_str,
-					":tw_screen_name" => tw_screen_name,
+					":tw_screen_name" => $me->screen_name,
 					":tw_profile_image_url" => $me->profile_image_url,
 					":tw_access_token" => $reply->oauth_token,
 					":tw_access_token_secret" => $reply->oauth_token_secret
@@ -190,7 +190,7 @@ class StudentsController extends AppController {
 				$tw_user_id = $me->id_str;
 				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
 				$_SESSION['is_circle'] = true;
-				$_SESSION['tw_screen_name'] = tw_screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
+				$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
 			
 			
 				$this->redirect(array('action' => 'circle_resister'));
@@ -198,7 +198,7 @@ class StudentsController extends AppController {
 				
 				$tw_user_id = $me->id_str;
 				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
-				$_SESSION['tw_screen_name'] = tw_screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
+				$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
 				$this->redirect(array('action' => 'circle_edit_main'));
 			
 			}
