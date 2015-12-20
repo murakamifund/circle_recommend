@@ -3,6 +3,9 @@
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
 ?>
 
+<?php
+	$login = true;
+?>
 
 <script>
 onload = function(){
@@ -10,7 +13,7 @@ onload = function(){
 }
 </script>
 
-<aside class="mb1em"><img src="../img/banner1.jpg" width="700" height="99" alt="ランチタイムパン食べ放題" class="wa"></aside>
+<aside class="mb1em"><img src="../img/image1.jpg" width="700" height="99" alt="" class="wa"></aside>
 <!-- 上の画像で、サークルの新規登録を促す -->
 <h2>サークルを探そう</h2>
 
@@ -128,140 +131,6 @@ onload = function(){
 	<br>
 </form>
 
-
-
-
-
-
-<!--
-	<table class = "type01">
-	<tbody>
-	<tr>
-	<th scope="row">キーワード検索</th>
-		<td>
-		<input type="textbox" name="keyword" id="word" size="40" />
-		</td>
-	<tr>
-	<th scope="row">種目</th>
-		<td>
-		スポーツ<br>
-			<input type="checkbox" name="check1" id="activity1" value="1" />
-			<lavel for="activity1">テニス　</lavel>
-			<input type="checkbox" name="check2" id="activity2" value="1" />
-			<lavel for="activity2">卓球　</lavel>
-			<input type="checkbox" name="check3" id="activity3" value="1" />
-			<lavel for="activity3">サッカー　</lavel>
-			<input type="checkbox" name="check4" id="activity4" value="1" />
-			<lavel for="activity4">野球　</lavel>
-			<br>
-			<input type="checkbox" name="check5" id="activity5" value="1" />
-			<lavel for="activity5">バスケ　</lavel>
-			<input type="checkbox" name="check6" id="activity6" value="1" />
-			<lavel for="activity6">バレー　</lavel>
-			<input type="checkbox" name="check7" id="activity7" value="1" />
-			<lavel for="activity7">バドミントン　</lavel>
-			<input type="checkbox" name="check8" id="activity8" value="1" />
-			<lavel for="activity8">ラグビー　</lavel>
-			<br>
-			<input type="checkbox" name="check9" id="activity9" value="1" />
-			<lavel for="activity9">ホッケー　</lavel>
-			<input type="checkbox" name="check10" id="activity10" value="1" />
-			<lavel for="activity10">水泳　</lavel>
-			<input type="checkbox" name="check11" id="activity11" value="1" />
-			<lavel for="activity11">武道　</lavel>
-			<input type="checkbox" name="check12" id="activity12" value="1" />
-			<lavel for="activity12">ダンス　</lavel>
-			<br>
-			<input type="checkbox" name="check13" id="activity13" value="1" />
-			<lavel for="activity13">登山　</lavel>
-			<input type="checkbox" name="check14" id="activity14" value="1" />
-			<lavel for="activity14">乗り物　</lavel>
-			<input type="checkbox" name="check15" id="activity15" value="1" />
-			<lavel for="activity15">スキー　</lavel>
-			<br><br>
-		アカデミー<br>
-			<input type="checkbox" name="check31" id="activity31" value="1" />
-			<lavel for="activity31">政治・経済　</lavel>
-			<input type="checkbox" name="check32" id="activity32" value="1" />
-			<lavel for="activity32">放送・広告　</lavel>
-			<input type="checkbox" name="check33" id="activity33" value="1" />
-			<lavel for="activity33">語学　</lavel>
-			<input type="checkbox" name="check34" id="activity34" value="1" />
-			<lavel for="activity34">国際　</lavel>
-			<br>
-			<input type="checkbox" name="check35" id="activity35" value="1" />
-			<lavel for="activity35">コンピュータ　</lavel>
-			<input type="checkbox" name="check36" id="activity36" value="1" />
-			<lavel for="activity36">自然科学　</lavel>
-			<input type="checkbox" name="check37" id="activity37" value="1" />
-			<lavel for="activity37">法学　</lavel>
-			<input type="checkbox" name="check38" id="activity38" value="1" />
-			<lavel for="activity38">企業　</lavel>
-			<br><br>
-		音楽<br>
-			<input type="checkbox" name="check51" id="activity51" value="1" />
-			<lavel for="activity51">ロック　</lavel>
-			<input type="checkbox" name="check52" id="activity52" value="1" />
-			<lavel for="activity52">ジャズ　</lavel>
-			<input type="checkbox" name="check53" id="activity53" value="1" />
-			<lavel for="activity53">クラシック　</lavel>
-			<input type="checkbox" name="check54" id="activity54" value="1" />
-			<lavel for="activity54">コーラス　</lavel>
-			<br><br>
-		アート<br>
-			<input type="checkbox" name="check61" id="activity61" value="1" />
-			<lavel for="activity61">映画・写真　</lavel>
-			<input type="checkbox" name="check62" id="activity62" value="1" />
-			<lavel for="activity62">演劇・お笑い　</lavel>
-			<input type="checkbox" name="check63" id="activity63" value="1" />
-			<lavel for="activity63">美術　</lavel>
-			<input type="checkbox" name="check64" id="activity64" value="1" />
-			<lavel for="activity64">文芸　</lavel>
-			<br><br>
-		趣味<br>
-			<input type="checkbox" name="check71" id="activity71" value="1" />
-			<lavel for="activity71">旅行　</lavel>
-			<input type="checkbox" name="check72" id="activity72" value="1" />
-			<lavel for="activity72">アウトドア　</lavel>
-			<input type="checkbox" name="check73" id="activity73" value="1" />
-			<lavel for="activity73">ゲーム　</lavel>
-			<input type="checkbox" name="check74" id="activity74" value="1" />
-			<lavel for="activity74">グルメ　</lavel>
-			<br>
-			<input type="checkbox" name="check75" id="activity75" value="1" />
-			<lavel for="activity75">芸能　</lavel>
-			<br><br>
-		その他<br>
-			<input type="checkbox" name="check81" id="activity81" value="1" />
-			<lavel for="activity81">その他　</lavel>
-		</td>
-	</tr>
-	<th scope="row">検索条件</th>
-		<td>
-		<input type="radio" value="活動頻度重視" name="radio1" id="mazime" />
-		<lavel for="sort1">練習したい　</lavel>
-		<input type="radio" value="ゆるさ重視" name="radio1" id="yurui" />
-		<lavel for="sort2">楽な方がいい　</lavel>
-		<input type="radio" value="飲みたい" name="radio1" id="nomi" />
-		<lavel for="sort3">飲みたい　</lavel>
-		<input type="radio" value="飲みたくない重視" name="radio1" id="nomanai" />
-		<lavel for="sort4">飲みたくない　</lavel>
-		<input type="radio" value="人数重視" name="radio1" id="people" />
-		<lavel for="sort5">人数重視　</lavel>
-		<input type="radio" value="インカレ重視" name="radio1" id="inter" />
-		<lavel for="sort6">インカレがいい　</lavel>
-		<input type="radio" value="学内重視" name="radio1" id="gakunai" />
-		<lavel for="sort7">学内がいい　</lavel>
-		</td>
-	</tr>
-	</tbody>
-	</table>
-	<input type="submit" value="送信"  />
-	<br>
-	<br>
-</form>
-
--->
 
 <section id="lunch">
 
@@ -398,7 +267,7 @@ endforeach ?>
 		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
 		</a>
 	<?php else: ?>
-		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
+		<font color =#0099ff><?php echo $datum['Circle']['pr']; ?></font>
 	<?php endif; ?>
 	-->
 	<?php 
@@ -481,33 +350,28 @@ endforeach ?>
 <?php endif; ?>
 
 
-<section class="list">
-<figure><img src="../img/sample_photo1.jpg" width="280" height="210" alt="" /></figure>
-<h4>ランチプレート　1,300円</h4>
-<p>「おすすめ」マークはhtml内に画像として配置し、class=&quot;icon&quot;と指定すればボックス右上に表示されます。他に好きなアイコンを作ってclass指定してもOK。
-<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"></p>
-</section>
-
-<p class="pagetop"><a href="#">↑ PAGE TOP</a></p>
-
-</section>
+<?php foreach ($data as $datum){ ?>
 
 <section class="list">
 <div class="list_top">
-	<div class="list_catch_phrase"></div>
-	<div class="list_tags"></div>
-	<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"></p>
-	<div class="list_name"></div>
-	<div class="list_twitter"></div>
+	<div class="list_catch_phrase"><?php echo $datum['Circle']['phrase']; ?></div>
+	<div class="list_tags"><?php echo $datum['Circle']['place']; ?></div>
+	<div class="list_tags"><?php echo $datum['Circle']['intercollege']; ?></div>
+	<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon" id="icon_unfavored">
+	<img src="../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon" id="icon_favored">
+	<div class="list_name"><?php echo $datum['Circle']['circle_name']; ?></div>
+	<div class="list_twitter"><a href="https://twitter.com/aaaa" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
 </div>
 <div class="list_body">
 	<div class="list_image"><img src="../img/sample_photo1.jpg" width="300" height="150" alt="" /></div>
-	<div class="list_pr"></div>
-	<div class="list_bottan"></div>
+	<div class="list_pr"><?php echo $datum['Circle']['pr']; ?></div>
+	<div class="list_bottan"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">詳細はこちら！</a></div>
 </div>
 
 </div>
 </section>
+
+<?php } ?>
 
 </section>
 <!--/lunch-->

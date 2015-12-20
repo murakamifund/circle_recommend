@@ -23,6 +23,11 @@
 
 <script type="text/javascript" src="js/openclose.js"></script>
 
+<?php
+	if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == true) echo 'circle';
+	if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == false) echo 'student';
+?>
+
 </head>
 
 <body>
@@ -64,7 +69,7 @@
 
 <aside id="mainimg">
 <a href="home" id="slide_link">
-<img id="slide_image" src="../img/4.jpg" alt="" width="977" height="260" />
+<img id="slide_image" src="../img/todai.jpg" alt="" width="977" height="260" />
 </a>
 </aside>
 
