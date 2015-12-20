@@ -1031,6 +1031,8 @@ class StudentsController extends AppController {
 	endfor;
 	$p=array("駒場","本郷","");
 	$in=array("学内","インカレ","");
+	$top_data = $this->Circle->find('all', array('order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
+	$this -> set('top_data',$top_data);
 	if ($this -> request -> data){
 		$this->data = Sanitize::clean($this->data, array('encode' => false));
 		if($this -> data["keyword"] != ""){

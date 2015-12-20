@@ -349,23 +349,22 @@ endforeach ?>
 <!-- ここで　if文に対応した部分が表示される-->
 <?php endif; ?>
 
-
-<?php foreach ($data as $datum){ ?>
+<?php foreach ($top_data as $top_datum){ ?>
 
 <section class="list">
 <div class="list_top">
-	<div class="list_catch_phrase"><?php echo $datum['Circle']['phrase']; ?></div>
-	<div class="list_tags"><?php echo $datum['Circle']['place']; ?></div>
-	<div class="list_tags"><?php echo $datum['Circle']['intercollege']; ?></div>
+	<div class="list_catch_phrase"><?php echo $top_datum['Circle']['phrase']; ?></div>
+	<div class="list_tags"><?php echo $top_datum['Circle']['place']; ?></div>
+	<div class="list_tags"><?php echo $top_datum['Circle']['intercollege']; ?></div>
 	<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon" id="icon_unfavored">
 	<img src="../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon" id="icon_favored">
-	<div class="list_name"><?php echo $datum['Circle']['circle_name']; ?></div>
-	<div class="list_twitter"><a href="https://twitter.com/aaaa" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+	<div class="list_name"><?php echo $top_datum['Circle']['circle_name']; ?></div>
+	<div class="list_twitter"><a href="https://twitter.com/aaaa" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $top_datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
 </div>
 <div class="list_body">
 	<div class="list_image"><img src="../img/sample_photo1.jpg" width="300" height="150" alt="" /></div>
-	<div class="list_pr"><?php echo $datum['Circle']['pr']; ?></div>
-	<div class="list_bottan"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">詳細はこちら！</a></div>
+	<div class="list_pr"><?php echo $top_datum['Circle']['pr']; ?></div>
+	<div class="list_bottan"><a href="../Students/circle_id/<?php echo $top_datum['Circle']['id']; ?>">詳細はこちら！</a></div>
 </div>
 
 </div>
