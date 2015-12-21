@@ -243,106 +243,13 @@ endforeach ?>
 
 
 
-<?php foreach ($data as $datum): ?>
 
-<section class="list">
-<h3> <!--サークルの名前-->
-<a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">
-	<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
-</a>
-</h3>
-	<!--
-	<?php if($datum['Circle']['photo'] != ""): ?>
-		<figure><img src="../img/sample_photo2.jpg" width="280" height="210" alt="" /></figure>
-	<?php else: ?>
-		<?php echo "NO IMAGE"; ?>
-	<?php endif; ?>
-	-->
-<h4><!--サークルの名前-->
-	<a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">
-		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
-	</a>
-	<!--
-	<?php if($datum['Circle']['url']): ?>
-		<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
-		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
-		</a>
-	<?php else: ?>
-		<font color =#0099ff><?php echo $datum['Circle']['pr']; ?></font>
-	<?php endif; ?>
-	-->
-	<?php 
-		$string = "https://twitter.com/";	
-		$string .= $datum['Circle']['tw_screen_name'];	
-	?>	
-		<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
-			Follow 
-		<?php echo $datum['Circle']['tw_screen_name']; ?>
-		</a>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-		</script>
-	
-</h4>
-<p>
-<!--table type03を定義しておく?-->
-<table class = "type03">
-	<tbody>
+
 	<!--ツイッターの埋め込み　よくわからんからここに置きます。大きさはwidthとheightをいじればできます。白井さんよろしく-->
+<!--
 		<a class="twitter-timeline" href="https://twitter.com/<?php echo $datum['Circle']['tw_screen_name']; ?>" height="200" width="100"  data-chrome="nofooter" data-widget-id="667297834580836352">@<?php echo $datum['Circle']['tw_screen_name']; ?>さんのツイート</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	<tr>
-		<th scope="row">活動内容</th>
-		<td><?php echo $datum['Circle']['activity']; ?></td>
-	</tr>
-	<tr>
-		<th scope="row">ひとこと</th>
-		<td><?php echo $datum['Circle']['pr']; ?></td>
-	</tr>
-
-	<tr>
-		<th scope="row">場所</th>
-		<td><?php echo $datum['Circle']['place']; ?> : <?php echo $datum['Circle']['placetext']; ?></td>
-	</tr>
-	<tr>
-		<th scope="row">基本曜日</th>
-		<td>
-		<?php
-			$day =array(
-				$datum['Circle']['day1'],
-				$datum['Circle']['day2'],
-				$datum['Circle']['day3'],
-				$datum['Circle']['day4'],
-				$datum['Circle']['day5'],
-				$datum['Circle']['day6'],
-				$datum['Circle']['day7']
-			);
-			$day2=array(
-				"月",
-				"火",
-				"水",
-				"木",
-				"金",
-				"土",
-				"日"
-			);
-			$c=0;
-			for ($i=0;$i<7;$i++):
-				if ($day[$i]=="1"):
-					if ($c==0):
-						echo $day2[$i];
-						$c=$c+1;
-					else:
-						echo ",";
-						echo $day2[$i];
-					endif;
-				endif;
-			endfor;
-		?>
-		</td>
-	</tr>
-	</tbody>
-</table>
-</p>
+-->
 
 
 
@@ -352,7 +259,19 @@ endforeach ?>
 <?php if($d==0): ?>
 <h1>今人気のサークルはこちら！</h1>
 <?php foreach ($top_data as $top_datum){ ?>
-
+<div class="list_catch_phrase"><?php echo $top_datum['Circle']['phrase']; ?></div>
+	<div class="list_tags"><?php echo $top_datum['Circle']['place']; ?></div>
+	<div class="list_tags"><?php echo $top_datum['Circle']['intercollege']; ?></div>
+	<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon" id="icon_unfavored">
+	<img src="../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon" id="icon_favored">
+	<div class="list_name"><?php echo $top_datum['Circle']['circle_name']; ?></div>
+	<div class="list_twitter"><a href="https://twitter.com/aaaa" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $top_datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+<?php } ?>
+<?php endif; ?>
+	
+	
+	
+<?php foreach ($data as $datum){ ?>
 <section class="list">
 <div class="list_top">
 	<div class="list_catch_phrase"><?php echo $datum['Circle']['phrase']; ?></div>
@@ -379,28 +298,19 @@ endforeach ?>
 
 	<div class="list_name"><?php echo $datum['Circle']['circle_name']; ?></div>
 	<div class="list_twitter"><a href="https://twitter.com/<?php echo $datum['Circle']['tw_screen_name']; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
-	
-<!--
-	<div class="list_catch_phrase"><?php echo $top_datum['Circle']['phrase']; ?></div>
-	<div class="list_tags"><?php echo $top_datum['Circle']['place']; ?></div>
-	<div class="list_tags"><?php echo $top_datum['Circle']['intercollege']; ?></div>
-	<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon" id="icon_unfavored">
-	<img src="../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon" id="icon_favored">
-	<div class="list_name"><?php echo $top_datum['Circle']['circle_name']; ?></div>
-	<div class="list_twitter"><a href="https://twitter.com/aaaa" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $top_datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
--->
 
 </div>
 <div class="list_body">
 	<div class="list_image"><img src="../img/sample_photo1.jpg" width="300" height="150" alt="" /></div>
-	<div class="list_pr"><?php echo $top_datum['Circle']['pr']; ?></div>
-	<div class="list_bottan"><a href="../Students/circle_id/<?php echo $top_datum['Circle']['id']; ?>">詳細はこちら！</a></div>
+	<div class="list_pr"><?php echo nl2br($datum['Circle']['pr']); ?></div>
+	<div class="list_bottan"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">詳細はこちら！</a></div>
 </div>
 
 
 </section>
+<?php
+	}
+?>
 
-<?php } ?>
-<?php endif; ?>
 
 <!--/lunch-->

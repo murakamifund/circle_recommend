@@ -57,15 +57,10 @@
 	font-weight: 800;
 	color: #663333;
 	border-bottom: 3px solid #663333;
+	margin-bottom: 5px;
 	position:relative;
 }
 
-#circle_left #circle_twitter{
-	color: #ff0000;
-//	width: 100px;
-	margin-top: 5px;
-	text-align: right;
-}
 
 #circle_left #circle_photo{
 	width: 400px;
