@@ -1,3 +1,9 @@
+<script>
+onload = function(){
+	func_student_edit();
+}
+</script>
+
 <h3>登録情報を編集</h3>
 	
 <h3 class="mb1em"><?php echo $tw_user_id;?></h3>

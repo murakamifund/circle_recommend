@@ -19,14 +19,11 @@
 	echo $this->html->css(array('style','style_inner','bootstrap'));
     echo $scripts_for_layout;
 	echo $this->Html->script(array('myfunc.js','openclose.js','rollimg.js','scritp.js','slide_sample_pack.js'));
+ 
  ?>
+ 
 
 <script type="text/javascript" src="js/openclose.js"></script>
-
-<?php
-	if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == true) echo 'circle';
-	if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == false) echo 'student';
-?>
 
 </head>
 
@@ -36,29 +33,88 @@
 
 <div id="fixing_box">
 <header>
-<ul class="header_ul"><li><div onclick="display_popup()">ログイン</div></li><li><div href="student_login">新規登録</div></li></ul>
-<p id="logo"><a href="home"><img src="../img/logo03.png" width="250" height="50" alt=""></a></p>
+
+<div id="logo"><a href="home"><img src="../img/logo03.png" width="250" height="50" alt=""></a></div>
+
+<?php
+	if(isset($_SESSION['tw_user_id'])){
+?>
+
+<div id="student_bar">
+	<div id="student_bar_img"><img src="<?php echo $_SESSION['tw_image_url'];?>" alt="twitter"></div>
+	<div id="student_bar_comment"><?php echo $_SESSION['tw_screen_name'];?>さんがログイン</div>
+<?php
+		if($_SESSION['is_circle']==true){
+?>
+	<div class="student_bar_btn"><a href="./circle_edit_main">マイページ</a></div>
+<?php
+		}else{
+?>
+	<div class="student_bar_btn"><a href="./student_edit">マイページ</a></div>
+<?php
+		}
+?>
+	<div class="student_bar_btn"><a href="./student_tw_logout">ログアウト</a></div>
+</div>
+<?php
+	}else{
+?>
+<ul class="header_ul"><li><div onclick="display_popup()">ログインはこちら</div></li></ul>
+<?php
+	}
+?>
+
 </header>
 
 <nav class="menubar" id="menubar_pc">
 <ul>
 <li id="current"><a class="menu_pc" href="../Students/home">HOME</a></li>
-<li><a class="menu_pc" href="../Students/about">ABOUT</a></li>
 <li><a class="menu_pc" href="../Students/student">STUDENT</a></li>
 <li><a class="menu_pc" href="../Students/circle">CIRCLE</a></li>
-<li><a class="menu_pc" href="../Students/student_resister">新規登録</a></li>
-<li><a class="menu_pc" href="../Students/student_login">ログイン</a></li>
+<?php
+	if(isset($_SESSION['tw_user_id'])){
+		if($_SESSION['is_circle']==true){
+?>
+	<li><a class="menu_pc" href="../Students/circle_edit_main">マイページ</a></li>
+<?php
+		}else{
+?>
+	<li><a class="menu_pc" href="../Students/student_edit">マイページ</a></li>
+<?php
+		}
+	}else{
+?>
+	<li><a class="menu_pc" href="../Students/student_resister">ログイン</a></li>
+<?php
+	}
+?>
+	
 </ul>
 </nav>
 
 <nav class="menubar" id="menubar_mobile">
 <ul>
 <li id="current"><a class="menu_mobile" href="home">HOME</a></li>
-<li><a class="menu_mobile" href="about">ABOUT</a></li>
 <li><a class="menu_mobile" href="student">STUDENT</a></li>
 <li><a class="menu_mobile" href="circle">CIRCLE</a></li>
-<li><a class="menu_mobile" href="student_resister">新規登録</a></li>
-<li><a class="menu_mobile" href="student_login">ログイン</a></li>
+<?php
+	if(isset($_SESSION['tw_user_id'])){
+		if($_SESSION['is_circle']==true){
+?>
+	<li><a class="menu_mobile" href="../Students/circle_edit_main">マイページ</a></li>
+<?php
+		}else{
+?>
+	<li><a class="menu_mobile" href="../Students/student_edit">マイページ</a></li>
+<?php
+		}
+	}else{
+?>
+	<li><a class="menu_mobile" href="../Students/student_resister">ログイン</a></li>
+<?php
+	}
+?>
+
 </ul>
 </nav>
 

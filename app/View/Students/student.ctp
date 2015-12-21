@@ -3,31 +3,26 @@
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
 ?>
 
-<?php
-	$login = true;
-?>
-
 <script>
 onload = function(){
 	func_student();	
 }
 </script>
-
 <aside class="mb1em"><img src="../img/banner1.jpg" width="700" height="99" alt="ランチタイムパン食べ放題" class="wa"></aside>
 <!-- 上の画像で、サークルの新規登録を促す -->
 <h2>サークルを探そう</h2>
+<?php
+	if(!$this->request->data){
+?>
 
-
-
-
-<form method="post" action="./student" name=form1>
-
+<form method="post" action="./student" name=form1 >
 
 
 	<h4>キーワードから探す</h4>
 	<div class="search_group">
 	<div class="search_title">キーワード：</div>
-	<div class="search_forms2"><input type="textbox" name="keyword" id="search_keyword" size="60" /></div>
+	<div class="search_forms2"><input type="textbox" name="keyword" id="search_keyword" size="50" /></div>
+	<input type="submit" value="検索" id="search_submit"/>
 	</div>
 	<br>
 	<h4>カテゴリから探す</h4>
@@ -131,6 +126,9 @@ onload = function(){
 	<br>
 </form>
 
+<?php
+	}
+?>
 
 <section id="lunch">
 
@@ -225,10 +223,11 @@ if($this->request->data){
 <?php if($d>0): ?>
 <h1>あなたにおすすめのサークルは・・・</h1>
 <br>
-<h4><font color =#0099ff>サークル名をクリックするとそのサークルのホームページに移動できます</font></h4>
-<br>
+
 <h5><font color =#0099ff>結果をツイートして友達を誘おう</font></h5>	
-<?php $string = "";	
+<?php 
+endif;
+$string = "";	
 $i = 0;?>	
 <?php foreach ($data as $datum):	
 $string .= $datum['Circle']['circle_name'];	
@@ -239,115 +238,10 @@ $i = $i + 1;
 endforeach ?>	
 <a href = "https://twitter.com/share" data-hashtags= <?php echo $string; ?> data-text = 'このサークルの新歓に行く人は一緒に行こう！' data-url = '' data-size = 'large' class="twitter-hashtag-button" >Tweet #circlerecommend</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>	
 <br></br>
-<!--<?php print_r($count_data); ?> -->
 
 
-<?php foreach ($data as $datum): ?>
-
-<section class="list">
-<h3> <!--サークルの名前-->
-<a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">
-	<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
-</a>
-</h3>
-	<!--
-	<?php if($datum['Circle']['photo'] != ""): ?>
-		<figure><img src="../img/sample_photo2.jpg" width="280" height="210" alt="" /></figure>
-	<?php else: ?>
-		<?php echo "NO IMAGE"; ?>
-	<?php endif; ?>
-	-->
-<h4><!--サークルの名前-->
-	<a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">
-		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
-	</a>
-	<!--
-	<?php if($datum['Circle']['url']): ?>
-		<a href="<?php echo $datum['Circle']['url']; ?>"　target="_blank">
-		<font color =#0099ff><?php echo $datum['Circle']['circle_name']; ?></font>
-		</a>
-	<?php else: ?>
-		<font color =#0099ff><?php echo $datum['Circle']['pr']; ?></font>
-	<?php endif; ?>
-	-->
-	<?php 
-		$string = "https://twitter.com/";	
-		$string .= $datum['Circle']['tw_screen_name'];	
-	?>	
-		<a href= <?php echo $string; ?> class="twitter-follow-button" data-show-count="false" data-width = "200px">
-			Follow 
-		<?php echo $datum['Circle']['tw_screen_name']; ?>
-		</a>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-		</script>
-	
-</h4>
-<p>
-<!--table type03を定義しておく?-->
-<table class = "type03">
-	<tbody>
-	<tr>
-		<th scope="row">活動内容</th>
-		<td><?php echo $datum['Circle']['activity']; ?></td>
-	</tr>
-	<tr>
-		<th scope="row">ひとこと</th>
-		<td><?php echo $datum['Circle']['pr']; ?></td>
-	</tr>
-
-	<tr>
-		<th scope="row">場所</th>
-		<td><?php echo $datum['Circle']['place']; ?> : <?php echo $datum['Circle']['placetext']; ?></td>
-	</tr>
-	<tr>
-		<th scope="row">基本曜日</th>
-		<td>
-		<?php
-			$day =array(
-				$datum['Circle']['day1'],
-				$datum['Circle']['day2'],
-				$datum['Circle']['day3'],
-				$datum['Circle']['day4'],
-				$datum['Circle']['day5'],
-				$datum['Circle']['day6'],
-				$datum['Circle']['day7']
-			);
-			$day2=array(
-				"月",
-				"火",
-				"水",
-				"木",
-				"金",
-				"土",
-				"日"
-			);
-			$c=0;
-			for ($i=0;$i<7;$i++):
-				if ($day[$i]=="1"):
-					if ($c==0):
-						echo $day2[$i];
-						$c=$c+1;
-					else:
-						echo ",";
-						echo $day2[$i];
-					endif;
-				endif;
-			endfor;
-		?>
-		</td>
-	</tr>
-	</tbody>
-</table>
-</p>
 
 
-<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"></p>
-</section>
-
-
-<?php endforeach; ?>
-<!-- ここで　if文に対応した部分が表示される-->
-<?php endif; ?>
 
 
 <?php foreach ($data as $datum){ ?>
@@ -357,10 +251,27 @@ endforeach ?>
 	<div class="list_catch_phrase"><?php echo $datum['Circle']['phrase']; ?></div>
 	<div class="list_tags"><?php echo $datum['Circle']['place']; ?></div>
 	<div class="list_tags"><?php echo $datum['Circle']['intercollege']; ?></div>
-	<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon" id="icon_unfavored">
-	<img src="../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon" id="icon_favored">
+<?php
+	if($datum['Circle']['favored']==true){
+?>
+	<img src="../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon">
+<?php
+	}else if(isset($_SESSION['tw_user_id'])){
+?>
+	<form action="/circle_recommend/Students/fav/<?php echo $datum['Circle']['id'];?>" method="post">
+	<input type="hidden" name="address" value="student">
+	<input type="image" src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"/>
+	</form>
+<?php
+	}else{
+?>
+	<img src="../img/icon_osusume.png" onclick="display_popup()" width="90" height="60" alt="おすすめ" class="icon">
+<?php
+	}
+?>
+
 	<div class="list_name"><?php echo $datum['Circle']['circle_name']; ?></div>
-	<div class="list_twitter"><a href="https://twitter.com/aaaa" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+	<div class="list_twitter"><a href="https://twitter.com/<?php echo $datum['Circle']['tw_screen_name']; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
 </div>
 <div class="list_body">
 	<div class="list_image"><img src="../img/sample_photo1.jpg" width="300" height="150" alt="" /></div>
@@ -368,16 +279,9 @@ endforeach ?>
 	<div class="list_bottan"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">詳細はこちら！</a></div>
 </div>
 
-</div>
+
 </section>
 
 <?php } ?>
 
-</section>
 <!--/lunch-->
-
-
-
-
-
-</div>

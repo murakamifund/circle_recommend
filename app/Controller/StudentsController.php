@@ -95,6 +95,8 @@ class StudentsController extends AppController {
 			$tw_user_id = $me->id_str;
 			$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
 			$_SESSION['is_circle'] = false;
+			$_SESSION['tw_screen_name'] = $me->screen_name;
+			$_SESSION['tw_image_url'] = $me->profile_image_url;
 			
 			$this->redirect(array('action' => 'student_edit'));
 		
@@ -172,7 +174,7 @@ class StudentsController extends AppController {
 				$stmt = $dbh->prepare($sql);
 				$params = array(
 					":tw_user_id" => $me->id_str,
-					":tw_screen_name" => tw_screen_name,
+					":tw_screen_name" => $me->screen_name,
 					":tw_profile_image_url" => $me->profile_image_url,
 					":tw_access_token" => $reply->oauth_token,
 					":tw_access_token_secret" => $reply->oauth_token_secret
@@ -187,15 +189,17 @@ class StudentsController extends AppController {
 				$tw_user_id = $me->id_str;
 				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
 				$_SESSION['is_circle'] = true;
-				$_SESSION['tw_screen_name'] = tw_screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
-			
+				$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
+				$_SESSION['tw_image_url'] = $me->profile_image_url;
 			
 				$this->redirect(array('action' => 'circle_resister'));
 			}else{
 				
 				$tw_user_id = $me->id_str;
 				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
-				$_SESSION['tw_screen_name'] = tw_screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
+				$_SESSION['is_circle'] = true;
+				$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
+				$_SESSION['tw_image_url'] = $me->profile_image_url;
 				$this->redirect(array('action' => 'circle_edit_main'));
 			
 			}
@@ -356,6 +360,21 @@ class StudentsController extends AppController {
 	$pr = $data['Circle']['pr'];
 	$this->set("pr",$pr);//view側にデータをセット
 	
+	//favされているか判定
+	if(isset($_SESSION['tw_user_id']) && $_SESSION['is_circle']!=true){
+		$tw_user_id = $_SESSION['tw_user_id'];
+		$fav_circles = $this->Favorite->find('all', array(
+			'conditions' => array('user_id' => $tw_user_id,'circle_id' => $id)
+		));		
+		if (!empty($fav_circles)) {
+			$this->set('favored', true );
+		}else{
+			$this->set('favored', false );
+		}
+	}else{
+		$this->set('favored', false );
+	}
+	
 	//カレンダーの機能
 	
 	//circleのIdに一致するイベントを列挙
@@ -389,7 +408,7 @@ class StudentsController extends AppController {
 	
 	public function fav($id = null){
 		if ($this->request->is('post') || $this->request->is('put')) {
-			if(isset($_SESSION['tw_user_id'])){
+			if(isset($_SESSION['tw_user_id']) && $_SESSION['is_circle']!=true){
 				//userを持っていたら
 				$tw_user_id = $_SESSION['tw_user_id'];
 				$this->set('tw_user_id', $tw_user_id );
@@ -409,7 +428,11 @@ class StudentsController extends AppController {
 					
 					$this->Session->setFlash(__('お気に入り登録しました'));
 				}
-				$this->redirect(array('action'=>'circle_id/'.$id));
+				if($this->request->data['address']=='circle_id'){
+					$this->redirect(array('action'=>'circle_id/'.$id));
+				}else if($this->request->data['address']=='student'){
+					$this->redirect(array('action'=>'student'));
+				}
 			}else{
 				$this->redirect(array('action'=>'circle_id/'.$id));
 				$this->Session->setFlash(__('Twitterでログインしてください'));
@@ -464,7 +487,7 @@ class StudentsController extends AppController {
 		$this->modelClass = null;
 		if(isset($_SESSION['tw_user_id'])){
 			//userを持っていたら(ここにくる場合は基本持っているはず)
-			if(isset($_SESSION['tw_screen_name'])){
+			if($_SESSION['is_circle']==true){
 				//サークルかどうか
 				$tw_user_id = $_SESSION['tw_user_id'];
 				$local_user = $this->Circle->find('first', array(
@@ -501,11 +524,10 @@ class StudentsController extends AppController {
 	}
 	
 	public function circle_edit_main(){
-		session_start();
 		
 		if(isset($_SESSION['tw_user_id'])){
 		//基本はsessionを持っているはず
-			if(isset($_SESSION['tw_screen_name'])){
+			if($_SESSION['is_circle']){
 				//サークルかどうか
 				$tw_user_id = $_SESSION['tw_user_id'];
 				$local_user = $this->Circle->find('first', array(
@@ -1073,6 +1095,21 @@ class StudentsController extends AppController {
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
 		}
 		
+		//favの情報
+		$tw_user_id = $_SESSION['tw_user_id'];
+		$i = 0;
+		foreach($data as $datum){
+			$favored = $this->Favorite->find('all', array(
+				'conditions' => array('user_id' => $tw_user_id,'circle_id' => $datum['Circle']['id'])
+			));
+			if(!empty($favored)){
+				$data[$i]['Circle']['favored'] = true;
+			}else{
+				$data[$i]['Circle']['favored'] = false;
+			}
+			$i++;
+		}
+		
 		$this -> set('data',$data);
 		//$this -> set('count_data',$count_data);
 		$this -> set("activity",$activity);
@@ -1082,6 +1119,8 @@ class StudentsController extends AppController {
 		endif;
 		$this -> set("p",$p);
 		$this -> set("in",$in);
+		
+		
 		
 		
 		//検索結果カレンダー
@@ -1126,8 +1165,6 @@ class StudentsController extends AppController {
 		
 	}
 	}
-	
-
 
 }//クラス
 	

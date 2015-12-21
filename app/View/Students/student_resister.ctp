@@ -1,3 +1,9 @@
+<script>
+onload = function(){
+	func_student_resister();
+}
+</script>
+
 <h2 class="mb1em">新規登録</h2>
 
 <h3 class="mb1em">ツイッターと連携</h3>

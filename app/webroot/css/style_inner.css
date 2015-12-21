@@ -57,13 +57,14 @@
 	font-weight: 800;
 	color: #663333;
 	border-bottom: 3px solid #663333;
+	position:relative;
 }
 
 #circle_left #circle_twitter{
 	color: #ff0000;
-//	width: 30px;
+//	width: 100px;
 	margin-top: 5px;
-	margin-left: 55%;
+	text-align: right;
 }
 
 #circle_left #circle_photo{
@@ -117,9 +118,13 @@
 	border-radius:0 10px 10px 0;
 	text-align: right;
 	padding-right: 10px;
-
 }
 
+#main #circle_name img.icon,#main #circle_name input.icon{
+	position: absolute;
+	top: -15px;
+	right: -20px;
+}
 
 /* Students/student‚ÅŽg‚¤ */
 
@@ -163,7 +168,7 @@
 	float: left;	
 }
 
-#main section.list img.icon {
+#main section.list img.icon,#main section.list input.icon{
 	position: absolute;
 	top: -15px;
 	right: -20px;
@@ -202,6 +207,7 @@
 	width: 60%;
 	margin-left: 40%;
 }
+
 
 .list .list_bottan{
 	position: absolute;
