@@ -24,10 +24,7 @@ class StudentsController extends AppController {
 		$cb = \Codebird\Codebird::getInstance();
 		
 		if(! isset($_SESSION['tw_user_id'])){
-	/////////
-			if (isset($_SESSION['oauth_token'])){
-				$this->redirect(array('action' => 'student'));
-			}
+			
 			if (! isset($_SESSION['oauth_token'])) { //まだデータが渡されていないときは（認証前）
 			// get the request token
 			$reply = $cb->oauth_requestToken([
