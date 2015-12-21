@@ -352,6 +352,8 @@ endforeach ?>
 <!-- ここで　if文に対応した部分が表示される-->
 <?php endif; ?>
 
+<?php if($d==0): ?>
+<h1>今人気のサークルはこちら！</h1>
 <?php foreach ($top_data as $top_datum){ ?>
 
 <section class="list">
@@ -374,6 +376,7 @@ endforeach ?>
 </section>
 
 <?php } ?>
+<?php endif; ?>
 
 </section>
 <!--/lunch-->
