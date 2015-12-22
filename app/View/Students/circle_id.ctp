@@ -1,9 +1,3 @@
-<script>
-onload = function(){
-	func_circle_id(<?php echo $man; ?>,<?php echo $woman; ?>);
-}
-</script>
-
 <?php
 	echo $this->html->css(array('fullcalendar', 'bootstrap','headshrinker'));
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
@@ -71,9 +65,23 @@ $act=array(
 <div id="circle_left">
 	<div id="circle_name">
 		<a href="<?php echo $url; ?>"><?php echo $circle_name; ?></a>
-	</div>
-	<div id="circle_twitter">
-		<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true">@twitterさんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<?php
+		if($favored){
+?>
+		<img src="../../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon">
+<?php
+		}else if(isset($_SESSION['tw_user_id'])){
+?>
+		<form action="/circle_recommend/Students/fav/<?php echo $circle_id;?>" method="post">
+		<input type="image" src="../../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"/>
+		</form>
+<?php
+		}else{
+?>
+		<img src="../../img/icon_osusume.png" onclick="display_popup()"  width="90" height="60" alt="おすすめ" class="icon">
+<?php
+		}
+?>
 	</div>
 	
 	<div id="circle_photo">
@@ -88,7 +96,7 @@ $act=array(
 
 	</div>
 	<div id="circle_pr">
-		<?php echo $pr; ?>
+		<?php echo nl2br($pr); ?>
 	</div>
 </div>
 <div id="circle_right">
@@ -108,12 +116,6 @@ $act=array(
 	<div>飲み会頻度：<?php echo $nomi_chosen; ?><br>活動の雰囲気：<?php echo $mazime_chosen; ?></div>
 
 </div>
-
-<h4> お気に入り </h4>
-
-<?php echo $this->Form->postLink('お気に入り登録',array(
-		'action'=>'fav',$circle_id),
-array('class'=>'btn btn-info'),'お気に入りに登録しますか?');?>
 
 <br>
 
@@ -145,6 +147,10 @@ array('class'=>'btn btn-info'),'お気に入りに登録しますか?');?>
 			
 			
 	});
+	
+onload = function(){
+	func_circle_id(<?php echo $man; ?>,<?php echo $woman; ?>);
+}
 	
 	
     

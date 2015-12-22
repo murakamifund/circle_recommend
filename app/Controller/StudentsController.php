@@ -23,88 +23,90 @@ class StudentsController extends AppController {
 		//\Codebird\Codebird::setConsumerKey('CONSUMER_KEY', 'CONSUMER_SECRET');
 		$cb = \Codebird\Codebird::getInstance();
 		
-		if(! isset($_SESSION['tw_user_id'])){
-			
-			if (! isset($_SESSION['oauth_token'])) { //まだデータが渡されていないときは（認証前）
-			// get the request token
-			$reply = $cb->oauth_requestToken([
-				'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
+	if(! isset($_SESSION['tw_user_id'])){
+	
+		if (! isset($_SESSION['oauth_token'])) { //まだデータが渡されていないときは（認証前）
+		// get the request token
+		$reply = $cb->oauth_requestToken([
+			'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
+		]);
+    
+		// store the token
+		$cb->setToken($reply->oauth_token, $reply->oauth_token_secret);
+		$_SESSION['oauth_token'] = $reply->oauth_token;
+		$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
+		$_SESSION['oauth_verify'] = true;
+
+		// redirect to auth website
+		$auth_url = $cb->oauth_authorize(); //Twitterの認証画面に飛ばしている
+		header('Location: ' . $auth_url);
+		die();
+
+		} elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
+			// verify the token
+			$cb->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+			unset($_SESSION['oauth_verify']);
+
+			// get the access token
+			$reply = $cb->oauth_accessToken([
+				'oauth_verifier' => $_GET['oauth_verifier']
 			]);
+			// store the token (which is different from the request token!)
+			//$_SESSION['oauth_token'] = $reply->oauth_token;
+			//$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
+			$cb->setToken($reply->oauth_token,$reply->oauth_token_secret);
+			$me = $cb->account_verifyCredentials(); //$meの中にアカウントの情報を入れる
+
+			//データベースにアカウント情報を格納
+			try{ //まずはデータベースに接続
+				$dbh = new PDO('mysql:host=127.0.0.1;dbname=circlerecommend;charset=utf8','root','');
+			}catch(PDOException $e){
+				echo $e->getMessage();
+			exit;
+			}
     
-			// store the token
-			$cb->setToken($reply->oauth_token, $reply->oauth_token_secret);
-			$_SESSION['oauth_token'] = $reply->oauth_token;
-			$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
-			$_SESSION['oauth_verify'] = true;
+			$sql = "select * from students where tw_user_id = :tw_user_id limit 1"; 
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
+			$local_user = $stmt->fetch(); //結果を返す 
+			if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
+				$sql = "insert into students 
+				(tw_user_id,tw_screen_name,tw_profile_image_url,tw_access_token,tw_access_token_secret) 
+				values
+				(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_access_token,:tw_access_token_secret)";
+				$stmt = $dbh->prepare($sql);
+				$params = array(
+					":tw_user_id" => $me->id_str,
+					":tw_screen_name" => $me->screen_name,
+					":tw_profile_image_url" => $me->profile_image_url,
+					":tw_access_token" => $reply->oauth_token,
+					":tw_access_token_secret" => $reply->oauth_token_secret
+				);
+				$stmt->execute($params);
 
-			// redirect to auth website
-			$auth_url = $cb->oauth_authorize(); //Twitterの認証画面に飛ばしている
-			header('Location: ' . $auth_url);
-			die();
-
-			} elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
-				// verify the token
-				$cb->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
-				unset($_SESSION['oauth_verify']);
-
-				// get the access token
-				$reply = $cb->oauth_accessToken([
-					'oauth_verifier' => $_GET['oauth_verifier']
-				]);
-				// store the token (which is different from the request token!)
-				//$_SESSION['oauth_token'] = $reply->oauth_token;
-				//$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
-				$cb->setToken($reply->oauth_token,$reply->oauth_token_secret);
-				$me = $cb->account_verifyCredentials(); //$meの中にアカウントの情報を入れる
-
-				//データベースにアカウント情報を格納
-				try{ //まずはデータベースに接続
-					$dbh = new PDO('mysql:host=127.0.0.1;dbname=circlerecommend;charset=utf8','root','');
-				}catch(PDOException $e){
-					echo $e->getMessage();
-				exit;
-				}
-    
 				$sql = "select * from students where tw_user_id = :tw_user_id limit 1"; 
 				$stmt = $dbh->prepare($sql);
 				$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
-				$local_user = $stmt->fetch(); //結果を返す 
-				if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
-					$sql = "insert into students 
-					(tw_user_id,tw_screen_name,tw_profile_image_url,tw_access_token,tw_access_token_secret) 
-					values
-					(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_access_token,:tw_access_token_secret)";
-					$stmt = $dbh->prepare($sql);
-					$params = array(
-						":tw_user_id" => $me->id_str,
-						":tw_screen_name" => $me->screen_name,
-						":tw_profile_image_url" => $me->profile_image_url,
-						":tw_access_token" => $reply->oauth_token,
-						":tw_access_token_secret" => $reply->oauth_token_secret
-					);
-					$stmt->execute($params);
-
-					$sql = "select * from students where tw_user_id = :tw_user_id limit 1"; 
-					$stmt = $dbh->prepare($sql);
-					$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
-					$local_user = $stmt->fetch();
-				}
-			
-			
-			
-				$tw_user_id = $me->id_str;
-				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
-				$_SESSION['is_circle'] = false;
-			
-				$this->redirect(array('action' => 'student_edit'));
-		
-			}else{
-				$this->Session->destroy(); //セッションを完全削除
-				$this->redirect(array('action' => 'student_resister'));
+				$local_user = $stmt->fetch();
 			}
-		}else{
+			
+			
+			
+			$tw_user_id = $me->id_str;
+			$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
+			$_SESSION['is_circle'] = false;
+			$_SESSION['tw_screen_name'] = $me->screen_name;
+			$_SESSION['tw_image_url'] = $me->profile_image_url;
+			
 			$this->redirect(array('action' => 'student_edit'));
-		}	
+		
+		}else{
+			$this->Session->destroy(); //セッションを完全削除
+			$this->redirect(array('action' => 'student_resister'));
+		}
+	}else{
+		$this->redirect(array('action' => 'student_edit'));
+	}	
 		//$this->redirect(array('action' => 'home'));
 	}//student_tw_callback終わり
 	
@@ -188,14 +190,16 @@ class StudentsController extends AppController {
 				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
 				$_SESSION['is_circle'] = true;
 				$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
-			
+				$_SESSION['tw_image_url'] = $me->profile_image_url;
 			
 				$this->redirect(array('action' => 'circle_resister'));
 			}else{
 				
 				$tw_user_id = $me->id_str;
 				$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
+				$_SESSION['is_circle'] = true;
 				$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
+				$_SESSION['tw_image_url'] = $me->profile_image_url;
 				$this->redirect(array('action' => 'circle_edit_main'));
 			
 			}
@@ -356,6 +360,21 @@ class StudentsController extends AppController {
 	$pr = $data['Circle']['pr'];
 	$this->set("pr",$pr);//view側にデータをセット
 	
+	//favされているか判定
+	if(isset($_SESSION['tw_user_id']) && $_SESSION['is_circle']!=true){
+		$tw_user_id = $_SESSION['tw_user_id'];
+		$fav_circles = $this->Favorite->find('all', array(
+			'conditions' => array('user_id' => $tw_user_id,'circle_id' => $id)
+		));		
+		if (!empty($fav_circles)) {
+			$this->set('favored', true );
+		}else{
+			$this->set('favored', false );
+		}
+	}else{
+		$this->set('favored', false );
+	}
+	
 	//カレンダーの機能
 	
 	//circleのIdに一致するイベントを列挙
@@ -389,7 +408,7 @@ class StudentsController extends AppController {
 	
 	public function fav($id = null){
 		if ($this->request->is('post') || $this->request->is('put')) {
-			if(isset($_SESSION['tw_user_id'])){
+			if(isset($_SESSION['tw_user_id']) && $_SESSION['is_circle']!=true){
 				//userを持っていたら
 				$tw_user_id = $_SESSION['tw_user_id'];
 				$this->set('tw_user_id', $tw_user_id );
@@ -406,15 +425,14 @@ class StudentsController extends AppController {
 					  'user_id' => $tw_user_id,
 					  'circle_id' => $id,
 					]);
-					$circle = $this->Circle->find('all', array('conditions' => array('id' => $id)));
-					$favorite = (int)($circle[0]['Circle']['favorite']);
-					$favorite += 1;
-					$circle[0]['Circle']['favorite'] = (string)($favorite);
-					$this->Circle->save($circle);
 					
 					$this->Session->setFlash(__('お気に入り登録しました'));
 				}
-				$this->redirect(array('action'=>'circle_id/'.$id));
+				if($this->request->data['address']=='circle_id'){
+					$this->redirect(array('action'=>'circle_id/'.$id));
+				}else if($this->request->data['address']=='student'){
+					$this->redirect(array('action'=>'student'));
+				}
 			}else{
 				$this->redirect(array('action'=>'circle_id/'.$id));
 				$this->Session->setFlash(__('Twitterでログインしてください'));
@@ -469,7 +487,7 @@ class StudentsController extends AppController {
 		$this->modelClass = null;
 		if(isset($_SESSION['tw_user_id'])){
 			//userを持っていたら(ここにくる場合は基本持っているはず)
-			if(isset($_SESSION['tw_screen_name'])){
+			if($_SESSION['is_circle']==true){
 				//サークルかどうか
 				$tw_user_id = $_SESSION['tw_user_id'];
 				$local_user = $this->Circle->find('first', array(
@@ -506,11 +524,10 @@ class StudentsController extends AppController {
 	}
 	
 	public function circle_edit_main(){
-		session_start();
 		
 		if(isset($_SESSION['tw_user_id'])){
 		//基本はsessionを持っているはず
-			if(isset($_SESSION['tw_screen_name'])){
+			if($_SESSION['is_circle']){
 				//サークルかどうか
 				$tw_user_id = $_SESSION['tw_user_id'];
 				$local_user = $this->Circle->find('first', array(
@@ -653,7 +670,7 @@ class StudentsController extends AppController {
 					"75"=>'芸能',
 					"81"=>'その他'
 				);
-				$activity = $local_user["Circle"]["activity"];
+				$activity = $act[$local_user["Circle"]["activity"]];
 				$this->request->data['Circle']['activity'] = $activity;
 				$circle_value = 0;
 				$circle_value1 = 0;//練習したい
@@ -706,7 +723,6 @@ class StudentsController extends AppController {
 				$circle_value6 += $favorite;
 				$circle_value7 += $favorite;
 				$this->request->data['Circle']['id'] = $id;
-				$this->request->data['Circle']['favorite'] = $favorite;
 				$this->request->data['Circle']['value'] = $circle_value;
 				$this->request->data['Circle']['value1'] = $circle_value1;
 				$this->request->data['Circle']['value2'] = $circle_value2;
@@ -1028,8 +1044,6 @@ class StudentsController extends AppController {
 	endfor;
 	$p=array("駒場","本郷","");
 	$in=array("学内","インカレ","");
-	$top_data = $this->Circle->find('all', array('order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
-	$this -> set('top_data',$top_data);
 	if ($this -> request -> data){
 		$this->data = Sanitize::clean($this->data, array('encode' => false));
 		if($this -> data["keyword"] != ""){
@@ -1081,6 +1095,21 @@ class StudentsController extends AppController {
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
 		}
 		
+		//favの情報
+		$tw_user_id = $_SESSION['tw_user_id'];
+		$i = 0;
+		foreach($data as $datum){
+			$favored = $this->Favorite->find('all', array(
+				'conditions' => array('user_id' => $tw_user_id,'circle_id' => $datum['Circle']['id'])
+			));
+			if(!empty($favored)){
+				$data[$i]['Circle']['favored'] = true;
+			}else{
+				$data[$i]['Circle']['favored'] = false;
+			}
+			$i++;
+		}
+		
 		$this -> set('data',$data);
 		//$this -> set('count_data',$count_data);
 		$this -> set("activity",$activity);
@@ -1090,6 +1119,8 @@ class StudentsController extends AppController {
 		endif;
 		$this -> set("p",$p);
 		$this -> set("in",$in);
+		
+		
 		
 		
 		//検索結果カレンダー
@@ -1134,8 +1165,6 @@ class StudentsController extends AppController {
 		
 	}
 	}
-	
-
 
 }//クラス
 	

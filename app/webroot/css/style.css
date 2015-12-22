@@ -183,7 +183,7 @@ header ul li div{
 	display: block;
 	border-radius: 10px;
 	border: 2px solid #330000;
-	width: 70px;
+	width: 130px;
 	line-height: 2;
 	text-align: center;
 	color: #eeeeee;
@@ -203,6 +203,55 @@ header #logo {
 	left: 20px;	/*ヘッダーブロックに対して左から20pxの場所に配置*/
 	top: 0px;	/*ヘッダーブロックに対して上から20pxの場所に配置*/
 }
+
+header #student_bar{
+	position: absolute;
+	right: 10px;	/*ヘッダーブロックに対して左から20pxの場所に配置*/
+	top: 5px;	/*ヘッダーブロックに対して上から20pxの場所に配置*/
+	height: 82%;
+	width: 200px;
+	border: 2px solid #330000;
+	border-radius: 10px;
+	color: #eeeeee;
+	background-color: #333;	/*背景色（古いブラウザだとここの色のみが出ます）*/
+}
+
+header #student_bar_img{
+	height: 32px;
+	width: 32px;
+	border: 1px solid #330000;
+	background-color: #ffffff;
+	margin-left: 7px;
+	margin-top: 3px;
+	float:left;
+}
+
+header #student_bar_img img{
+	width: 30px;
+	height: 30px;
+}
+
+header #student_bar_comment{
+	float: left;
+	width: 75%;
+	margin-top: 2px;
+	margin-left: 10px;
+	font-size: 10px;
+}
+
+header .student_bar_btn{
+	float: left;
+	height: 20px;
+	width: 60px;
+	margin-left: 10px;
+	border: 2px solid #330000;
+	background-color: #ffffff;
+	color: #000000;
+	font-size: 10px;
+	text-align: center;
+	line-height: 1.7;
+}
+
 
 /*上部のメインメニュー
 ---------------------------------------------------------------------------*/
