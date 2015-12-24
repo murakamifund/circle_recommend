@@ -227,7 +227,6 @@ if($this->request->data){
 
 <h5><font color =#0099ff>結果をツイートして友達を誘おう</font></h5>	
 <?php 
-endif;
 $string = "";	
 $i = 0;?>	
 <?php foreach ($data as $datum):	
@@ -251,8 +250,7 @@ endforeach ?>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 -->
 
-
-
+<?php endif; ?>
 
 
 
@@ -270,7 +268,7 @@ endforeach ?>
 <?php endif; ?>
 	
 	
-	
+<?php if($d>0): ?>
 <?php foreach ($data as $datum){ ?>
 <section class="list">
 <div class="list_top">
@@ -310,6 +308,7 @@ endforeach ?>
 </section>
 <?php
 	}
+	endif;
 ?>
 
 

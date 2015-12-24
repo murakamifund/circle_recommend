@@ -906,6 +906,9 @@ class StudentsController extends AppController {
 	 "On" : "Off";
 	$nochoice2 = isset($this -> data["nochoice2"]) ?
 	 "On" : "Off";
+	$top_data = $this->Circle->find('all', array('limit' => 3, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
+	$this -> set('top_data',$top_data);
+	
 	if ($this -> request -> data){
 		if($this -> data["keyword"]){
 			$word = $this -> data["keyword"];
