@@ -257,13 +257,40 @@ endforeach ?>
 <?php if($d==0): ?>
 <h1>今人気のサークルはこちら！</h1>
 <?php foreach ($top_data as $top_datum){ ?>
-<div class="list_catch_phrase"><?php echo $top_datum['Circle']['phrase']; ?></div>
+<section class="list">
+<div class="list_top">
+	<div class="list_catch_phrase"><?php echo $top_datum['Circle']['phrase']; ?></div>
 	<div class="list_tags"><?php echo $top_datum['Circle']['place']; ?></div>
 	<div class="list_tags"><?php echo $top_datum['Circle']['intercollege']; ?></div>
-	<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon" id="icon_unfavored">
-	<img src="../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon" id="icon_favored">
+<?php
+	if($top_datum['Circle']['favored']==true){
+?>
+	<img src="../img/star2.png" width="90" height="60" alt="人気" class="icon">
+<?php
+	}else if(isset($_SESSION['tw_user_id'])){
+?>
+	<form action="/circle_recommend/Students/fav/<?php echo $top_datum['Circle']['id'];?>" method="post">
+	<input type="hidden" name="address" value="student">
+	<input type="image" src="../img/star1.png" width="90" height="60" alt="おすすめ" class="icon"/>
+	</form>
+<?php
+	}else{
+?>
+	<img src="../img/star1.png" onclick="display_popup()" width="90" height="60" alt="おすすめ" class="icon">
+<?php
+	}
+?>
 	<div class="list_name"><?php echo $top_datum['Circle']['circle_name']; ?></div>
-	<div class="list_twitter"><a href="https://twitter.com/aaaa" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $top_datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+	<div class="list_twitter"><a href="https://twitter.com/<?php echo $top_datum['Circle']['tw_screen_name']; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $top_datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+
+</div>
+<div class="list_body">
+	<div class="list_image"><img src="../img/sample_photo1.jpg" width="300" height="150" alt="" /></div>
+	<div class="list_pr"><?php echo nl2br($top_datum['Circle']['pr']); ?></div>
+	<div class="list_bottan"><a href="../Students/circle_id/<?php echo $top_datum['Circle']['id']; ?>">詳細はこちら！</a></div>
+</div>
+</section>
+	
 <?php } ?>
 <?php endif; ?>
 	
@@ -278,18 +305,18 @@ endforeach ?>
 <?php
 	if($datum['Circle']['favored']==true){
 ?>
-	<img src="../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon">
+	<img src="../img/star2.png" width="90" height="60" alt="人気" class="icon">
 <?php
 	}else if(isset($_SESSION['tw_user_id'])){
 ?>
 	<form action="/circle_recommend/Students/fav/<?php echo $datum['Circle']['id'];?>" method="post">
 	<input type="hidden" name="address" value="student">
-	<input type="image" src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"/>
+	<input type="image" src="../img/star1.png" width="90" height="60" alt="おすすめ" class="icon"/>
 	</form>
 <?php
 	}else{
 ?>
-	<img src="../img/icon_osusume.png" onclick="display_popup()" width="90" height="60" alt="おすすめ" class="icon">
+	<img src="../img/star1.png" onclick="display_popup()" width="90" height="60" alt="おすすめ" class="icon">
 <?php
 	}
 ?>

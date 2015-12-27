@@ -165,8 +165,12 @@
 
 #main section.list img.icon,#main section.list input.icon{
 	position: absolute;
-	top: -15px;
-	right: -20px;
+	top: -40px;
+	right: -30px;
+}
+
+#main section.list img.icon:hover,#main section.list input.icon:hover{
+	cursor:pointer;
 }
 
 .list img#icon_unfavored {

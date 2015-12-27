@@ -907,6 +907,25 @@ class StudentsController extends AppController {
 	$nochoice2 = isset($this -> data["nochoice2"]) ?
 	 "On" : "Off";
 	$top_data = $this->Circle->find('all', array('limit' => 3, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
+	
+	$i = 0;
+	if(isset($_SESSION['tw_user_id'])){
+		foreach($top_data as $top_datum){
+			$top_favored = $this->Favorite->find('all', array(
+				'conditions' => array('user_id' => $tw_user_id,'circle_id' => $top_datum['Circle']['id'])
+			));
+			if(!empty($top_favored)){
+				$top_data[$i]['Circle']['favored'] = true;
+			}else{
+				$top_data[$i]['Circle']['favored'] = false;
+			}
+			$i++;
+		}
+	}else{
+		for(;$i<count($top_data);$i++){
+			$top_data[$i]['Circle']['favored'] = false;
+		}
+	}
 	$this -> set('top_data',$top_data);
 	
 	if ($this -> request -> data){
@@ -1099,20 +1118,24 @@ class StudentsController extends AppController {
 		}
 		
 		//favの情報
-		$tw_user_id = $_SESSION['tw_user_id'];
 		$i = 0;
-		foreach($data as $datum){
-			$favored = $this->Favorite->find('all', array(
-				'conditions' => array('user_id' => $tw_user_id,'circle_id' => $datum['Circle']['id'])
-			));
-			if(!empty($favored)){
-				$data[$i]['Circle']['favored'] = true;
-			}else{
+		if(isset($_SESSION['tw_user_id'])){
+			foreach($data as $datum){
+				$favored = $this->Favorite->find('all', array(
+					'conditions' => array('user_id' => $tw_user_id,'circle_id' => $datum['Circle']['id'])
+				));
+				if(!empty($favored)){
+					$data[$i]['Circle']['favored'] = true;
+				}else{
+					$data[$i]['Circle']['favored'] = false;
+				}
+				$i++;
+			}
+		}else{
+			for(;$i<count($data);$i++){
 				$data[$i]['Circle']['favored'] = false;
 			}
-			$i++;
 		}
-		
 		$this -> set('data',$data);
 		//$this -> set('count_data',$count_data);
 		$this -> set("activity",$activity);
