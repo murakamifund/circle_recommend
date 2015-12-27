@@ -71,14 +71,15 @@ class StudentsController extends AppController {
 			$local_user = $stmt->fetch(); //結果を返す 
 			if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
 				$sql = "insert into students 
-				(tw_user_id,tw_screen_name,tw_profile_image_url,tw_access_token,tw_access_token_secret) 
+				(tw_user_id,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_access_token,tw_access_token_secret) 
 				values
-				(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_access_token,:tw_access_token_secret)";
+				(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_profile_banner_url,:tw_access_token,:tw_access_token_secret)";
 				$stmt = $dbh->prepare($sql);
 				$params = array(
 					":tw_user_id" => $me->id_str,
 					":tw_screen_name" => $me->screen_name,
 					":tw_profile_image_url" => $me->profile_image_url,
+					":tw_profile_banner_url" => $me->profile_banner_url,
 					":tw_access_token" => $reply->oauth_token,
 					":tw_access_token_secret" => $reply->oauth_token_secret
 				);
@@ -97,6 +98,7 @@ class StudentsController extends AppController {
 			$_SESSION['is_circle'] = false;
 			$_SESSION['tw_screen_name'] = $me->screen_name;
 			$_SESSION['tw_image_url'] = $me->profile_image_url;
+			$_SESSION['tw_banner_url'] = $me->profile_banner_url;
 			
 			$this->redirect(array('action' => 'student_edit'));
 		
@@ -168,20 +170,21 @@ class StudentsController extends AppController {
 			$local_user = $stmt->fetch(); //結果を返す 
 			if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
 				$sql = "insert into circles 
-				(tw_user_id,tw_screen_name,tw_profile_image_url,tw_access_token,tw_access_token_secret) 
+				(tw_user_id,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_access_token,tw_access_token_secret) 
 				values
-				(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_access_token,:tw_access_token_secret)";
+				(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_profile_banner_url,:tw_access_token,:tw_access_token_secret)";
 				$stmt = $dbh->prepare($sql);
 				$params = array(
 					":tw_user_id" => $me->id_str,
 					":tw_screen_name" => $me->screen_name,
 					":tw_profile_image_url" => $me->profile_image_url,
+					":tw_profile_banner_url" => $me->profile_banner_url,
 					":tw_access_token" => $reply->oauth_token,
 					":tw_access_token_secret" => $reply->oauth_token_secret
 				);
 				$stmt->execute($params);
 
-				$sql = "select * from students where tw_user_id = :tw_user_id limit 1"; 
+				$sql = "select * from circles where tw_user_id = :tw_user_id limit 1"; 
 				$stmt = $dbh->prepare($sql);
 				$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
 				$local_user = $stmt->fetch();
@@ -191,6 +194,7 @@ class StudentsController extends AppController {
 				$_SESSION['is_circle'] = true;
 				$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
 				$_SESSION['tw_image_url'] = $me->profile_image_url;
+				$_SESSION['tw_banner_url'] = $me->profile_banner_url;
 			
 				$this->redirect(array('action' => 'circle_resister'));
 			}else{
@@ -200,6 +204,7 @@ class StudentsController extends AppController {
 				$_SESSION['is_circle'] = true;
 				$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
 				$_SESSION['tw_image_url'] = $me->profile_image_url;
+				$_SESSION['tw_banner_url'] = $me->profile_banner_url;
 				$this->redirect(array('action' => 'circle_edit_main'));
 			
 			}
