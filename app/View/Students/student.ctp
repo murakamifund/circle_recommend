@@ -23,7 +23,7 @@ onload = function(){
 	<div class="search_group">
 	<div class="search_title">キーワード：</div>
 	<div class="search_forms2"><input type="textbox" name="keyword" id="search_keyword" size="50" /></div>
-	<input type="submit" value="検索" id="search_submit"/>
+	<input type="submit" value="検索" id="search_submit1" />
 	</div>
 	<br>
 	<h4>カテゴリから探す</h4>
@@ -123,7 +123,7 @@ onload = function(){
 
 		
 	<br>
-	<input type="submit" value="検索" id="search_submit"/>
+	<input type="submit" value="検索" id="search_submit2"/>
 	<br>
 </form>
 
