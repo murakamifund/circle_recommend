@@ -910,6 +910,7 @@ class StudentsController extends AppController {
 	
 	$i = 0;
 	if(isset($_SESSION['tw_user_id'])){
+		$tw_user_id = $_SESSION['tw_user_id'];
 		foreach($top_data as $top_datum){
 			$top_favored = $this->Favorite->find('all', array(
 				'conditions' => array('user_id' => $tw_user_id,'circle_id' => $top_datum['Circle']['id'])
@@ -1120,6 +1121,7 @@ class StudentsController extends AppController {
 		//favの情報
 		$i = 0;
 		if(isset($_SESSION['tw_user_id'])){
+			$tw_user_id = $_SESSION['tw_user_id'];
 			foreach($data as $datum){
 				$favored = $this->Favorite->find('all', array(
 					'conditions' => array('user_id' => $tw_user_id,'circle_id' => $datum['Circle']['id'])

@@ -246,7 +246,7 @@
 	width: 110px;
 }
 
-input#search_submit{
+form input#search_submit1,form input#search_submit2{
 	font-weight: 800;
 	font-size: 20px;
 	color: #ffffff;
@@ -257,9 +257,20 @@ input#search_submit{
 	width: 100px;
 	padding: 5px;
 	margin-left: auto;
+	margin-top:-40px;
 }
 
-input#search_submit:hover{
+form input#search_submit1{
+	margin-top:-40px;
+}
+
+form input#search_submit2{
+	margin-top:-60px;
+}
+
+
+
+form input#search_submit1:hover,form input#search_submit2:hover{
 	background-color: #ff3333;
 }
 
