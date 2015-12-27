@@ -188,7 +188,7 @@
 
 <div id="popup">
 <h2>CIRCLE RECOMMENDERにログインしよう！</h2>
-<p>ログインすると、もっとたくさんの写真が見れたり、気になるサークルの最新の新歓情報を受け取れたり、見比べたり出来るよ！</p>
+<p><img src="../img/image3.png"></p>
 <div id="popup_login_twitter">
 	<p>Twitterから</p>
 	<div><a href=""><img src="../img/twitter01.jpg" width="200" height="60"></a></div> 
