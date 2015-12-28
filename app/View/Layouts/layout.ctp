@@ -43,6 +43,7 @@
 <div id="student_bar">
 	<div id="student_bar_img"><img src="<?php echo $_SESSION['tw_image_url'];?>" alt="twitter"></div>
 	<div id="student_bar_comment"><?php echo $_SESSION['tw_screen_name'];?>さんがログイン</div>
+
 <?php
 		if($_SESSION['is_circle']==true){
 ?>
@@ -71,6 +72,7 @@
 <li id="current"><a class="menu_pc" href="../Students/home">HOME</a></li>
 <li><a class="menu_pc" href="../Students/student">STUDENT</a></li>
 <li><a class="menu_pc" href="../Students/circle">CIRCLE</a></li>
+<!--
 <?php
 	if(isset($_SESSION['tw_user_id'])){
 		if($_SESSION['is_circle']==true){
@@ -88,7 +90,7 @@
 <?php
 	}
 ?>
-	
+-->	
 </ul>
 </nav>
 

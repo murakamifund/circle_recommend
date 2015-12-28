@@ -108,7 +108,7 @@ function func_resister_finish(){
 function changewidth(){
 
 if (OCwindowWidth() > 480) {
-	var imax = 4;
+	var imax = 3;
 	for(var i=0;i<imax;i++)document.getElementsByClassName('menu_pc')[i].style.width = (972/imax)+'px';
 }
 
@@ -118,7 +118,7 @@ if (OCwindowWidth() > 480) {
 
 function default_func(){
 
-	changewidth();
+//	changewidth();
 	document.getElementById('menubar_pc').childNodes[1].childNodes[1].id = "";
 	document.getElementById('menubar_pc').childNodes[1].childNodes[3].id = "";
 	document.getElementById('menubar_pc').childNodes[1].childNodes[5].id = "";
@@ -153,18 +153,18 @@ function menu_backtwice(){
 	document.getElementsByClassName('menu_pc')[0].href = "../../Students/home";
 	document.getElementsByClassName('menu_pc')[1].href = "../../Students/student";
 	document.getElementsByClassName('menu_pc')[2].href = "../../Students/circle";
-	document.getElementsByClassName('menu_pc')[3].href = "../../Students/student_resister";
+//	document.getElementsByClassName('menu_pc')[3].href = "../../Students/student_resister";
 
 	document.getElementsByClassName('menu_mobile')[0].href = "../../Students/home";
 	document.getElementsByClassName('menu_mobile')[1].href = "../../Students/student";
 	document.getElementsByClassName('menu_mobile')[2].href = "../../Students/circle";
-	document.getElementsByClassName('menu_mobile')[3].href = "../../Circles/student_resister";
+//	document.getElementsByClassName('menu_mobile')[3].href = "../../Circles/student_resister";
 	
 	if(document.getElementById('student_bar')!=null){
 		document.getElementsByClassName('student_bar_btn')[0].childNodes[0].href = "../student_resister";
 		document.getElementsByClassName('student_bar_btn')[1].childNodes[0].href = "../student_tw_logout";
 	}
 	document.getElementById('logo').childNodes[0].childNodes[0].src = "../../img/logo03.png";
-	document.getElementById('popup_login_twitter').childNodes[3].childNodes[0].childNodes[0].src = "../../img/twitter01.jpg";
+	document.getElementById('popup').childNodes[3].childNodes[0].childNodes[0].src = "../../img/image3.png";
 }
 

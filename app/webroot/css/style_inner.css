@@ -246,6 +246,7 @@
 	width: 110px;
 }
 
+
 form input#search_submit1,form input#search_submit2{
 	font-weight: 800;
 	font-size: 20px;
@@ -265,7 +266,7 @@ form input#search_submit1{
 }
 
 form input#search_submit2{
-	margin-top:-60px;
+	margin-top:-50px;
 }
 
 
