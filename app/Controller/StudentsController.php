@@ -1101,25 +1101,25 @@ class StudentsController extends AppController {
 		if($sort == 1){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value1 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		if($sort == 2){
+		else if($sort == 2){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value2 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		if($sort == 3){
+		else if($sort == 3){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value3 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		if($sort == 4){
+		else if($sort == 4){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value4 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		if($sort == 5){
+		else if($sort == 5){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value5 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		if($sort == 6){
+		else if($sort == 6){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value6 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		if($sort == 7){
+		else if($sort == 7){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value7 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		if($sort == 8){
+		else{
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
 		}
 		
@@ -1143,13 +1143,9 @@ class StudentsController extends AppController {
 				$data[$i]['Circle']['favored'] = false;
 			}
 		}
-<<<<<<< HEAD
 		
-		$this -> set('data',$this -> paginate());
-=======
 		$this -> set('data',$data);
->>>>>>> c41dfc1d5bae11be39eec05394e614916c14b28b
-		//$this -> set('count_data',$count_data);
+		
 		$this -> set("activity",$activity);
 		if (isset($day)):
 			$this -> set("day",$day);
