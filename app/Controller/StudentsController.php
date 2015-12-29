@@ -1113,7 +1113,7 @@ class StudentsController extends AppController {
 			$i++;
 		}
 		
-		$this -> set('data',$data);
+		$this -> set('data',$this -> paginate());
 		//$this -> set('count_data',$count_data);
 		$this -> set("activity",$activity);
 		if (isset($day)):
@@ -1168,6 +1168,10 @@ class StudentsController extends AppController {
 		
 	}
 	}
+	public $pagenate = array(
+		'page' => 1,
+		'limit' => 1,
+	);
 
 }//クラス
 	

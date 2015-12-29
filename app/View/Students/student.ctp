@@ -308,6 +308,16 @@ endforeach ?>
 </section>
 <?php
 	}
+	echo $this->Paginator->first('<< ');
+	echo $this->Paginator->prev('< ');
+	echo $this->Paginator->numbers(
+		array(
+			'separator' => '/',
+			'modulus' => 2,
+		)
+	);
+	echo $this->Paginator->next(' >');
+	echo $this->Paginator->last(' >>');
 	endif;
 ?>
 
