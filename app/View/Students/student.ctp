@@ -21,15 +21,15 @@ onload = function(){
 
 	<h4>キーワードから探す</h4>
 	<div class="search_group">
-	<div class="search_title">キーワード：</div>
-	<div class="search_forms2"><input type="textbox" name="keyword" id="search_keyword" size="50" /></div>
-	<input type="submit" value="検索" id="search_submit"/>
+		<div class="search_title">キーワード：</div>
+		<div class="search_forms2"><input type="textbox" name="keyword" id="search_keyword" size="50" /></div>
+		<input type="submit" value="検索" id="search_submit1" />
 	</div>
 	<br>
 	<h4>カテゴリから探す</h4>
 	<div class="search_group">
-	<div class="search_title">スポーツ</div>
-	<div class="search_forms">
+		<div class="search_title">スポーツ</div>
+		<div class="search_forms">
 			<lavel><input type="checkbox" name="check1" id="activity1" value="1" />テニス</lavel>
 			<lavel><input type="checkbox" name="check2" id="activity2" value="1" />卓球</lavel>
 			<lavel><input type="checkbox" name="check3" id="activity3" value="1" />サッカー</lavel>
@@ -46,8 +46,8 @@ onload = function(){
 			<lavel><input type="checkbox" name="check14" id="activity14" value="1" />乗り物</lavel>
 			<lavel><input type="checkbox" name="check15" id="activity15" value="1" />スキー</lavel>
 		</div>
-		</div>
-		<div class="search_group">
+	</div>
+	<div class="search_group">
 		<div class="search_title">アカデミー</div>
 		<div class="search_forms">
 			<lavel><input type="checkbox" name="check31" id="activity31" value="1" />政治・経済</lavel>
@@ -59,8 +59,8 @@ onload = function(){
 			<lavel><input type="checkbox" name="check37" id="activity37" value="1" />法学</lavel>
 			<lavel><input type="checkbox" name="check38" id="activity38" value="1" />企業</lavel>
 		</div>
-		</div>
-		<div class="search_group">
+	</div>
+	<div class="search_group">
 		<div class="search_title">音楽</div>
 		<div class="search_forms">
 			<lavel><input type="checkbox" name="check51" id="activity51" value="1" />ロック</lavel>
@@ -68,8 +68,8 @@ onload = function(){
 			<lavel><input type="checkbox" name="check53" id="activity53" value="1" />クラシック</lavel>
 			<lavel><input type="checkbox" name="check54" id="activity54" value="1" />コーラス</lavel>
 		</div>
-		</div>
-		<div class="search_group">
+	</div>
+	<div class="search_group">
 		<div class="search_title">アート</div>
 		<div class="search_forms">
 			<lavel><input type="checkbox" name="check61" id="activity61" value="1" />映画・写真</lavel>
@@ -77,8 +77,8 @@ onload = function(){
 			<lavel><input type="checkbox" name="check63" id="activity63" value="1" />美術</lavel>
 			<lavel><input type="checkbox" name="check64" id="activity64" value="1" />文芸</lavel>
 		</div>
-		</div>
-		<div class="search_group">
+	</div>
+	<div class="search_group">
 		<div class="search_title">趣味</div>
 		<div class="search_forms">
 			<lavel><input type="checkbox" name="check71" id="activity71" value="1" />旅行</lavel>
@@ -87,44 +87,36 @@ onload = function(){
 			<lavel><input type="checkbox" name="check74" id="activity74" value="1" />グルメ</lavel>
 			<lavel><input type="checkbox" name="check75" id="activity75" value="1" />芸能</lavel>
 		</div>
-		</div>
-		<div class="search_group">
+	</div>
+	<div class="search_group">
 		<div class="search_title">その他</div>
 		<div class="search_forms">
 			<lavel><input type="checkbox" name="check81" id="activity81" value="1" />その他</lavel>
 		</div>
-		</div>
-		<br><br>
+	</div>
+	
+	<br><br>
 		
-		<h4>特徴から探す</h4>
+	<h4>特徴から探す</h4>
 		
-		<div class="search_group">
+	<div class="search_group">
 		<div class="search_title">検索条件</div>
-		<td>
-		<input type="radio" value="1" name="radio1" id="mazime" />
-		<lavel for="sort1">練習したい　</lavel>
-		<input type="radio" value="2" name="radio1" id="yurui" />
-		<lavel for="sort2">楽な方がいい　</lavel>
-		<input type="radio" value="3" name="radio1" id="nomi" />
-		<lavel for="sort3">飲みたい　</lavel>
-		<input type="radio" value="4" name="radio1" id="nomanai" />
-		<lavel for="sort4">飲みたくない　</lavel>
-		<br>
-		<input type="radio" value="5" name="radio1" id="inter" />
-		<lavel for="sort5">インカレがいい　</lavel>
-		<input type="radio" value="6" name="radio1" id="gakunai" />
-		<lavel for="sort6">学内がいい　</lavel>
-		<input type="radio" value="7" name="radio1" id="people" />
-		<lavel for="sort7">人数重視　</lavel>
-		<input type="radio" value="8" name="radio1" id="default" checked="true" />
-		<lavel for="sort8">デフォルト　</lavel>
-		</td>
+		<div class="search_forms2">
+			<select  name="radio1" size="1">
+				<option>練習したい</option>
+				<option>楽な方がいい</option>
+				<option>飲みたい</option>
+				<option>飲みたくない</option>
+				<option>インカレがいい</option>
+				<option>学内がいい</option>
+				<option>人数重視</option>
+				<option selected>デフォルト</option>
+			</select>
 		</div>
-
-		
-	<br>
-	<input type="submit" value="検索" id="search_submit"/>
-	<br>
+		<br>
+		<input type="submit" value="検索" id="search_submit2"/>
+		<br>
+	</div>
 </form>
 
 <?php
@@ -257,13 +249,40 @@ endforeach ?>
 <?php if($d==0): ?>
 <h1>今人気のサークルはこちら！</h1>
 <?php foreach ($top_data as $top_datum){ ?>
-<div class="list_catch_phrase"><?php echo $top_datum['Circle']['phrase']; ?></div>
+<section class="list">
+<div class="list_top">
+	<div class="list_catch_phrase"><?php echo $top_datum['Circle']['phrase']; ?></div>
 	<div class="list_tags"><?php echo $top_datum['Circle']['place']; ?></div>
 	<div class="list_tags"><?php echo $top_datum['Circle']['intercollege']; ?></div>
-	<img src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon" id="icon_unfavored">
-	<img src="../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon" id="icon_favored">
-	<div class="list_name"><?php echo $top_datum['Circle']['circle_name']; ?></div>
-	<div class="list_twitter"><a href="https://twitter.com/aaaa" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $top_datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+<?php
+	if($top_datum['Circle']['favored']==true){
+?>
+	<img src="../img/star2.png" width="90" height="60" alt="人気" class="icon">
+<?php
+	}else if(isset($_SESSION['tw_user_id'])){
+?>
+	<form action="/circle_recommend/Students/fav/<?php echo $top_datum['Circle']['id'];?>" method="post">
+	<input type="hidden" name="address" value="student">
+	<input type="image" src="../img/star1.png" width="90" height="60" alt="おすすめ" class="icon"/>
+	</form>
+<?php
+	}else{
+?>
+	<img src="../img/star1.png" onclick="display_popup()" width="90" height="60" alt="おすすめ" class="icon">
+<?php
+	}
+?>
+	<div class="list_name"><a href="../Students/circle_id/<?php echo $top_datum['Circle']['id']; ?>"><?php echo $top_datum['Circle']['circle_name']; ?></a></div>
+	<div class="list_twitter"><a href="https://twitter.com/<?php echo $top_datum['Circle']['tw_screen_name']; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $top_datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+
+</div>
+<div class="list_body">
+	<div class="list_image"><img src="../img/sample_photo1.jpg" width="300" height="150" alt="" /></div>
+	<div class="list_pr"><?php echo nl2br($top_datum['Circle']['pr']); ?></div>
+	<div class="list_bottan"><a href="../Students/circle_id/<?php echo $top_datum['Circle']['id']; ?>">詳細はこちら！</a></div>
+</div>
+</section>
+	
 <?php } ?>
 <?php endif; ?>
 	
@@ -278,23 +297,23 @@ endforeach ?>
 <?php
 	if($datum['Circle']['favored']==true){
 ?>
-	<img src="../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon">
+	<img src="../img/star2.png" width="90" height="60" alt="人気" class="icon">
 <?php
 	}else if(isset($_SESSION['tw_user_id'])){
 ?>
 	<form action="/circle_recommend/Students/fav/<?php echo $datum['Circle']['id'];?>" method="post">
 	<input type="hidden" name="address" value="student">
-	<input type="image" src="../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"/>
+	<input type="image" src="../img/star1.png" width="90" height="60" alt="おすすめ" class="icon"/>
 	</form>
 <?php
 	}else{
 ?>
-	<img src="../img/icon_osusume.png" onclick="display_popup()" width="90" height="60" alt="おすすめ" class="icon">
+	<img src="../img/star1.png" onclick="display_popup()" width="90" height="60" alt="おすすめ" class="icon">
 <?php
 	}
 ?>
 
-	<div class="list_name"><?php echo $datum['Circle']['circle_name']; ?></div>
+	<div class="list_name"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>"><?php echo $datum['Circle']['circle_name']; ?></a></div>
 	<div class="list_twitter"><a href="https://twitter.com/<?php echo $datum['Circle']['tw_screen_name']; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
 
 </div>

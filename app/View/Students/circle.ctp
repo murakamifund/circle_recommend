@@ -25,9 +25,10 @@ onload = function(){
 検索ワードは、団体の名前、種類、キャッチフレーズ、PR文を参照します。学生が検索しそうなワードをこれらに含めて下さい。<br>
 特に、団体の種類(テニスなど)をきちんと含めることがポイントです。
 <h4>お気に入り登録してもらおう</h4>
-団体がもらったお気に入り数が多ければ、検索における優先順位が上がります。
+あなたの団体がもらったお気に入り数が多ければ、検索における優先順位が上がります。
 サークルや部活のメンバーに協力してもらって、お気に入り登録をしてもらってください。
-
+<h4>UT-CircleのTwitterアカウントをフォローしよう</h4>
+Twitter上の関係を分析し、UT-CircleのTwitterアカウントをフォローしてくださっている団体を優先するようになっています。
 <h2 class="mb1em">パワポ</h2>
 <iframe style="border:none" src="http://files.photosnack.com/iframejs/embed.html?hash=pdzp2m8jo&t=1444874503" width="576" height="384" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>
 

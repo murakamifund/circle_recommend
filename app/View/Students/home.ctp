@@ -41,9 +41,15 @@ UT-Circleは、東京大学のサークルを紹介するWebサービスです�
 <div><a class="access_btn" href="../Circles/circle">CIRCLE</a></div>
 <div class="btn_nav">サークルの登録・サークル情報の編集などはこちら！（サークル登録をするには、まず「新規登録」から学生の登録をしてください。）</div>
 -->
-<div><a class="access_btn" href="student_resister">新規登録</a></div>
+<h4>Twitterアカウントで連携しよう</h4>
+<aside class="mb1em"><a href="circle"><img src="../img/image3.png" width="700" height="99" alt="" class="wa"></a></aside>
+<P>
+	TwitterアカウントでUT-Circleと連携しよう!</br>
+	サークルのお気に入り登録、スケジュール管理などが行えるだけでなく、東大生向けの高給バイトやインターンのオファーを受けられます!!
+</p>
+<!--<div><a class="access_btn" href="student_resister">新規登録</a></div>
 <div class="btn_nav">もっと充実した機能を使いたい学生さんはこちら！学生登録をすることで、お気に入りサークルの登録などが出来ます。</div>
-
+-->
 </section>
 
 

@@ -43,6 +43,7 @@
 <div id="student_bar">
 	<div id="student_bar_img"><img src="<?php echo $_SESSION['tw_image_url'];?>" alt="twitter"></div>
 	<div id="student_bar_comment"><?php echo $_SESSION['tw_screen_name'];?>さんがログイン</div>
+
 <?php
 		if($_SESSION['is_circle']==true){
 ?>
@@ -71,6 +72,7 @@
 <li id="current"><a class="menu_pc" href="../Students/home">HOME</a></li>
 <li><a class="menu_pc" href="../Students/student">STUDENT</a></li>
 <li><a class="menu_pc" href="../Students/circle">CIRCLE</a></li>
+<!--
 <?php
 	if(isset($_SESSION['tw_user_id'])){
 		if($_SESSION['is_circle']==true){
@@ -88,7 +90,7 @@
 <?php
 	}
 ?>
-	
+-->	
 </ul>
 </nav>
 
@@ -188,22 +190,12 @@
 
 <div id="popup">
 <h2>CIRCLE RECOMMENDERにログインしよう！</h2>
-<p>ログインすると、もっとたくさんの写真が見れたり、気になるサークルの最新の新歓情報を受け取れたり、見比べたり出来るよ！</p>
-<div id="popup_login_twitter">
-	<p>Twitterから</p>
-	<div><a href=""><img src="../img/twitter01.jpg" width="200" height="60"></a></div> 
-</div>
-<div id="popup_login_address">
-	<p>メールアドレスから</p>
-	<form action="" method="post">
-	<input type="text" class="popup_login_form" name="address" value="メールアドレス" size="30"><br>
-	<input type="text" class="popup_login_form" name="password" value="パスワード" size="20"><br>
-	<div><a id="popup_remake_pass" href="">パスワードを忘れた方はこちら</a></div>
-	<input id="popup_login_btn" type="submit" value="ログインする">
-	</form>
-</div>
-<div><a href="student_resister" id="popup_to_register">未登録の方はこちら</a></div>
-<div><a href="#" id="popup_close" onclick="close_popup()">もどる</a></div>
+<p><a href="student_tw_callback"><img src="../img/image3.png"></a></p>
+<div id="popup_login_twitter" class="i-btn">
+	<a href="student_tw_callback">Twitterでログイン</a>
+</div> 
+<div id="popup_to_circle" ><a href="./circle">サークルのかたはこちら</a></div>
+<div><a id="popup_close" onclick="close_popup()">×</a></div>
 </div>
 
 

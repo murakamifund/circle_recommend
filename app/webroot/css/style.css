@@ -277,7 +277,7 @@ nav.menubar ul li a {
 	display: block;
 	-webkit-transition: 0.5s;	/*マウスオン時の移り変わるまでの時間設定。0.5秒。*/
 	transition: 0.5s;			/*同上*/
-	width: 162px;	/*メニュー幅*/
+	width: 324px;	/*メニュー幅*/
 	text-align: center;
 	padding: 5px 0px;
 	background-color: #333;	/*背景色（古いブラウザだとここの色のみが出ます）*/
@@ -486,7 +486,7 @@ footer a {
 	top: 100px;
 	right: 20%;
 	width: 700px;
-	height: 500px;
+	height: 350px;
 	background-color: #ffffff;
 	border: 5px solid #000000;
 	border-radius: 20px;
@@ -499,70 +499,41 @@ footer a {
 	font-weight: 800;
 }
 
-#popup p{
-	font-size: 20px;
-}
-
-#popup_remake_pass{
-	font-size: 20px;
-	color: #00ff00;
-}
-
 #popup_login_twitter{
 	position: absolute;
-	top: 30%;
-	left: 5%;
+	top: 50%;
+	left: 35%;
 }
-#popup_login_address{
+
+#popup_to_circle{
 	position: absolute;
-	top: 30%;
-	left: 50%;
+	top: 90%;
+	left: 70%;
+	font-size: 15px;
+	font-weight: 600;
 }
 
-#popup_login_btn{
-	margin-left: 60%;
-}
-
-
-#popup_to_register{
-	display: block;
-	position: absolute;
-	top: 75%;
-	left: 30%;
-	border-radius: 10px;
-	border: 4px solid #cc0000;
-	width: 200px;
-	line-height: 2.5;
-	font-weight: 700;
-	text-align: center;
-	color: #ffffff;
-	background-color: #cc0000;
-	text-decoration: none;
-	
-}
-
-#popup_to_register:hover{
-	border-color: #ff3333;
-	background-color: #ff3333;
-}
 
 #popup_close{
 	display: block;
 	position: absolute;
-	top: 85%;
-	right: 10%;
-	border-radius: 10px;
-	border: 2px solid #333333;
-	width: 120px;
-	line-height: 2.5;
+	top: -3%;
+	right: -2%;
+	border-radius: 25px;
+	border: 5px solid #000000;
+	width: 45px;
+	line-height: 1.2;
+	font-weight: 900;
+	font-size: 30px;
 	text-align: center;
-	color: #ffffff;
-	background-color: #333333;
+	background-color: #ffffff;
+	z-index: 7;
 }
 
 #popup_close:hover{
-	border-color: #666666;
-	background-color: #666666;
+	border-color: #333333;
+	background-color: #333333;
+	color:#ffffff;
 	text-decoration: none;
 }
 
@@ -884,23 +855,18 @@ input[type="reset"]:hover {
 	margin-top:3em;
 }
 .i-btn a {
-  color: #414141;
   padding: 12px 2.1em;
-  border: 2px solid #414141;
   font-size: 16px;
   font-weight: 700;
   border-radius: 0.3em;
-  background:#fff;
+  background:#6495ed;
+  color:#fff;
+  border: 2px solid #fff;
 }
 .i-btn a:hover,.team-msg-right a:hover,.error-btn a:hover{
-	background:#6495ed;
+	background:#85b5ee;
 	color:#fff;
 	border: 2px solid #fff;
-	transition: 0.5s all ease;
-	-webkit-transition: 0.5s all ease;
-	-moz-transition: 0.5s all ease;
-	-o-transition: 0.5s all ease;
-	-ms-transition: 0.5s all ease;
 }
 .i-btnb{
 	margin-top:3em;
