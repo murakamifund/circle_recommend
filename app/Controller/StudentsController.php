@@ -71,15 +71,17 @@ class StudentsController extends AppController {
 			$local_user = $stmt->fetch(); //結果を返す 
 			if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
 				$sql = "insert into students 
-				(tw_user_id,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_access_token,tw_access_token_secret) 
+				(tw_user_id,tw_name,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_description,tw_access_token,tw_access_token_secret) 
 				values
-				(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_profile_banner_url,:tw_access_token,:tw_access_token_secret)";
+				(:tw_user_id,:tw_name,:tw_screen_name,:tw_profile_image_url,:tw_profile_banner_url,:tw_description,:tw_access_token,:tw_access_token_secret)";
 				$stmt = $dbh->prepare($sql);
 				$params = array(
 					":tw_user_id" => $me->id_str,
+					":tw_name" => $me->name,
 					":tw_screen_name" => $me->screen_name,
 					":tw_profile_image_url" => $me->profile_image_url,
 					":tw_profile_banner_url" => $me->profile_banner_url,
+					":tw_description" => $me->description,
 					":tw_access_token" => $reply->oauth_token,
 					":tw_access_token_secret" => $reply->oauth_token_secret
 				);
@@ -98,7 +100,6 @@ class StudentsController extends AppController {
 			$_SESSION['is_circle'] = false;
 			$_SESSION['tw_screen_name'] = $me->screen_name;
 			$_SESSION['tw_image_url'] = $me->profile_image_url;
-			$_SESSION['tw_banner_url'] = $me->profile_banner_url;
 			
 			$this->redirect(array('action' => 'student_edit'));
 		
@@ -194,7 +195,6 @@ class StudentsController extends AppController {
 				$_SESSION['is_circle'] = true;
 				$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
 				$_SESSION['tw_image_url'] = $me->profile_image_url;
-				$_SESSION['tw_banner_url'] = $me->profile_banner_url;
 			
 				$this->redirect(array('action' => 'circle_resister'));
 			}else{
@@ -204,7 +204,6 @@ class StudentsController extends AppController {
 				$_SESSION['is_circle'] = true;
 				$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
 				$_SESSION['tw_image_url'] = $me->profile_image_url;
-				$_SESSION['tw_banner_url'] = $me->profile_banner_url;
 				$this->redirect(array('action' => 'circle_edit_main'));
 			
 			}
@@ -241,13 +240,66 @@ class StudentsController extends AppController {
 			$local_user = $this->Student->find('first', array(
                 'conditions' => array('tw_user_id' => $tw_user_id)
             ));
-			$user_name = $local_user['Student']['tw_screen_name'];
+			$user_name = $local_user['Student']['tw_name'];
+			$user_screen_name = $local_user['Student']['tw_screen_name'];
+			$user_profile_image = $local_user['Student']['tw_profile_image_url'];
+			$user_description = $local_user['Student']['tw_description'];
 			$this->set('user_name', $user_name);
+			$this->set('user_screen_name', $user_screen_name);
+			$this->set('user_profile_image',$user_profile_image);
+			$this->set('user_description', $user_description);
+			
+			$local_user_favorite = $this->Favorite->find('all', array(
+                'conditions' => array('user_id' => $tw_user_id)
+            ));
+			$user_favorite_circle_id = array(); //お気に入りのサークルのidを格納する配列
+			$user_favorite_circle = array();
+			for ($i=0;$i<count($local_user_favorite);$i++){
+				array_push($user_favorite_circle_id,$local_user_favorite[$i]['Favorite']['circle_id']);
+			}
+			for ($i=0;$i<count($user_favorite_circle_id);$i++){
+				$local_circle = $this->Circle->find('first', array(
+                'conditions' => array('id' => $user_favorite_circle_id[$i])
+	            ));
+				array_push($user_favorite_circle,$local_circle['Circle']['circle_name']);
+			}
+			$this->set('user_favorite_circle',$user_favorite_circle);
+			$this->set('local_circle',$local_circle);
 			
 		}else{
 			$autoRender = false; 
 			$this->redirect(array('action' => 'student_resister'));
 		}
+		
+		//カレンダーの機能
+	
+	//circleのIdに一致するイベントを列挙
+	$id = 23;
+	$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $id)));
+	$count = $this->Event->find( 'count', array( 'conditions' => array('Event.circle_id' => $id)));
+	$title = array();
+	$day = array();
+	
+	// SQLのレスポンスをもとにデータ作成
+	$rows = array();
+	for ( $a=0; count( $events) > $a; $a++) {
+		
+		$rows[] = array(
+			'id' => $events[$a]['Event']['id'],
+		//'circle_id' => $events[$a]['Event']['circle_id'],
+		//'circle_name' => $events[$a]['Event']['circle_name'],
+            'title' => $events[$a]['Event']['circle_name'].":".$events[$a]['Event']['title'],
+            'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
+            'end' => $events[$a]['Event']['day'],
+			'url' => "../student_edit/".$events[$a]['Event']['id'],
+		
+            //'allDay' => $events[$a]['Event']['allday'],
+	);
+	}
+	
+	// JSONへ変換
+	$this->set("json", json_encode($rows));
+	
 	}
 	
 	//生徒のログイン
@@ -330,6 +382,8 @@ class StudentsController extends AppController {
 	$this->set("circle_name",$circle_name);//view側にデータをセット
 	$tw_user_id = $data['Circle']['tw_user_id'];
 	$this->set("tw_user_id",$tw_user_id);//view側にデータをセット
+	$tw_profile_banner_url = $data['Circle']['tw_profile_banner_url'];
+	$this->set("tw_profile_banner_url",$tw_profile_banner_url);//view側にデータをセット
 	$tw_screen_name = $data['Circle']['tw_screen_name'];
 	$this->set("tw_screen_name",$tw_screen_name);//view側にデータをセット
 	$url = $data['Circle']['url'];

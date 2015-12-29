@@ -60,7 +60,6 @@ $act=array(
  
 
 <!--ここからhtml-->
-<!--<?php echo $tw_user_id;?>-->
 
 <div id="circle_left">
 	<div id="circle_name">
@@ -87,7 +86,7 @@ $act=array(
 	<div id="circle_photo">
 		
 		<img id="circle_photo_base" src="../../img/noimage.jpg" width="400" height="300" alt="NO IMAGE" >
-		<img id="circle_photo_on"src=<?php echo $_SESSION['tw_banner_url']; ?> width="400" height="300">
+		<img id="circle_photo_on"src=<?php echo $tw_profile_banner_url; ?> width="400" height="300">
 	
 		<!-- ツイッターの埋め込み 
 		
@@ -121,7 +120,7 @@ $act=array(
 
 <font size="3" color="#0000ff">
 		<?php echo $this->Session->flash(); ?>
-		</font>
+</font>
 
 
 
