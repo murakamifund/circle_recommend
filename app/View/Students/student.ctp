@@ -202,6 +202,7 @@ $act=array(
 	"81"=>'その他'
 );
 if($this->request->data){	
+	$d=$d+1;
 	for($i=0;$i<37;$i++):	
 		if($activity[$i]=="On"):	
 			$d=$d+1;	
@@ -216,6 +217,11 @@ if($this->request->data){
 <?php if($d>0): ?>
 <h1>あなたにおすすめのサークルは・・・</h1>
 <br>
+<?php if(count($data)>0){ ?>
+	<h1><?php echo count($data); ?>個のサークルが見つかりました！ </h1>
+<?php }else{ ?>
+	<h1>条件に当てはまるサークルはありませんでした</h1>
+<?php } ?>
 
 <h5><font color =#0099ff>結果をツイートして友達を誘おう</font></h5>	
 <?php 
@@ -230,8 +236,6 @@ $i = $i + 1;
 endforeach ?>	
 <a href = "https://twitter.com/share" data-hashtags= <?php echo $string; ?> data-text = 'このサークルの新歓に行く人は一緒に行こう！' data-url = '' data-size = 'large' class="twitter-hashtag-button" >Tweet #circlerecommend</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>	
 <br></br>
-
-
 
 
 
