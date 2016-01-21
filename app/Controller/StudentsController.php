@@ -265,7 +265,7 @@ class StudentsController extends AppController {
 				$local_circle = $this->Circle->find('first', array(
                 'conditions' => array('id' => $user_favorite_circle_id[$i])
 	            ));
-				if($local_circle==false){
+				if($local_circle!=false){
 					array_push($user_favorite_circle,$local_circle['Circle']['circle_name']);
 				}
 				
