@@ -63,7 +63,15 @@ $act=array(
 
 <div id="circle_left">
 	<div id="circle_name">
-		<a href="<?php echo $url; ?>"><?php echo $circle_name; ?></a>
+		<?php if($url != ""){ ?>
+			<a href="<?php echo $url; ?>"><?php echo $circle_name; ?></a>
+		<?php
+			}
+			else{
+				echo $circle_name;
+			}
+		?>
+			
 <?php
 		if($favored){
 ?>
@@ -118,9 +126,7 @@ $act=array(
 
 <br>
 
-<font size="3" color="#0000ff">
-		<?php echo $this->Session->flash(); ?>
-</font>
+
 
 
 

@@ -152,7 +152,7 @@ a:hover {
 header {
 	width: 100%;	/*ブロックの幅*/
 	height: 50px;	/*ブロックの高さ*/
-	background: url(../img/header_img04.png) no-repeat right bottom;	/*背景画像の読み込み＆リピートしない＆右側下部に配置*/
+	background: url(../img/header.png) no-repeat right bottom;	/*背景画像の読み込み＆リピートしない＆右側下部に配置*/
 	position: relative;
 }
 /*h1タグの設定*/

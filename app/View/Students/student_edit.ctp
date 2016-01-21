@@ -72,6 +72,9 @@ onload = function(){
 	
 <h3 class="mb1em">お気に入り登録サークル</h3>
 
+
+
+
 <?php 
 	for ($i=0;$i<count($user_favorite_circle);$i++){
 		echo $user_favorite_circle[$i];
@@ -80,6 +83,7 @@ onload = function(){
 	<?php
 	}
 ?>
+
 <!--
 <?php foreach ($local_circle as $top_datum){ ?>
 <section class="list">

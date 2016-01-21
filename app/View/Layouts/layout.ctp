@@ -34,7 +34,7 @@
 <div id="fixing_box">
 <header>
 
-<div id="logo"><a href="home"><img src="../img/logo03.png" width="250" height="50" alt=""></a></div>
+<div id="logo"><a href="home"><img src="../img/logo03.png"  alt=""></a></div>
 
 <?php
 	if(isset($_SESSION['tw_user_id'])){
