@@ -169,6 +169,7 @@ class StudentsController extends AppController {
 			$stmt = $dbh->prepare($sql);
 			$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
 			$local_user = $stmt->fetch(); //結果を返す 
+			
 			if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
 				$sql = "insert into circles 
 				(tw_user_id,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_access_token,tw_access_token_secret) 
@@ -249,9 +250,12 @@ class StudentsController extends AppController {
 			$this->set('user_profile_image',$user_profile_image);
 			$this->set('user_description', $user_description);
 			
+			//お気に入りのサークルidを検索
 			$local_user_favorite = $this->Favorite->find('all', array(
                 'conditions' => array('user_id' => $tw_user_id)
             ));
+			
+			
 			$user_favorite_circle_id = array(); //お気に入りのサークルのidを格納する配列
 			$user_favorite_circle = array();
 			for ($i=0;$i<count($local_user_favorite);$i++){
@@ -261,7 +265,10 @@ class StudentsController extends AppController {
 				$local_circle = $this->Circle->find('first', array(
                 'conditions' => array('id' => $user_favorite_circle_id[$i])
 	            ));
-				array_push($user_favorite_circle,$local_circle['Circle']['circle_name']);
+				if($local_circle==false){
+					array_push($user_favorite_circle,$local_circle['Circle']['circle_name']);
+				}
+				
 			}
 			$this->set('user_favorite_circle',$user_favorite_circle);
 			$this->set('local_circle',$local_circle);
@@ -305,18 +312,7 @@ class StudentsController extends AppController {
 	//生徒のログイン
 	//生徒のログインを別のコントローラーで扱う必要あり
 	public function student_login() {
-
-	$this->modelClass = null;	
-	/*
-	if ($this->request->is('post')) {
-			$this->data = Sanitize::clean($this->data, array('encode' => false));
-			if ($this->Auth->login()) {
-				 $this->redirect($this->Auth->redirect());
-			} else {
-				$this->Session->setFlash(__('アカウント名かパスワードが間違っています。'));
-			}
-		}
-		*/
+		$this->modelClass = null;	
 	}
  
 	//ログアウト_login
@@ -598,7 +594,8 @@ class StudentsController extends AppController {
 				$this->set("id",$id);//view側にデータをセット
 			}else{
 				//サークルじゃなかったら
-				$this->redirect(array('action'=>'student_edit'));
+				$this->Session->destroy();	//一旦ログアウト状態
+				$this->redirect(array('action'=>'circle_tw_callback'));
 			}
 			
 		}else{
