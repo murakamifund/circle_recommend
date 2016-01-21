@@ -1,7 +1,6 @@
 <?php
 	echo $this->html->css(array('fullcalendar', 'bootstrap','headshrinker'));
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
-
 $nomi_custom = array('飲まない','あまり飲まない','普通','飲む','かなり飲む');
 $nomi_chosen = $nomi_custom[$nomi-1];
 
@@ -71,30 +70,12 @@ $act=array(
 				echo $circle_name;
 			}
 		?>
-			
-<?php
-		if($favored){
-?>
-		<img src="../../img/icon_ninki.png" width="90" height="60" alt="人気" class="icon">
-<?php
-		}else if(isset($_SESSION['tw_user_id'])){
-?>
-		<form action="/circle_recommend/Students/fav/<?php echo $circle_id;?>" method="post">
-		<input type="image" src="../../img/icon_osusume.png" width="90" height="60" alt="おすすめ" class="icon"/>
-		</form>
-<?php
-		}else{
-?>
-		<img src="../../img/icon_osusume.png" onclick="display_popup()"  width="90" height="60" alt="おすすめ" class="icon">
-<?php
-		}
-?>
 	</div>
 	
 	<div id="circle_photo">
 		
-		<img id="circle_photo_base" src="../../img/noimage.jpg" width="400" height="300" alt="NO IMAGE" >
-		<img id="circle_photo_on"src=<?php echo $tw_profile_banner_url; ?> width="400" height="300">
+		<img id="circle_photo_base" src="../../img/noimage.jpg" width="400" height="150" alt="NO IMAGE" >
+		<img id="circle_photo_on"src=<?php echo $tw_profile_banner_url; ?> width="400" height="200">
 	
 		<!-- ツイッターの埋め込み 
 		
@@ -102,9 +83,8 @@ $act=array(
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		-->
 	</div>
-	<div id="circle_pr">
-		<?php echo nl2br($pr); ?>
-	</div>
+	<h4>活動紹介</h4>
+	<div id="circle_pr"> <?php echo str_replace("\\\\\\\\\\\\\\\\n","<br>",$pr); ?></div>
 </div>
 <div id="circle_right">
 	<h4>活動内容</h4>
@@ -121,7 +101,24 @@ $act=array(
 	<div><table><tr><td id="man_ratio"><?php echo $man; ?></td><td id="woman_ratio"><?php echo $woman; ?></td></tr></table></div>
 	<h4>雰囲気</h4>
 	<div>飲み会頻度：<?php echo $nomi_chosen; ?><br>活動の雰囲気：<?php echo $mazime_chosen; ?></div>
-
+<?php
+		if($favored){
+?>
+		<img src="../../img/okiniiri3.png" width="150" height="100" alt="人気" class="icon">
+<?php
+		}else if(isset($_SESSION['tw_user_id'])){
+?>
+		<form action="/circle_recommend/Students/fav/<?php echo $circle_id;?>" method="post">
+		<input type="image" src="../../img/okiniiri3.png" width="150" height="28" alt="おすすめ" class="icon"/>
+		</form>
+<?php
+		}else{
+?>
+		<img src="../../img/okiniiri3.png" onclick="display_popup()"  width="150" height="100" alt="おすすめ" class="icon">
+<?php
+		}
+?>
+	<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $circle_name; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </div>
 
 <br>

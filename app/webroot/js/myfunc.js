@@ -41,6 +41,16 @@ function func_student_edit(){
 	
 }
 
+function student_edit_func(x){
+	for(i=0;i<3;i++){
+		document.getElementById('student_edit_content'+String(i)).style.display = "none";
+	}
+	document.getElementById('student_edit_content'+String(x)).style.display = "block";
+
+}
+
+
+
 function func_student_resister(){
 
 	default_func();

@@ -258,6 +258,7 @@ class StudentsController extends AppController {
 			
 			$user_favorite_circle_id = array(); //お気に入りのサークルのidを格納する配列
 			$user_favorite_circle = array();
+			$local_circle = array();
 			for ($i=0;$i<count($local_user_favorite);$i++){
 				array_push($user_favorite_circle_id,$local_user_favorite[$i]['Favorite']['circle_id']);
 			}
@@ -266,12 +267,13 @@ class StudentsController extends AppController {
                 'conditions' => array('id' => $user_favorite_circle_id[$i])
 	            ));
 				if($local_circle!=false){
-					array_push($user_favorite_circle,$local_circle['Circle']['circle_name']);
+					array_push($user_favorite_circle,$local_circle);
 				}
 				
 			}
 			$this->set('user_favorite_circle',$user_favorite_circle);
 			$this->set('local_circle',$local_circle);
+			$this->set('data',$user_favorite_circle);
 			
 		}else{
 			$autoRender = false; 
@@ -483,11 +485,7 @@ class StudentsController extends AppController {
 					
 					$this->Session->setFlash(__('お気に入り登録しました'));
 				}
-				if($this->request->data['address']=='circle_id'){
-					$this->redirect(array('action'=>'circle_id/'.$id));
-				}else if($this->request->data['address']=='student'){
-					$this->redirect(array('action'=>'student'));
-				}
+				$this->redirect(array('action'=>'student_edit/'));
 			}else{
 				$this->redirect(array('action'=>'circle_id/'.$id));
 				$this->Session->setFlash(__('Twitterでログインしてください'));
