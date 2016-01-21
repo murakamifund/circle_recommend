@@ -182,7 +182,10 @@ onload = function(){
 <?php
 			if($top_datum['Circle']['favored']==true){
 ?>
-				<img src="../img/okiniiri3.png" width="150" height="100" alt="人気" class="icon">
+				<form action="/circle_recommend/Students/unfav/<?php echo $top_datum['Circle']['id'];?>" method="post">
+					<input type="hidden" name="address" value="student">
+					<input type="image" src="../img/logo.png" width="150" height="28" alt="おすすめ" class="icon"/>
+				</form>
 <?php
 			}else if(isset($_SESSION['tw_user_id'])){
 ?>
@@ -277,7 +280,10 @@ onload = function(){
 <?php
 			if($datum['Circle']['favored']==true){
 ?>
-				<img src="../img/okiniiri3.png" width="150" height="100" alt="人気" class="icon">
+				<form action="/circle_recommend/Students/unfav/<?php echo $datum['Circle']['id'];?>" method="post">
+					<input type="hidden" name="address" value="student">
+					<input type="image" src="../img/logo.png" width="150" height="28" alt="おすすめ" class="icon"/>
+				</form>
 <?php
 			}else if(isset($_SESSION['tw_user_id'])){
 ?>

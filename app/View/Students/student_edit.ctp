@@ -9,7 +9,7 @@ onload = function(){
 }
 </script>
 
-<h2> <?php echo $user_name; ?>の情報を管理</h2>
+<h2> <?php echo $user_name; ?>さんの情報を管理</h2>
 	<div id="student_menu">
 	<div class="i-btn"><a href="#" onclick="student_edit_func(0);">ユーザ情報</a></div>
 	<div class="i-btn"><a href="#" onclick="student_edit_func(1);">お気に入り</a></div>
@@ -37,6 +37,11 @@ onload = function(){
 <h3 class="mb1em">お気に入り登録サークル</h3>
 
 <?php
+	if(!$data){
+?>
+	<div id="search_result">お気に入り登録済みのサークルはありません。</div>
+<?php	
+	}
 		foreach ($data as $datum){ 
 ?>
 	<div class="list">
@@ -55,6 +60,10 @@ onload = function(){
 				<div class="list_tags">#<?php echo $datum['Circle']['intercollege']; ?></div>
 			</div>
 			<div class="list_right_bottom">
+
+			<form action="/circle_recommend/Students/unfav/<?php echo $datum['Circle']['id']; ?>" method="post">
+				<input type="image" src="../img/logo.png" width="150" height="28" alt="おすすめ" class="icon"/>
+			</form>
 			<div class="list_twitter"><a href="https://twitter.com/<?php echo $datum['Circle']['tw_screen_name']; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
 			<div class="list_bottan"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">詳細はこちら！</a></div>
 			</div>

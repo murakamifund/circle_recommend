@@ -331,7 +331,7 @@ form input#search_submit1:hover,form input#search_submit2:hover{
 	width:25%;
  }
  
- #student_edit_content0,#student_edit_content1{
-	display:none;
+ #student_edit_content1,#student_edit_content2{
+//	display:none;
  }
 

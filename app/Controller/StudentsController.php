@@ -496,6 +496,18 @@ class StudentsController extends AppController {
 	
 	}//favの終わり
 	
+	public function unfav($id = null){
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if(isset($_SESSION['tw_user_id']) && $_SESSION['is_circle']!=true){
+				//userを持っていたら
+				$tw_user_id = $_SESSION['tw_user_id'];
+				$fav_circles = $this->Favorite->deleteAll(array('user_id' => $tw_user_id,'circle_id' => $id)); 
+			echo "<script>alert($tw_user_id);</script>"	;
+				$this->redirect(array('action'=>'student_edit'));
+			}
+		}
+	}//unfavの終わり
+	
 	//circle個別ページのコントローラー
 	public function event_id($id) {
 	
