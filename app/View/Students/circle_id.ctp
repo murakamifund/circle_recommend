@@ -118,9 +118,7 @@ $act=array(
 
 <br>
 
-<font size="3" color="#0000ff">
-		<?php echo $this->Session->flash(); ?>
-</font>
+
 
 
 
