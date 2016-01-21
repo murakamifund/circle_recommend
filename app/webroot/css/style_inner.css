@@ -124,9 +124,15 @@
 /* Students/student‚ÅŽg‚¤ */
 
 .list{
-	height: 300px;
+	height: 200px;
 	border-top: 1px solid #aaaaaa;
+	border-left: 1px solid #aaaaaa;
+	border-right: 1px solid #aaaaaa;
 	padding-top: 10px;
+}
+
+#lists:last-child{
+	border-bottom: 1px solid #aaaaaa;
 }
 
 
@@ -178,6 +184,7 @@
 }
 
 .list .list_pr{
+	height: 70px;
 	clear: left;
 }
 /*
@@ -232,7 +239,8 @@
 .list .list_bottan{
 	position: absolute;
 	right: 5%;
-	top: 90%;
+	line-height: 2;
+	font-weight: 600;
 }
 
 #search_keyword{
