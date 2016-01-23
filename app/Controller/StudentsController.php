@@ -282,8 +282,8 @@ class StudentsController extends AppController {
 	
 	//circleのIdに一致するイベントを列挙
 	$id = 23;
-	$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $id)));
-	$count = $this->Event->find( 'count', array( 'conditions' => array('Event.circle_id' => $id)));
+	$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $user_favorite_circle_id)));
+	$count = $this->Event->find( 'count', array( 'conditions' => array('Event.circle_id' => $user_favorite_circle_id)));
 	$title = array();
 	$day = array();
 	
