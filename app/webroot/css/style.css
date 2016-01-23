@@ -146,7 +146,7 @@ a:hover {
 #fixing_box{
 	position: fixed;
 	top: 0px;
-	z-index: 5;
+	z-index: 100;
 }
 
 header {
@@ -326,6 +326,7 @@ nav.menubar ul li#current a {
 #slide_image {
 	z-Index:2;
 	position: absolute;
+	width: 99.7%;
 	left:0px;
 	top:0px;
 }
@@ -491,7 +492,7 @@ footer a {
 	border: 5px solid #000000;
 	border-radius: 20px;
 	padding: 20px;
-	z-index: 6;
+	z-index: 600;
 	display: none;
 }
 
@@ -534,6 +535,7 @@ footer a {
 	border-color: #333333;
 	background-color: #333333;
 	color:#ffffff;
+	cursor: pointer; 
 	text-decoration: none;
 }
 
@@ -555,7 +557,7 @@ footer a {
 	height: 100%;
 	background-color: #000000;
 	opacity:0.7;
-	z-index: 5;
+	z-index: 200;
 	display: none;
 }
 

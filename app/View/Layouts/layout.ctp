@@ -127,7 +127,7 @@
 
 <aside id="mainimg">
 <a href="home" id="slide_link">
-<img id="slide_image" src="../img/todai.jpg" alt="" width="977" height="260" />
+<img id="slide_image" src="../img/ground.jpg" alt="" width="977" height="250" />
 </a>
 </aside>
 
