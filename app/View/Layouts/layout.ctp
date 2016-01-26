@@ -183,7 +183,7 @@
 <!--/contents-->
 
 <footer>
-<small>Copyright&copy; 2014 <a href="home">SAMPLE CAFE</a>　All Rights Reserved.</small>
+<small>Copyright&copy; 2016 <a href="home">UT-Circle</a>　<a href="about">利用規約</a></small>
 <span class="pr"><a href="http://template-party.com/" target="_blank">Web Design:Template-Party</a></span>
 </footer>
 
