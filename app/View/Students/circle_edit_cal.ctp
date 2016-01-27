@@ -80,7 +80,11 @@ onload = function(){
 			echo '　　その他';
 			echo $this->Form->checkbox('other',array('lavel'=>false,'error'=>false,'div'=>false));
 		?></td>
-	</tr>
+</tr>
+<tr>
+	<th scope="row">詳細</th>
+	<td><?php echo $this->Form->input('content',array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false)); ?></td>
+</tr>
 </tbody>
 </table><br>
 <?php

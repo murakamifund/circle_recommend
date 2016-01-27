@@ -33,7 +33,6 @@ onload = function(){
 
 <h2> <?php echo $circle_name; ?>の<?php echo $title; ?>の情報</h2>
 
-<h3>編集</h3>
 <div class ="stop-btm">
 <table class = "type01">
 <tbody>
@@ -73,6 +72,10 @@ onload = function(){
 <tr>
 	<th scope="row">内容</th>
 		<td><?php echo $content_chosen; ?></td>
+</tr>
+<tr>
+	<th>詳細</th>
+	<td><?php echo $contents; ?></td>
 </tr>
 </tbody>
 </table><br>

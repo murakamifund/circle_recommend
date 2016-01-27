@@ -282,7 +282,7 @@ class StudentsController extends AppController {
 		//カレンダーの機能
 	
 	//circleのIdに一致するイベントを列挙
-	$id = 23;
+	
 	$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $user_favorite_circle_id)));
 	$count = $this->Event->find( 'count', array( 'conditions' => array('Event.circle_id' => $user_favorite_circle_id)));
 	$title = array();
@@ -299,7 +299,7 @@ class StudentsController extends AppController {
             'title' => $events[$a]['Event']['circle_name'].":".$events[$a]['Event']['title'],
             'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
             'end' => $events[$a]['Event']['day'],
-			'url' => "../student_edit/".$events[$a]['Event']['id'],
+			'url' => "event_id/".$events[$a]['Event']['id'],
 		
             //'allDay' => $events[$a]['Event']['allday'],
 	);
@@ -597,6 +597,8 @@ class StudentsController extends AppController {
 	$this->set("party",$party);//view側にデータをセット
 	$other= $events['Event']['other'];
 	$this->set("other",$other);//view側にデータをセット
+	$contents= $events['Event']['content'];
+	$this->set("contents",$contents);//view側にデータをセット
 	
     
     
