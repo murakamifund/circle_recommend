@@ -143,23 +143,7 @@
 
 <div id="sub">
 
-<div class="box1 mb1em">
 
-<nav>
-<h2><a href="../Students/student_resister"><font color ="#66ccff">新規登録しよう</font></a></h2>
-	<p>
-	<!--<div class="i-btnb">
-		<a href="../Students/student_resister">登録ページ</a>
-	</div> -->
-	<a href="../Students/student_resister"><font color ="#66ccff">新規登録</font></a>することでできること<br>
-	(1)サークルのお気に入り、予定確認<br>
-	(2)サークルの新規登録<br>
-	(3)バイト、インターンのオファーの受け取り
-	</p>
-</nav>
-
-</div>
-<!--/box1-->
 
 <aside class="box1 mb1em">
 <h2>Twitterアカウント</h2>
@@ -183,7 +167,7 @@
 <!--/contents-->
 
 <footer>
-<small>Copyright&copy; 2014 <a href="home">SAMPLE CAFE</a>　All Rights Reserved.</small>
+<small>Copyright&copy; 2016 <a href="home">UT-Circle</a>　<a href="about">利用規約</a></small>
 <span class="pr"><a href="http://template-party.com/" target="_blank">Web Design:Template-Party</a></span>
 </footer>
 
