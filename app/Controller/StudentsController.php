@@ -229,7 +229,11 @@ class StudentsController extends AppController {
 	}
 	
 	public function student_resister() {
-		
+		if(isset($_SESSION['tw_user_id']) && $_SESSION['is_circle']==false){
+			$this->redirect(array('action' => 'student_edit'));
+		}else if(isset($_SESSION['tw_user_id']) && $_SESSION['is_circle']==true){
+			$this->redirect(array('action' => 'circle_edit_main'));
+		}
 	}
 	
 	public function student_edit(){
