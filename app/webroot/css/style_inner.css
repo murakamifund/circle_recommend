@@ -135,6 +135,7 @@
 	border-left: 1px solid #aaaaaa;
 	border-right: 1px solid #aaaaaa;
 	padding-top: 10px;
+	background-color: #ffffff;
 }
 
 .list:last-child{
