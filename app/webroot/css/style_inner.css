@@ -135,6 +135,7 @@
 	border-left: 1px solid #aaaaaa;
 	border-right: 1px solid #aaaaaa;
 	padding-top: 10px;
+	background-color: #ffffff;
 }
 
 .list:last-child{
@@ -194,17 +195,7 @@
 	clear: left;
 }
 /*
-.list .list_tags{
-	width: 15%;
-	margin-left: 2%;
-	text-align: center;
-	font-weight: 600;
-	border: 2px solid #d26914;
-	background-color: #d26914;
-//	color: #dc143c;
-	border-radius: 5px;
-	float: left;	
-}
+
 */
 .list .list_tags{
 	width: 15%;

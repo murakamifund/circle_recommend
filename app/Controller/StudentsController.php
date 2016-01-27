@@ -71,9 +71,9 @@ class StudentsController extends AppController {
 			$local_user = $stmt->fetch(); //結果を返す 
 			if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
 				$sql = "insert into students 
-				(tw_user_id,tw_name,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_description,tw_access_token,tw_access_token_secret) 
+				(tw_user_id,tw_name,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_description,tw_access_token) 
 				values
-				(:tw_user_id,:tw_name,:tw_screen_name,:tw_profile_image_url,:tw_profile_banner_url,:tw_description,:tw_access_token,:tw_access_token_secret)";
+				(:tw_user_id,:tw_name,:tw_screen_name,:tw_profile_image_url,:tw_profile_banner_url,:tw_description,:tw_access_token)";
 				$stmt = $dbh->prepare($sql);
 				$params = array(
 					":tw_user_id" => $me->id_str,
@@ -82,8 +82,8 @@ class StudentsController extends AppController {
 					":tw_profile_image_url" => $me->profile_image_url,
 					":tw_profile_banner_url" => $me->profile_banner_url,
 					":tw_description" => $me->description,
-					":tw_access_token" => $reply->oauth_token,
-					":tw_access_token_secret" => $reply->oauth_token_secret
+					":tw_access_token" => $reply->oauth_token//,
+					//":tw_access_token_secret" => $reply->oauth_token_secret
 				);
 				$stmt->execute($params);
 
@@ -172,17 +172,16 @@ class StudentsController extends AppController {
 			
 			if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
 				$sql = "insert into circles 
-				(tw_user_id,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_access_token,tw_access_token_secret) 
+				(tw_user_id,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_access_token) 
 				values
-				(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_profile_banner_url,:tw_access_token,:tw_access_token_secret)";
+				(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_profile_banner_url,:tw_access_token)";
 				$stmt = $dbh->prepare($sql);
 				$params = array(
 					":tw_user_id" => $me->id_str,
 					":tw_screen_name" => $me->screen_name,
 					":tw_profile_image_url" => $me->profile_image_url,
 					":tw_profile_banner_url" => $me->profile_banner_url,
-					":tw_access_token" => $reply->oauth_token,
-					":tw_access_token_secret" => $reply->oauth_token_secret
+					":tw_access_token" => $reply->oauth_token
 				);
 				$stmt->execute($params);
 
@@ -284,8 +283,8 @@ class StudentsController extends AppController {
 	
 	//circleのIdに一致するイベントを列挙
 	$id = 23;
-	$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $id)));
-	$count = $this->Event->find( 'count', array( 'conditions' => array('Event.circle_id' => $id)));
+	$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $user_favorite_circle_id)));
+	$count = $this->Event->find( 'count', array( 'conditions' => array('Event.circle_id' => $user_favorite_circle_id)));
 	$title = array();
 	$day = array();
 	
