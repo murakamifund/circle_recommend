@@ -4,7 +4,7 @@ onload = function(){
 }
 </script>
 
-
+<title>UT-Circle サークル登録</title>
 <h2 class="mb1em">サークルを登録しよう</h2>
 <aside class="mb1em"><img src="../img/image2.png" width="700" height="99" alt="" class="wa"></aside>
 <br>

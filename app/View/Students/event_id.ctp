@@ -1,3 +1,5 @@
+<title>UT-Circle <?php echo $circle_name ?>:<?php echo $title ?>の詳細</title>
+
 <?php 
 	$for_newcomer_array = array('新歓','新歓でない');
 	$for_newcomer_string = '';

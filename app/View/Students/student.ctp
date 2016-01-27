@@ -4,6 +4,7 @@ onload = function(){
 }
 </script>
 
+<title>UT-Circle サークル検索</title>
 <?php
 	echo $this->html->css(array('fullcalendar', 'bootstrap','headshrinker'));
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));

@@ -4,6 +4,8 @@ onload = function(){
 }
 </script>
 
+<title>UT-Circle 東大のサークル探し</title>
+
 <section>
 <h2>Welcome to UT-Circle!!</h2>
 <p>

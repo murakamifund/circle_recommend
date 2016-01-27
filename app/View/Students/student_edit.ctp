@@ -9,6 +9,8 @@ onload = function(){
 }
 </script>
 
+<title>UT-Circle マイページ</title>
+
 <h2> <?php echo $user_name; ?>さんの情報を管理</h2>
 	<div id="student_menu">
 	<div class="i-btn"><a href="#" onclick="student_edit_func(0);">ユーザ情報</a></div>
