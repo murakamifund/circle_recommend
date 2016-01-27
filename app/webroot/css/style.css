@@ -3,19 +3,19 @@
 
 /*全体の設定
 ---------------------------------------------------------------------------*/
-body {
+body{
+	background-color: #999999;	/*背景色*/
 	color: #666;	/*全体の文字色*/
 	margin: 0px;
 	padding: 0 0 0 0;
 	font: 14px/2 "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro";/*文字サイズ・行間・フォント設定*/
-	background: #FFF;	/*背景色*/
 }
 
-
+/*
 * html body{  
     overflow: hidden;  
 } 
-
+*/
 h1,h2,h3,h4,h5,p,ul,ol,li,dl,dt,dd,form,figure{
 	margin: 0px;
 	padding: 0px;
