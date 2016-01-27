@@ -9,7 +9,7 @@
 		$for_newcomer_string = $for_newcomer_array[1];
 	}
 
-	$content = array('練習','試合・本番','合宿','飲み会','その他');
+	$content = array('練習','試合・本番','合宿','コンパ','その他');
 	$content_chosen = "";
 
 	if($practice == 1){
@@ -19,7 +19,7 @@
 	}else if($camp == 1){
 		$content_chosen ='合宿';
 	}else if($party == 1){
-		$content_chosen ='飲み会';
+		$content_chosen ='コンパ';
 	}else{
 		$content_chosen ='その他';
 	}
@@ -35,7 +35,6 @@ onload = function(){
 
 <h2> <?php echo $circle_name; ?>の<?php echo $title; ?>の情報</h2>
 
-<h3>編集</h3>
 <div class ="stop-btm">
 <table class = "type01">
 <tbody>
@@ -75,6 +74,10 @@ onload = function(){
 <tr>
 	<th scope="row">内容</th>
 		<td><?php echo $content_chosen; ?></td>
+</tr>
+<tr>
+	<th>詳細</th>
+	<td><?php echo $contents; ?></td>
 </tr>
 </tbody>
 </table><br>

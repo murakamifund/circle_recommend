@@ -68,10 +68,16 @@ onload = function(){
 			echo $this->Form->checkbox('game',array('lavel'=>false,'error'=>false,'div'=>false));
 			echo '　　合宿';
 			echo $this->Form->checkbox('camp',array('lavel'=>false,'error'=>false,'div'=>false));
+			echo '　　コンパ';
+			echo $this->Form->checkbox('party',array('lavel'=>false,'error'=>false,'div'=>false));
 			echo '　　その他';
 			echo $this->Form->checkbox('other',array('lavel'=>false,'error'=>false,'div'=>false));
 		?></td>
 	</tr>
+<tr>
+	<th scope="row">詳細</th>
+	<td><?php echo $this->Form->input('content',array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false)); ?></td>
+</tr>
 </tbody>
 </table><br>
 <?php

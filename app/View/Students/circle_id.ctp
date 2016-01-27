@@ -71,9 +71,7 @@ $act=array(
  
 
 <!--ここからhtml-->
-
-<div id="circle_left">
-	<div id="circle_name">
+<div id="circle_name">
 		<?php if($url != ""){ ?>
 			<a href="<?php echo $url; ?>"><?php echo $circle_name; ?></a>
 		<?php
@@ -82,7 +80,10 @@ $act=array(
 				echo $circle_name;
 			}
 		?>
-	</div>
+</div>
+
+<div id="circle_left">
+	
 	
 	<div id="circle_photo">
 		
@@ -97,6 +98,15 @@ $act=array(
 	</div>
 	<h4>活動紹介</h4>
 	<div id="circle_pr"> <?php echo str_replace("\\\\\\\\\\\\\\\\n","<br>",$pr); ?></div>
+	<h4>ホームページURL</H4>
+	<?php if($url != ""){ ?>
+			<a href="<?php echo $url; ?>"><font color = "#0000ff"><?php echo $url; ?></font></a>
+		<?php
+			}
+			else{
+				echo 'ホームページが登録されていません';
+			}
+		?>
 </div>
 <div id="circle_right">
 	<h4>活動内容</h4>
