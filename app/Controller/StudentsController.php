@@ -472,6 +472,9 @@ class StudentsController extends AppController {
 				$fav_circles = $this->Favorite->find('all', array(
 					'conditions' => array('user_id' => $tw_user_id,'circle_id' => $id)
 				));
+				$circle = $this->Circle->find('all', array(
+					'conditions' => array('id' => $id)
+				));
 				
 				if (!empty($fav_circles)) {
 					$this->Session->setFlash(__('すでにお気に入り登録されています'));
@@ -482,6 +485,31 @@ class StudentsController extends AppController {
 					  'user_id' => $tw_user_id,
 					  'circle_id' => $id,
 					]);
+					$circle_value = $circle[0]['Circle']['value'];
+					$circle_value1 = $circle[0]['Circle']['value1'];
+					$circle_value2 = $circle[0]['Circle']['value2'];
+					$circle_value3 = $circle[0]['Circle']['value3'];
+					$circle_value4 = $circle[0]['Circle']['value4'];
+					$circle_value5 = $circle[0]['Circle']['value5'];
+					$circle_value6 = $circle[0]['Circle']['value6'];
+					$circle_value7 = $circle[0]['Circle']['value7'];
+					$circle_value += 1;
+					$circle_value1 += 1;
+					$circle_value2 += 1;
+					$circle_value3 += 1;
+					$circle_value4 += 1;
+					$circle_value5 += 1;
+					$circle_value6 += 1;
+					$circle_value7 += 1;
+					$circle[0]['Circle']['value'] = $circle_value;
+					$circle[0]['Circle']['value1'] = $circle_value1;
+					$circle[0]['Circle']['value2'] = $circle_value2;
+					$circle[0]['Circle']['value3'] = $circle_value3;
+					$circle[0]['Circle']['value4'] = $circle_value4;
+					$circle[0]['Circle']['value5'] = $circle_value5;
+					$circle[0]['Circle']['value6'] = $circle_value6;
+					$circle[0]['Circle']['value7'] = $circle_value7;
+					$this->Circle->save($circle[0]['Circle']);
 					
 					$this->Session->setFlash(__('お気に入り登録しました'));
 				}
@@ -501,8 +529,36 @@ class StudentsController extends AppController {
 			if(isset($_SESSION['tw_user_id']) && $_SESSION['is_circle']!=true){
 				//userを持っていたら
 				$tw_user_id = $_SESSION['tw_user_id'];
-				$fav_circles = $this->Favorite->deleteAll(array('user_id' => $tw_user_id,'circle_id' => $id)); 
-			echo "<script>alert($tw_user_id);</script>"	;
+				$fav_circles = $this->Favorite->deleteAll(array('user_id' => $tw_user_id,'circle_id' => $id));
+				$circle = $this->Circle->find('all', array(
+					'conditions' => array('id' => $id)
+				));
+				$circle_value = $circle[0]['Circle']['value'];
+				$circle_value1 = $circle[0]['Circle']['value1'];
+				$circle_value2 = $circle[0]['Circle']['value2'];
+				$circle_value3 = $circle[0]['Circle']['value3'];
+				$circle_value4 = $circle[0]['Circle']['value4'];
+				$circle_value5 = $circle[0]['Circle']['value5'];
+				$circle_value6 = $circle[0]['Circle']['value6'];
+				$circle_value7 = $circle[0]['Circle']['value7'];
+				$circle_value -= 1;
+				$circle_value1 -= 1;
+				$circle_value2 -= 1;
+				$circle_value3 -= 1;
+				$circle_value4 -= 1;
+				$circle_value5 -= 1;
+				$circle_value6 -= 1;
+				$circle_value7 -= 1;
+				$circle[0]['Circle']['value'] = $circle_value;
+				$circle[0]['Circle']['value1'] = $circle_value1;
+				$circle[0]['Circle']['value2'] = $circle_value2;
+				$circle[0]['Circle']['value3'] = $circle_value3;
+				$circle[0]['Circle']['value4'] = $circle_value4;
+				$circle[0]['Circle']['value5'] = $circle_value5;
+				$circle[0]['Circle']['value6'] = $circle_value6;
+				$circle[0]['Circle']['value7'] = $circle_value7;
+				$this->Circle->save($circle[0]['Circle']); 
+				echo "<script>alert($tw_user_id);</script>"	;
 				$this->redirect(array('action'=>'student_edit'));
 			}
 		}
@@ -1117,25 +1173,25 @@ class StudentsController extends AppController {
 				'Circle.activity' => $activity2
 			);
 		}
-		if($sort == 1){
+		if($sort == "練習したい"){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value1 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		else if($sort == 2){
+		else if($sort == "楽な方がいい"){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value2 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		else if($sort == 3){
+		else if($sort == "飲みたい"){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value3 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		else if($sort == 4){
+		else if($sort == "飲みたくない"){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value4 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		else if($sort == 5){
+		else if($sort == "インカレがいい"){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value5 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		else if($sort == 6){
+		else if($sort == "学内がいい"){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value6 DESC', 'Circle.man + Circle.woman DESC')));
 		}
-		else if($sort == 7){
+		else if($sort == "人数重視"){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value7 DESC', 'Circle.man + Circle.woman DESC')));
 		}
 		else{
