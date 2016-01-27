@@ -37,7 +37,9 @@ onload = function(){
 		-->
 		<tr>
 			 <th scope="row">サークル名</th>
-			<td><?php echo $this->Form->input('circle_name', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
+			<td><?php echo $this->Form->input('circle_name', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?>
+			<?php echo $this->Form->error('circle_name');?>
+			</td>
 		</tr>
 		<tr>
 			<th scope="row">キャッチフレーズ</th>
@@ -47,7 +49,9 @@ onload = function(){
 		</tr>
 		<tr>
 			<th scope="row">URL</th>
-			<td><?php echo $this->Form->input('url', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
+			<td><?php echo $this->Form->input('url', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?>
+			<?php echo $this->Form->error('url');?>
+			</td>
 		</tr>
 		<tr>
 			<th scope="row">活動内容</th>
@@ -97,7 +101,9 @@ onload = function(){
 		</tr>
 		<tr>
 		 <th scope="row">PR文</th>
-			<td><?php echo $this->Form->input('pr', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?></td>
+			<td><?php echo $this->Form->input('pr', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?>
+			<?php echo $this->Form->error('pr');?>
+			</td>
 		</tr>
 		<tr>
 			<th scope="row">活動曜日</th>
@@ -131,7 +137,9 @@ onload = function(){
 				array('size'=>50, 'label'=>"キャンパス　", 'error'=>false, 'div'=>false,'legend' => false)
 				);
 			?></td>
-			<td><?php echo $this->Form->input('placetext', array('size'=>100, 'label'=>"場所詳細", 'error'=>false, 'div'=>false));?></td>
+			<td><?php echo $this->Form->input('placetext', array('size'=>100, 'label'=>"場所詳細", 'error'=>false, 'div'=>false));?>
+			<?php echo $this->Form->error('placetext');?>
+			</td>
 		</tr>
 	</tbody>
 	</table>

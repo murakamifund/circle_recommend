@@ -755,7 +755,7 @@ class StudentsController extends AppController {
 				$this->request->data['Circle']['value6'] = $circle_value6;
 				$this->request->data['Circle']['value7'] = $circle_value7;
 			
-				if ($this->Circle->save($this->request->data, array('validate' => false))) {
+				if ($this->Circle->save($this->request->data/*, array('validate' => false)*/)) {
 					// $this->redirect(array('action'=>'follow')); //twitter
 					$this->Session->setFlash(__('更新完了しました。'));
 					//更新したらloginページに移動させる
