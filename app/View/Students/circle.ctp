@@ -4,6 +4,7 @@ onload = function(){
 }
 </script>
 
+<meta name="description" content="サークルの登録はこちらから。登録により興味を持った新入生とツイッターを通して関わることができます。">
 <title>UT-Circle サークル登録</title>
 <h2 class="mb1em">サークルを登録しよう</h2>
 <aside class="mb1em"><img src="../img/image2.png" width="700" height="99" alt="" class="wa"></aside>
