@@ -91,8 +91,8 @@ onload = function(){
 			</div>
 			<div class="list_right_middle">
 				<div class="list_pr"><?php echo str_replace("\\\\\\\\\\\\\\\\n","",$datum['Circle']['pr']); ?></div>
-				<div class="list_tags">#<?php echo $datum['Circle']['activity']; ?></div>
-				<div class="list_tags">#<?php echo $datum['Circle']['place']; ?></div>
+				<div class="list_tags">#(種目):<?php echo $datum['Circle']['activity']; ?></div>
+				<div class="list_tags">#(場所):<?php echo $datum['Circle']['place']; ?></div>
 				<div class="list_tags">#<?php echo $datum['Circle']['intercollege']; ?></div>
 			</div>
 			<div class="list_right_bottom">
