@@ -8,6 +8,7 @@ onload = function(){
 	func_circle_edit_cal();	
 }
 </script>
+<title>UT-Circle サークルの予定登録</title>
 
 <h2> <?php echo $circle_name; ?>の情報を管理</h2>
 

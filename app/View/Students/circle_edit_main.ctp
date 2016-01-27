@@ -4,7 +4,7 @@ onload = function(){
 }
 </script>
 
-
+<title>UT-Circle サークルページ</title>
 <h2> <?php echo $circle_name; ?>の情報を管理</h2>
 
 

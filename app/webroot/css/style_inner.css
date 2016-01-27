@@ -315,11 +315,20 @@ form input#search_submit1:hover,form input#search_submit2:hover{
 
 /* Students/student_edit‚ÅŽg‚¤ */
 
- #student_menu .i-btn{
+ #student_menu .i-btn a{
+ 	background:#95c5ee;
 	float:left;
-	margin-top:1em;
-	margin-bottom:2em;
-	width:25%;
+	margin-top:-2em;
+	margin-bottom:1em;
+	margin-right:2%;
+	width:23%;
+ }
+ #student_menu .i-btn a:hover,.team-msg-right a:hover,.error-btn a:hover{
+ 	background:#a5d5fe;
+	float:left;
+	margin-top:-2em;
+	margin-bottom:1em;
+	width:23%;
  }
  
  #student_edit_content1,#student_edit_content2{

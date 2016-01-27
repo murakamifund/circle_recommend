@@ -3,6 +3,7 @@ onload = function(){
 	func_student_resister();
 }
 </script>
+<title>UT-Circle ログインページ</title>
 
 <h2 class="mb1em">新規登録</h2>
 

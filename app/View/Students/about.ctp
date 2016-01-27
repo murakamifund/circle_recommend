@@ -3,6 +3,7 @@ onload = function(){
 	func_about();
 }
 </script>
+<title>UT-Circle 利用規約</title>
 <p>
 <section>
 <h1>利用規約</h1>

@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>UT-Circle 東大のサークル探し</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="copyright" content="Template Party">
 <meta name="description" content="東京大学の部活動、サークル活動を紹介する情報サイト。その他東大生の大学生活に役に立つバイト情報やインターン情報を提供。">
