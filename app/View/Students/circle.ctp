@@ -35,10 +35,3 @@ Twitter上の関係を分析し、UT-CircleのTwitterアカウントをフォロ
 <h2 class="mb1em">パワポ</h2>
 <iframe style="border:none" src="http://files.photosnack.com/iframejs/embed.html?hash=pdzp2m8jo&t=1444874503" width="576" height="384" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>
 
-
-
-<section id="lunch">
-
-<h3 class="mb1em">ランチメニュー</h3>
-
-<!--/lunch-->
