@@ -4,6 +4,7 @@ onload = function(){
 }
 </script>
 
+<meta name="description" content="自分の好みに合わせてサークルを検索。気に入ったサークルはお気に入り登録やツイッターアカウントのフォローにより最新情報を入手！">
 <title>UT-Circle サークル検索</title>
 <?php
 	echo $this->html->css(array('fullcalendar', 'bootstrap','headshrinker'));
@@ -230,7 +231,7 @@ onload = function(){
 <br></br>
 
 <h2 class="mb1em">イベントカレンダー</h2>
-団体名をクリックすると、その団体の詳細に飛べます。
+イベント名をクリックすると、そのイベントの詳細を見ることができます。
 
 <p>
 <div id="fc1" class="fc" >
