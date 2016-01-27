@@ -7,7 +7,7 @@
 		$for_newcomer_string = $for_newcomer_array[1];
 	}
 
-	$content = array('練習','試合・本番','合宿','飲み会','その他');
+	$content = array('練習','試合・本番','合宿','コンパ','その他');
 	$content_chosen = "";
 
 	if($practice == 1){
@@ -17,7 +17,7 @@
 	}else if($camp == 1){
 		$content_chosen ='合宿';
 	}else if($party == 1){
-		$content_chosen ='飲み会';
+		$content_chosen ='コンパ';
 	}else{
 		$content_chosen ='その他';
 	}

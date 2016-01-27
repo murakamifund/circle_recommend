@@ -75,6 +75,8 @@ onload = function(){
 			echo $this->Form->checkbox('game',array('lavel'=>false,'error'=>false,'div'=>false));
 			echo '　　合宿';
 			echo $this->Form->checkbox('camp',array('lavel'=>false,'error'=>false,'div'=>false));
+			echo '　　コンパ';
+			echo $this->Form->checkbox('party',array('lavel'=>false,'error'=>false,'div'=>false));
 			echo '　　その他';
 			echo $this->Form->checkbox('other',array('lavel'=>false,'error'=>false,'div'=>false));
 		?></td>
