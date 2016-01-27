@@ -3,11 +3,20 @@
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
 	
 $nomi_custom = array('飲まない','あまり飲まない','普通','飲む','かなり飲む');
-$nomi_chosen = $nomi_custom[$nomi-1];
+if($nomi>0){
+	$nomi_chosen = $nomi_custom[$nomi-1];
+}
+else{
+	$nomi_chosen = '';
+}
 
 $mazime_custom = array('楽しくワイワイ','少しゆるい','普通','厳しめ','かなり厳しい');
-$mazime_chosen = $mazime_custom[$mazime-1];
-
+if($mazime>0){
+	$mazime_chosen = $mazime_custom[$mazime-1];
+}
+else{
+	$mazime_chosen = '';
+}
 $day_custom = array('月','火','水','木','金','土','日');
 $day_chosen = "";
 
