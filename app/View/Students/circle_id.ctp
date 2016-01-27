@@ -70,14 +70,7 @@ $act=array(
 
 <!--ここからhtml-->
 <div id="circle_name">
-		<?php if($url != ""){ ?>
-			<a href="<?php echo $url; ?>"><?php echo $circle_name; ?></a>
-		<?php
-			}
-			else{
-				echo $circle_name;
-			}
-		?>
+	<?php echo $circle_name; ?>
 </div>
 
 <div id="circle_left">
