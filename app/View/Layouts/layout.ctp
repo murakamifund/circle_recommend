@@ -125,8 +125,46 @@
 </div>
 
 <aside id="mainimg">
-<a href="home" id="slide_link">
-<img id="slide_image" src="../img/ground.jpg" alt="" width="977" height="250" />
+<div id="iconlist-wrapper">
+			<div id="iconlist-main">
+				<div id="iconlist-reel">
+
+						<div id="thumb-main" data-width="400">
+							<div>UT-Circle</div>
+							<div>気になったサークルをクリック！<br />
+							詳細な内容が分かるよ！</div>
+						</div>
+
+					<!-- Thumb Items -->
+<?php
+	for($i=0;$i<30;$i++){
+		if($i<count($suggest_circle)){
+?>
+						<article class="thumb">
+							<a href="../Students/circle_id/<?=$suggest_circle[$i]['Circle']['id']?>" class="image">
+								<img src="<?=$suggest_circle[$i]['Circle']['tw_profile_image_url']?>" width="100%" alt="">
+							</a>
+							<div class="thumb_msg" onclick="location(../Students/circle_id/<?=$suggest_circle[$i]['Circle']['id']?>)">
+								<a href="../Students/circle_id/<?=$suggest_circle[$i]['Circle']['id']?>"><?=$suggest_circle[$i]['Circle']['circle_name']?></a>
+							</div>
+						</article>
+<?php
+		}else{
+?>
+						<article class="thumb">
+							<a href="#" class="image"><img src="../img/egg.png" width="100%" alt=""></a>
+							<div class="thumb_msg">テンプレートでっす</div>
+						</article>
+<?php
+		}
+	}
+?>						
+										
+				</div>
+			</div>
+
+
+		</div>
 </a>
 </aside>
 

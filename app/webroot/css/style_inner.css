@@ -337,3 +337,111 @@ form input#search_submit1:hover,form input#search_submit2:hover{
 //	display:none;
  }
 
+/*Students/home‚ÅŽg‚¤*/
+
+#iconlist-wrapper{
+	width:99.7%;
+	height:260px;
+	background-color:#ffffff;
+	margin-top:10px;
+	overflow:hidden;
+}
+
+#iconlist-main{
+	width:977px;
+	height:277px;
+	padding:6px;
+	padding-bottom:30px;
+	overflow-x:scroll;
+	overflow-y:hidden;
+
+}
+
+#iconlist-reel{
+	width:2070px;
+	height:106%;
+}
+
+#thumb-main{
+	background-color:#55acee;
+	width:246px;
+	height:49%;
+	margin-right:10px;
+	float:left;
+	position:relative;
+}
+
+#thumb-main div:first-child{
+	margin:10px;
+	font-size:35px;
+	color:#ffffff;
+}
+
+#thumb-main div:last-child{
+	margin:10px;
+	font-size:15px;
+	color:#ffffff;
+	opacity;0.5;
+}
+
+.thumb{
+	width:118px;
+	height:50%;
+	margin-bottom:10px;
+	margin-right:10px;
+	float:left;
+	position:relative;
+}
+
+.thumb:hover{
+	opacity:0.8;
+}
+
+
+.thumb:nth-child(16){
+	clear:left;
+}
+
+.thumb_msg{
+	height:16%;
+	width:100%;
+	background-color:#000000;
+	overflow:hidden;
+	border: 1px solid #000000;
+	position:absolute;
+	opacity:0.7;
+	bottom:0%;
+	color:#ffffff;
+	-ms-transition-property:height;
+	-ms-transition-duration:0.5s;
+	-webkit-transition-property:height;
+	-webkit-transition-duration:0.5s;
+	-o-transition-property:height;
+	-o-transition-duration:0.5s;
+	-moz-transition-property:height;
+	-moz-transition-duration:0.5s;
+
+}
+
+.thumb_msg a{
+	color: #ffffff;
+	display:block;
+	position:absolute;
+	top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+	
+}
+
+.thumb_msg a:hover{
+	text-decoration:none;
+	color:#ffffff;
+	
+}
+
+.thumb_msg:hover{
+	height:32%;
+	cursor:pointer;
+}
