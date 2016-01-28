@@ -35,7 +35,7 @@ onload = function(){
 	//検索していないor検索結果がない場合の表示
 	if(!$requested || !$found){
 ?>
-
+<h2>サークルを探そう</h2>
 <!-- サークルの新規登録を促す -->
 <aside class="mb1em"><img src="../img/image1.jpg" width="700" height="99" alt="" class="wa"></aside>
 
@@ -50,7 +50,7 @@ onload = function(){
 
 <!-- 検索フォーム -->
 
-<h2>サークルを探そう</h2>
+
 
 <form method="post" action="./student" name=form1 >
 

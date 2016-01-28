@@ -1096,8 +1096,8 @@ class CakeEmailTest extends CakeTestCase {
 		$this->CakeEmail->to('cake@cakephp.org');
 		$this->CakeEmail->subject('My title');
 		$this->CakeEmail->emailFormat('text');
-		$data = file_get_contents(CAKE . 'Console/Templates/skel/webroot/img/cake.icon.png');
-		$this->CakeEmail->attachments(array('cake.icon.png' => array(
+		$data = file_get_contents(CAKE . 'Console/Templates/skel/webroot/img/twitter_icon.png');
+		$this->CakeEmail->attachments(array('twitter_icon.png' => array(
 				'data' => $data,
 				'mimetype' => 'image/png'
 		)));
@@ -1116,7 +1116,7 @@ class CakeEmailTest extends CakeTestCase {
 				"--$boundary\r\n" .
 				"Content-Type: image/png\r\n" .
 				"Content-Transfer-Encoding: base64\r\n" .
-				"Content-Disposition: attachment; filename=\"cake.icon.png\"\r\n\r\n";
+				"Content-Disposition: attachment; filename=\"twitter_icon.png\"\r\n\r\n";
 		$expected .= chunk_split(base64_encode($data), 76, "\r\n");
 		$this->assertContains($expected, $result['message']);
 	}
