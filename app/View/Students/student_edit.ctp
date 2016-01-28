@@ -13,7 +13,7 @@ onload = function(){
 
 <h2> <?php echo $user_name; ?>さんの情報を管理</h2>
 	<div id="student_menu">
-	<div class="i-btn"><a href="./student_edit">ページ全体</a></div>
+	<div class="i-btn"><a href="#" onclick="student_edit_func(0);">ページ全体</a></div>
 	<div class="i-btn"><a href="#" onclick="student_edit_func(1);">カレンダー</a></div>
 	<div class="i-btn"><a href="#" onclick="student_edit_func(2);">お気に入り</a></div>
 	<div class="i-btn"><a href="student_tw_logout">ログアウト</a></div>
@@ -43,6 +43,7 @@ onload = function(){
 		</div>
 	</div>
 </div>
+<br><br>
 </div>
 
 
@@ -98,7 +99,8 @@ onload = function(){
 			<div class="list_right_bottom">
 
 			<form action="/circle_recommend/Students/unfav/<?php echo $datum['Circle']['id']; ?>" method="post">
-				<input type="image" src="../img/logo.png" width="150" height="28" alt="おすすめ" class="icon"/>
+				<input type="hidden" name="address" value="student_edit">
+				<input type="image" src="../img/okiniiri.png" onmouseover="this.src='../img/okiniiri_1.png'" onmouseout="this.src='../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 			</form>
 			<div class="list_twitter"><a href="https://twitter.com/<?php echo $datum['Circle']['tw_screen_name']; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
 			<div class="list_bottan"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">詳細はこちら！</a></div>

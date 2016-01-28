@@ -42,11 +42,17 @@ function func_student_edit(){
 }
 
 function student_edit_func(x){
-	for(i=0;i<3;i++){
-		document.getElementById('student_edit_content'+String(i)).style.display = "none";
+	if(x==0){
+		for(i=0;i<3;i++){
+			document.getElementById('student_edit_content'+String(i)).style.display = "block";
+		}
+	}else{
+		for(i=0;i<3;i++){
+			document.getElementById('student_edit_content'+String(i)).style.display = "none";
+		}
+		document.getElementById('student_edit_content'+String(x)).style.display = "block";
 	}
-	document.getElementById('student_edit_content'+String(x)).style.display = "block";
-
+	
 }
 
 
@@ -163,12 +169,10 @@ function menu_backtwice(){
 	document.getElementsByClassName('menu_pc')[0].href = "../../Students/home";
 	document.getElementsByClassName('menu_pc')[1].href = "../../Students/student";
 	document.getElementsByClassName('menu_pc')[2].href = "../../Students/circle";
-//	document.getElementsByClassName('menu_pc')[3].href = "../../Students/student_resister";
 
 	document.getElementsByClassName('menu_mobile')[0].href = "../../Students/home";
 	document.getElementsByClassName('menu_mobile')[1].href = "../../Students/student";
 	document.getElementsByClassName('menu_mobile')[2].href = "../../Students/circle";
-//	document.getElementsByClassName('menu_mobile')[3].href = "../../Circles/student_resister";
 	
 	if(document.getElementById('student_bar')!=null){
 		document.getElementsByClassName('student_bar_btn')[0].childNodes[0].href = "../student_resister";

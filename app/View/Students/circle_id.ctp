@@ -72,8 +72,31 @@ $act=array(
  
 
 <!--ここからhtml-->
-<div id="circle_name">
-	<?php echo $circle_name; ?>
+<div id="circle_top">
+	<div id="circle_name"><?php echo $circle_name; ?></div>
+		<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $circle_name; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+	<?php
+		if($favored){
+?>
+		<form action="/circle_recommend/Students/unfav/<?php echo $circle_id;?>" method="post">
+		<input type="hidden" name="address" value="circle_id">
+		<input type="image" src="../../img/okiniiri.png" onmouseover="this.src='../../img/okiniiri_1.png'" onmouseout="this.src='../../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
+		</form>
+<?php
+		}else if(isset($_SESSION['tw_user_id'])){
+?>
+		<form action="/circle_recommend/Students/fav/<?php echo $circle_id;?>" method="post">
+		<input type="hidden" name="address" value="circle_id">
+		<input type="image" src="../../img/okiniiri_1.png" onmouseover="this.src='../../img/okiniiri.png'" onmouseout="this.src='../../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
+		</form>
+<?php
+		}else{
+?>
+		<img src="../../img/okiniiri_1.png" onmouseover="this.src='../../img/okiniiri.png'" onmouseout="this.src='../../img/okiniiri_1.png'" onclick="display_popup()"  width="150" height="100" alt="おすすめ" class="icon">
+<?php
+		}
+?>
 </div>
 
 <div id="circle_left">
@@ -117,28 +140,7 @@ $act=array(
 	<div><table><tr><td id="man_ratio"><?php echo $man; ?></td><td id="woman_ratio"><?php echo $woman; ?></td></tr></table></div>
 	<h4>雰囲気</h4>
 	<div>飲み会頻度：<?php echo $nomi_chosen; ?><br>活動の雰囲気：<?php echo $mazime_chosen; ?></div>
-<?php
-		if($favored){
-?>
-		<form action="/circle_recommend/Students/unfav/<?php echo $circle_id;?>" method="post">
-		<input type="image" src="../../img/logo.png" width="150" height="28" alt="おすすめ" class="icon"/>
-		</form>
-<?php
-		}else if(isset($_SESSION['tw_user_id'])){
-?>
-		<form action="/circle_recommend/Students/fav/<?php echo $circle_id;?>" method="post">
-		<input type="image" src="../../img/okiniiri3.png" width="150" height="28" alt="おすすめ" class="icon"/>
-		</form>
-<?php
-		}else{
-?>
-		<img src="../../img/okiniiri3.png" onclick="display_popup()"  width="150" height="100" alt="おすすめ" class="icon">
-<?php
-		}
-?>
-	<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $circle_name; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </div>
-
 <br>
 
 
