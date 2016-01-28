@@ -139,6 +139,7 @@ a:hover {
 	width: 974px;	/*コンテナー幅*/
 	margin-right: auto;
 	margin-left: auto;
+	background-color: #F5F8FA;			/*背景色*/
 }
 
 /*ヘッダー（サイト名ロゴが入ったブロック）

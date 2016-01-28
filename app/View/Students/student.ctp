@@ -4,6 +4,8 @@ onload = function(){
 }
 </script>
 
+<meta name="description" content="自分の好みに合わせてサークルを検索。気に入ったサークルはお気に入り登録やツイッターアカウントのフォローにより最新情報を入手！">
+<title>UT-Circle サークル検索</title>
 <?php
 	echo $this->html->css(array('fullcalendar', 'bootstrap','headshrinker'));
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
@@ -174,8 +176,8 @@ onload = function(){
 			</div>
 			<div class="list_right_middle">
 				<div class="list_pr"><?php echo str_replace("\\\\\\\\\\\\\\\\n","",$top_datum['Circle']['pr']); ?></div>
-				<div class="list_tags">#<?php echo $top_datum['Circle']['activity']; ?></div>
-				<div class="list_tags">#<?php echo $top_datum['Circle']['place']; ?></div>
+				<div class="list_tags">#(種目):<?php echo $top_datum['Circle']['activity']; ?></div>
+				<div class="list_tags">#(場所):<?php echo $top_datum['Circle']['place']; ?></div>
 				<div class="list_tags">#<?php echo $top_datum['Circle']['intercollege']; ?></div>
 			</div>
 			<div class="list_right_bottom">
@@ -229,7 +231,7 @@ onload = function(){
 <br></br>
 
 <h2 class="mb1em">イベントカレンダー</h2>
-団体名をクリックすると、その団体の詳細に飛べます。
+イベント名をクリックすると、そのイベントの詳細を見ることができます。
 
 <p>
 <div id="fc1" class="fc" >

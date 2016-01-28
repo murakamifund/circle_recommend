@@ -1,13 +1,25 @@
+<meta name="description" content="<?php echo $circle_name ?>についての情報はこちらから。活動内容や雰囲気、新歓日程など有用な情報をお届け！サークルホームページへのリンクも設置。">
+<title>UT-Circle <?php echo $circle_name; ?>の紹介</title>
+
 <?php
 	echo $this->html->css(array('fullcalendar', 'bootstrap','headshrinker'));
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
 	
 $nomi_custom = array('飲まない','あまり飲まない','普通','飲む','かなり飲む');
-$nomi_chosen = $nomi_custom[$nomi-1];
+if($nomi>0){
+	$nomi_chosen = $nomi_custom[$nomi-1];
+}
+else{
+	$nomi_chosen = '';
+}
 
 $mazime_custom = array('楽しくワイワイ','少しゆるい','普通','厳しめ','かなり厳しい');
-$mazime_chosen = $mazime_custom[$mazime-1];
-
+if($mazime>0){
+	$mazime_chosen = $mazime_custom[$mazime-1];
+}
+else{
+	$mazime_chosen = '';
+}
 $day_custom = array('月','火','水','木','金','土','日');
 $day_chosen = "";
 
@@ -60,18 +72,12 @@ $act=array(
  
 
 <!--ここからhtml-->
+<div id="circle_name">
+	<?php echo $circle_name; ?>
+</div>
 
 <div id="circle_left">
-	<div id="circle_name">
-		<?php if($url != ""){ ?>
-			<a href="<?php echo $url; ?>"><?php echo $circle_name; ?></a>
-		<?php
-			}
-			else{
-				echo $circle_name;
-			}
-		?>
-	</div>
+	
 	
 	<div id="circle_photo">
 		
@@ -86,6 +92,15 @@ $act=array(
 	</div>
 	<h4>活動紹介</h4>
 	<div id="circle_pr"> <?php echo str_replace("\\\\\\\\\\\\\\\\n","<br>",$pr); ?></div>
+	<h4>ホームページURL</H4>
+	<?php if($url != ""){ ?>
+			<a href="<?php echo $url; ?>"><font color = "#0000ff"><?php echo $url; ?></font></a>
+		<?php
+			}
+			else{
+				echo 'ホームページが登録されていません';
+			}
+		?>
 </div>
 <div id="circle_right">
 	<h4>活動内容</h4>

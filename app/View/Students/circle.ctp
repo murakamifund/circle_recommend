@@ -4,7 +4,8 @@ onload = function(){
 }
 </script>
 
-
+<meta name="description" content="サークルの登録はこちらから。登録により興味を持った新入生とツイッターを通して関わることができます。">
+<title>UT-Circle サークル登録</title>
 <h2 class="mb1em">サークルを登録しよう</h2>
 <aside class="mb1em"><img src="../img/image2.png" width="700" height="99" alt="" class="wa"></aside>
 <br>
@@ -35,10 +36,3 @@ Twitter上の関係を分析し、UT-CircleのTwitterアカウントをフォロ
 <h2 class="mb1em">パワポ</h2>
 <iframe style="border:none" src="http://files.photosnack.com/iframejs/embed.html?hash=pdzp2m8jo&t=1444874503" width="576" height="384" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>
 
-
-
-<section id="lunch">
-
-<h3 class="mb1em">ランチメニュー</h3>
-
-<!--/lunch-->

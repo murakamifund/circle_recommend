@@ -4,8 +4,11 @@ onload = function(){
 }
 </script>
 
+<meta name="description" content="東大の部活動、サークル活動を紹介！カレンダー機能で自分だけの新歓スケジュールを作成しよう。その他にもバイト、インターン情報など大学生活に役立つ情報を提供。">
+<title>UT-Circle 東大のサークル探し</title>
+
 <section>
-<h2>Welcome to UT-Circle!!</h2>
+<h2>UT-Circleへようこそ!!</h2>
 <p>
 UT-Circleをご利用いただきありがとうございます。
 <br>
@@ -18,7 +21,7 @@ UT-Circleは、東京大学のサークルを紹介するWebサービスです�
 </section>
 
 <section>
-<h2>How to use UT-Circle??</h2>
+<h2>UT-Circleの使い方</h2>
 <h4>学生の方</h4>
 
 <aside class="mb1em"><a href="student"><img src="../img/image1.jpg" width="700" height="99" alt="" class="wa"></a></aside>
