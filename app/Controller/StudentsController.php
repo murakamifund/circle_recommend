@@ -345,7 +345,11 @@ class StudentsController extends AppController {
 		$this->set("total_user",$total_user);//view側にデータをセット
 		$total_circle = $this->Circle->find('count');
 		$this->set("total_circle",$total_circle);//view側にデータをセット
-    
+		$suggest_circle = $this->Circle->find('all',array(
+			'limit' => 30,
+			'fields' => array('Circle.circle_name','Circle.tw_profile_image_url','Circle.id')
+		));
+		$this->set("suggest_circle",$suggest_circle);//view側にデータをセット
 	}
 	
 	//aboutページのコントローラー
@@ -516,7 +520,14 @@ class StudentsController extends AppController {
 					
 					$this->Session->setFlash(__('お気に入り登録しました'));
 				}
-				$this->redirect(array('action'=>'student_edit/'));
+				if($_POST['address']=="student_edit"){
+					$this->redirect(array('action'=>'student_edit/'));
+				}else if($_POST['address']=="student" || $_POST['address']=="circle_id"){
+					$this->redirect(array('action'=>'circle_id/'.$id));
+				}else{
+					$this->redirect(array('action'=>'student'));
+				}
+				
 			}else{
 				$this->redirect(array('action'=>'circle_id/'.$id));
 				$this->Session->setFlash(__('Twitterでログインしてください'));
@@ -562,7 +573,13 @@ class StudentsController extends AppController {
 				$circle[0]['Circle']['value7'] = $circle_value7;
 				$this->Circle->save($circle[0]['Circle']); 
 				echo "<script>alert($tw_user_id);</script>"	;
-				$this->redirect(array('action'=>'student_edit'));
+				if($_POST['address']=="student_edit"){
+					$this->redirect(array('action'=>'student_edit/'));
+				}else if($_POST['address']=="student" || $_POST['address']=="circle_id"){
+					$this->redirect(array('action'=>'circle_id/'.$id));
+				}else{
+					$this->redirect(array('action'=>'student'));
+				}
 			}
 		}
 	}//unfavの終わり

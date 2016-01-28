@@ -186,19 +186,19 @@ onload = function(){
 ?>
 				<form action="/circle_recommend/Students/unfav/<?php echo $top_datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
-					<input type="image" src="../img/logo.png" width="150" height="28" alt="おすすめ" class="icon"/>
+					<input type="image" src="../img/okiniiri.png" onmouseover="this.src='../img/okiniiri_1.png'" onmouseout="this.src='../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
 			}else if(isset($_SESSION['tw_user_id'])){
 ?>
 				<form action="/circle_recommend/Students/fav/<?php echo $top_datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
-					<input type="image" src="../img/okiniiri3.png" width="150" height="28" alt="おすすめ" class="icon"/>
+					<input type="image" src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
 			}else{
 ?>
-				<img src="../img/okiniiri3.png" onclick="display_popup()" width="150" height="100" alt="おすすめ" class="not_login icon">
+				<img src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'"  onclick="display_popup()" width="150" height="100" alt="おすすめ" class="not_login icon">
 <?php
 			}
 ?>
@@ -284,19 +284,19 @@ onload = function(){
 ?>
 				<form action="/circle_recommend/Students/unfav/<?php echo $datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
-					<input type="image" src="../img/logo.png" width="150" height="28" alt="おすすめ" class="icon"/>
+					<input type="image" src="../img/okiniiri.png" onmouseover="this.src='../img/okiniiri_1.png'" onmouseout="this.src='../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
 			}else if(isset($_SESSION['tw_user_id'])){
 ?>
 				<form action="/circle_recommend/Students/fav/<?php echo $datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
-					<input type="image" src="../img/okiniiri3.png" width="150" height="28" alt="おすすめ" class="icon"/>
+					<input type="image" src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
 			}else{
 ?>
-				<img src="../img/okiniiri3.png" onclick="display_popup()" width="150" height="100" alt="おすすめ" class="not_login icon">
+				<img src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" onclick="display_popup()" width="150" height="100" alt="おすすめ" class="not_login icon">
 <?php
 			}
 ?>
