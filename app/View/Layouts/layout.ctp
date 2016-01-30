@@ -15,7 +15,7 @@
 
 <?php
     echo $this->Html->meta('icon');
-	echo $this->html->css(array('style','style_inner','bootstrap'));
+	echo $this->Html->css(array('style','style_inner','bootstrap'));
     echo $scripts_for_layout;
 	echo $this->Html->script(array('myfunc.js','openclose.js','rollimg.js','scritp.js','slide_sample_pack.js'));
  
