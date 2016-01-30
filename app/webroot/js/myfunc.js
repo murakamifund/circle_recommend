@@ -105,11 +105,6 @@ function func_event_id(){
 	menu_backtwice();
 }
 
-function func_event_id(){
-	default_func();
-	menu_backtwice();
-}
-
 function func_resister(){
 	default_func();
 }
@@ -174,11 +169,21 @@ function menu_backtwice(){
 	document.getElementsByClassName('menu_mobile')[1].href = "../../Students/student";
 	document.getElementsByClassName('menu_mobile')[2].href = "../../Students/circle";
 	
+	document.getElementsByTagName('small')[0].childNodes[1].href = "../home";
+	document.getElementsByTagName('small')[0].childNodes[3].href = "../about";
+	
 	if(document.getElementById('student_bar')!=null){
 		document.getElementsByClassName('student_bar_btn')[0].childNodes[0].href = "../student_resister";
 		document.getElementsByClassName('student_bar_btn')[1].childNodes[0].href = "../student_tw_logout";
 	}
 	document.getElementById('logo').childNodes[0].childNodes[0].src = "../../img/logo03.png";
+	document.getElementById('logo').childNodes[0].href = "../home";
 	document.getElementById('popup').childNodes[3].childNodes[0].childNodes[0].src = "../../img/image3.png";
+	document.getElementById('popup').childNodes[3].childNodes[0].href = "../pre_student_tw_callback";
+	document.getElementById('popup').childNodes[5].childNodes[1].href = "../pre_student_tw_callback";
+	document.getElementById('popup').childNodes[7].childNodes[0].href = "../circle";
+	
+	
+	
 }
 

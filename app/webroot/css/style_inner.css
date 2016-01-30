@@ -43,6 +43,10 @@
 	margin-bottom: 30px;
 }
 
+aside.mb1em a:hover{
+	cursor:pointer;
+}
+
 #iconlist-wrapper{
 	width:99.7%;
 	height:260px;
@@ -230,6 +234,10 @@
 
 #circle_top img,#circle_top input{
 	float:right;
+}
+
+#circle_top img:hover,#circle_top input:hover{
+	cursor:pointer;
 }
 
 #circle_top .twitter-follow-button{

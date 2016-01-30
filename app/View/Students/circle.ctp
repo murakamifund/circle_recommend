@@ -13,7 +13,7 @@ onload = function(){
 <p>
 <div Align="center">
 		<div class="i-btn">
-			<a href="circle_tw_callback">Twitterでサークル登録・編集</a>
+			<a href="pre_circle_tw_callback">Twitterでサークル登録・編集</a>
 		</div>
 </div>
 </p>
