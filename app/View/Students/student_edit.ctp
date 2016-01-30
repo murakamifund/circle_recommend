@@ -83,7 +83,7 @@ onload = function(){
 ?>
 	<div class="list">
 		<div class="list_left">
-			<div class="list_image"><img src="<?php echo $datum['Circle']['tw_profile_image_url']; ?>" width="300" height="150" alt="" /></div>
+			<div class="list_image"><img src="http://www.paper-glasses.com/api/twipi/<?=$datum['Circle']['tw_screen_name']?>/original" width="300" height="150" alt="" /></div>
 		</div>
 		<div class="list_right">
 			<div class="list_right_top">

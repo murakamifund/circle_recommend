@@ -167,7 +167,7 @@ onload = function(){
 ?>
 	<div class="list">
 		<div class="list_left">
-			<div class="list_image"><img src="<?php echo $top_datum['Circle']['tw_profile_image_url']; ?>" width="300" height="150" alt="" /></div>
+			<div class="list_image"><img src="http://www.paper-glasses.com/api/twipi/<?=$top_datum['Circle']['tw_screen_name']?>/original" width="300" height="150" alt="" /></div>
 		</div>
 		<div class="list_right">
 			<div class="list_right_top">
@@ -192,7 +192,7 @@ onload = function(){
 			}else if(isset($_SESSION['tw_user_id'])){
 ?>
 				<form action="/circle_recommend/Students/fav/<?php echo $top_datum['Circle']['id'];?>" method="post">
-					<input type="hidden" name="address" value="student">
+					
 					<input type="image" src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
@@ -265,7 +265,7 @@ onload = function(){
 ?>
 	<div class="list">
 		<div class="list_left">
-			<div class="list_image"><img src="<?php echo $datum['Circle']['tw_profile_image_url']; ?>" width="300" height="150" alt="" /></div>
+			<div class="list_image"><img src="http://www.paper-glasses.com/api/twipi/<?=$datum['Circle']['tw_screen_name']?>/original" width="300" height="150" alt="" /></div>
 		</div>
 		<div class="list_right">
 			<div class="list_right_top">
@@ -274,8 +274,8 @@ onload = function(){
 			</div>
 			<div class="list_right_middle">
 				<div class="list_pr"><?php echo str_replace("\\\\\\\\\\\\\\\\n","",$datum['Circle']['pr']); ?></div>
-				<div class="list_tags">#<?php echo $datum['Circle']['activity']; ?></div>
-				<div class="list_tags">#<?php echo $datum['Circle']['place']; ?></div>
+				<div class="list_tags">#(種目):<?php echo $datum['Circle']['activity']; ?></div>
+				<div class="list_tags">#(場所):<?php echo $datum['Circle']['place']; ?></div>
 				<div class="list_tags">#<?php echo $datum['Circle']['intercollege']; ?></div>
 			</div>
 			<div class="list_right_bottom">
