@@ -142,7 +142,6 @@
 ?>
 						<article class="thumb">
 							<a href="../Students/circle_id/<?=$suggest_circle[$i]['Circle']['id']?>" class="image">
-							<!--	<img src="<?=$suggest_circle[$i]['Circle']['tw_profile_image_url']?>" width="100%" alt="">	-->
 								<img src="http://www.paper-glasses.com/api/twipi/<?=$suggest_circle[$i]['Circle']['tw_screen_name']?>/original" width="100%" alt="">
 							</a>
 							<div class="thumb_msg" onclick="location(../Students/circle_id/<?=$suggest_circle[$i]['Circle']['id']?>)">
@@ -211,15 +210,15 @@
 
 
 <div id="popup">
-<h2>CIRCLE RECOMMENDERにログインしよう！</h2>
-<p><a href="student_tw_callback"><img src="../img/image3.png"></a></p>
-<div id="popup_login_twitter" class="i-btn">
-	<a href="student_tw_callback">Twitterでログイン</a>
+	<h2>CIRCLE RECOMMENDERにログインしよう！</h2>
+	<p><a href="pre_student_tw_callback"><img src="../img/image3.png"></a></p>
+	<div id="popup_login_twitter" class="i-btn">
+		<a href="pre_student_tw_callback">Twitterでログイン</a>
+	</div> 
+	<div id="popup_to_circle" ><a href="./circle">サークルのかたはこちら</a></div>
+	<div><a id="popup_close" onclick="close_popup()">×</a></div>
 </div> 
-<div id="popup_to_circle" ><a href="./circle">サークルのかたはこちら</a></div>
-<div><a id="popup_close" onclick="close_popup()">×</a></div>
-</div>
-
+<!--/#popup-->
 
 
 </div>

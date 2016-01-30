@@ -116,11 +116,10 @@ $act=array(
 	<h4>活動紹介</h4>
 	<div id="circle_pr"> <?php echo str_replace("\\\\\\\\\\\\\\\\n","<br>",$pr); ?></div>
 	<h4>ホームページURL</H4>
-	<?php if($url != ""){ ?>
-			<a href="<?php echo $url; ?>"><font color = "#0000ff"><?php echo $url; ?></font></a>
+	<?php 	if($url != ""){ ?>
+			<a href="<?=$url?>"><font color = "#0000ff"><?=$url?></font></a>
 		<?php
-			}
-			else{
+			}else{
 				echo 'ホームページが登録されていません';
 			}
 		?>

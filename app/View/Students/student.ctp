@@ -192,7 +192,7 @@ onload = function(){
 			}else if(isset($_SESSION['tw_user_id'])){
 ?>
 				<form action="/circle_recommend/Students/fav/<?php echo $top_datum['Circle']['id'];?>" method="post">
-					
+					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php

@@ -11,7 +11,7 @@ onload = function(){
 <p>
 <div Align="center">
 		<div class="i-btn">
-			<a href="student_tw_callback">Twitterと連携</a>
+			<a href="pre_student_tw_callback">Twitterと連携</a>
 		</div>
 </div>
 </p>
@@ -20,7 +20,7 @@ onload = function(){
 <p>
 <div Align="center">
 		<div class="i-btn">
-			<a href="circle_tw_callback">サークルのTwitterで連携</a>
+			<a href="pre_circle_tw_callback">サークルのTwitterで連携</a>
 		</div>
 </div>
 </p>

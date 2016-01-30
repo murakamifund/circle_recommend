@@ -12,6 +12,11 @@ class StudentsController extends AppController {
 		parent::beforeFilter();
     }
 	
+	public function pre_student_tw_callback(){
+		$this->Session->destroy();
+		$this->redirect(array('action' => 'student_tw_callback'));
+	}
+	
 	public function student_tw_callback(){
 		//ユーザー認証をする関数
 		
@@ -26,21 +31,21 @@ class StudentsController extends AppController {
 	if(! isset($_SESSION['tw_user_id'])){
 	
 		if (! isset($_SESSION['oauth_token'])) { //まだデータが渡されていないときは（認証前）
-		// get the request token
-		$reply = $cb->oauth_requestToken([
-			'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
-		]);
+			// get the request token
+			$reply = $cb->oauth_requestToken([
+				'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
+			]);
     
-		// store the token
-		$cb->setToken($reply->oauth_token, $reply->oauth_token_secret);
-		$_SESSION['oauth_token'] = $reply->oauth_token;
-		$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
-		$_SESSION['oauth_verify'] = true;
+			// store the token
+			$cb->setToken($reply->oauth_token, $reply->oauth_token_secret);
+			$_SESSION['oauth_token'] = $reply->oauth_token;
+			$_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
+			$_SESSION['oauth_verify'] = true;
 
-		// redirect to auth website
-		$auth_url = $cb->oauth_authorize(); //Twitterの認証画面に飛ばしている
-		header('Location: ' . $auth_url);
-		die();
+			// redirect to auth website
+			$auth_url = $cb->oauth_authorize(); //Twitterの認証画面に飛ばしている
+			header('Location: ' . $auth_url);
+			die();
 
 		} elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
 			// verify the token
@@ -113,6 +118,12 @@ class StudentsController extends AppController {
 	}	
 		//$this->redirect(array('action' => 'home'));
 	}//student_tw_callback終わり
+
+	
+	public function pre_circle_tw_callback(){
+		$this->Session->destroy();
+		$this->redirect(array('action' => 'circle_tw_callback'));
+	}//pre_circle_tw_callback終わり
 	
 	public function circle_tw_callback(){
 		//ユーザー認証をする関数
