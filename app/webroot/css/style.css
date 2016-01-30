@@ -409,9 +409,9 @@ nav.menubar ul li#current a {
 	font-size: 100%;
 	padding: 5px 40px 5px 10px;	/*左から、上、右、下、左への余白*/
 	background-color: #837768;	/*背景色（古いブラウザだとここの色のみが出ます）*/
-	background-image: url(../img/bg_mark.png), -webkit-gradient(linear, left top, left bottom, from(#837768), to(#b8a792));	/*グラデーション*/
-	background-image: url(../img/bg_mark.png), -webkit-linear-gradient(#837768, #b8a792);	/*同上*/
-	background-image: url(../img/bg_mark.png), linear-gradient(#837768, #b8a792);
+	/*background-image: url(../img/bg_mark.png), -webkit-gradient(linear, left top, left bottom, from(#837768), to(#b8a792));*/	/*グラデーション*/
+	/*background-image: url(../img/bg_mark.png), -webkit-linear-gradient(#837768, #b8a792);*/	/*同上*/
+	/*background-image: url(../img/bg_mark.png), linear-gradient(#837768, #b8a792);*/
 	background-repeat: no-repeat;
 	background-position: 95% center;
 	border-top: 1px solid #b3a28e;		/*上側の線の幅、線種、色*/
