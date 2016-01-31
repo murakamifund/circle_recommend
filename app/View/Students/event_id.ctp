@@ -78,7 +78,7 @@ onload = function(){
 </tr>
 <tr>
 	<th>詳細</th>
-	<td><?php echo $contents; ?></td>
+	<td><?php echo str_replace("\\n","<br>",$contents); ?></td>
 </tr>
 </tbody>
 </table><br>

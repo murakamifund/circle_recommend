@@ -172,6 +172,7 @@ class StudentsController extends AppController {
 			//データベースにアカウント情報を格納
 			try{ //まずはデータベースに接続
 				$dbh = new PDO('mysql:host=127.0.0.1;dbname=circlerecommend;charset=utf8','root','');
+				//$dbh = new PDO('mysql:host=mysql496.db.sakura.ne.jp;dbname=blackjack-utokyo_ut_circle;charset=utf8','blackjack-utokyo','NR8tpuTcadCJ7p');
 			}catch(PDOException $e){
 				echo $e->getMessage();
 			exit;
@@ -375,16 +376,8 @@ class StudentsController extends AppController {
 	//circleページのコントローラー
 	public function circle() {
 	
-    $this->modelClass = null;
+		$this->modelClass = null;
 	
-	if ($this->request->is('post')) {
-                      $this->data = Sanitize::clean($this->data, array('encode' => false));
-			if ($this->Auth->login()) {
-				 $this->redirect($this->Auth->redirect());
-			} else {
-				$this->Session->setFlash(__('サークル名かパスワードが間違っています。'));
-			}
-		}
 	}
 	
 	//circle個別ページのコントローラー
@@ -785,7 +778,7 @@ class StudentsController extends AppController {
 			$this->set("id",$id);//view側にデータをセット
 
 			if ($this->request->is('post') || $this->request->is('put')) {
-				$this->data = Sanitize::clean($this->data, array('encode' => false));
+				$this->data = Sanitize::clean($this->data, array('encode' => false/*,'remove_html' => true*/));
 				$circle_value = 0;
 				$circle_value1 = 0;//練習したい
 				$circle_value2 = 0;//楽な方がいい
@@ -898,7 +891,7 @@ class StudentsController extends AppController {
             $this->data = Sanitize::clean($this->data, array('encode' => false));
 			//debug($this->request->data);
 			
-            if ($this->Event->save($this->request->data, array('validate' => false))) {
+            if ($this->Event->save($this->request->data)) {
 				// $this->redirect(array('action'=>'follow')); //twitter
                 $this->Session->setFlash(__('更新完了しました。'));
 				//更新したらloginページに移動させる

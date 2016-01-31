@@ -40,19 +40,19 @@ onload = function(){
 		<tr>
 			 <th scope="row">サークル名</th>
 			<td><?php echo $this->Form->input('circle_name', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?>
-			<?php echo $this->Form->error('circle_name');?>
+			<font color="red"><?php echo $this->Form->error('circle_name');?></font>
 			</td>
 		</tr>
 		<tr>
 			<th scope="row">キャッチフレーズ</th>
 			<td><?php echo $this->Form->input('phrase', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));?>
-			<?php echo $this->Form->error('phrase');?>
+			<font color="red"><?php echo $this->Form->error('phrase');?></font>
 			</td>
 		</tr>
 		<tr>
 			<th scope="row">URL</th>
 			<td><?php echo $this->Form->input('url', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?>
-			<?php echo $this->Form->error('url');?>
+			<font color="red"><?php echo $this->Form->error('url');?></font>
 			</td>
 		</tr>
 		<tr>
@@ -103,8 +103,8 @@ onload = function(){
 		</tr>
 		<tr>
 		 <th scope="row">PR文</th>
-			<td><?php echo $this->Form->input('pr', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?>
-			<?php echo $this->Form->error('pr');?>
+			<td><?php echo str_replace("\\n","",$this->Form->input('pr', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false)));?>
+			<font color="red"><?php echo $this->Form->error('pr');?></font>
 			</td>
 		</tr>
 		<tr>
@@ -140,7 +140,7 @@ onload = function(){
 				);
 			?></td>
 			<td><?php echo $this->Form->input('placetext', array('size'=>100, 'label'=>"場所詳細", 'error'=>false, 'div'=>false));?>
-			<?php echo $this->Form->error('placetext');?>
+			<font color="red"><?php echo $this->Form->error('placetext');?></font>
 			</td>
 		</tr>
 	</tbody>

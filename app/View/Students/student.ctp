@@ -175,7 +175,7 @@ onload = function(){
 				<div class="list_catch_phrase"><?php echo $top_datum['Circle']['phrase']; ?></div>
 			</div>
 			<div class="list_right_middle">
-				<div class="list_pr"><?php echo str_replace("\\\\\\\\\\\\\\\\n","",$top_datum['Circle']['pr']); ?></div>
+				<div class="list_pr"><?php echo str_replace("\\n","",$top_datum['Circle']['pr']); ?></div>
 				<div class="list_tags">#(種目):<?php echo $top_datum['Circle']['activity']; ?></div>
 				<div class="list_tags">#(場所):<?php echo $top_datum['Circle']['place']; ?></div>
 				<div class="list_tags">#<?php echo $top_datum['Circle']['intercollege']; ?></div>

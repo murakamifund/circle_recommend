@@ -20,6 +20,7 @@ onload = function(){
 		<?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
 		<?php echo $this->Form->input('title',array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false));
 		?>
+		<font color="red"><?php echo $this->Form->error('title');?></font>
 	</td>
 </tr>
 <tr>
@@ -43,11 +44,15 @@ onload = function(){
 </tr>
 <tr>
 	<th scope="row">集合場所</th>
-	<td><?php echo $this->Form->input('place',array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false)); ?></td>
+	<td><?php echo $this->Form->input('place',array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false)); ?>
+	<font color="red"><?php echo $this->Form->error('place');?></font>
+	</td>
 </tr>
 <tr>
 	<th scope="row">必要な金額</th>
-	<td><?php echo $this->Form->input('money',array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false)); ?> 円</td>
+	<td><?php echo $this->Form->input('money',array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false)); ?> 円
+	<font color="red"><?php echo $this->Form->error('money');?></font>
+	</td>
 </tr>
 <tr>
 	<th scope="row">新歓かどうか</th>
@@ -58,7 +63,9 @@ onload = function(){
 				),
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
 				);
-	?></td>
+	?>
+	<font color="red"><?php echo $this->Form->error('for_newcomer');?></font>
+	</td>
 </tr>
 <tr>
 	<th scope="row">内容</th>
@@ -76,7 +83,9 @@ onload = function(){
 	</tr>
 <tr>
 	<th scope="row">詳細</th>
-	<td><?php echo $this->Form->input('content',array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false)); ?></td>
+	<td><?php echo str_replace("\\n","",$this->Form->input('content',array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false)));?>
+	<font color="red"><?php echo $this->Form->error('content');?></font>
+	</td>
 </tr>
 </tbody>
 </table><br>
