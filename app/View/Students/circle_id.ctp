@@ -5,7 +5,7 @@
 	echo $this->Html->css(array('fullcalendar', 'bootstrap','headshrinker'));
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
 	
-$nomi_custom = array('飲まない','あまり飲まない','普通','飲む','かなり飲む');
+$nomi_custom = array('少ない','やや少ない','普通','多い','かなり多い');
 if(isset($nomi)){
 	$nomi_chosen = $nomi_custom[$nomi-1];
 }
