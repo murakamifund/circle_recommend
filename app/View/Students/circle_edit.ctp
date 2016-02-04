@@ -96,7 +96,6 @@ onload = function(){
 					"グルメ"=>'グルメ',
 					"芸能"=>'芸能',
 					"その他"=>'その他',
-					
 				),
 				array('size'=>1, 'label'=>false, 'error'=>false, 'div'=>false)
 				);?></td>

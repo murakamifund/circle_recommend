@@ -1296,7 +1296,30 @@ class StudentsController extends AppController {
 	
 	//circleのIdに一致するイベントを列挙
 	$count = 10;		//10このサークルの予定だけを表示
-	$circles = $this->Circle->find( 'list', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
+	if($sort == "練習したい"){
+		$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value1 DESC', 'Circle.man + Circle.woman DESC')));
+	}
+	else if($sort == "楽な方がいい"){
+		$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value2 DESC', 'Circle.man + Circle.woman DESC')));
+	}
+	else if($sort == "飲みたい"){
+		$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value3 DESC', 'Circle.man + Circle.woman DESC')));
+	}
+	else if($sort == "飲みたくない"){
+		$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value4 DESC', 'Circle.man + Circle.woman DESC')));
+	}
+	else if($sort == "インカレがいい"){
+		$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value5 DESC', 'Circle.man + Circle.woman DESC')));
+	}
+	else if($sort == "学内がいい"){
+		$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value6 DESC', 'Circle.man + Circle.woman DESC')));
+	}
+	else if($sort == "人数重視"){
+		$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value7 DESC', 'Circle.man + Circle.woman DESC')));
+	}
+	else{
+		$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
+	}
 	//10個のサークルのidを配列に入れる
 	
 	
@@ -1304,7 +1327,11 @@ class StudentsController extends AppController {
 	//circleのIdに一致するイベントを列挙
 	
 
-	$events = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $circles)));
+	$events = array();
+	for($i=0; $i<count($circles); $i++){
+		$event_add = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $circles[$i]['Circle']['id'])));
+		$events = array_merge($events, $event_add);
+	}
 	//var_dump($events);
 	
 	//$events = $this->Event->find('all');
@@ -1313,19 +1340,28 @@ class StudentsController extends AppController {
 	
 	// SQLのレスポンスをもとにデータ作成
 	$rows = array();
+	$first = array();
+	$second = array();
 	for ( $a=0; count( $events) > $a; $a++) {
 		
-		$rows[] = array(
-			'id' => $events[$a]['Event']['id'],
-		//'circle_id' => $events[$a]['Event']['circle_id'],
-		//'circle_name' => $events[$a]['Event']['circle_name'],
-            'title' => $events[$a]['Event']['circle_name'].":".$events[$a]['Event']['title'],
-            'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
-            'end' => $events[$a]['Event']['day'],
-			'url' => "../Students/event_id/".$events[$a]['Event']['id'],
-		
-            //'allDay' => $events[$a]['Event']['allday'],
-	);
+		if(!in_array($events[$a]['Event']['day'], $second)){
+			if(in_array($events[$a]['Event']['day'], $first)){
+				$second[] = $events[$a]['Event']['day'];
+			}
+			if($this->Event->find('count', array('conditions' => array('Event.day' => $events[$a]['Event']['day']))) > 2){
+				$first[] = $events[$a]['Event']['day'];
+			}
+			$rows[] = array(
+				'id' => $events[$a]['Event']['id'],
+				//'circle_id' => $events[$a]['Event']['circle_id'],
+				//'circle_name' => $events[$a]['Event']['circle_name'],
+				'title' => $events[$a]['Event']['circle_name'].":".$events[$a]['Event']['title'],
+				'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
+				'end' => $events[$a]['Event']['day'],
+				'url' => "../Students/event_id/".$events[$a]['Event']['id'],
+				//'allDay' => $events[$a]['Event']['allday'],
+			);
+		}
 	}
 	//var_dump($rows);
 	// JSONへ変換
