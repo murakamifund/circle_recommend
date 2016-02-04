@@ -107,40 +107,133 @@ $act=array(
 	</div>
 	
 	<h4>活動紹介</h4>
-	<div id="circle_pr"><?php echo str_replace("\\n","<br>",$pr); ?></div>
+	<div id="circle_pr">
+	<?php if($pr != NULL){
+				echo str_replace("\\n","<br>",$pr);
+			}
+			else{
+				echo "情報がありません。";
+			}
+	?>
+	</div>
+	
 	<h4>ホームページURL</H4>
-<?php
-	if($url != ""){
-?>
-	<a href="<?=$url?>"><font color = "#0000ff"><?=$url?></font></a>
-<?php
-	}else{
-		echo 'ホームページが登録されていません';
-	}
-?>
-</div>
+	<div>
+	<?php
+		if($url != ""){
+	?>
+		<a href="<?=$url?>"><font color = "#0000ff"><?=$url?></font></a>
+	<?php
+		}else{
+			echo 'ホームページが登録されていません';
+		}
+	?>
+	</div>
+</div> <!--circle_leftのdiv終わり-->
 <div id="circle_right">
 	<h4>活動内容</h4>
-	<div><?php echo $activity;?></div>
+	<div>
+	<?php if($activity != NULL){
+				echo $activity;
+			}
+			else{
+				echo "情報がありません。";
+			}
+	?>
+	</div>
 	
 	<h4>場所</h4>
-	<div><?php echo $place; ?>　<?php echo $placetext; ?></div>
+	<div>
+	<?php if($place != NULL and $placetext != NULL){
+				echo $place;
+				echo $placetext;
+			}
+			else if($place != NULL){
+				echo $place;
+			}
+			else if($placetext != NULL){
+				echo $placetext;
+			}
+			else{
+				echo "情報がありません。";
+			}
+	?>
+	</div>
 	
 	<h4>曜日</h4>
-	<div><?php echo $day_chosen; ?></div>
+	<div>
+	<?php if($day_chosen != NULL){
+				echo $day_chosen;
+			}
+			else{
+				echo "情報がありません。";
+			}
+	?>
+	</div>
 	
 	<h4>費用</h4>
-	<div>入会費：<?php echo $cost_in; ?>円<br>年間費：<?php echo $cost; ?>円</div>
+	<div>入会費：
+	<?php if($cost_in != NULL){ ?>
+	<?php			echo $cost_in; ?>円
+	<?php		}
+			else{
+				echo "情報がありません。";
+			}
+	?>
+	<br>
+	年間費：
+	<?php if($cost != NULL){ ?>
+	<?php			echo $cost; ?>円
+	<?php		}
+			else{
+				echo "情報がありません。";
+			}
+	?>
+	</div>
 	
 	<h4>メンバー構成</h4>
-	<div><?php echo $intercollege; ?></div>
+	<div>
+	<?php if($intercollege != NULL){
+				echo $intercollege;
+			}
+			else{
+				echo "情報がありません。";
+			}
+	?>
+	</div>
 	
 	<h4>男女比</h4>
-	<div><table><tr><td id="man_ratio"><?php echo $man; ?></td><td id="woman_ratio"><?php echo $woman; ?></td></tr></table></div>
+	<div>
+	<?php	if($man != NULL and $woman != NULL){ ?>
+	<table><tr><td id="man_ratio"><?php echo $man; ?></td><td id="woman_ratio"><?php echo $woman; ?></td></tr></table>
+	<?php	}else{
+			echo "情報がありません。";
+	?>
+	<?php
+			} 
+	?>
+	</div>
 	
 	<h4>雰囲気</h4>
-	<div>飲み会頻度：<?php echo $nomi_chosen; ?><br>活動の雰囲気：<?php echo $mazime_chosen; ?></div>
-</div>
+	<div>飲み会頻度：
+	<?php if($nomi_chosen != NULL){
+				echo $nomi_chosen;
+			}
+			else{
+				echo "情報がありません。";
+			}
+	?>
+	<br>
+	活動の雰囲気：
+	<?php if($mazime_chosen != NULL){
+				echo $mazime_chosen;
+			}
+			else{
+				echo "情報がありません。";
+			}
+	?>
+	</div>
+</div><!--circle_rightのdiv終わり-->
 <br><br><br>
 
 <h4 style="clear:left;">イベント情報</h4>
