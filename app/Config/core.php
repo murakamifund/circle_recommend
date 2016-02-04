@@ -222,7 +222,7 @@
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'circle_recommend_new');
+	Configure::write('Security.salt', 'ut_circle');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.

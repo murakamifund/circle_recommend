@@ -184,14 +184,14 @@ onload = function(){
 <?php
 			if($top_datum['Circle']['favored']==true){
 ?>
-				<form action="/circle_recommend/Students/unfav/<?php echo $top_datum['Circle']['id'];?>" method="post">
+				<form action="unfav/<?php echo $top_datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri.png" onmouseover="this.src='../img/okiniiri_1.png'" onmouseout="this.src='../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
 			}else if(isset($_SESSION['tw_user_id'])){
 ?>
-				<form action="/circle_recommend/Students/fav/<?php echo $top_datum['Circle']['id'];?>" method="post">
+				<form action="fav/<?php echo $top_datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
@@ -226,7 +226,7 @@ onload = function(){
 ?>
 <div id="search_result">
 	<div><?php echo count($data); ?>件のサークルが見つかりました！<br>結果をツイートして友達を誘ってみましょう！ </div>
-	<div id="search_result_tw"><a href = "https://twitter.com/share" data-hashtags= <?php echo $string; ?> data-text = 'このサークルの新歓に行く人は一緒に行こう！' data-url = '' data-size = 'large' class="twitter-hashtag-button" >Tweet #circlerecommend</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>	
+	<div id="search_result_tw"><a href = "https://twitter.com/share" data-hashtags= <?php echo $string; ?> data-text = 'このサークルの新歓に行く人は一緒に行こう！' data-url = '' data-size = 'large' class="twitter-hashtag-button" >Tweet #ut-circle</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>	
 </div>
 <br></br>
 
@@ -282,14 +282,14 @@ onload = function(){
 <?php
 			if($datum['Circle']['favored']==true){
 ?>
-				<form action="/circle_recommend/Students/unfav/<?php echo $datum['Circle']['id'];?>" method="post">
+				<form action="../unfav/<?php echo $datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri.png" onmouseover="this.src='../img/okiniiri_1.png'" onmouseout="this.src='../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
 			}else if(isset($_SESSION['tw_user_id'])){
 ?>
-				<form action="/circle_recommend/Students/fav/<?php echo $datum['Circle']['id'];?>" method="post">
+				<form action="../fav/<?php echo $datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
@@ -343,7 +343,6 @@ onload = function(){
 <?php } ?>
 -->
 
-<!--ツイッターの埋め込み　よくわからんからここに置きます。大きさはwidthとheightをいじればできます。白井さんよろしく-->
 <!--
 		<a class="twitter-timeline" href="https://twitter.com/<?php echo $datum['Circle']['tw_screen_name']; ?>" height="200" width="100"  data-chrome="nofooter" data-widget-id="667297834580836352">@<?php echo $datum['Circle']['tw_screen_name']; ?>さんのツイート</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

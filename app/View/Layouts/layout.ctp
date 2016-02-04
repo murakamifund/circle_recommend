@@ -68,8 +68,8 @@
 			<nav class="menubar" id="menubar_pc">
 				<ul>
 					<li id="current"><a class="menu_pc" href="../Students/home">HOME</a></li>
-					<li><a class="menu_pc" href="../Students/student">STUDENT</a></li>
-					<li><a class="menu_pc" href="../Students/circle">CIRCLE</a></li>
+					<li><a class="menu_pc" href="../Students/student">学生の方</a></li>
+					<li><a class="menu_pc" href="../Students/circle">サークルの方</a></li>
 				</ul>
 			</nav>
 
@@ -137,18 +137,18 @@
 		</div><!--/contents-->
 
 		<footer>
-			<small>Copyright&copy; 2016 <a href="home">UT-Circle</a>　<a href="about">利用規約</a></small>
+			<small>Copyright&copy; 2016 <a href="home">UT-Circle</a>　<a href="about">利用規約</a>　連絡先: utcircle.psi@gmail.com</small>
 			<span class="pr"><a href="http://template-party.com/" target="_blank">Web Design:Template-Party</a></span>
 		</footer>
 
 
 		<div id="popup">
-			<h2>CIRCLE RECOMMENDERにログインしよう！</h2>
+			<h2>UT-Circleに<nobr>ログインしよう！</nobr></h2>
 			<p><a href="pre_student_tw_callback"><img src="../img/image3.png"></a></p>
 			<div id="popup_login_twitter" class="i-btn">
-				<a href="pre_student_tw_callback">Twitterでログイン</a>
+				<a href="pre_student_tw_callback"><nobr>Twitterで</nobr><nobr>ログイン</nobr></a>
 			</div> 
-			<div id="popup_to_circle" ><a href="./circle">サークルのかたはこちら</a></div>
+			<div id="popup_to_circle" ><a href="./circle">サークルの方はこちら</a></div>
 			<div><a id="popup_close" onclick="close_popup()">×</a></div>
 		</div> <!--/#popup-->
 
