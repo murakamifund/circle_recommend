@@ -23,10 +23,21 @@ public $validate = array(
         ),
 		
 		'circle_name' => array(
-          'rule'=>array('isUnique',array('maxLength', 25)),
-		  'required'=>'update',
-		  'message'=>'すでに同じ名前が登録されています。',
-		  'on'=>'update'
+		  'ruleName' => array(
+            'rule' => 'isUnique',
+			'required'=>'update',
+			'message'=>'すでに同じ名前が登録されています。',
+			'on'=>'update'
+            // ここに on や required などその他のキーを書く
+			),
+		  'ruleName2' => array(
+            'rule' => array('maxLength', 25),
+			'required'=>'update',
+			'message'=>'25文字まで入力できます',
+			'on'=>'update'
+            // ここに on や required などその他のキーを書く
+		    ),
+		  
         ),
 		'url' => array(
           'rule'=>'url',
