@@ -6,7 +6,7 @@ class Event extends AppModel {
 public $validate = array(
         
 		'title' => array(
-          'rule'=>'notBlank',
+          'rule'=> array('maxLength',25),
 		  'required'=> true,
 		  'message'=>'タイトルを入力してください',
         ),

@@ -37,50 +37,46 @@ onload = function(){
 <h2> <?php echo $circle_name; ?>の<?php echo $title; ?>の情報</h2>
 
 <div class ="stop-btm">
-<table class = "type01">
-<tbody>
-<tr>
-	<th scope="row">サークル名</th>
-
-	<td>
-	<a href="../circle_id/<?php echo $circleid; ?>">
-	<font color =#0099ff><?php echo $circle_name; ?>
-	</font>
-	</a>
-	<Div Align="right">←クリックするとサークルの詳細情報が見れます。</Div>
-	</td>
+	<table class = "type01">
+		<tbody>
+			<tr>
+				<th scope="row">サークル名</th>
+				<td>
+					<a href="../circle_id/<?php echo $circleid; ?>">
+						<font color =#0099ff><?php echo $circle_name; ?></font>
+					</a>
+				</td>
 	
-</tr>
-<tr>
-	<th scope="row">イベント</th>
-
-	<td><?php echo $title; ?></td>
-</tr>
-<tr>
-	<th scope="row">日時</th>
-		<td><?php echo $day; ?></td>
-</tr>
-<tr>
-	<th scope="row">集合場所</th>
-		<td><?php echo $place; ?></td>
-</tr>
-<tr>
-	<th scope="row">必要な金額</th>
-		<td><?php echo $money; ?>円</td>
-</tr>
-<tr>
-	<th scope="row">新歓かどうか</th>
-		<td><?php echo $for_newcomer_string; ?></td>
-</tr>
-<tr>
-	<th scope="row">内容</th>
-		<td><?php echo $content_chosen; ?></td>
-</tr>
-<tr>
-	<th>詳細</th>
-	<td><?php echo str_replace("\\n","<br>",$contents); ?></td>
-</tr>
-</tbody>
-</table><br>
-
+			</tr>
+			<tr>
+				<th scope="row">イベント</th>
+				<td><?php echo $title; ?></td>
+			</tr>
+			<tr>
+				<th scope="row">日時</th>
+				<td><?=date("Y年m月d日",strtotime($day))?>　<nobr><?=date("H時i分",strtotime($day))?></nobr></td>
+			</tr>
+			<tr>
+				<th scope="row">集合場所</th>
+				<td><?php echo $place; ?></td>
+			</tr>
+			<tr>
+				<th scope="row">必要な金額</th>
+				<td><?php echo $money; ?>円</td>
+			</tr>
+			<tr>
+				<th scope="row">新歓かどうか</th>
+				<td><?php echo $for_newcomer_string; ?></td>
+			</tr>
+			<tr>
+				<th scope="row">内容</th>
+				<td><?php echo $content_chosen; ?></td>
+			</tr>
+			<tr>
+				<th>詳細</th>
+				<td><?php echo str_replace("\\n","<br>",$contents); ?></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
 </div>

@@ -2,7 +2,6 @@ function func_home(){
 	
 	default_func();
 	document.getElementById('menubar_pc').childNodes[1].childNodes[1].id = "current";
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[1].id = "current";
 	document.getElementById('mainimg').style.display = "block";
 }
 
@@ -11,7 +10,6 @@ function func_about(){
 
 	default_func();
 	document.getElementById('menubar_pc').childNodes[1].childNodes[3].id = "current";
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[3].id = "current";
 	
 }
 */
@@ -20,7 +18,6 @@ function func_student(){
 
 	default_func();
 	document.getElementById('menubar_pc').childNodes[1].childNodes[3].id = "current";
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[3].id = "current";
 	
 }
 
@@ -28,7 +25,6 @@ function func_circle(){
 
 	default_func();
 	document.getElementById('menubar_pc').childNodes[1].childNodes[5].id = "current";
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[5].id = "current";
 	
 	
 }
@@ -37,7 +33,6 @@ function func_student_edit(){
 
 	default_func();
 	document.getElementById('menubar_pc').childNodes[1].childNodes[7].id = "current";
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[7].id = "current";
 	
 }
 
@@ -61,8 +56,6 @@ function func_student_resister(){
 
 	default_func();
 	document.getElementById('menubar_pc').childNodes[1].childNodes[7].id = "current";
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[7].id = "current";
-	
 }
 
 function func_student_login(){
@@ -74,20 +67,17 @@ function func_student_login(){
 function func_circle_edit_main(){
 	default_func();
 	document.getElementById('menubar_pc').childNodes[1].childNodes[7].id = "current";
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[7].id = "current";
 }
 
 
 function func_circle_edit(){
 	default_func();
 	document.getElementById('menubar_pc').childNodes[1].childNodes[7].id = "current";
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[7].id = "current";
 }
 
 function func_circle_edit_cal(){
 	default_func();
 	document.getElementById('menubar_pc').childNodes[1].childNodes[7].id = "current";
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[7].id = "current";
 }
 
 
@@ -133,12 +123,6 @@ function default_func(){
 	document.getElementById('menubar_pc').childNodes[1].childNodes[1].id = "";
 	document.getElementById('menubar_pc').childNodes[1].childNodes[3].id = "";
 	document.getElementById('menubar_pc').childNodes[1].childNodes[5].id = "";
-	document.getElementById('menubar_pc').childNodes[1].childNodes[7].id = "";
-
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[1].id = "";	
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[3].id = "";
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[5].id = "";
-	document.getElementById('menubar_mobile').childNodes[1].childNodes[7].id = "";
 	
 	document.getElementById('mainimg').style.display = "none";
 }
@@ -164,10 +148,6 @@ function menu_backtwice(){
 	document.getElementsByClassName('menu_pc')[0].href = "../../Students/home";
 	document.getElementsByClassName('menu_pc')[1].href = "../../Students/student";
 	document.getElementsByClassName('menu_pc')[2].href = "../../Students/circle";
-
-	document.getElementsByClassName('menu_mobile')[0].href = "../../Students/home";
-	document.getElementsByClassName('menu_mobile')[1].href = "../../Students/student";
-	document.getElementsByClassName('menu_mobile')[2].href = "../../Students/circle";
 	
 	document.getElementsByTagName('small')[0].childNodes[1].href = "../home";
 	document.getElementsByTagName('small')[0].childNodes[3].href = "../about";
@@ -178,6 +158,8 @@ function menu_backtwice(){
 	}
 	document.getElementById('logo').childNodes[0].childNodes[0].src = "../../img/logo03.png";
 	document.getElementById('logo').childNodes[0].href = "../home";
+	document.getElementById('logo_mini').childNodes[0].childNodes[0].src = "../../img/twitter_icon.png";
+	document.getElementById('logo_mini').childNodes[0].href = "../home";
 	document.getElementById('popup').childNodes[3].childNodes[0].childNodes[0].src = "../../img/image3.png";
 	document.getElementById('popup').childNodes[3].childNodes[0].href = "../pre_student_tw_callback";
 	document.getElementById('popup').childNodes[5].childNodes[1].href = "../pre_student_tw_callback";

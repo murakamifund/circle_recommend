@@ -36,13 +36,6 @@ form {
 	margin: 0px;
 }
 
-/*
-table {
-	border-collapse:collapse;
-	font-size: 100%;
-	border-spacing: 0;
-}
-*/
 /*分割なしのテーブル*/
 table.type01 {
     border-collapse: collapse;
@@ -52,7 +45,8 @@ table.type01 {
     border-left: 3px solid #369;
 }
 table.type01 th {
-    width: 150px;
+    width: 200px;
+	min-width:110px;
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
@@ -146,6 +140,7 @@ a:hover {
 ---------------------------------------------------------------------------*/
 #fixing_box{
 	position: fixed;
+	width:974px;
 	top: 0px;
 	z-index: 100;
 }
@@ -156,32 +151,12 @@ header {
 	background: url(../img/header.png) no-repeat right bottom;	/*背景画像の読み込み＆リピートしない＆右側下部に配置*/
 	position: relative;
 }
-/*h1タグの設定*/
-header h1 {
-	font-size: 10px;		/*文字サイズ*/
-	color: #837768;			/*文字色*/
-	text-align: right;		/*右寄せ*/
-	font-weight: normal;
-}
-header h1 a, header h1 a:hover {
-	color: #837768;
-	text-decoration: none;
-}
 
-header p#logo{
-	margin-top: 0px;
-}
 
-header ul{
-	padding-top: 8px;
-	margin-right: 30px;
-}
-header ul li{
-	margin-right: 20px;
-	float: right;
-}
-header ul li div{
-	display: block;
+#header_login{
+	position:absolute;
+	top: 8px;
+	right: 30px;
 	border-radius: 10px;
 	border: 2px solid #330000;
 	width: 130px;
@@ -191,7 +166,7 @@ header ul li div{
 	background-color: #333;	/*背景色（古いブラウザだとここの色のみが出ます）*/
 }
 
-header ul li div:hover{
+#header_login:hover{
 	cursor: pointer;
 	background-color: #837768;
 	border-color: #837768;
@@ -201,9 +176,16 @@ header ul li div:hover{
 /*ロゴ画像の設定*/
 header #logo {
 	position: absolute;
-	left: 20px;	/*ヘッダーブロックに対して左から20pxの場所に配置*/
+	left: 10px;	/*ヘッダーブロックに対して左から20pxの場所に配置*/
 	top: 0px;	/*ヘッダーブロックに対して上から20pxの場所に配置*/
 }
+
+header #logo_mini {
+	width:50px;
+	margin-left: 5px;
+	display:none;
+}
+
 
 header #student_bar{
 	position: absolute;
@@ -262,10 +244,6 @@ nav.menubar{
 	margin-top: -10px;
 }
 
-nav#menubar_mobile{
-	display: none;
-}
-
 nav.menubar ul li {
 	float: left;
 	border-top: 4px solid #ffffff;	/*上の線の幅、線種、色。rgbaはRGBカラー(0,0,0は黒)に透明度(0は0％の事、1で100%の事になります。)を追加しています。*/
@@ -321,22 +299,7 @@ nav.menubar ul li#current a {
 	position: relative;
 	display: none;
 }
-#mainimg .slide_file {
-	display: none;
-}
-#slide_image {
-	z-Index:2;
-	position: absolute;
-	width: 99.7%;
-	left:0px;
-	top:0px;
-}
-#slide_image2 {
-	z-Index:1;
-	position: absolute;
-	left:0px;
-	top:0px;
-}
+
 
 /*コンテンツ（main,subを囲むブロック）
 ---------------------------------------------------------------------------*/
@@ -854,9 +817,6 @@ input[type="reset"]:hover {
   	margin-top: 7px;
 }
 
-.i-btn{
-	margin-top:3em;
-}
 .i-btn a {
   padding: 12px 2.1em;
   font-size: 16px;
@@ -920,43 +880,6 @@ input[type="reset"]:hover {
 	color: #FFF;
 }
 
-/*COUPONページ
----------------------------------------------------------------------------*/
-/*クーポンブロック全体の設定*/
-#coupon {
-	width: 100%;
-	position: relative;
-}
-#coupon img {
-	width: 100%;
-	height: auto;
-}
-/*クーポン内の説明文設定*/
-#coupon p {
-	font-size: 20px;
-	position: absolute;
-	height: 250px;	/*ボックスの高さ*/
-	width: 270px;	/*ボックスの幅*/
-	top: 50px;		/*couponブロックに対して上から50pxの位置に配置*/
-	right: 50px;		/*couponブロックに対して右から50pxの位置に配置*/
-	padding: 20px;
-	background: rgba(0,0,0,0.7);
-	color: #FFF;
-}
-
-/*FAQ・LINKページ
----------------------------------------------------------------------------*/
-.faq {
-	padding: 0px 15px;
-}
-.faq dt {
-	color: #000;
-	font-weight: bold;
-}
-.faq dd {
-	border-bottom: 1px solid #CCC;
-	overflow: hidden;
-}
 
 /*その他
 ---------------------------------------------------------------------------*/
@@ -1033,26 +956,24 @@ img.wa {
 	margin-left: 6px;
 }
 
+/*fixing_box（固定ブロック）
+---------------------------------------------------------------------------*/
+#fixing_box {
+	width:100%;
+}
+
 /*ヘッダー（サイト名ロゴが入ったブロック）
 ---------------------------------------------------------------------------*/
 header h1 {
 	display: none;
 }
 
+
 /*上部のメインメニュー
 ---------------------------------------------------------------------------*/
 /*メニュー１個ごとの設定*/
-
-nav#menubar_pc{
-	display: none;
-}
-nav#menubar_mobile{
-	display: block;
-}
-
 nav.menubar ul li {
-	width: 49%;
-	margin: 0 0 5px 1%;
+	width: 33%;
 	border: 1px solid #000;
 	box-sizing: border-box;
 }
@@ -1063,11 +984,6 @@ nav.menubar ul li a {
 nav.menubar ul li#current {
 	box-sizing: border-box;
 	border: 1px solid #837768;
-}
-/*奇数番目のメニューの設定*/
-nav.menubar li:nth-child(odd) {
-	width: 50%;
-	margin: 0;
 }
 
 /*コンテンツ（main,subを囲むブロック）
@@ -1090,19 +1006,6 @@ nav.menubar li:nth-child(odd) {
 	height: auto;
 	width: 100%;
 }
-#slide_image {
-	height: auto;
-	width: 100%;
-	position: relative;
-}
-#slide_image2 {
-	height: auto;
-	width: 100%;
-	position: absolute;
-	left:0px;
-	top:0px;
-}
-
 /*menu.html内のメニューブロック
 ---------------------------------------------------------------------------*/
 /*各ボックスの設定*/
@@ -1139,35 +1042,38 @@ body.s-n #sub {
 	margin-left: 6px;
 }
 
+#fixing_box{
+	width:100%;
+}
+
 /*ヘッダー（サイト名ロゴが入ったブロック）
 ---------------------------------------------------------------------------*/
 header h1 {
 	display: none;
 }
-/*ロゴ画像の設定*/
-header #logo img {
-	width: 60%;	/*画面に対して60％の幅に*/
-	height: auto;
+
+header #logo{
+	width: 40%;
+	left:1%;
+}
+
+header #logo img{
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+header #student_bar{
+//	width: 50%;
 }
 
 /*上部のメインメニュー
 ---------------------------------------------------------------------------*/
 /*メニュー１個ごとの設定*/
-nav#menubar_pc{
-	display: none;
-}
-nav#menubar_mobile{
-	display: none;	//エラー表示のため
-}
-
-#fixing_box{
-	display: none;	//エラー表示のため
-}
-
 
 nav.menubar ul li {
-	width: 49%;
-	margin: 0 0 5px 1%;
+	width: 33%;
 	border: 1px solid #000;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -1183,11 +1089,7 @@ nav.menubar ul li#current {
 	-webkit-box-sizing: border-box;
 	border: 1px solid #837768;
 }
-/*奇数番目のメニューの設定*/
-nav.menubar li:nth-child(odd) {
-	width: 50%;
-	margin: 0;
-}
+
 
 /*コンテンツ（main,subを囲むブロック）
 ---------------------------------------------------------------------------*/
@@ -1211,18 +1113,6 @@ nav.menubar li:nth-child(odd) {
 #mainimg {
 	height: auto;
 	width: 100%;
-}
-#slide_image {
-	height: auto;
-	width: 100%;
-	position: relative;
-}
-#slide_image2 {
-	height: auto;
-	width: 100%;
-	position: absolute;
-	left:0px;
-	top:0px;
 }
 
 /*menu.html内のメニューブロック
@@ -1295,26 +1185,6 @@ section#new h2.close {
 	padding: 2px;
 }
 
-/*COUPONページ
----------------------------------------------------------------------------*/
-/*クーポン内の説明文設定*/
-#coupon p {
-	font-size: 14px;
-	position: absolute;
-	height: 100px;	/*ボックスの高さ*/
-	width: 100%;	/*ボックスの幅*/
-	top: 0px;		/*couponブロックに対して上から0pxの位置に配置*/
-	left: 0px;		/*couponブロックに対して左から0pxの位置に配置*/
-	padding: 10px;
-	background: rgba(0,0,0,0.7);
-	color: #FFF;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-}
-
-/*その他
----------------------------------------------------------------------------*/
 /*<body class="s-n">指定の場合にsubブロックを表示させない設定*/
 body.s-n #sub {
 	display: none;
@@ -1334,6 +1204,18 @@ body.s-n #sub {
 	padding: 10px;
 	border: 1px solid #cfcfcf;
 	border-radius: 0px 0px 6px 6px;
+}
+
+}
+
+@media(max-width:350px){
+
+header #logo{
+	display: none;
+}
+
+header #logo_mini {
+	display:block;
 }
 
 }
