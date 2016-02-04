@@ -575,7 +575,6 @@ class StudentsController extends AppController {
 	//circle個別ページのコントローラー
 	public function event_id($id) {
 	
-   
     $this->Event->id = $id;
 	$this->set("event_id",$id);//view側にデータをセット
 	
@@ -650,9 +649,6 @@ class StudentsController extends AppController {
 		
 	}//circle_resisterの終わり
 	
-	public function circle_resister_finish() {
-		$this->modelClass = null;
-	}
 	
 	public function circle_edit_main(){
 		if(isset($_SESSION['tw_user_id'])){
@@ -742,7 +738,7 @@ class StudentsController extends AppController {
 	
 	public function circle_edit_cal(){
 		$this->modelClass = null;
-		if(isset($_SESSION['tw_user_id'])){
+		if(isset($_SESSION['tw_user_id']) && $_SESSION['is_circle']){
 		//基本はsessionを持っているはず
 			$tw_user_id = $_SESSION['tw_user_id'];
 			$local_user = $this->Circle->find('first', array(
@@ -804,7 +800,7 @@ class StudentsController extends AppController {
 	
 	public function circle_edit(){
 		$this->modelClass = null;
-		if(isset($_SESSION['tw_user_id'])){
+		if(isset($_SESSION['tw_user_id']) && $_SESSION['is_circle']){
 		//基本はsessionを持っているはず
 			$tw_user_id = $_SESSION['tw_user_id'];
 			$local_user = $this->Circle->find('first', array(
