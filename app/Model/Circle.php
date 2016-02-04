@@ -73,6 +73,26 @@ public $validate = array(
 		  'required'=>'update',
 		  'message'=>'必須項目です。',
         ),
+		'man' => array(
+		  'rule'    => array('naturalNumber', true),	//0を含めた自然数
+		  'allowEmpty' => true,
+		  'message'=>'0以上の値を設定してください',
+        ),
+		'woman' => array(
+		  'rule'    => array('naturalNumber', true),	//0を含めた自然数
+		  'allowEmpty' => true,
+		  'message'=>'0以上の値を設定してください',
+        ),
+		'cost_in' => array(
+		  'rule'    => array('naturalNumber', true),	//0を含めた自然数
+		  'allowEmpty' => true,
+		  'message'=>'0以上の値を設定してください',
+        ),
+		'cost' => array(
+		  'rule'    => array('naturalNumber', true),	//0を含めた自然数
+		  'allowEmpty' => true,
+		  'message'=>'0以上の値を設定してください',
+        ),
 		'pr' => array(
           'rule' => array('maxLength', 200),
 		  //'required'=>update,
