@@ -566,7 +566,7 @@ class StudentsController extends AppController {
 					$this->redirect(array('action'=>'student'));
 				}
 			}else{
-				$this->Session->setFlash(__('Twitterでログインしてください','default',array(),'login'));
+				$this->Session->setFlash(__('Twitterでログインしてください'));
 				$this->redirect(array('action'=>'circle_id/'.$id));
 			}
 		}
