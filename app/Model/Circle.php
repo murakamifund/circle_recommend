@@ -40,7 +40,7 @@ public $validate = array(
 		  
         ),
 		'url' => array(
-          'rule'=>'url',
+          'rule' => array('url', true),
 		  'allowEmpty' => true,
 		  'message'=>'URLを入力してください。',
 		  'on'=>'update'
