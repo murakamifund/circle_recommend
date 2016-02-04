@@ -261,7 +261,7 @@ onload = function(){
 <div id="lists">
 <h2 class="mb1em">サークル一覧</h2>
 <?php
-		foreach ($data as $datum){ 
+		foreach ($data as $datum){
 ?>
 	<div class="list">
 		<div class="list_left">
@@ -303,27 +303,45 @@ onload = function(){
 			<div class="list_twitter"><a href="https://twitter.com/<?php echo $datum['Circle']['tw_screen_name']; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
 			<div class="list_bottan"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">詳細はこちら！</a></div>
 			</div>
+		</div>
 	</div>
-</div>
 <?php
 		}
 ?>
 </div>
 
+<!--
+<div id=page>
 <?php
-
-		echo $this->Paginator->first('<< ');
-		echo $this->Paginator->prev('< ');
-		echo $this->Paginator->numbers(
-			array(
-				'separator' => '/',
-				'modulus' => 2,
-			)
-		);
-		echo $this->Paginator->next(' >');
-		echo $this->Paginator->last(' >>');
-	}
+		$prev = $page-1;
+		$next = $page+1;
+		$count = count($data);
+		$last = ($count-$count%$limit)/$limit+1;
 ?>
+<?php if($page>2){ ?>
+<form method="post" action="./1" name=page_form1 >
+<input type="submit" value="1" id="page_submit1"/>
+<?php echo "..."; ?>
+<?php } ?>
+<?php if($page>1){ ?>
+<form method="post" action="./<?php echo $prev; ?>" name=page_form2 >
+<input type="submit" value="<?php echo $prev; ?>" id="page_submit2"/>
+<?php } ?>
+<form method="post" action="./<?php echo $page; ?>" name=page_form3 >
+<input type="submit" value="<?php echo $page; ?>" id="page_submit3"/>
+<?php if($page<$last){ ?>
+<form method="post" action="./<?php echo $next; ?>" name=page_form4 >
+<input type="submit" value="<?php echo $next; ?>" id="page_submit4"/>
+<?php } ?>
+<?php if($page<$last-1){ ?>
+<?php echo "..."; ?>
+<form method="post" action="./<?php echo $last; ?>" name=page_form5 >
+<input type="submit" value="<?php echo $last; ?>" id="page_submit5"/>
+<?php } ?>
+</div>
+
+<?php } ?>
+-->
 
 <!--ツイッターの埋め込み　よくわからんからここに置きます。大きさはwidthとheightをいじればできます。白井さんよろしく-->
 <!--
