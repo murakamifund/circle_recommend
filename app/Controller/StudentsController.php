@@ -672,7 +672,6 @@ class StudentsController extends AppController {
 	}
 	
 	public function circle_edit_main(){
-		
 		if(isset($_SESSION['tw_user_id'])){
 		//基本はsessionを持っているはず
 			if($_SESSION['is_circle']){
@@ -696,7 +695,67 @@ class StudentsController extends AppController {
 			$this->Session->setFlash(__('Twitterでログインしてください'));
 		}
 		
+		//////
+		$data = $this->Circle->find('first',array(
+		'conditions' => array('Circle.id' => $id)));
+	$circle_name = $data['Circle']['circle_name'];
+	$this->set("circle_name",$circle_name);//view側にデータをセット
+	$tw_user_id = $data['Circle']['tw_user_id'];
+	$this->set("tw_user_id",$tw_user_id);//view側にデータをセット
+	$tw_profile_banner_url = $data['Circle']['tw_profile_banner_url'];
+	$this->set("tw_profile_banner_url",$tw_profile_banner_url);//view側にデータをセット
+	$tw_screen_name = $data['Circle']['tw_screen_name'];
+	$this->set("tw_screen_name",$tw_screen_name);//view側にデータをセット
+	$url = $data['Circle']['url'];
+	$this->set("url",$url);//view側にデータをセット
+	$activity = $data['Circle']['activity'];
+	$this->set("activity",$activity);//view側にデータをセット
+	$place = $data['Circle']['place'];
+	$this->set("place",$place);//view側にデータをセット
+	$placetext = $data['Circle']['placetext'];
+	$this->set("placetext",$placetext);//view側にデータをセット
+	$intercollege = $data['Circle']['intercollege'];
+	$this->set("intercollege",$intercollege);//view側にデータをセット
+	$man = $data['Circle']['man'];
+	$this->set("man",$man);//view側にデータをセット
+	$woman = $data['Circle']['woman'];
+	$this->set("woman",$woman);//view側にデータをセット
+	$cost_in = $data['Circle']['cost_in'];
+	$this->set("cost_in",$cost_in);//view側にデータをセット
+	$cost = $data['Circle']['cost'];
+	$this->set("cost",$cost);//view側にデータをセット
+	$cost = $data['Circle']['cost'];
+	$this->set("cost",$cost);//view側にデータをセット
+	$cost = $data['Circle']['cost'];
+	$this->set("cost",$cost);//view側にデータをセット
+	$nomi = $data['Circle']['nomi'];
+	$this->set("nomi",$nomi);//view側にデータをセット
+	$mazime = $data['Circle']['mazime'];
+	$this->set("mazime",$mazime);//view側にデータをセット
+
+	$day = array($data['Circle']['day1'],$data['Circle']['day2'],$data['Circle']['day3'],$data['Circle']['day4'],$data['Circle']['day5'],$data['Circle']['day6'],$data['Circle']['day7']);
+	$this->set("day",$day);
+	
+	$pr = $data['Circle']['pr'];
+	$this->set("pr",$pr);//view側にデータをセット
+	
+	//favされているか判定
+	if(isset($_SESSION['tw_user_id']) && $_SESSION['is_circle']!=true){
+		$tw_user_id = $_SESSION['tw_user_id'];
+		$fav_circles = $this->Favorite->find('all', array(
+			'conditions' => array('user_id' => $tw_user_id,'circle_id' => $id)
+		));		
+		if (!empty($fav_circles)) {
+			$this->set('favored', true );
+		}else{
+			$this->set('favored', false );
+		}
+	}else{
+		$this->set('favored', false );
 	}
+		//////
+		
+	} //circle_edit_main終わり
 	
 	
 	
