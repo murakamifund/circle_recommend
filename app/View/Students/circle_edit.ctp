@@ -103,7 +103,12 @@ onload = function(){
 		</tr>
 		<tr>
 		 <th scope="row">PR文</th>
-			<td><?php echo str_replace("\\n","",$this->Form->input('pr', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false)));?>
+<?php
+	$eeee = $this->Form->input('pr', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));
+	$eeee = str_replace('\\n',"\n", $eeee);
+//	$eeee = nl2br($eeee);
+?>
+			<td><?=$eeee;?>
 			<font color="red"><?php echo $this->Form->error('pr');?></font>
 			</td>
 		</tr>
@@ -151,10 +156,14 @@ onload = function(){
 			<th scope="row">男女比</th>
 			
 			<!--<td>男性人数</td> -->
-			<td><?php echo $this->Form->input('man', array('size'=>25, 'label'=>"男性　", 'error'=>false, 'div'=>false)); ?></td>
+			<td><?php echo $this->Form->input('man', array('size'=>25, 'label'=>"男性　", 'error'=>false, 'div'=>false)); ?>
+			<font color="red"><?php echo $this->Form->error('man');?></font>
+			</td>
 			
 			<!-- <td>女性人数</td>-->
-			<td><?php echo $this->Form->input('woman', array('size'=>25, 'label'=>"女性　", 'error'=>false, 'div'=>false));?></td>
+			<td><?php echo $this->Form->input('woman', array('size'=>25, 'label'=>"女性　", 'error'=>false, 'div'=>false));?>
+			<font color="red"><?php echo $this->Form->error('woman');?></font>
+			</td>
 		</tr>
 	</tbody>
 	</table>
@@ -177,8 +186,12 @@ onload = function(){
 	<tbody>
 		<tr>
 			<th scope="row">活動費</th>
-			<td><?php echo $this->Form->input('cost_in', array('size'=>25, 'label'=>"入会費", 'error'=>false, 'div'=>false)); ?></td>
-				<td><?php echo $this->Form->input('cost', array('size'=>25, 'label'=>"年間費", 'error'=>false, 'div'=>false)); ?></td>
+			<td><?php echo $this->Form->input('cost_in', array('size'=>25, 'label'=>"入会費", 'error'=>false, 'div'=>false)); ?>
+			<font color="red"><?php echo $this->Form->error('cost_in');?></font>
+			</td>
+				<td><?php echo $this->Form->input('cost', array('size'=>25, 'label'=>"年間費", 'error'=>false, 'div'=>false)); ?>
+				<font color="red"><?php echo $this->Form->error('cost');?></font>
+				</td>
 		</tr>
 		</tbody>
 	</table>
