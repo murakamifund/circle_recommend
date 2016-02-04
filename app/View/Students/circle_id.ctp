@@ -72,21 +72,22 @@ $act=array(
  
 
 <!--ここからhtml-->
+<font color ="#0000ff"><?php echo $this->Session->flash(); ?></font>
 <div id="circle_top">
 	<div id="circle_name"><?php echo $circle_name; ?></div>
 	<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $circle_name; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
+	
 <?php
 	if($favored){
 ?>
-	<form action="/circle_recommend/Students/unfav/<?php echo $circle_id;?>" method="post">
+	<form action="../unfav/<?php echo $circle_id;?>" method="post">
 		<input type="hidden" name="address" value="circle_id">
 		<input type="image" src="../../img/okiniiri.png" onmouseover="this.src='../../img/okiniiri_1.png'" onmouseout="this.src='../../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 	</form>
 <?php
 	}else if(isset($_SESSION['tw_user_id'])){
 ?>
-	<form action="/circle_recommend/Students/fav/<?php echo $circle_id;?>" method="post">
+	<form action="../fav/<?php echo $circle_id;?>" method="post">
 		<input type="hidden" name="address" value="circle_id">
 		<input type="image" src="../../img/okiniiri_1.png" onmouseover="this.src='../../img/okiniiri.png'" onmouseout="this.src='../../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 	</form>

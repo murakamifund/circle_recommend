@@ -99,7 +99,7 @@ onload = function(){
 			</div>
 			<div class="list_right_bottom">
 
-			<form action="/circle_recommend/Students/unfav/<?php echo $datum['Circle']['id']; ?>" method="post">
+			<form action="unfav/<?php echo $datum['Circle']['id']; ?>" method="post">
 				<input type="hidden" name="address" value="student_edit">
 				<input type="image" src="../img/okiniiri.png" onmouseover="this.src='../img/okiniiri_1.png'" onmouseout="this.src='../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 			</form>

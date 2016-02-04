@@ -6,6 +6,7 @@ onload = function(){
 <title>UT-Circle ログインページ</title>
 
 <h2 class="mb1em">新規登録</h2>
+<font color ="#0000ff"><?php echo $this->Session->flash(); ?></font>
 
 <h3 class="mb1em">ツイッターと連携</h3>
 <p>
