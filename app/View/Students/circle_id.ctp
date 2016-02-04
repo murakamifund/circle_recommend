@@ -80,14 +80,14 @@ $act=array(
 <?php
 	if($favored){
 ?>
-	<form action="/circle_recommend/Students/unfav/<?php echo $circle_id;?>" method="post">
+	<form action="../unfav/<?php echo $circle_id;?>" method="post">
 		<input type="hidden" name="address" value="circle_id">
 		<input type="image" src="../../img/okiniiri.png" onmouseover="this.src='../../img/okiniiri_1.png'" onmouseout="this.src='../../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 	</form>
 <?php
 	}else if(isset($_SESSION['tw_user_id'])){
 ?>
-	<form action="/circle_recommend/Students/fav/<?php echo $circle_id;?>" method="post">
+	<form action="../fav/<?php echo $circle_id;?>" method="post">
 		<input type="hidden" name="address" value="circle_id">
 		<input type="image" src="../../img/okiniiri_1.png" onmouseover="this.src='../../img/okiniiri.png'" onmouseout="this.src='../../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 	</form>
