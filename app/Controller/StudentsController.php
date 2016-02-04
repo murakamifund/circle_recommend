@@ -23,7 +23,7 @@ class StudentsController extends AppController {
 		require_once('config.php');
 		require_once('codebird.php');
 		
-
+		try{ //例外処理
 		\Codebird\Codebird::setConsumerKey('hyj7wJ2xfSkADK6bhJfUFbhAd', 'w145AA0P8opGRji1OzdLlyxA2W6fdqwEONlryr6A0kfucE8NwS');
 		//\Codebird\Codebird::setConsumerKey('CONSUMER_KEY', 'CONSUMER_SECRET');
 		$cb = \Codebird\Codebird::getInstance();
@@ -116,7 +116,12 @@ class StudentsController extends AppController {
 	}else{
 		$this->redirect(array('action' => 'student_edit'));
 	}	
-		//$this->redirect(array('action' => 'home'));
+	}//try終わり
+	catch(Exception $e){
+		//echo '捕捉した例外: ',  $e->getMessage(), "\n";
+		$this->Session->setFlash(__('エラーが発生しました。もう一度お試しください。'));
+		$this->redirect(array('action' => 'student_resister'));
+	}
 	}//student_tw_callback終わり
 
 	
@@ -130,7 +135,7 @@ class StudentsController extends AppController {
 		require_once('config.php');
 		require_once('codebird.php');
 		
-
+		try{ //例外処理
 		\Codebird\Codebird::setConsumerKey('hyj7wJ2xfSkADK6bhJfUFbhAd', 'w145AA0P8opGRji1OzdLlyxA2W6fdqwEONlryr6A0kfucE8NwS');
 		$cb = \Codebird\Codebird::getInstance();
 		
@@ -229,6 +234,11 @@ class StudentsController extends AppController {
 		//ログイン済み
 		$this->redirect(array('action' => 'circle_edit_main'));
 	}	
+	}//try終わり
+	catch(Exception $e){
+		$this->Session->setFlash(__('エラーが発生しました。もう一度お試しください。'));
+		$this->redirect(array('action' => 'student_resister'));
+	}
 	}//circle_tw_callback終わり
 	
 	public function student_tw_logout(){
@@ -695,7 +705,6 @@ class StudentsController extends AppController {
 			$this->Session->setFlash(__('Twitterでログインしてください'));
 		}
 		
-		//////
 		$data = $this->Circle->find('first',array(
 		'conditions' => array('Circle.id' => $id)));
 	$circle_name = $data['Circle']['circle_name'];
@@ -753,7 +762,6 @@ class StudentsController extends AppController {
 	}else{
 		$this->set('favored', false );
 	}
-		//////
 		
 	} //circle_edit_main終わり
 	
