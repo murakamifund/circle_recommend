@@ -84,8 +84,8 @@ $act=array(
 <div id="circle_left">
 	
 	<div id="circle_photo">
-		<img id="circle_photo_base" src="../../img/noimage.jpg" width="400px" height="150px" alt="NO IMAGE" >
-		<img id="circle_photo_on"src=<?php echo $tw_profile_banner_url; ?> width="400px" height="150px">
+		<img id="circle_photo_on" src=<?php echo $tw_profile_banner_url; ?> width="400px" height="150px" onerror="this.src='../img/noimage.jpg'">
+
 	</div>
 	
 	<h4>活動紹介</h4>
