@@ -12,6 +12,7 @@ class StudentsController extends AppController {
 		parent::beforeFilter();
     }
 	
+	
 	public function pre_student_tw_callback(){
 		$this->Session->destroy();
 		$this->redirect(array('action' => 'student_tw_callback'));
@@ -989,7 +990,6 @@ class StudentsController extends AppController {
     $this->modelClass = null;
 	
 	
-	
 	//検索アルゴリズム
     
     $check1 = isset($this -> data["check1"]) ?
@@ -1358,10 +1358,6 @@ class StudentsController extends AppController {
 		
 	}
 	}
-	public $pagenate = array(
-		'page' => 1,
-		'limit' => 1,
-	);
 
 }//クラス
 	

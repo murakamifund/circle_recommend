@@ -103,7 +103,12 @@ onload = function(){
 		</tr>
 		<tr>
 		 <th scope="row">PR文</th>
-			<td><?php echo str_replace("\\n","",$this->Form->input('pr', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false)));?>
+<?php
+	$eeee = $this->Form->input('pr', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));
+	$eeee = str_replace('\\n',"\n", $eeee);
+//	$eeee = nl2br($eeee);
+?>
+			<td><?=$eeee;?>
 			<font color="red"><?php echo $this->Form->error('pr');?></font>
 			</td>
 		</tr>
