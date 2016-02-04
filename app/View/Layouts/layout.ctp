@@ -137,7 +137,7 @@
 		</div><!--/contents-->
 
 		<footer>
-			<small>Copyright&copy; 2016 <a href="home">UT-Circle</a>　<a href="about">利用規約</a></small>
+			<small>Copyright&copy; 2016 <a href="home">UT-Circle</a>　<a href="about">利用規約</a>　連絡先: utcircle.psi@gmail.com</small>
 			<span class="pr"><a href="http://template-party.com/" target="_blank">Web Design:Template-Party</a></span>
 		</footer>
 
