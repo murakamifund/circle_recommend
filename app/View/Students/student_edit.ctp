@@ -12,6 +12,7 @@ onload = function(){
 <title>UT-Circle マイページ</title>
 
 <h2> <?php echo $user_name; ?>さんの情報を管理</h2>
+	<br><br>
 	<div id="student_menu">
 	<div class="i-btn"><a href="#" onclick="student_edit_func(0);">ページ全体</a></div>
 	<div class="i-btn"><a href="#" onclick="student_edit_func(1);">カレンダー</a></div>
