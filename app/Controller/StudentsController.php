@@ -566,8 +566,8 @@ class StudentsController extends AppController {
 					$this->redirect(array('action'=>'student'));
 				}
 			}else{
+				$this->Session->setFlash(__('Twitterでログインしてください','default',array(),'login'));
 				$this->redirect(array('action'=>'circle_id/'.$id));
-				$this->Session->setFlash(__('Twitterでログインしてください'));
 			}
 		}
 	}//unfavの終わり

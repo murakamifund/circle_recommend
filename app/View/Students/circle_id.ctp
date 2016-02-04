@@ -72,7 +72,7 @@ $act=array(
  
 
 <!--ここからhtml-->
-<font color ="#0000ff"><?php echo $this->Session->flash(); ?></font>
+<font color ="#0000ff"><?php echo $this->Session->flash('login'); ?></font>
 <div id="circle_top">
 	<div id="circle_name"><?php echo $circle_name; ?></div>
 	<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $circle_name; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
