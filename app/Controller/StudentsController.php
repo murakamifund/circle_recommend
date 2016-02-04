@@ -728,8 +728,6 @@ class StudentsController extends AppController {
 					} else {
 						$this->Session->setFlash(__('更新に失敗しました。'));
 					}
-			}else{
-				$this->request->data=$this->Event->read(null,$id);//更新画面の表示
 			}
 			
 			//circleのIdに一致するイベントを列挙

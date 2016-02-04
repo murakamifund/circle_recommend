@@ -23,7 +23,7 @@ public $validate = array(
         ),
 		
 		'circle_name' => array(
-          'rule'=>'isUnique',
+          'rule'=>array('isUnique',array('maxLength', 25)),
 		  'required'=>'update',
 		  'message'=>'すでに同じ名前が登録されています。',
 		  'on'=>'update'
