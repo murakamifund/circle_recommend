@@ -56,8 +56,8 @@ onload = function(){
 
 	<h4>キーワードから探す</h4>
 	<div class="search_group">
-		<div class="search_title">キーワード：</div>
-		<div class="search_forms2"><input type="textbox" name="keyword" id="search_keyword" size="50" /></div>
+		<div class="search_title">キーワード</div>
+		<div class="search_forms2"><input type="textbox" name="keyword" id="search_keyword"  /></div>
 		<input type="submit" value="検索" id="search_submit1" />
 	</div>
 	<br>
@@ -171,13 +171,13 @@ onload = function(){
 		</div>
 		<div class="list_right">
 			<div class="list_right_top">
-				<div class="list_name"><a href="../Students/circle_id/<?php echo $top_datum['Circle']['id']; ?>"><?php echo $top_datum['Circle']['circle_name']; ?></a></div>
 				<div class="list_catch_phrase"><?php echo $top_datum['Circle']['phrase']; ?></div>
+				<div class="list_name"><a href="../Students/circle_id/<?php echo $top_datum['Circle']['id']; ?>"><?php echo $top_datum['Circle']['circle_name']; ?></a></div>
 			</div>
 			<div class="list_right_middle">
 				<div class="list_pr"><?php echo str_replace("\\n","",$top_datum['Circle']['pr']); ?></div>
-				<div class="list_tags">#(種目):<?php echo $top_datum['Circle']['activity']; ?></div>
-				<div class="list_tags">#(場所):<?php echo $top_datum['Circle']['place']; ?></div>
+				<div class="list_tags">#<?php echo $top_datum['Circle']['activity']; ?></div>
+				<div class="list_tags">#場所:<?php echo $top_datum['Circle']['place']; ?></div>
 				<div class="list_tags">#<?php echo $top_datum['Circle']['intercollege']; ?></div>
 			</div>
 			<div class="list_right_bottom">
@@ -269,13 +269,13 @@ onload = function(){
 		</div>
 		<div class="list_right">
 			<div class="list_right_top">
-				<div class="list_name"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>"><?php echo $datum['Circle']['circle_name']; ?></a></div>
 				<div class="list_catch_phrase"><?php echo $datum['Circle']['phrase']; ?></div>
+				<div class="list_name"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>"><?php echo $datum['Circle']['circle_name']; ?></a></div>
 			</div>
 			<div class="list_right_middle">
 				<div class="list_pr"><?php echo str_replace("\\\\\\\\\\\\\\\\n","",$datum['Circle']['pr']); ?></div>
-				<div class="list_tags">#(種目):<?php echo $datum['Circle']['activity']; ?></div>
-				<div class="list_tags">#(場所):<?php echo $datum['Circle']['place']; ?></div>
+				<div class="list_tags">#<?php echo $datum['Circle']['activity']; ?></div>
+				<div class="list_tags">#場所:<?php echo $datum['Circle']['place']; ?></div>
 				<div class="list_tags">#<?php echo $datum['Circle']['intercollege']; ?></div>
 			</div>
 			<div class="list_right_bottom">

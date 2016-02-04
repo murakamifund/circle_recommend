@@ -28,111 +28,63 @@
 
 <body>
 
-<div id="container">
+	<div id="container">
 
-<div id="fixing_box">
-<header>
-
-<div id="logo"><a href="home"><img src="../img/logo03.png"  alt=""></a></div>
-
+		<div id="fixing_box"><!--固定部分 -->
+			<header>
+				<div id="logo"><a href="home"><img src="../img/logo03.png"  alt=""></a></div>
+				<div id="logo_mini"><a href="home"><img src="../img/twitter_icon.png"  alt=""></a></div>
 <?php
-	if(isset($_SESSION['tw_user_id'])){
+	if(isset($_SESSION['tw_user_id'])){	//ログインしている場合
 ?>
 
-<div id="student_bar">
-	<div id="student_bar_img"><img src="<?php echo $_SESSION['tw_image_url'];?>" alt="twitter"></div>
-	<div id="student_bar_comment"><?php echo $_SESSION['tw_screen_name'];?>さんがログイン</div>
+				<div id="student_bar">
+					<div id="student_bar_img"><img src="<?php echo $_SESSION['tw_image_url'];?>" alt="twitter"></div>
+					<div id="student_bar_comment"><?php echo $_SESSION['tw_screen_name'];?>さんがログイン</div>
 
 <?php
-		if($_SESSION['is_circle']==true){
+		if($_SESSION['is_circle']==true){	//サークルでログイン
 ?>
-	<div class="student_bar_btn"><a href="./circle_edit_main">マイページ</a></div>
+					<div class="student_bar_btn"><a href="./circle_edit_main">マイページ</a></div>
 <?php
-		}else{
+		}else{	//生徒でログイン
 ?>
-	<div class="student_bar_btn"><a href="./student_edit">マイページ</a></div>
+					<div class="student_bar_btn"><a href="./student_edit">マイページ</a></div>
 <?php
 		}
 ?>
-	<div class="student_bar_btn"><a href="./student_tw_logout">ログアウト</a></div>
-</div>
+					<div class="student_bar_btn"><a href="./student_tw_logout">ログアウト</a></div>
+				
+				</div><!--/#student_bar -->
 <?php
-	}else{
+	}else{	//ログインしていない場合
 ?>
-<ul class="header_ul"><li><div onclick="display_popup()">ログインはこちら</div></li></ul>
-<?php
-	}
-?>
-
-</header>
-
-<nav class="menubar" id="menubar_pc">
-<ul>
-<li id="current"><a class="menu_pc" href="../Students/home">HOME</a></li>
-<li><a class="menu_pc" href="../Students/student">STUDENT</a></li>
-<li><a class="menu_pc" href="../Students/circle">CIRCLE</a></li>
-<!--
-<?php
-	if(isset($_SESSION['tw_user_id'])){
-		if($_SESSION['is_circle']==true){
-?>
-	<li><a class="menu_pc" href="../Students/circle_edit_main">マイページ</a></li>
-<?php
-		}else{
-?>
-	<li><a class="menu_pc" href="../Students/student_edit">マイページ</a></li>
-<?php
-		}
-	}else{
-?>
-	<li><a class="menu_pc" href="../Students/student_resister">ログイン</a></li>
+				<div id="header_login" onclick="display_popup()">ログインはこちら</div>
 <?php
 	}
 ?>
--->	
-</ul>
-</nav>
+			</header>
 
-<nav class="menubar" id="menubar_mobile">
-<ul>
-<li id="current"><a class="menu_mobile" href="home">HOME</a></li>
-<li><a class="menu_mobile" href="student">STUDENT</a></li>
-<li><a class="menu_mobile" href="circle">CIRCLE</a></li>
-<?php
-	if(isset($_SESSION['tw_user_id'])){
-		if($_SESSION['is_circle']==true){
-?>
-	<li><a class="menu_mobile" href="../Students/circle_edit_main">マイページ</a></li>
-<?php
-		}else{
-?>
-	<li><a class="menu_mobile" href="../Students/student_edit">マイページ</a></li>
-<?php
-		}
-	}else{
-?>
-	<li><a class="menu_mobile" href="../Students/student_resister">ログイン</a></li>
-<?php
-	}
-?>
+			<nav class="menubar" id="menubar_pc">
+				<ul>
+					<li id="current"><a class="menu_pc" href="../Students/home">HOME</a></li>
+					<li><a class="menu_pc" href="../Students/student">STUDENT</a></li>
+					<li><a class="menu_pc" href="../Students/circle">CIRCLE</a></li>
+				</ul>
+			</nav>
 
-</ul>
-</nav>
+		</div><!--/#fixing_box -->
 
-</div>
+		<div id="dummy_div"></div>
 
-<div id="dummy_div">
-</div>
-
-<aside id="mainimg">
-<div id="iconlist-wrapper">
-			<div id="iconlist-main">
-				<div id="iconlist-reel">
+		<aside id="mainimg">
+			<div id="iconlist-wrapper">
+				<div id="iconlist-main">
+					<div id="iconlist-reel">
 
 						<div id="thumb-main" data-width="400">
 							<div>UT-Circle</div>
-							<div>気になったサークルをクリック！<br />
-							詳細な内容が分かるよ！</div>
+							<div>気になったサークルをクリック！<br />詳細な内容が分かるよ！</div>
 						</div>
 
 					<!-- Thumb Items -->
@@ -158,74 +110,52 @@
 <?php
 		}
 	}
-?>						
-										
+?>															
+					</div>
 				</div>
 			</div>
+		</aside><!--/#mainimg -->
 
 
-		</div>
-</a>
-</aside>
+		<div id="contents">
+		
+			<div id="main">	
+				<?=$content_for_layout?>
+			</div><!--/#main -->
 
-<div id="contents">
+			<div id="sub">
+				<aside class="box1 mb1em">
+					<h2>Twitterアカウント</h2>
+					<div id="twitter_box">
+						<a class="twitter-timeline" href="https://twitter.com/dekinaiyoooooo1" height="200" data-chrome="nofooter" data-widget-id="678444968457867264">@dekinaiyoooooo1さんのツイート</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					</div>
+				</aside><!--/box1-->
+			</div><!--/sub-->
 
-<div id="main">
+			<p id="pagetop"><a href="#">↑ PAGE TOP</a></p>
+		</div><!--/contents-->
 
-
-<!--ここに書き込めば全体の枠になります -->
-<?php echo $content_for_layout; ?>
-	
-</div>
-
-<div id="sub">
-
-
-
-<aside class="box1 mb1em">
-<h2>Twitterアカウント</h2>
-<div id="twitter_box">
-<a class="twitter-timeline" href="https://twitter.com/dekinaiyoooooo1" height="200" data-chrome="nofooter" data-widget-id="678444968457867264">@dekinaiyoooooo1さんのツイート</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</div>
-
-
-</aside>
-<!--/box1-->
-
-</div>
-<!--/sub-->
-
-<p id="pagetop"><a href="#">↑ PAGE TOP</a></p>
+		<footer>
+			<small>Copyright&copy; 2016 <a href="home">UT-Circle</a>　<a href="about">利用規約</a></small>
+			<span class="pr"><a href="http://template-party.com/" target="_blank">Web Design:Template-Party</a></span>
+		</footer>
 
 
+		<div id="popup">
+			<h2>CIRCLE RECOMMENDERにログインしよう！</h2>
+			<p><a href="pre_student_tw_callback"><img src="../img/image3.png"></a></p>
+			<div id="popup_login_twitter" class="i-btn">
+				<a href="pre_student_tw_callback">Twitterでログイン</a>
+			</div> 
+			<div id="popup_to_circle" ><a href="./circle">サークルのかたはこちら</a></div>
+			<div><a id="popup_close" onclick="close_popup()">×</a></div>
+		</div> <!--/#popup-->
 
-</div>
-<!--/contents-->
-
-<footer>
-<small>Copyright&copy; 2016 <a href="home">UT-Circle</a>　<a href="about">利用規約</a></small>
-<span class="pr"><a href="http://template-party.com/" target="_blank">Web Design:Template-Party</a></span>
-</footer>
-
-
-<div id="popup">
-	<h2>CIRCLE RECOMMENDERにログインしよう！</h2>
-	<p><a href="pre_student_tw_callback"><img src="../img/image3.png"></a></p>
-	<div id="popup_login_twitter" class="i-btn">
-		<a href="pre_student_tw_callback">Twitterでログイン</a>
-	</div> 
-	<div id="popup_to_circle" ><a href="./circle">サークルのかたはこちら</a></div>
-	<div><a id="popup_close" onclick="close_popup()">×</a></div>
-</div> 
-<!--/#popup-->
+	</div><!--/container-->
 
 
-</div>
-<!--/container-->
-
-
-<div id="overlay" onclick="close_popup();"></div>
+	<div id="overlay" onclick="close_popup();"></div>
 
 <!--スライドショースクリプト-->
 <script type="text/javascript" src="js/slide_simple_pack.js"></script>

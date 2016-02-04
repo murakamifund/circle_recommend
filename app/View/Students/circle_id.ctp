@@ -74,106 +74,91 @@ $act=array(
 <!--ここからhtml-->
 <div id="circle_top">
 	<div id="circle_name"><?php echo $circle_name; ?></div>
-		<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $circle_name; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $circle_name; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-	<?php
-		if($favored){
+<?php
+	if($favored){
 ?>
-		<form action="/circle_recommend/Students/unfav/<?php echo $circle_id;?>" method="post">
+	<form action="/circle_recommend/Students/unfav/<?php echo $circle_id;?>" method="post">
 		<input type="hidden" name="address" value="circle_id">
 		<input type="image" src="../../img/okiniiri.png" onmouseover="this.src='../../img/okiniiri_1.png'" onmouseout="this.src='../../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
-		</form>
+	</form>
 <?php
-		}else if(isset($_SESSION['tw_user_id'])){
+	}else if(isset($_SESSION['tw_user_id'])){
 ?>
-		<form action="/circle_recommend/Students/fav/<?php echo $circle_id;?>" method="post">
+	<form action="/circle_recommend/Students/fav/<?php echo $circle_id;?>" method="post">
 		<input type="hidden" name="address" value="circle_id">
 		<input type="image" src="../../img/okiniiri_1.png" onmouseover="this.src='../../img/okiniiri.png'" onmouseout="this.src='../../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
-		</form>
+	</form>
 <?php
-		}else{
+	}else{
 ?>
-		<img src="../../img/okiniiri_1.png" onmouseover="this.src='../../img/okiniiri.png'" onmouseout="this.src='../../img/okiniiri_1.png'" onclick="display_popup()"  width="150" height="100" alt="おすすめ" class="icon">
+	<img src="../../img/okiniiri_1.png" onmouseover="this.src='../../img/okiniiri.png'" onmouseout="this.src='../../img/okiniiri_1.png'" onclick="display_popup()"  width="150" height="100" alt="おすすめ" class="icon">
 <?php
-		}
+	}
 ?>
 </div>
 
 <div id="circle_left">
 	
-	
 	<div id="circle_photo">
-		
-		<img id="circle_photo_base" src="../../img/noimage.jpg" width="400" height="150" alt="NO IMAGE" >
-		<img id="circle_photo_on"src=<?php echo $tw_profile_banner_url; ?> width="400" height="200">
-	
-		<!-- ツイッターの埋め込み 
-		
-		<a class="twitter-timeline" href="https://twitter.com/<?php echo $tw_screen_name; ?>" height="300" data-chrome="nofooter" data-widget-id="667297834580836352">@<?php echo $tw_screen_name; ?>さんのツイート</a>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		-->
+		<img id="circle_photo_base" src="../../img/noimage.jpg" width="400px" height="150px" alt="NO IMAGE" >
+		<img id="circle_photo_on"src=<?php echo $tw_profile_banner_url; ?> width="400px" height="150px">
 	</div>
+	
 	<h4>活動紹介</h4>
 	<div id="circle_pr"><?php echo str_replace("\\n","<br>",$pr); ?></div>
 	<h4>ホームページURL</H4>
-	<?php 	if($url != ""){ ?>
-			<a href="<?=$url?>"><font color = "#0000ff"><?=$url?></font></a>
-		<?php
-			}else{
-				echo 'ホームページが登録されていません';
-			}
-		?>
+<?php
+	if($url != ""){
+?>
+	<a href="<?=$url?>"><font color = "#0000ff"><?=$url?></font></a>
+<?php
+	}else{
+		echo 'ホームページが登録されていません';
+	}
+?>
 </div>
 <div id="circle_right">
 	<h4>活動内容</h4>
 	<div><?php echo $activity;?></div>
+	
 	<h4>場所</h4>
 	<div><?php echo $place; ?>　<?php echo $placetext; ?></div>
+	
 	<h4>曜日</h4>
 	<div><?php echo $day_chosen; ?></div>
+	
 	<h4>費用</h4>
-	<div>入会費：<?php echo $cost_in; ?>円　　年間費：<?php echo $cost; ?>円</div>
+	<div>入会費：<?php echo $cost_in; ?>円<br>年間費：<?php echo $cost; ?>円</div>
+	
 	<h4>メンバー構成</h4>
 	<div><?php echo $intercollege; ?></div>
+	
 	<h4>男女比</h4>
 	<div><table><tr><td id="man_ratio"><?php echo $man; ?></td><td id="woman_ratio"><?php echo $woman; ?></td></tr></table></div>
+	
 	<h4>雰囲気</h4>
 	<div>飲み会頻度：<?php echo $nomi_chosen; ?><br>活動の雰囲気：<?php echo $mazime_chosen; ?></div>
 </div>
-<br>
-
-
-
-
-
-<br><br>
+<br><br><br>
 
 <h4 style="clear:left;">イベント情報</h4>
 イベントをクリックすると、イベントの詳細に飛べます。
 
 <p>
-<div id="fc1" class="fc" >
-
-</div>
+	<div id="fc1" class="fc" ></div>
 
 <script>
-
-	
 	$('#fc1').fullCalendar({
 		defaultDate: '2015-11-12',
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			selectable: true,
-			events:<?php echo  $json; ?>
-			
-			
-	});
-	
+			events:<?php echo  $json; ?>	
+	});	
 onload = function(){
 	func_circle_id(<?php echo $man; ?>,<?php echo $woman; ?>);
-}
-	
-	
-    
+} 
 </script>
 </p>
