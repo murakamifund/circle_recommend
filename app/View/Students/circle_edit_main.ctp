@@ -3,7 +3,7 @@ onload = function(){
 	func_circle_edit_main();	
 }
 </script>
-
+<!--ここからhtml -->
 <title>UT-Circle サークルページ</title>
 <h2> <?php echo $circle_name; ?>の情報を管理</h2>
 
@@ -75,7 +75,6 @@ $act=array(
 
  ?>
 
-<!--ここからhtml -->
 <div id="circle_top">
 	<div id="circle_name"><?php echo $circle_name; ?></div>
 	<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $circle_name; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
