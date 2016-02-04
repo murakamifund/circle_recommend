@@ -143,12 +143,12 @@
 
 
 		<div id="popup">
-			<h2>CIRCLE RECOMMENDERにログインしよう！</h2>
+			<h2>UT-Circleに<nobr>ログインしよう！</nobr></h2>
 			<p><a href="pre_student_tw_callback"><img src="../img/image3.png"></a></p>
 			<div id="popup_login_twitter" class="i-btn">
-				<a href="pre_student_tw_callback">Twitterでログイン</a>
+				<a href="pre_student_tw_callback"><nobr>Twitterで</nobr><nobr>ログイン</nobr></a>
 			</div> 
-			<div id="popup_to_circle" ><a href="./circle">サークルのかたはこちら</a></div>
+			<div id="popup_to_circle" ><a href="./circle">サークルの方はこちら</a></div>
 			<div><a id="popup_close" onclick="close_popup()">×</a></div>
 		</div> <!--/#popup-->
 
