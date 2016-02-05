@@ -33,7 +33,7 @@
 		<div id="fixing_box"><!--固定部分 -->
 			<header>
 				<div id="logo"><a href="home"><img src="../img/logo03.png"  alt=""></a></div>
-				<div id="logo_mini"><a href="home"><img src="../img/twitter_icon.png"  alt=""></a></div>
+				<div id="logo_mini"><a href="home"><img src="../img/twitter_icon2.png"  alt=""></a></div>
 <?php
 	if(isset($_SESSION['tw_user_id'])){	//ログインしている場合
 ?>
