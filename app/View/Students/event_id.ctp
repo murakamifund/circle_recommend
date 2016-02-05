@@ -34,7 +34,7 @@ onload = function(){
 }
 </script>
 
-<h2> <?php echo $circle_name; ?>の<?php echo $title; ?>の情報</h2>
+<h2> <?php echo $circle_name; ?> "<?php echo $title; ?>" の情報</h2>
 
 <div class ="stop-btm">
 	<table class = "type01">

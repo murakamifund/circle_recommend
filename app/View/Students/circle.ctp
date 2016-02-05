@@ -12,7 +12,7 @@ onload = function(){
 サークルのTwitterアカウントを登録することで、簡単にサークル登録を行えます。
 <p>
 	<div Align="center">
-		<div class="i-btn">
+		<div class="i-btn" id="i-btn_circle">
 			<a href="pre_circle_tw_callback">サークル登録・編集</a>
 		</div>
 	</div>
@@ -38,8 +38,9 @@ onload = function(){
 <h4>UT-CircleのTwitterアカウントをフォローしよう</h4>
 Twitter上の関係を分析し、UT-CircleのTwitterアカウントをフォローしてくださっている団体を優先するようになっています。
 
+<br><br><br>
 
-<h2 class="mb1em">パワポ</h2>
+<h2 class="mb1em">サービス紹介スライド</h2>
 <div id="powerpoint_wrapper">
 	<iframe style="border:none" src="http://files.photosnack.com/iframejs/embed.html?hash=pdzp2m8jo&t=1444874503" width="576" height="384" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>
 </div>

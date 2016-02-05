@@ -473,30 +473,44 @@ form input#search_submit1:hover,form input#search_submit2:hover{
 
 }
 
+.i-btn#i-btn_circle a{
+	width: 200px;
+}
+
 /* Students/student_editで使う */
 
  #student_menu .i-btn a{
  	background:#95c5ee;
  	text-align:center;
+	padding: 12px 5px;
 	float:left;
-	margin-top:-2em;
-	margin-bottom:1em;
+	margin-bottom:0.5em;
 	margin-right:2%;
 	width:23%;
  }
  #student_menu .i-btn a:hover,.team-msg-right a:hover,.error-btn a:hover{
  	background:#a5d5fe;
- 	text-align:center;
-	float:left;
-	margin-top:-2em;
-	margin-bottom:1em;
-	width:23%;
  }
  
- #student_edit_content1,#student_edit_content2{
-//	display:none;
- }
+#student_edit_content0 .list{
+	height: 120px;
+}
 
+#student_edit_content0 .list_right_top{
+	height: 30px;
+}
+
+ /* Students/student_resisterで使う */
+ 
+ .i-btn_250{
+	width: 250px;
+ }
+ 
+ /* Students/circle_edit_mainで使う */
+.i-btn_cem{
+	width:200px;
+	margin-left:auto;
+}
 
 /*ここからstudentページのタブレット、スマホ用*/
  
@@ -520,6 +534,7 @@ form input#search_submit1:hover,form input#search_submit2:hover{
 
 	.list .list_left{
 		position:absolute;
+		padding: 1px;
 	}
 
 	.list .list_twitter{
@@ -534,14 +549,21 @@ form input#search_submit1:hover,form input#search_submit2:hover{
 	.list .list_image img{
 		border-radius: 10px;
 	}
-
-	.list .list_left{
-		padding: 1px;
-	}
 	
 	.list .list_pr{
 		height:60px;
 	}
+	
+	#student_edit_content0 .list .list_right{
+		width:100%;
+		padding-left:80px;
+	}
+	
+	#student_edit_content0 .list .list_right_top{
+		margin-left:0;
+	}
+	
+	
 }
 
 
@@ -637,4 +659,20 @@ form input#search_submit1:hover,form input#search_submit2:hover{
 	#circle_name{
 		font-size:22px;
 	}
+}
+
+@media(max-width:420px){/*listのコンテンツを全体的に小さく*/
+	
+	#student_menu .i-btn a{
+		width:48%;
+		height: 40px;
+		padding-top:8px;
+		padding-bottom:10px;
+		margin-bottom: 0.25em;
+	}
+
+	#student_menu .i-btn :nth-child(3) a{
+		clear: left;
+	}
+
 }

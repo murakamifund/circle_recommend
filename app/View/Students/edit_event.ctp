@@ -5,7 +5,9 @@ onload = function(){
 </script>
 
 <h2> <?php echo $circle_name; ?>の<?php echo $title; ?>の予定を編集</h2>
-
+<font color ="#0000ff"><?php
+    echo $this->Session->flash();
+?></font>
 
 <h3>編集</h3>
 <div class ="stop-btm">
@@ -89,13 +91,13 @@ onload = function(){
 </tr>
 </tbody>
 </table><br>
+<div Align="right">
 <?php
 	echo $this->Form->error('end');
     echo $this->Form->end(__('更新'));
 ?>
-<font color ="#0000ff"><?php
-    echo $this->Session->flash();
-?></font>
+</div>
+
 
 </div>
 

@@ -10,9 +10,10 @@ onload = function(){
 </script>
 <title>UT-Circle サークルの予定登録</title>
 
-<h2> <?php echo $circle_name; ?>の情報を管理</h2>
+<h2> <?php echo $circle_name; ?> さんのマイページ</h2>
+<font color ="#ff0000"><?=$this->Session->flash();?></font>
 
-<h3>予定を登録</h3>
+<h3>イベントを新規作成</h3>
 <p>
 <div class ="stop-btm">
 <table class = "type01">
@@ -97,19 +98,18 @@ onload = function(){
 </tr>
 </tbody>
 </table><br>
+<div Align="right">
 <?php
 	echo $this->Form->error('end');
     echo $this->Form->end(__('登録'));
 ?>
-<font color ="#0000ff"><?php
-    echo $this->Session->flash();
-?></font>
+</div>
 
 </div>
 </p>
 
 
-<h3>予定を編集・削除</h3>
+<h3>イベントを編集・削除</h3>
 
 予定をクリックすると編集できます。
 
@@ -139,13 +139,7 @@ onload = function(){
 </script>
 </p>
 
-<h3>サークル編集トップに戻る</h3>
-<div class="stop-bottom">
-<div class="stop-btm">
-	<div Align="right">
-		<div class="i-btn">
-			<a href="circle_edit_main">戻る</a>
-		</div>
+	<div class="i-btn i-btn_cem">
+			<a href="circle_edit_main">トップページへ戻る</a>
 	</div>
-</div>
 </div>

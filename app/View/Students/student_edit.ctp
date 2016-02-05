@@ -11,9 +11,8 @@ onload = function(){
 
 <title>UT-Circle マイページ</title>
 
-<h2> <?php echo $user_name; ?>さんの情報を管理</h2>
-	<br><br>
-	<div id="student_menu">
+<h2> <?php echo $user_name; ?> さんのマイページ</h2>
+<div id="student_menu">
 	<div class="i-btn"><a href="#" onclick="student_edit_func(0);">ページ全体</a></div>
 	<div class="i-btn"><a href="#" onclick="student_edit_func(1);">カレンダー</a></div>
 	<div class="i-btn"><a href="#" onclick="student_edit_func(2);">お気に入り</a></div>
@@ -33,13 +32,6 @@ onload = function(){
 			</div><!--list_right_top end -->
 			<div class="list_right_middle">
 				<div class="list_pr"><?php echo $user_description; ?></div>
-				
-				<div class="list_tags">#東大</div>
-				<!--
-				<div class="list_tags">#<?php echo $datum['Circle']['activity']; ?></div>
-				<div class="list_tags">#<?php echo $datum['Circle']['place']; ?></div>
-				<div class="list_tags">#<?php echo $datum['Circle']['intercollege']; ?></div>
-				-->
 			</div>
 		</div>
 	</div>
@@ -93,8 +85,8 @@ onload = function(){
 			</div>
 			<div class="list_right_middle">
 				<div class="list_pr"><?php echo str_replace("\\n","",$datum['Circle']['pr']); ?></div>
-				<div class="list_tags">#(種目):<?php echo $datum['Circle']['activity']; ?></div>
-				<div class="list_tags">#(場所):<?php echo $datum['Circle']['place']; ?></div>
+				<div class="list_tags">#<?php echo $datum['Circle']['activity']; ?></div>
+				<div class="list_tags">#場所:<?php echo $datum['Circle']['place']; ?></div>
 				<div class="list_tags">#<?php echo $datum['Circle']['intercollege']; ?></div>
 			</div>
 			<div class="list_right_bottom">

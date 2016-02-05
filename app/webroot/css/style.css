@@ -36,16 +36,21 @@ form {
 	margin: 0px;
 }
 
+table tr{
+	background-color:#ffffff;
+}
+
 /*分割なしのテーブル*/
 table.type01 {
     border-collapse: collapse;
+	width:100%;
     text-align: left;
     line-height: 1.5;
     border-top: 1px solid #ccc;
     border-left: 3px solid #369;
 }
 table.type01 th {
-    width: 200px;
+    width: 30%;
 	min-width:110px;
     padding: 10px;
     font-weight: bold;
@@ -56,7 +61,7 @@ table.type01 th {
 
 }
 table.type01 td {
-    width: 450px;
+    width: 70%;
     padding: 10px;
     vertical-align: top;
     border-right: 1px solid #ccc;
@@ -64,6 +69,7 @@ table.type01 td {
 }
 /*2分割のテーブル*/
 table.type02 {
+	width:100%;
     border-collapse: collapse;
     text-align: left;
     line-height: 1.5;
@@ -71,7 +77,8 @@ table.type02 {
     border-left: 3px solid #369;
 }
 table.type02 th {
-    width: 150px;
+    width: 30%;
+	min-width:110px;
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
@@ -81,7 +88,7 @@ table.type02 th {
 
 }
 table.type02 td {
-    width: 225px;
+    width: 35%;
     padding: 10px;
     vertical-align: top;
     border-right: 1px solid #ccc;
@@ -220,6 +227,9 @@ header #student_bar_comment{
 	margin-top: 2px;
 	margin-left: 10px;
 	font-size: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 header .student_bar_btn{
@@ -830,13 +840,15 @@ input[type="reset"]:hover {
 }
 
 .i-btn a {
-  padding: 12px 2.1em;
-  font-size: 16px;
-  font-weight: 700;
-  border-radius: 0.3em;
-  background:#6495ed;
-  color:#fff;
-  border: 2px solid #fff;
+	display:block;
+	text-align:center;
+	padding: 12px 5px;
+	font-size: 16px;
+	font-weight: 700;
+	border-radius: 0.3em;
+	background:#6495ed;
+	color:#fff;
+	border: 2px solid #fff;
 }
 .i-btn a:hover,.team-msg-right a:hover,.error-btn a:hover{
 	background:#85b5ee;

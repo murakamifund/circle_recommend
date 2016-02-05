@@ -11,7 +11,7 @@ onload = function(){
 
 <title>UT-Circle サークル情報の編集</title>
 
-<h2> <?php echo $circle_name; ?>の情報を管理</h2>
+<h2> <?php echo $circle_name; ?> さんのマイページ</h2>
 <h3>情報を編集</h3>
 <p>
 <div class="stop-bottom">
@@ -22,21 +22,6 @@ onload = function(){
 		<?php echo $this->Form->create('Circle', array('type'=>'file', 'enctype'=>'multipart/form-data'));  ?>
 			<?php echo $this->Form->input('id', array('type' => 'hidden','value' => $id)); ?> 
 			
-		<!--
-		<tr>
-			<th scope="row">写真</th>
-			<td>
-			<?php if($circle_photo != ""): ?>
-				<figure><img src="../img/sample_photo2.jpg" width="280" height="210" alt="アップロード用" /></figure>
-				<br>
-				<?php echo $this->Form->file('Circle.photo', array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false, 'value'=>"../img/アップロード用.png",  'type'=>'file', 'multiple'));?>
-			<?php else: ?>
-				<?php echo $this->Form->file('Circle.photo', array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false, 'type'=>'file', 'multiple'));?>
-			<?php endif; ?>
-			<?php echo $this->Form->input('photo_dir', array('type' => 'hidden')); ?>
-			</td>
-		</tr>
-		-->
 		<tr>
 			 <th scope="row">サークル名</th>
 			<td><?php echo $this->Form->input('circle_name', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?>
@@ -44,7 +29,7 @@ onload = function(){
 			</td>
 		</tr>
 		<tr>
-			<th scope="row">キャッチフレーズ</th>
+			<th scope="row">キャッチ<nobr>フレーズ</nobr></th>
 			<td><?php echo $this->Form->input('phrase', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));?>
 			<font color="red"><?php echo $this->Form->error('phrase');?></font>
 			</td>
@@ -115,32 +100,32 @@ onload = function(){
 			<th scope="row">活動曜日</th>
 		<td><?php echo '月';
 			echo $this->Form->checkbox('day1',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '火';
+			echo '　火';
 			echo $this->Form->checkbox('day2',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '水';
+			echo '　水';
 			echo $this->Form->checkbox('day3',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '木';
+			echo '　木';
 			echo $this->Form->checkbox('day4',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '金';
+			echo '　金';
 			echo $this->Form->checkbox('day5',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '土';
+			echo '　土';
 			echo $this->Form->checkbox('day6',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '日';
-			echo $this->Form->checkbox('day7',array('lavel'=>false,'error'=>false,'div'=>false));?></td>
+			echo '　<nobr>日';
+			echo $this->Form->checkbox('day7',array('lavel'=>false,'error'=>false,'div'=>false))."<nobr>";?></td>
 		</tr>
 		</tbody>
 	</table>
 	<table class="type02">
 		<tbody>
 		<tr>
-			<th scope="row">主な活動場所</th>
+			<th scope="row">主な<nobr>活動場所</nobr></th>
 			<td><?php echo $this->Form->radio('place',
 				array(
 					'駒場'=>'駒場',
 					'本郷'=>'本郷',
 					'その他'=>'その他'
 				),
-				array('size'=>50, 'label'=>"キャンパス　", 'error'=>false, 'div'=>false,'legend' => false)
+				array('size'=>50, 'label'=>"キャンパス　",'error'=>false, 'div'=>false,'legend' => false)
 				);
 			?></td>
 			<td><?php echo $this->Form->input('placetext', array('size'=>100, 'label'=>"場所詳細", 'error'=>false, 'div'=>false));?>
@@ -150,17 +135,17 @@ onload = function(){
 	</tbody>
 	</table>
 	<table class="type02">
-	<tbody>
+		<tbody>
 		<tr>
 			<th scope="row">男女比</th>
 			
 			<!--<td>男性人数</td> -->
-			<td><?php echo $this->Form->input('man', array('size'=>25, 'label'=>"男性　", 'error'=>false, 'div'=>false)); ?>
+			<td><?php echo $this->Form->input('man', array('size'=>5, 'label'=>"男性", 'error'=>false, 'div'=>false))."名"; ?>
 			<font color="red"><?php echo $this->Form->error('man');?></font>
 			</td>
 			
 			<!-- <td>女性人数</td>-->
-			<td><?php echo $this->Form->input('woman', array('size'=>25, 'label'=>"女性　", 'error'=>false, 'div'=>false));?>
+			<td><?php echo $this->Form->input('woman', array('size'=>5, 'label'=>"女性", 'error'=>false, 'div'=>false))."名";?>
 			<font color="red"><?php echo $this->Form->error('woman');?></font>
 			</td>
 		</tr>
@@ -185,10 +170,10 @@ onload = function(){
 	<tbody>
 		<tr>
 			<th scope="row">活動費</th>
-			<td><?php echo $this->Form->input('cost_in', array('size'=>25, 'label'=>"入会費", 'error'=>false, 'div'=>false)); ?>
+			<td><?php echo $this->Form->input('cost_in', array('size'=>10, 'label'=>"入会費", 'error'=>false, 'div'=>false)); ?>
 			<font color="red"><?php echo $this->Form->error('cost_in');?></font>
 			</td>
-				<td><?php echo $this->Form->input('cost', array('size'=>25, 'label'=>"年間費", 'error'=>false, 'div'=>false)); ?>
+				<td><?php echo $this->Form->input('cost', array('size'=>10, 'label'=>"年間費", 'error'=>false, 'div'=>false)); ?>
 				<font color="red"><?php echo $this->Form->error('cost');?></font>
 				</td>
 		</tr>
