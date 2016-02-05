@@ -6,8 +6,6 @@ onload = function(){
 
 <h2 class="mb1em">サークルを登録しよう</h2>
 
-<br>
-<h3 class="mb1em">登録フォームに入力しよう</h3>
 	<div class ="stop-btm">
 	<table class = "type01">
 	<tbody>
@@ -20,7 +18,7 @@ onload = function(){
 			</td>
 		</tr>
 		<tr>
-			<th scope="row">キャッチフレーズ</th>
+			<th scope="row">キャッチ<nobr>フレーズ</nobr></th>
 			<td><?php echo $this->Form->input('phrase', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));?>
 			<font color="red"><?php echo $this->Form->error('phrase');?></font>
 			</td>
@@ -86,18 +84,18 @@ onload = function(){
 			<th scope="row">活動曜日</th>
 		<td><?php echo '月';
 			echo $this->Form->checkbox('day1',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '火';
+			echo '　火';
 			echo $this->Form->checkbox('day2',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '水';
+			echo '　水';
 			echo $this->Form->checkbox('day3',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '木';
+			echo '　木';
 			echo $this->Form->checkbox('day4',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '金';
+			echo '　金';
 			echo $this->Form->checkbox('day5',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '土';
+			echo '　土';
 			echo $this->Form->checkbox('day6',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '日';
-			echo $this->Form->checkbox('day7',array('lavel'=>false,'error'=>false,'div'=>false));?></td>
+			echo '　<nobr>日';
+			echo $this->Form->checkbox('day7',array('lavel'=>false,'error'=>false,'div'=>false))."<nobr>";?></td>
 		</tr>
 	</tbody>
 	</table>
@@ -122,10 +120,10 @@ onload = function(){
 			<th scope="row">男女比</th>
 			
 			<!--<td>男性人数</td> -->
-			<td><?php echo $this->Form->input('man', array('size'=>50, 'label'=>"男性　", 'error'=>false, 'div'=>false)); ?></td>
+			<td><?php echo $this->Form->input('man', array('size'=>5, 'label'=>"男性　", 'error'=>false, 'div'=>false))."人"; ?></td>
 			
 			<!-- <td>女性人数</td>-->
-			<td><?php echo $this->Form->input('woman', array('size'=>50, 'label'=>"女性　", 'error'=>false, 'div'=>false));?></td>
+			<td><?php echo $this->Form->input('woman', array('size'=>5, 'label'=>"女性　", 'error'=>false, 'div'=>false))."人";?></td>
 		</tr>
 	</tbody>
 	</table>
@@ -148,8 +146,8 @@ onload = function(){
 	<tbody>
 		<tr>
 			<th scope="row">活動費</th>
-			<td><?php echo $this->Form->input('cost_in', array('size'=>50, 'label'=>"入会費", 'error'=>false, 'div'=>false)); ?></td>
-				<td><?php echo $this->Form->input('cost', array('size'=>50, 'label'=>"年間費", 'error'=>false, 'div'=>false)); ?></td>
+			<td><?php echo $this->Form->input('cost_in', array('size'=>10, 'label'=>"入会費", 'error'=>false, 'div'=>false)); ?></td>
+				<td><?php echo $this->Form->input('cost', array('size'=>10, 'label'=>"年間費", 'error'=>false, 'div'=>false)); ?></td>
 		</tr>
 		</tbody>
 	</table>
@@ -157,7 +155,7 @@ onload = function(){
 		<tbody>
 		<tr>
 			<th scope="row">飲み会</th>
-				<td><?php echo $this->Form->radio('nomi',
+				<td>←少ない <?php echo $this->Form->radio('nomi',
 				array(
 					'1'=>'1',
 					'2'=>'2',
@@ -166,13 +164,12 @@ onload = function(){
 					'5'=>'5',
 				),
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
-				);?>
-				<br>←少ない　　　　　　　　多い→
+				);?> 多い→
 			</td>
 		</tr>
 		<tr>
 			<th scope="row">雰囲気</th>
-			<td><?php echo $this->Form->radio('mazime',
+			<td>←楽しい <?php echo $this->Form->radio('mazime',
 				array(
 					'1'=>'1',
 					'2'=>'2',
@@ -181,8 +178,7 @@ onload = function(){
 					'5'=>'5',
 				),
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
-				);?>
-				<br>←楽しい　　　　　　　　ガチ→
+				);?> ガチ→
 				
 				
 				

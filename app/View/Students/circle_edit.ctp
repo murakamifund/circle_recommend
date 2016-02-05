@@ -140,12 +140,12 @@ onload = function(){
 			<th scope="row">男女比</th>
 			
 			<!--<td>男性人数</td> -->
-			<td><?php echo $this->Form->input('man', array('size'=>5, 'label'=>"男性", 'error'=>false, 'div'=>false))."名"; ?>
+			<td><?php echo $this->Form->input('man', array('size'=>5, 'label'=>"男性", 'error'=>false, 'div'=>false))."人"; ?>
 			<font color="red"><?php echo $this->Form->error('man');?></font>
 			</td>
 			
 			<!-- <td>女性人数</td>-->
-			<td><?php echo $this->Form->input('woman', array('size'=>5, 'label'=>"女性", 'error'=>false, 'div'=>false))."名";?>
+			<td><?php echo $this->Form->input('woman', array('size'=>5, 'label'=>"女性", 'error'=>false, 'div'=>false))."人";?>
 			<font color="red"><?php echo $this->Form->error('woman');?></font>
 			</td>
 		</tr>
@@ -223,8 +223,7 @@ onload = function(){
 
 
 
-	<div Align="right">
-		
+	<div Align="right">	
 			<?php
 				echo $this->Form->submit('更新', array('name' => 'submit'));
 				echo $this->Form->end(); 

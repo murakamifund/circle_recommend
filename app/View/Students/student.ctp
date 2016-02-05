@@ -182,7 +182,9 @@ onload = function(){
 			</div>
 			<div class="list_right_bottom">
 <?php
-			if($top_datum['Circle']['favored']==true){
+			if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == true){
+				;
+			}else if($top_datum['Circle']['favored']==true){
 ?>
 				<form action="unfav/<?php echo $top_datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
@@ -273,23 +275,25 @@ onload = function(){
 				<div class="list_name"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>"><?php echo $datum['Circle']['circle_name']; ?></a></div>
 			</div>
 			<div class="list_right_middle">
-				<div class="list_pr"><?php echo str_replace("\\\\\\\\\\\\\\\\n","",$datum['Circle']['pr']); ?></div>
+				<div class="list_pr"><?php echo str_replace("\\n","",$datum['Circle']['pr']); ?></div>
 				<div class="list_tags">#<?php echo $datum['Circle']['activity']; ?></div>
 				<div class="list_tags">#場所:<?php echo $datum['Circle']['place']; ?></div>
 				<div class="list_tags">#<?php echo $datum['Circle']['intercollege']; ?></div>
 			</div>
 			<div class="list_right_bottom">
 <?php
-			if($datum['Circle']['favored']==true){
+			if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == true){
+				;
+			}else if($datum['Circle']['favored']==true){
 ?>
-				<form action="../unfav/<?php echo $datum['Circle']['id'];?>" method="post">
+				<form action="unfav/<?php echo $datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri.png" onmouseover="this.src='../img/okiniiri_1.png'" onmouseout="this.src='../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
 			}else if(isset($_SESSION['tw_user_id'])){
 ?>
-				<form action="../fav/<?php echo $datum['Circle']['id'];?>" method="post">
+				<form action="fav/<?php echo $datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>

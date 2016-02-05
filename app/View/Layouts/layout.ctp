@@ -104,7 +104,7 @@
 ?>
 						<article class="thumb">
 							<a href="../Students/circle_id/<?=$suggest_circle[$i]['Circle']['id']?>" class="image">
-								<img src="http://www.paper-glasses.com/api/twipi/<?=$suggest_circle[$i]['Circle']['tw_screen_name']?>/original" width="100%" alt="">
+								<img src="http://www.paper-glasses.com/api/twipi/<?=$suggest_circle[$i]['Circle']['tw_screen_name']?>/original" onerror="this.src='../img/egg.png'" width="100%" alt="">
 							</a>
 							<div class="thumb_msg" onclick="location(../Students/circle_id/<?=$suggest_circle[$i]['Circle']['id']?>)">
 								<a href="../Students/circle_id/<?=$suggest_circle[$i]['Circle']['id']?>"><?=$suggest_circle[$i]['Circle']['circle_name']?></a>

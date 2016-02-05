@@ -6,7 +6,6 @@ function func_home(){
 function func_about(){
 
 	default_func();
-	document.getElementById('menubar_pc').childNodes[1].childNodes[3].id = "current";
 	
 }
 
@@ -65,12 +64,12 @@ function func_circle_edit_cal(){
 
 }
 
-function func_circle_id(man,woman){
+function func_circle_id(x,y){
+	menu_backtwice();
 	var sum = man + woman ; 
 	var maxwidth= 250;
 	document.getElementById('man_ratio').style.width = man*maxwidth/sum+"px";
 	document.getElementById('woman_ratio').style.width = woman*maxwidth/sum+"px";
-	menu_backtwice();
 }
 
 function func_event_id(){
