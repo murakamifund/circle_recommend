@@ -130,7 +130,7 @@ function menu_backtwice(){
 	}
 	document.getElementById('logo').childNodes[0].childNodes[0].src = "../../img/logo03.png";
 	document.getElementById('logo').childNodes[0].href = "../home";
-	document.getElementById('logo_mini').childNodes[0].childNodes[0].src = "../../img/twitter_icon.png";
+	document.getElementById('logo_mini').childNodes[0].childNodes[0].src = "../../img/twitter_icon2.png";
 	document.getElementById('logo_mini').childNodes[0].href = "../home";
 	document.getElementById('popup').childNodes[3].childNodes[0].childNodes[0].src = "../../img/image3.png";
 	document.getElementById('popup').childNodes[3].childNodes[0].href = "../pre_student_tw_callback";
