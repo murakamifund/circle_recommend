@@ -559,7 +559,7 @@ class StudentsController extends AppController {
 					$this->Session->setFlash(__('お気に入り登録しました'));
 				}
 				if($_POST['address']=="student_edit"){
-					$this->redirect(array('action'=>'student_edit/'));
+					//$this->redirect(array('action'=>'student_edit/'));
 				}else if($_POST['address']=="student" || $_POST['address']=="circle_id"){
 					$this->redirect(array('action'=>'circle_id/'.$id));
 				}else{
@@ -613,7 +613,7 @@ class StudentsController extends AppController {
 				echo "<script>alert($tw_user_id);</script>"	;
 				if($_POST['address']=="student_edit"){
 					
-					//$this->redirect(array('action'=>'student_edit/'));
+					$this->redirect(array('action'=>'student_edit/'));
 				}else if($_POST['address']=="student" || $_POST['address']=="circle_id"){
 					$this->redirect(array('action'=>'circle_id/'.$id));
 				}else{
