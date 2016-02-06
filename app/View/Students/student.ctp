@@ -182,25 +182,27 @@ onload = function(){
 			</div>
 			<div class="list_right_bottom">
 <?php
-			if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == true){
+			if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == true){	//サークルでのログイン状態
 				;
-			}else if($top_datum['Circle']['favored']==true){
+			}else if($top_datum['Circle']['favored']==true){		//すでにお気に入りされていたら
 ?>
 				<form action="unfav/<?php echo $top_datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri.png" onmouseover="this.src='../img/okiniiri_1.png'" onmouseout="this.src='../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
-			}else if(isset($_SESSION['tw_user_id'])){
+			}else if(isset($_SESSION['tw_user_id'])){		//お気に入りされていなくて生徒でのログインであったら
 ?>
 				<form action="fav/<?php echo $top_datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
-			}else{
+			}else{		//ログインしていなかったら
+			$_SESSION['fav_id'] = $top_datum['Circle']['id'];		//お気に入りしたサークルのidをセッションに保存しておく
 ?>
 				<img src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'"  onclick="display_popup()" width="150" height="100" alt="おすすめ" class="not_login icon">
+				<!--<input type="hidden" name="address" value="student_edit">--> 	<!--ここで一旦favする気があったことを判別するためにsessionに保存 -->
 <?php
 			}
 ?>

@@ -42,6 +42,7 @@ onload = function(){
 ));
 			//echo $this->Form->error('day');
 		?>
+		<font color="red"><?php echo $this->Form->error('day');?></font>
 		</td>
 </tr>
 <tr>
