@@ -878,7 +878,7 @@ class StudentsController extends AppController {
 			$this->redirect(array('action'=>'student_resister'));
 			$this->Session->setFlash(__('Twitterでログインしてください'));
 		}
-	}//circle_edit_mainの終わり
+	}//circle_edit_calの終わり
 	
 	public function circle_edit(){
 		$this->modelClass = null;
@@ -1033,6 +1033,7 @@ class StudentsController extends AppController {
     if ($this->request->is('post') || $this->request->is('put')) {
       $this->data = Sanitize::clean($this->data, array('encode' => false));
       $this->Event->delete($this->request->data('Event.id'));
+	  $this->Session->setFlash(__('予定を削除しました。'));
 	  $this->redirect(array('action' => 'circle_edit_cal'));
     } else {
       $this->request->data = 
