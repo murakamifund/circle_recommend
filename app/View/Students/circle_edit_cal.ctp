@@ -34,6 +34,7 @@ onload = function(){
 </tr>
 <tr>
 	<th scope="row">開始日時</th>
+	
 		<td><?php
 			echo $this->Form->input('day', array(
     'type' => 'datetime',

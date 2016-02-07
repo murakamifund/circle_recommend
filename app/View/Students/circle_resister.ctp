@@ -12,25 +12,31 @@ onload = function(){
 		<?php echo $this->Form->create('Circle'); ?>
 		<?php echo $this->Form->input('id', array('type' => 'hidden','value' => $circleid)); ?>
 		<tr>
-			<th scope="row">サークル名</th>
+			<th scope="row">サークル名
+				<br><font color="red">(25字以内)</font>
+			</th>
 			<td><?php echo $this->Form->input('circle_name', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));?>
 			<font color="red"><?php echo $this->Form->error('circle_name');?></font>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row">キャッチ<nobr>フレーズ</nobr></th>
+			<th scope="row">キャッチ<nobr>フレーズ</nobr><br>
+				<font color="red">(必須・<nobr>25字以内)</nobr></font>
+			</th>
 			<td><?php echo $this->Form->input('phrase', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));?>
-			<font color="red"><?php echo $this->Form->error('phrase');?></font>
+				<font color="red"><?php echo $this->Form->error('phrase');?></font>
 			</td>
 		</tr>
 		<tr>
 			<th scope="row">URL</th>
 			<td><?php echo $this->Form->input('url', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?>
-			<font color="red"><?php echo $this->Form->error('url');?></font>
+				<font color="red"><?php echo $this->Form->error('url');?></font>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row">活動内容</th>
+			<th scope="row">活動内容<br>
+				<font color="red">(必須)</font>
+			</th>
 			<td><?php echo $this->Form->select('activity',
 				array(
 					"テニス"=>'テニス',
@@ -75,7 +81,9 @@ onload = function(){
 				);?></td>
 		</tr>
 		<tr>
-		 <th scope="row">PR文</th>
+		 <th scope="row">PR文<br>
+			<font color="red">(必須・<nobr>200字以内)</nobr></font>
+		 </th>
 			<td><?php echo $this->Form->input('pr', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?>
 				<font color="red"><?php echo $this->Form->error('pr');?></font>
 			</td>
@@ -102,7 +110,9 @@ onload = function(){
 	<table class="type02">
 		<tbody>
 		<tr>
-			<th scope="row">主な活動場所</th>
+			<th scope="row">主な活動場所<br>
+				<font color="red">(必須)</font>
+			</th>
 			<td><?php echo $this->Form->radio('place',
 				array(
 					'駒場'=>'駒場',
@@ -130,7 +140,8 @@ onload = function(){
 	<table class="type01">
 		<tbody>
 		<tr>
-			<th scope="row">構成</th>
+			<th scope="row">構成<br>
+				<font color="red">(必須)</font></th>
 			<td><?php echo $this->Form->radio('intercollege',
 				array(
 					'学内'=>'学内',
