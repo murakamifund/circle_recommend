@@ -10,6 +10,11 @@ public $validate = array(
 		  'required'=> true,
 		  'message'=>'タイトルを入力してください',
         ),
+		'day' => array(
+          'rule'=> 'datetime',
+		  'required'=> true,
+		  'message'=>'日時を正しく入力してください',
+        ),
 		'place' => array(
           'rule' => array('maxLength',30),
 		  'allowEmpty' => true,
@@ -25,9 +30,9 @@ public $validate = array(
 		  'required'=>true,
 		  'message'=>'必須項目です。',
         ),
-		'pr' => array(
+		'content' => array(
           'rule' => array('maxLength', 200),
-		  //'required'=>update,
+		  'allowEmpty' => true,
 		  'message'=>'200文字以内で記述してください',
         )
 		

@@ -14,6 +14,7 @@ onload = function(){
 <font color ="#ff0000"><?=$this->Session->flash();?></font>
 
 <h3>イベントを新規作成</h3>
+<font color ="#0000ff"><?php echo $this->Session->flash(); ?></font> <!--イベントを削除した際のフラッシュ-->
 <p>
 <div class ="stop-btm">
 <table class = "type01">
@@ -50,6 +51,7 @@ onload = function(){
 ));
 			//echo $this->Form->error('day');
 		?>
+		<font color="red"><?php echo $this->Form->error('day');?></font>
 		</td>
 </tr>
 <tr>
