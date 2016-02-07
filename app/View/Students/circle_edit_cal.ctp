@@ -20,7 +20,7 @@ onload = function(){
 <table class = "type01">
 <tbody>
 <tr>
-	<th scope="row">タイトル</th>
+	<th scope="row">タイトル<br><font color="red">(必須・<nobr>25字以内)</nobr></font></th>
 
 	<td><?php
 		echo $this->Form->create('Event');
@@ -34,7 +34,8 @@ onload = function(){
 	</td>
 </tr>
 <tr>
-	<th scope="row">開始日時</th>
+	<th scope="row">開始日時<br><font color="red">(必須)</font></th>
+	
 		<td><?php
 			echo $this->Form->input('day', array(
     'type' => 'datetime',
@@ -66,7 +67,7 @@ onload = function(){
 	</td>
 </tr>
 <tr>
-	<th scope="row">新歓かどうか</th>
+	<th scope="row">新歓かどうか<br><font color="red">(必須)</font></th>
 	<td><?php echo $this->Form->radio('for_newcomer',
 				array(
 					'1'=>'新歓　　　　',
