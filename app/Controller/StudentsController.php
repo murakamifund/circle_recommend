@@ -835,7 +835,7 @@ class StudentsController extends AppController {
 			//Eventのテーブルから、circle_idが一致するものを検索してデータを配列に入れる
 	
 			if ($this->request->is('post') || $this->request->is('put')) {
-				$this->data = Sanitize::clean($this->data, array('encode' => false));
+				$this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
 				//debug($this->request->data);
 				
 					if ($this->Event->save($this->request->data)) {
@@ -894,7 +894,7 @@ class StudentsController extends AppController {
 			$this->set("id",$id);//view側にデータをセット
 
 			if ($this->request->is('post') || $this->request->is('put')) {
-				$this->data = Sanitize::clean($this->data, array('encode' => false/*,'remove_html' => true*/));
+				$this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
 				$circle_value = 0;
 				$circle_value1 = 0;//練習したい
 				$circle_value2 = 0;//楽な方がいい
@@ -980,7 +980,7 @@ class StudentsController extends AppController {
     $this->Circle->id = $id;
 	$this->Session->destroy();
     if ($this->request->is('post') || $this->request->is('put')) {
-      $this->data = Sanitize::clean($this->data, array('encode' => false));
+      $this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
       $this->Circle->delete($this->request->data('Circle.id'));
 	  $this->Session->destroy();
       $this->redirect(array('action'=>'circle'));
@@ -1004,7 +1004,7 @@ class StudentsController extends AppController {
 	$this->set("title",$title);//view側にデータをセット
 	
     if ($this->request->is('post') || $this->request->is('put')) {
-            $this->data = Sanitize::clean($this->data, array('encode' => false));
+            $this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
 			//debug($this->request->data);
 			
             if ($this->Event->save($this->request->data)) {
@@ -1031,7 +1031,7 @@ class StudentsController extends AppController {
     $this->Event->id = $id;
 	$this->set("event_id",$id);//view側にデータをセット
     if ($this->request->is('post') || $this->request->is('put')) {
-      $this->data = Sanitize::clean($this->data, array('encode' => false));
+      $this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
       $this->Event->delete($this->request->data('Event.id'));
 	  $this->Session->setFlash(__('予定を削除しました。'));
 	  $this->redirect(array('action' => 'circle_edit_cal'));
@@ -1291,7 +1291,7 @@ class StudentsController extends AppController {
 	$p=array("駒場","本郷","");
 	$in=array("学内","インカレ","");
 	if ($this -> request -> data){
-		$this->data = Sanitize::clean($this->data, array('encode' => false));
+		$this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
 		if($this -> data["keyword"] != ""){
 			$opt = array(
 				array(
