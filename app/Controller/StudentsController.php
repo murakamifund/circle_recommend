@@ -75,7 +75,8 @@ class StudentsController extends AppController {
 					$stmt = $dbh->prepare($sql);
 					$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
 					$local_user = $stmt->fetch(); //結果を返す 
-					if(is_null($me->profile_banner_url)){
+					if(isset($me->profile_banner_url)){
+					}else{
 						$me->profile_banner_url ="";
 					}	
 					if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
@@ -237,7 +238,8 @@ class StudentsController extends AppController {
 				$stmt = $dbh->prepare($sql);
 				$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
 				$local_user = $stmt->fetch(); //結果を返す 
-				if(is_null($me->profile_banner_url)){
+				if(isset($me->profile_banner_url)){
+				}else{
 					$me->profile_banner_url ="";
 				}
 				if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
