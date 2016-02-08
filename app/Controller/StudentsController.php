@@ -75,6 +75,9 @@ class StudentsController extends AppController {
 					$stmt = $dbh->prepare($sql);
 					$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
 					$local_user = $stmt->fetch(); //結果を返す 
+					if(is_null($me->profile_banner_url)){
+						$me->profile_banner_url ="";
+					}	
 					if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
 						$sql = "insert into students 
 						(tw_user_id,tw_name,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_description,tw_access_token) 
@@ -234,7 +237,9 @@ class StudentsController extends AppController {
 				$stmt = $dbh->prepare($sql);
 				$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
 				$local_user = $stmt->fetch(); //結果を返す 
-			
+				if(is_null($me->profile_banner_url)){
+					$me->profile_banner_url ="";
+				}
 				if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
 					$sql = "insert into circles 
 					(tw_user_id,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_access_token) 
@@ -681,7 +686,7 @@ class StudentsController extends AppController {
 				$this->set('circleid', $circleid);
 				// post時の処理
 				if ($this->request->is('post')) {
-					$this->data = Sanitize::clean($this->data, array('encode' => false));
+					$this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
 					$this->Circle->create();
 					if ($this->Circle->save($this->request->data)) {	//ここにfalseと入れればバリデーションを無視できる
 						$this->redirect(array('action' => 'circle_edit_main'));
