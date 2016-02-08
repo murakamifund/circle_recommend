@@ -395,6 +395,12 @@ class StudentsController extends AppController {
 			'limit' => 30,
 			'fields' => array('Circle.circle_name','Circle.tw_profile_image_url','Circle.id','Circle.tw_screen_name')
 		));
+		$suggest_circle[0] = $this->Circle->find('first',array(
+			'conditions' => array(
+				'Circle.circle_name' => 'UT-Circle'
+			),
+			'fields' => array('Circle.circle_name','Circle.tw_profile_image_url','Circle.id','Circle.tw_screen_name')
+		));
 		$this->set("suggest_circle",$suggest_circle);//view側にデータをセット
 	}
 	
