@@ -1,3 +1,5 @@
+<?php $this->set('title_for_layout', "UT-Circle 予定を編集"); ?>
+<?php $this->Html->meta('description', "UT-Circleで、サークル・部活の予定を編集しよう。", array('inline' => false)) ?>
 <script>
 onload = function(){
 	func_edit_event();	

@@ -1,3 +1,5 @@
+<?php $this->set('title_for_layout', 'UT-Circle マイページ'); ?>
+<?php $this->Html->meta('description', 'UT-Circleの個人ページ。東大の部活動、サークル活動を紹介！カレンダー機能で自分だけの新歓スケジュールを作成しよう。その他にもバイト、インターン情報など大学生活に役立つ情報を提供。', array('inline' => false)) ?>
 <?php
 	echo $this->Html->css(array('fullcalendar', 'bootstrap','headshrinker'));
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
@@ -8,8 +10,6 @@ onload = function(){
 	func_student_edit();
 }
 </script>
-
-<title>UT-Circle マイページ</title>
 
 <h2> <?php echo $user_name; ?> さんのマイページ</h2>
 <div id="student_menu">

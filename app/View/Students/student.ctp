@@ -1,11 +1,11 @@
+<?php $this->set('title_for_layout', 'UT-Circle サークル検索'); ?>
+<?php $this->Html->meta('description', 'UT-Circleで自分の好みに合わせて東大の部活、サークルを検索。お気に入り登録やツイッターアカウントのフォローにより最新情報を入手!さらに予定もカレンダーで一括管理できます。', array('inline' => false)) ?>
 <script>
 onload = function(){
 	func_student();	
 }
 </script>
 
-<meta name="description" content="自分の好みに合わせてサークルを検索。気に入ったサークルはお気に入り登録やツイッターアカウントのフォローにより最新情報を入手！">
-<title>UT-Circle サークル検索</title>
 <?php
 	echo $this->Html->css(array('fullcalendar', 'bootstrap','headshrinker'));
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
