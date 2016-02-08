@@ -1,9 +1,10 @@
+<?php $this->set('title_for_layout', 'UT-Circle ログインページ'); ?>
+<?php $this->Html->meta('description', 'UT-Circleは東大の部活動、サークル活動を紹介！カレンダー機能で自分だけの新歓スケジュールを作成しよう。その他にもバイト、インターン情報など大学生活に役立つ情報を提供。', array('inline' => false)) ?>
 <script>
 onload = function(){
 	func_student_resister();
 }
 </script>
-<title>UT-Circle ログインページ</title>
 
 <h2 class="mb1em">ログインページ</h2>
 <font color ="#ff0000"><?php echo $this->Session->flash(); ?></font>
