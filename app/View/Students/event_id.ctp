@@ -1,5 +1,5 @@
-<meta name="description" content="<?php echo $circle_name ?>の<?php $title ?>について詳細な情報をお届け！気になるイベントがあったら行ってみよう！">
-<title>UT-Circle <?php echo $circle_name ?>:<?php echo $title ?>の詳細</title>
+<?php $this->set('title_for_layout', "UT-Circle ${circle_name}:${title}の詳細"); ?>
+<?php $this->Html->meta('description', "UT-Circleは、${circle_name}の${title}について詳細な情報をお届け！気になるイベントがあったら行ってみよう！", array('inline' => false)) ?>
 
 <?php 
 	$for_newcomer_array = array('新歓','新歓でない');
@@ -34,7 +34,7 @@ onload = function(){
 }
 </script>
 
-<h2> <?php echo $circle_name; ?>の<?php echo $title; ?>の情報</h2>
+<h2> <?php echo $circle_name; ?> "<?php echo $title; ?>" の情報</h2>
 
 <div class ="stop-btm">
 	<table class = "type01">

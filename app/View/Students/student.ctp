@@ -1,11 +1,11 @@
+<?php $this->set('title_for_layout', 'UT-Circle サークル検索'); ?>
+<?php $this->Html->meta('description', 'UT-Circleで自分の好みに合わせて東大の部活、サークルを検索。お気に入り登録やツイッターアカウントのフォローにより最新情報を入手!さらに予定もカレンダーで一括管理できます。', array('inline' => false)) ?>
 <script>
 onload = function(){
 	func_student();	
 }
 </script>
 
-<meta name="description" content="自分の好みに合わせてサークルを検索。気に入ったサークルはお気に入り登録やツイッターアカウントのフォローにより最新情報を入手！">
-<title>UT-Circle サークル検索</title>
 <?php
 	echo $this->Html->css(array('fullcalendar', 'bootstrap','headshrinker'));
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
@@ -182,23 +182,27 @@ onload = function(){
 			</div>
 			<div class="list_right_bottom">
 <?php
-			if($top_datum['Circle']['favored']==true){
+			if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == true){	//サークルでのログイン状態
+				;
+			}else if($top_datum['Circle']['favored']==true){		//すでにお気に入りされていたら
 ?>
 				<form action="unfav/<?php echo $top_datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri.png" onmouseover="this.src='../img/okiniiri_1.png'" onmouseout="this.src='../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
-			}else if(isset($_SESSION['tw_user_id'])){
+			}else if(isset($_SESSION['tw_user_id'])){		//お気に入りされていなくて生徒でのログインであったら
 ?>
 				<form action="fav/<?php echo $top_datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
-			}else{
+			}else{		//ログインしていなかったら
+			$_SESSION['fav_id'] = $top_datum['Circle']['id'];		//お気に入りしたサークルのidをセッションに保存しておく
 ?>
 				<img src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'"  onclick="display_popup()" width="150" height="100" alt="おすすめ" class="not_login icon">
+				<!--<input type="hidden" name="address" value="student_edit">--> 	<!--ここで一旦favする気があったことを判別するためにsessionに保存 -->
 <?php
 			}
 ?>
@@ -273,23 +277,25 @@ onload = function(){
 				<div class="list_name"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>"><?php echo $datum['Circle']['circle_name']; ?></a></div>
 			</div>
 			<div class="list_right_middle">
-				<div class="list_pr"><?php echo str_replace("\\\\\\\\\\\\\\\\n","",$datum['Circle']['pr']); ?></div>
+				<div class="list_pr"><?php echo str_replace("\\n","",$datum['Circle']['pr']); ?></div>
 				<div class="list_tags">#<?php echo $datum['Circle']['activity']; ?></div>
 				<div class="list_tags">#場所:<?php echo $datum['Circle']['place']; ?></div>
 				<div class="list_tags">#<?php echo $datum['Circle']['intercollege']; ?></div>
 			</div>
 			<div class="list_right_bottom">
 <?php
-			if($datum['Circle']['favored']==true){
+			if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == true){
+				;
+			}else if($datum['Circle']['favored']==true){
 ?>
-				<form action="../unfav/<?php echo $datum['Circle']['id'];?>" method="post">
+				<form action="unfav/<?php echo $datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri.png" onmouseover="this.src='../img/okiniiri_1.png'" onmouseout="this.src='../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
 			}else if(isset($_SESSION['tw_user_id'])){
 ?>
-				<form action="../fav/<?php echo $datum['Circle']['id'];?>" method="post">
+				<form action="fav/<?php echo $datum['Circle']['id'];?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>

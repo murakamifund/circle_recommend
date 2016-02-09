@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="copyright" content="Template Party">
-<meta name="description" content="東京大学の部活動、サークル活動を紹介する情報サイト。その他東大生の大学生活に役に立つバイト情報やインターン情報を提供。">
+<title><?= $title_for_layout ?></title>
+<!--<meta name="description" content="東京大学の部活動、サークル活動を紹介する情報サイト。その他東大生の大学生活に役に立つバイト情報やインターン情報を提供。">--->
+<?= $this->fetch('meta') ?>
 <meta name="keywords" content="東大,部活,サークル,バイト,インターン,大学">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
@@ -23,7 +25,17 @@
  
 
 <script type="text/javascript" src="js/openclose.js"></script>
+<!--google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-73402416-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </head>
 
 <body>
@@ -33,7 +45,7 @@
 		<div id="fixing_box"><!--固定部分 -->
 			<header>
 				<div id="logo"><a href="home"><img src="../img/logo03.png"  alt=""></a></div>
-				<div id="logo_mini"><a href="home"><img src="../img/twitter_icon.png"  alt=""></a></div>
+				<div id="logo_mini"><a href="home"><img src="../img/twitter_icon2.png"  alt=""></a></div>
 <?php
 	if(isset($_SESSION['tw_user_id'])){	//ログインしている場合
 ?>
@@ -59,7 +71,7 @@
 <?php
 	}else{	//ログインしていない場合
 ?>
-				<div id="header_login" onclick="display_popup()">ログインはこちら</div>
+				<div id="header_login" onclick="display_popup()">Twitterでログイン</div>
 <?php
 	}
 ?>
@@ -67,7 +79,7 @@
 
 			<nav class="menubar" id="menubar_pc">
 				<ul>
-					<li id="current"><a class="menu_pc" href="../Students/home">HOME</a></li>
+					<li><a class="menu_pc" href="../Students/home">HOME</a></li>
 					<li><a class="menu_pc" href="../Students/student">学生の方</a></li>
 					<li><a class="menu_pc" href="../Students/circle">サークルの方</a></li>
 				</ul>
@@ -94,7 +106,7 @@
 ?>
 						<article class="thumb">
 							<a href="../Students/circle_id/<?=$suggest_circle[$i]['Circle']['id']?>" class="image">
-								<img src="http://www.paper-glasses.com/api/twipi/<?=$suggest_circle[$i]['Circle']['tw_screen_name']?>/original" width="100%" alt="">
+								<img src="http://www.paper-glasses.com/api/twipi/<?=$suggest_circle[$i]['Circle']['tw_screen_name']?>/original" onerror="this.src='../img/egg.png'" width="100%" alt="">
 							</a>
 							<div class="thumb_msg" onclick="location(../Students/circle_id/<?=$suggest_circle[$i]['Circle']['id']?>)">
 								<a href="../Students/circle_id/<?=$suggest_circle[$i]['Circle']['id']?>"><?=$suggest_circle[$i]['Circle']['circle_name']?></a>
@@ -137,7 +149,7 @@
 		</div><!--/contents-->
 
 		<footer>
-			<small>Copyright&copy; 2016 <a href="home">UT-Circle</a>　<a href="about">利用規約</a>　連絡先: utcircle.psi@gmail.com</small>
+			<small>Copyright&copy; 2016 <a href="home">UT-Circle</a>　<a href="about">利用規約</a><br>連絡先: utcircle.psi@gmail.com</small>
 			<span class="pr"><a href="http://template-party.com/" target="_blank">Web Design:Template-Party</a></span>
 		</footer>
 

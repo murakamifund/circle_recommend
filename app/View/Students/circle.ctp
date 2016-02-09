@@ -1,19 +1,19 @@
+<?php $this->set('title_for_layout', "UT-Circle サークル登録・編集"); ?>
+<?php $this->Html->meta('description', "UT-Circleで、東大の部活、サークルを登録しよう。サークルの登録はこちらから。登録により興味を持った新入生とツイッターを通して関わることができます。", array('inline' => false)) ?>
 <script>
 onload = function(){
 	func_circle();	
 }
 </script>
 
-<meta name="description" content="サークルの登録はこちらから。登録により興味を持った新入生とツイッターを通して関わることができます。">
-<title>UT-Circle サークル登録</title>
 <h2 class="mb1em">サークルを登録しよう</h2>
 <aside class="mb1em"><img src="../img/image2.png" width="700" height="99" alt="" class="wa"></aside>
 <br>
 サークルのTwitterアカウントを登録することで、簡単にサークル登録を行えます。
 <p>
 	<div Align="center">
-		<div class="i-btn">
-			<a href="pre_circle_tw_callback">Twitterでサークル登録・編集</a>
+		<div class="i-btn" id="i-btn_circle">
+			<a href="pre_circle_tw_callback">サークル登録・編集</a>
 		</div>
 	</div>
 </p>
@@ -38,8 +38,10 @@ onload = function(){
 <h4>UT-CircleのTwitterアカウントをフォローしよう</h4>
 Twitter上の関係を分析し、UT-CircleのTwitterアカウントをフォローしてくださっている団体を優先するようになっています。
 
+<br><br><br>
 
-<h2 class="mb1em">パワポ</h2>
+<h2 class="mb1em">サービス紹介スライド</h2>
 <div id="powerpoint_wrapper">
-	<iframe style="border:none" src="http://files.photosnack.com/iframejs/embed.html?hash=pdzp2m8jo&t=1444874503" width="576" height="384" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>
+	<iframe style="border:none" src="https://onedrive.live.com/embed?cid=947CBD1A848EEC83&resid=947CBD1A848EEC83%21107&authkey=AIsJc0ouy8A0cGI&em=2" width="576" height="384" frameborder="0" scrolling="no" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+	<!--<iframe style="border:none" src="http://files.photosnack.com/iframejs/embed.html?hash=pdzp2m8jo&t=1444874503" width="576" height="384" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>-->
 </div>

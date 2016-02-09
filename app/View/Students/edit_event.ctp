@@ -1,18 +1,22 @@
+<?php $this->set('title_for_layout', "UT-Circle 予定を編集"); ?>
+<?php $this->Html->meta('description', "UT-Circleで、サークル・部活の予定を編集しよう。", array('inline' => false)) ?>
 <script>
 onload = function(){
 	func_edit_event();	
 }
 </script>
 
-<h2> <?php echo $circle_name; ?>の<?php echo $title; ?>の予定を編集</h2>
-
+<h2> <?php echo $circle_name; ?> "<?php echo $title; ?>" の予定を編集</h2>
+<font color ="#ff0000"><?php
+    echo $this->Session->flash();
+?></font>
 
 <h3>編集</h3>
 <div class ="stop-btm">
 <table class = "type01">
 <tbody>
 <tr>
-	<th scope="row">タイトル</th>
+	<th scope="row">タイトル<br><font color="red">(必須・<nobr>30字以内)</nobr></font></th>
 
 	<td><?php
 		echo $this->Form->create('Event');
@@ -24,7 +28,7 @@ onload = function(){
 	</td>
 </tr>
 <tr>
-	<th scope="row">開始日時</th>
+	<th scope="row">開始日時<br><font color="red">(必須)</font></th>
 		<td><?php
 			echo $this->Form->input('day', array(
     'type' => 'datetime',
@@ -34,12 +38,14 @@ onload = function(){
     'minYear' => date('Y')-1,
     'maxYear' => date('Y')+1,
     'timeFormat' => '24',       //時刻を24時間表記
-    'empty' => true,            //空選択可能
-	'separator' => array('年', '月', '日','時','分'),
+    'empty' => false,            //空選択可能
+	'separator' => array('年 ', '月 <nobr>', '日</nobr> <nobr>','時','分'),
     'default' => date('Y-m-d H:i'),  //初期値指定
 ));
 			//echo $this->Form->error('day');
 		?>
+		</nobr>
+		<font color="red"><?php echo $this->Form->error('day');?></font>
 		</td>
 </tr>
 <tr>
@@ -50,15 +56,15 @@ onload = function(){
 </tr>
 <tr>
 	<th scope="row">必要な金額</th>
-	<td><?php echo $this->Form->input('money',array('size'=>30, 'label'=>false, 'error'=>false, 'div'=>false)); ?> 円
+	<td><?php echo $this->Form->input('money',array('size'=>10, 'label'=>false, 'error'=>false, 'div'=>false)); ?> 円
 	<font color="red"><?php echo $this->Form->error('money');?></font>
 	</td>
 </tr>
 <tr>
-	<th scope="row">新歓かどうか</th>
+	<th scope="row">新歓かどうか<br><font color="red">(必須)</font></th>
 	<td><?php echo $this->Form->radio('for_newcomer',
 				array(
-					'1'=>'新歓　　　　',
+					'1'=>'新歓　　',
 					'0'=>'新歓ではない'
 				),
 				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
@@ -69,17 +75,17 @@ onload = function(){
 </tr>
 <tr>
 	<th scope="row">内容</th>
-	<td><?php echo '練習';
+	<td><?php echo '<nobr>練習';
 			echo $this->Form->checkbox('practice',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '　　試合・本番';
+			echo '</nobr>　　<nobr>試合・本番';
 			echo $this->Form->checkbox('game',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '　　合宿';
+			echo '</nobr>　　<nobr>合宿';
 			echo $this->Form->checkbox('camp',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '　　コンパ';
+			echo '</nobr>　　<nobr>コンパ';
 			echo $this->Form->checkbox('party',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '　　その他';
+			echo '</nobr>　　<nobr>その他';
 			echo $this->Form->checkbox('other',array('lavel'=>false,'error'=>false,'div'=>false));
-		?></td>
+		?></nobr></td>
 	</tr>
 <tr>
 	<th scope="row">詳細</th>
@@ -89,13 +95,13 @@ onload = function(){
 </tr>
 </tbody>
 </table><br>
+<div Align="right">
 <?php
 	echo $this->Form->error('end');
     echo $this->Form->end(__('更新'));
 ?>
-<font color ="#0000ff"><?php
-    echo $this->Session->flash();
-?></font>
+</div>
+
 
 </div>
 

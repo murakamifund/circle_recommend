@@ -1,27 +1,30 @@
+<?php $this->set('title_for_layout', 'UT-Circle ログインページ'); ?>
+<?php $this->Html->meta('description', 'UT-Circleは東大の部活動、サークル活動を紹介！カレンダー機能で自分だけの新歓スケジュールを作成しよう。その他にもバイト、インターン情報など大学生活に役立つ情報を提供。', array('inline' => false)) ?>
 <script>
 onload = function(){
 	func_student_resister();
 }
 </script>
-<title>UT-Circle ログインページ</title>
 
-<h2 class="mb1em">新規登録</h2>
-<font color ="#0000ff"><?php echo $this->Session->flash(); ?></font>
+<h2 class="mb1em">ログインページ</h2>
+<font color ="#ff0000"><?php echo $this->Session->flash(); ?></font>
 
-<h3 class="mb1em">ツイッターと連携</h3>
+<h4 class="mb1em">Twitterアカウントと連携</h3>
+<div>学生のかたはこちらからログインしてください。</div>
 <p>
 <div Align="center">
-		<div class="i-btn">
+		<div class="i-btn i-btn_250">
 			<a href="pre_student_tw_callback">Twitterと連携</a>
 		</div>
 </div>
 </p>
 
-<h3 class="mb1em">サークルのTwitterアカウント</h3>
+<h4 class="mb1em">サークルのTwitterアカウントと連携</h3>
+<div>学生のかたはこちらからログインしてください。</div>
 <p>
 <div Align="center">
-		<div class="i-btn">
-			<a href="pre_circle_tw_callback">サークルのTwitterで連携</a>
+		<div class="i-btn i-btn_250">
+			<a href="pre_circle_tw_callback">サークルのTwitterと連携</a>
 		</div>
 </div>
 </p>

@@ -1,5 +1,5 @@
-<meta name="description" content="<?php echo $circle_name ?>についての情報はこちらから。活動内容や雰囲気、新歓日程など有用な情報をお届け！サークルホームページへのリンクも設置。">
-<title>UT-Circle <?php echo $circle_name; ?>の紹介</title>
+<?php $this->set('title_for_layout', "UT-Circle ${circle_name}の紹介"); ?>
+<?php $this->Html->meta('description', "${circle_name}についての情報はこちらから。活動内容や雰囲気、新歓日程など有用な情報をお届け！サークルホームページへのリンクも設置。", array('inline' => false)) ?>
 
 <?php
 	echo $this->Html->css(array('fullcalendar', 'bootstrap','headshrinker'));
@@ -78,7 +78,9 @@ $act=array(
 	<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $circle_name; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 	
 <?php
-	if($favored){
+	if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == true){
+		;
+	}else if($favored){
 ?>
 	<form action="../unfav/<?php echo $circle_id;?>" method="post">
 		<input type="hidden" name="address" value="circle_id">
@@ -251,7 +253,17 @@ $act=array(
 			events:<?php echo  $json; ?>	
 	});	
 onload = function(){
-	func_circle_id(<?php echo $man; ?>,<?php echo $woman; ?>);
+<?php
+	if(isset($man) && isset($woman)){
+?>
+		func_circle_id(<?php echo $man; ?>,<?php echo $woman; ?>);
+<?php
+	}else{
+?>
+		func_circle_id(0,0);
+<?php	
+	}
+?>
 } 
 </script>
 </p>
