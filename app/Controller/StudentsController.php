@@ -605,8 +605,10 @@ class StudentsController extends AppController {
 	$this->set("party",$party);//view側にデータをセット
 	$other= $events['Event']['other'];
 	$this->set("other",$other);//view側にデータをセット
-	$contents= $events['Event']['content'];
-	$this->set("contents",$contents);//view側にデータをセット
+	if(isset($events['Event']['content'])){
+		$contents= $events['Event']['content'];
+		$this->set("contents",$contents);//view側にデータをセット
+	}
 	
     
     
