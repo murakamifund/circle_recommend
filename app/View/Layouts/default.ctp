@@ -22,15 +22,14 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $this->fetch('title'); ?>
+		<?php echo $title_for_layout ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
 
-		echo $this->fetch('meta');
+		<?php echo $this->fetch('meta') ?>
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
