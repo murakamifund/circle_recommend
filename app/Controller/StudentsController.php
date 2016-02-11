@@ -1314,7 +1314,6 @@ class StudentsController extends AppController {
 						array(
 							'OR' => array(
 								array('Circle.circle_name LIKE' => '%'.$word.'%'),
-								array('Circle.pr LIKE' => '%'.$word.'%'),
 								array('Circle.activity LIKE' => '%'.$word.'%'),
 								array('Circle.phrase LIKE' => '%'.$word.'%'),
 							)
