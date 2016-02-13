@@ -1,5 +1,5 @@
-<meta name="description" content="<?php echo $circle_name ?>についての情報はこちらから。活動内容や雰囲気、新歓日程など有用な情報をお届け！サークルホームページへのリンクも設置。">
-<title>UT-Circle <?php echo $circle_name; ?>の紹介</title>
+<?php $this->set('title_for_layout', "UT-Circle ${circle_name}の紹介"); ?>
+<?php $this->Html->meta('description', "${circle_name}についての情報はこちらから。活動内容や雰囲気、新歓日程など有用な情報をお届け！サークルホームページへのリンクも設置。", array('inline' => false)) ?>
 
 <?php
 	echo $this->Html->css(array('fullcalendar', 'bootstrap','headshrinker'));

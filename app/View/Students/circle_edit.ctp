@@ -1,3 +1,5 @@
+<?php $this->set('title_for_layout', "UT-Circle サークル情報を編集"); ?>
+<?php $this->Html->meta('description', "UT-Circleで東大のサークル、部活の情報を編集しよう", array('inline' => false)) ?>
 <?php
 	echo $this->Html->css(array('fullcalendar', 'bootstrap','headshrinker'));
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));
@@ -13,36 +15,49 @@ onload = function(){
 
 <h2> <?php echo $circle_name; ?> さんのマイページ</h2>
 <h3>情報を編集</h3>
-<p>
-<div class="stop-bottom">
+
 
 <div class="stop-btm">
 	<table class="type01">
 		<tbody>
-		<?php echo $this->Form->create('Circle', array('type'=>'file', 'enctype'=>'multipart/form-data'));  ?>
-			<?php echo $this->Form->input('id', array('type' => 'hidden','value' => $id)); ?> 
+			<?=$this->Form->create('Circle', array('type'=>'file', 'enctype'=>'multipart/form-data'))?>
+			<?=$this->Form->input('id', array('type' => 'hidden','value' => $id))?> 
 			
-		<tr>
-			 <th scope="row">サークル名</th>
-			<td><?php echo $this->Form->input('circle_name', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?>
-			<font color="red"><?php echo $this->Form->error('circle_name');?></font>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">キャッチ<nobr>フレーズ</nobr></th>
-			<td><?php echo $this->Form->input('phrase', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false));?>
-			<font color="red"><?php echo $this->Form->error('phrase');?></font>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">URL</th>
-			<td><?php echo $this->Form->input('url', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));?>
-			<font color="red"><?php echo $this->Form->error('url');?></font>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">活動内容</th>
-			<td><?php echo $this->Form->select('activity',
+			<tr>
+				<th scope="row">
+					サークル名<br><font color="red">(必須・<nobr>25字以内)</nobr></font>
+				</th>
+				<td>
+					<?=$this->Form->input('circle_name', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false))?>
+					<font color="red"><?php echo $this->Form->error('circle_name');?></font>
+				</td>
+			</tr>
+		
+			<tr>
+				<th scope="row">
+					キャッチ<nobr>フレーズ</nobr><br><font color="red">(必須・<nobr>25字以内)</nobr></font>
+				</th>
+				<td>
+					<?=$this->Form->input('phrase', array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false))?>
+					<font color="red"><?php echo $this->Form->error('phrase');?></font>
+				</td>
+			</tr>
+			
+			<tr>
+				<th scope="row">URL</th>
+				<td>
+					<?=$this->Form->input('url', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false))?>
+					<font color="red"><?php echo $this->Form->error('url');?></font>
+				</td>
+			</tr>
+			
+			<tr>
+				<th scope="row">
+					活動内容<br><font color="red">(必須)</font>
+				</th>
+				<td>
+<?php 
+			echo $this->Form->select('activity',
 				array(
 					"テニス"=>'テニス',
 					"卓球"=>'卓球',
@@ -83,22 +98,30 @@ onload = function(){
 					"その他"=>'その他',
 				),
 				array('size'=>1, 'label'=>false, 'error'=>false, 'div'=>false)
-				);?></td>
-		</tr>
-		<tr>
-		 <th scope="row">PR文</th>
+				);
+?>
+				</td>
+			</tr>
+			
+			<tr>
+				<th scope="row">
+					PR文<br><font color="red">(必須・<nobr>200字以内)</nobr></font>
+				</th>
 <?php
 	$eeee = $this->Form->input('pr', array('size'=>100, 'label'=>false, 'error'=>false, 'div'=>false));
 	$eeee = str_replace('\\n',"\n", $eeee);
-//	$eeee = nl2br($eeee);
 ?>
-			<td><?=$eeee;?>
-			<font color="red"><?php echo $this->Form->error('pr');?></font>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">活動曜日</th>
-		<td><?php echo '月';
+				<td>
+					<?=$eeee;?>
+					<font color="red"><?php echo $this->Form->error('pr');?></font>
+				</td>
+			</tr>
+			
+			<tr>
+				<th scope="row">活動曜日</th>
+				<td>
+<?php
+			echo '月';
 			echo $this->Form->checkbox('day1',array('lavel'=>false,'error'=>false,'div'=>false));
 			echo '　火';
 			echo $this->Form->checkbox('day2',array('lavel'=>false,'error'=>false,'div'=>false));
@@ -106,86 +129,111 @@ onload = function(){
 			echo $this->Form->checkbox('day3',array('lavel'=>false,'error'=>false,'div'=>false));
 			echo '　木';
 			echo $this->Form->checkbox('day4',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '　金';
+			echo '　<nobr>金';
 			echo $this->Form->checkbox('day5',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '　土';
+			echo '</nobr>　<nobr>土';
 			echo $this->Form->checkbox('day6',array('lavel'=>false,'error'=>false,'div'=>false));
-			echo '　<nobr>日';
-			echo $this->Form->checkbox('day7',array('lavel'=>false,'error'=>false,'div'=>false))."<nobr>";?></td>
-		</tr>
+			echo '</nobr>　<nobr>日';
+			echo $this->Form->checkbox('day7',array('lavel'=>false,'error'=>false,'div'=>false))."</nobr>";
+		?>
+				</td>
+			</tr>
 		</tbody>
 	</table>
+	
 	<table class="type02">
 		<tbody>
-		<tr>
-			<th scope="row">主な<nobr>活動場所</nobr></th>
-			<td><?php echo $this->Form->radio('place',
+			<tr>
+				<th scope="row">
+					主な<nobr>活動場所</nobr><br><font color="red">(必須)</font>
+				</th>
+				<td>
+					<nobr>	
+<?php
+	echo	$this->Form->radio('place',
 				array(
 					'駒場'=>'駒場',
 					'本郷'=>'本郷',
 					'その他'=>'その他'
 				),
-				array('size'=>50, 'label'=>"キャンパス　",'error'=>false, 'div'=>false,'legend' => false)
-				);
-			?></td>
-			<td><?php echo $this->Form->input('placetext', array('size'=>100, 'label'=>"場所詳細", 'error'=>false, 'div'=>false));?>
-			<font color="red"><?php echo $this->Form->error('placetext');?></font>
-			</td>
-		</tr>
-	</tbody>
+				array('size'=>50, 'label'=>"キャンパス　",'error'=>false, 'div'=>false,'legend' => false,'separator' => "</nobr>　<nobr>")
+			);
+?>
+					</nobr>
+				</td>
+			
+				<td>
+					<?=$this->Form->input('placetext', array('size'=>100, 'label'=>"場所詳細", 'error'=>false, 'div'=>false))?>
+					<font color="red"><?php echo $this->Form->error('placetext');?></font>
+				</td>
+			</tr>
+		</tbody>
 	</table>
+	
 	<table class="type02">
 		<tbody>
-		<tr>
-			<th scope="row">男女比</th>
+			<tr>
+				<th scope="row">男女比</th>
 			
-			<!--<td>男性人数</td> -->
-			<td><?php echo $this->Form->input('man', array('size'=>5, 'label'=>"男性", 'error'=>false, 'div'=>false))."人"; ?>
-			<font color="red"><?php echo $this->Form->error('man');?></font>
-			</td>
+				<!--<td>男性人数</td> -->
+				<td>
+					<?php echo "男性　<nobr>". $this->Form->input('man', array('size'=>3, 'label'=>false, 'error'=>false, 'div'=>false))."人</nobr>"; ?>
+					<font color="red"><?php echo $this->Form->error('man');?></font>
+				</td>
 			
 			<!-- <td>女性人数</td>-->
-			<td><?php echo $this->Form->input('woman', array('size'=>5, 'label'=>"女性", 'error'=>false, 'div'=>false))."人";?>
-			<font color="red"><?php echo $this->Form->error('woman');?></font>
-			</td>
-		</tr>
-	</tbody>
+				<td>
+					<?php echo "女性　<nobr>". $this->Form->input('woman', array('size'=>3, 'label'=>false, 'error'=>false, 'div'=>false))."人</nobr>";?>
+					<font color="red"><?php echo $this->Form->error('woman');?></font>
+				</td>
+			</tr>
+		</tbody>
 	</table>
+	
 	<table class="type01">
 		<tbody>
-		<tr>
-			<th scope="row">構成</th>
-			<td><?php echo $this->Form->radio('intercollege',
+			<tr>
+				<th scope="row">
+					構成<br><font color="red">(必須)</font>
+				</th>
+				<td>
+<?php 
+			echo $this->Form->radio('intercollege',
 				array(
 					'学内'=>'学内',
 					'インカレ'=>'インカレ'
 				),
-				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
+				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false,'separator'=>'　')
 				); 
-			?></td>
-		</tr>
-		</tbody>
-	</table>
-	<table class="type02">
-	<tbody>
-		<tr>
-			<th scope="row">活動費</th>
-			<td><?php echo $this->Form->input('cost_in', array('size'=>10, 'label'=>"入会費", 'error'=>false, 'div'=>false)); ?>
-			<font color="red"><?php echo $this->Form->error('cost_in');?></font>
-			</td>
-				<td><?php echo $this->Form->input('cost', array('size'=>10, 'label'=>"年間費", 'error'=>false, 'div'=>false)); ?>
-				<font color="red"><?php echo $this->Form->error('cost');?></font>
+?>
 				</td>
-		</tr>
+			</tr>
 		</tbody>
 	</table>
+	
+	<table class="type02">
+		<tbody>
+			<tr>
+				<th scope="row">活動費</th>
+				<td>
+					<?php echo "入会費　<nobr>". $this->Form->input('cost_in', array('size'=>5, 'label'=>false, 'error'=>false, 'div'=>false))."円</nobr>"; ?>
+					<font color="red"><?php echo $this->Form->error('cost_in');?></font>
+				</td>
+				<td>
+					<?php echo "年間費　<nobr>". $this->Form->input('cost', array('size'=>5, 'label'=>false, 'error'=>false, 'div'=>false))."円</nobr>"; ?>
+					<font color="red"><?php echo $this->Form->error('cost');?></font>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
 	<table class="type01">
 		<tbody>
-		<tr>
-			<th scope="row">飲み会</th>
+			<tr>
+				<th scope="row">飲み会</th>
 				<td>
-				←少ない
-				<?php echo $this->Form->radio('nomi',
+					<nobr>←少ない</nobr>　<nobr>
+					<?php echo $this->Form->radio('nomi',
 				array(
 					'1'=>'1',
 					'2'=>'2',
@@ -193,32 +241,30 @@ onload = function(){
 					'4'=>'4',
 					'5'=>'5',
 				),
-				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
+				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false,'separator'=>"</nobr>　<nobr>")
 				);?>
-				多い→
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">雰囲気</th>
-				<td>
-				←楽しい
-				<?php echo $this->Form->radio('mazime',
-				array(
-					'1'=>'1',
-					'2'=>'2',
-					'3'=>'3',
-					'4'=>'4',
-					'5'=>'5',
-				),
-				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false)
-				);?>
-				ガチ→				
-				
-				
-		
+					</nobr>　<nobr>多い→</nobr>
 				</td>
-		</tr>
-	</tbody>
+			</tr>
+			
+			<tr>
+				<th scope="row">雰囲気</th>
+				<td>
+					<nobr>←楽しい</nobr>　<nobr>
+					<?php echo $this->Form->radio('mazime',
+				array(
+					'1'=>'1',
+					'2'=>'2',
+					'3'=>'3',
+					'4'=>'4',
+					'5'=>'5',
+				),
+				array('size'=>50, 'label'=>false, 'error'=>false, 'div'=>false,'legend' => false,'separator'=>"</nobr>　<nobr>")
+				);?>
+					</nobr>　<nobr>ガチ→</nobr>				
+				</td>
+			</tr>
+		</tbody>
 	</table>
 
 
@@ -230,9 +276,7 @@ onload = function(){
 			?>
 		
 	</div>
-</div><!--stop-btm-->
-</div><!--stop-bottom-->
-</p>   
+</div><!--stop-btm--> 
 
 
 

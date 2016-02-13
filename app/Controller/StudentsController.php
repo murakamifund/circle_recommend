@@ -76,6 +76,10 @@ class StudentsController extends AppController {
 					$stmt = $dbh->prepare($sql);
 					$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
 					$local_user = $stmt->fetch(); //結果を返す 
+					if(isset($me->profile_banner_url)){
+					}else{
+						$me->profile_banner_url ="";
+					}	
 					if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
 						$sql = "insert into students 
 						(tw_user_id,tw_name,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_description,tw_access_token) 
@@ -237,7 +241,10 @@ class StudentsController extends AppController {
 				$stmt = $dbh->prepare($sql);
 				$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
 				$local_user = $stmt->fetch(); //結果を返す 
-			
+				if(isset($me->profile_banner_url)){
+				}else{
+					$me->profile_banner_url ="";
+				}
 				if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
 					$sql = "insert into circles 
 					(tw_user_id,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_access_token) 
@@ -396,6 +403,12 @@ class StudentsController extends AppController {
 		$this->set("total_circle",$total_circle);//view側にデータをセット
 		$suggest_circle = $this->Circle->find('all',array(
 			'limit' => 30,
+			'fields' => array('Circle.circle_name','Circle.tw_profile_image_url','Circle.id','Circle.tw_screen_name')
+		));
+		$suggest_circle[0] = $this->Circle->find('first',array(
+			'conditions' => array(
+				'Circle.circle_name' => 'UT-Circle'
+			),
 			'fields' => array('Circle.circle_name','Circle.tw_profile_image_url','Circle.id','Circle.tw_screen_name')
 		));
 		$this->set("suggest_circle",$suggest_circle);//view側にデータをセット
@@ -662,8 +675,10 @@ class StudentsController extends AppController {
 	$this->set("party",$party);//view側にデータをセット
 	$other= $events['Event']['other'];
 	$this->set("other",$other);//view側にデータをセット
-	$contents= $events['Event']['content'];
-	$this->set("contents",$contents);//view側にデータをセット
+	if(isset($events['Event']['content'])){
+		$contents= $events['Event']['content'];
+		$this->set("contents",$contents);//view側にデータをセット
+	}
 	
     
     
@@ -684,7 +699,7 @@ class StudentsController extends AppController {
 				$this->set('circleid', $circleid);
 				// post時の処理
 				if ($this->request->is('post')) {
-					$this->data = Sanitize::clean($this->data, array('encode' => false));
+					$this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
 					$this->Circle->create();
 					if ($this->Circle->save($this->request->data)) {	//ここにfalseと入れればバリデーションを無視できる
 						$this->redirect(array('action' => 'circle_edit_main'));
@@ -838,7 +853,7 @@ class StudentsController extends AppController {
 			//Eventのテーブルから、circle_idが一致するものを検索してデータを配列に入れる
 	
 			if ($this->request->is('post') || $this->request->is('put')) {
-				$this->data = Sanitize::clean($this->data, array('encode' => false));
+				$this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
 				//debug($this->request->data);
 				
 					if ($this->Event->save($this->request->data)) {
@@ -897,7 +912,7 @@ class StudentsController extends AppController {
 			$this->set("id",$id);//view側にデータをセット
 
 			if ($this->request->is('post') || $this->request->is('put')) {
-				$this->data = Sanitize::clean($this->data, array('encode' => false/*,'remove_html' => true*/));
+				$this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
 				$circle_value = 0;
 				$circle_value1 = 0;//練習したい
 				$circle_value2 = 0;//楽な方がいい
@@ -983,7 +998,7 @@ class StudentsController extends AppController {
     $this->Circle->id = $id;
 	$this->Session->destroy();
     if ($this->request->is('post') || $this->request->is('put')) {
-      $this->data = Sanitize::clean($this->data, array('encode' => false));
+      $this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
       $this->Circle->delete($this->request->data('Circle.id'));
 	  $this->Session->destroy();
       $this->redirect(array('action'=>'circle'));
@@ -1007,7 +1022,7 @@ class StudentsController extends AppController {
 	$this->set("title",$title);//view側にデータをセット
 	
     if ($this->request->is('post') || $this->request->is('put')) {
-            $this->data = Sanitize::clean($this->data, array('encode' => false));
+            $this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
 			//debug($this->request->data);
 			
             if ($this->Event->save($this->request->data)) {
@@ -1034,7 +1049,7 @@ class StudentsController extends AppController {
     $this->Event->id = $id;
 	$this->set("event_id",$id);//view側にデータをセット
     if ($this->request->is('post') || $this->request->is('put')) {
-      $this->data = Sanitize::clean($this->data, array('encode' => false));
+      $this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
       $this->Event->delete($this->request->data('Event.id'));
 	  $this->Session->setFlash(__('予定を削除
 
@@ -1296,7 +1311,7 @@ class StudentsController extends AppController {
 	$p=array("駒場","本郷","");
 	$in=array("学内","インカレ","");
 	if ($this -> request -> data){
-		$this->data = Sanitize::clean($this->data, array('encode' => false));
+		$this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
 		if($this -> data["keyword"] != ""){
 			$opt = array(
 				array(
@@ -1304,7 +1319,6 @@ class StudentsController extends AppController {
 						array(
 							'OR' => array(
 								array('Circle.circle_name LIKE' => '%'.$word.'%'),
-								array('Circle.pr LIKE' => '%'.$word.'%'),
 								array('Circle.activity LIKE' => '%'.$word.'%'),
 								array('Circle.phrase LIKE' => '%'.$word.'%'),
 							)

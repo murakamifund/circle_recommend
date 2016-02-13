@@ -1,12 +1,11 @@
+<?php $this->set('title_for_layout', 'UT-Circle 東大のサークル紹介') ?>
+<?php $this->Html->meta('description', 'UT-Circleは、東大の部活動、サークル活動を紹介するWebサービスです。カレンダー機能で自分だけの新歓スケジュールを作成できる他、バイト、インターン情報など大学生活に役立つ情報を提供。', array('inline' => false)) ?>
+		
 <script>
 onload = function(){
 	func_home();	
 }
 </script>
-
-<meta name="description" content="東大の部活動、サークル活動を紹介！カレンダー機能で自分だけの新歓スケジュールを作成しよう。その他にもバイト、インターン情報など大学生活に役立つ情報を提供。">
-<title>UT-Circle 東大のサークル探し</title>
-
 
 <section>
 	<h2>UT-Circleへようこそ!!</h2>
