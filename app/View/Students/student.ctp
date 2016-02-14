@@ -4,6 +4,7 @@
 onload = function(){
 	func_student();	
 }
+
 </script>
 
 <?php
@@ -265,8 +266,11 @@ onload = function(){
 <div id="lists">
 <h2 class="mb1em">サークル一覧</h2>
 <?php
-		foreach ($data as $datum){
+	$i=0;
+	foreach ($data as $datum){
+	$i+=1;
 ?>
+	<div id="list<?php echo $i; ?>">
 	<div class="list">
 		<div class="list_left">
 			<div class="list_image"><img src="http://www.paper-glasses.com/api/twipi/<?=$datum['Circle']['tw_screen_name']?>/original" width="300" height="150" alt="" /></div>
@@ -311,9 +315,35 @@ onload = function(){
 			</div>
 		</div>
 	</div>
+	</div>
 <?php
 		}
 ?>
+<?php
+		$limit = 5;
+		$count = count($data);
+		$last = ($count-$count%$limit)/$limit+1;
+?>
+
+<script>
+<?php for($i=1; $i<$count+1; $i++){ ?>
+	document.getElementById('list<?php echo $i; ?>').style.display = 'none';
+<?php } ?>
+<?php for($i=1; $i<$limit+1; $i++){ ?>
+	document.getElementById('list<?php echo $i; ?>').style.display = 'block';
+<?php } ?>
+</script>
+
+<?php for($i=1; $i<$last+1; $i++){ ?>
+	<input type="button" value="<?php echo $i; ?>" onclick="
+	<?php for($j=1; $j<$count+1; $j++){ ?>
+		document.getElementById('list<?php echo $j; ?>').style.display = 'none';
+	<?php } ?>
+	<?php for($j=($i-1)*$limit+1; $j<$i*$limit+1; $j++){ ?>
+		document.getElementById('list<?php echo $j; ?>').style.display = 'block';
+	<?php } ?>
+	">
+<?php } ?>
 </div>
 
 <!--
