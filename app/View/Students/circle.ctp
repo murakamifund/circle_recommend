@@ -1,5 +1,5 @@
-<?php $this->set('title_for_layout', "UT-Circle サークル登録・編集"); ?>
-<?php $this->Html->meta('description', "UT-Circleで、東大の部活、サークルを登録しよう。サークルの登録はこちらから。登録により興味を持った新入生とツイッターを通して関わることができます。", array('inline' => false)) ?>
+<?php $this->set('title_for_layout', "サークル登録・編集"); ?>
+<?php $this->Html->meta('description', "部活、サークルを登録しよう。サークルの登録はこちらから。登録により興味を持った新入生とツイッターを通して関わることができます。", array('inline' => false)) ?>
 <script>
 onload = function(){
 	func_circle();	

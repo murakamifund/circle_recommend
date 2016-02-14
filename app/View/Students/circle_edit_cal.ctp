@@ -1,5 +1,5 @@
-<?php $this->set('title_for_layout', "UT-Circle サークルの予定登録"); ?>
-<?php $this->Html->meta('description', "UT-Circleで東大のサークル、部活の予定を管理、編集しよう", array('inline' => false)) ?>
+<?php $this->set('title_for_layout', "サークルの予定登録"); ?>
+<?php $this->Html->meta('description', "サークル、部活の予定を管理、編集しよう", array('inline' => false)) ?>
 <?php
 	echo $this->Html->css(array('fullcalendar', 'bootstrap','headshrinker'));
 	echo $this->Html->script(array('jquery-1.5.min','jquery-ui-1.8.9.custom.min','jquery.qtip-1.0.0-rc3.min','ready','fullcalendar.min'));

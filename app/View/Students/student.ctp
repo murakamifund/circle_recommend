@@ -1,5 +1,5 @@
-<?php $this->set('title_for_layout', 'UT-Circle サークル検索'); ?>
-<?php $this->Html->meta('description', 'UT-Circleで自分の好みに合わせて東大の部活、サークルを検索。お気に入り登録やツイッターアカウントのフォローにより最新情報を入手!さらに予定もカレンダーで一括管理できます。', array('inline' => false)) ?>
+<?php $this->set('title_for_layout', 'サークル検索'); ?>
+<?php $this->Html->meta('description', '自分の好みに合わせて東大の部活、サークルを検索。お気に入り登録やツイッターアカウントのフォローにより最新情報を入手!さらに予定もカレンダーで一括管理できます。', array('inline' => false)) ?>
 <script>
 onload = function(){
 	func_student();	
