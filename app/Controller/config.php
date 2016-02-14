@@ -2,7 +2,7 @@
 //config.php
 //いろいろな設定を書くファイル
 
-define('DSN','mysql:host=localhost,dbname=circle_recommend,charset=utf8');
+define('DSN','mysql:host=127.0.0.1;dbname=circlerecommend;charset=utf8');
 define('DB_USER','root');
 define('DB_PASSWORD','');
 //define('DSN','mysql:host=mysql496.db.sakura.ne.jp,dbname=blackjack-utokyo_ut_circle,charset=utf8');
