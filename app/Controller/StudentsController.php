@@ -22,7 +22,7 @@ class StudentsController extends AppController {
 		
 		require_once('config.php');
 		require_once('codebird.php');
-		echo 'DSN';
+		//echo 'DSN';
 		try{ //例外処理
 			//\Codebird\Codebird::setConsumerKey('hyj7wJ2xfSkADK6bhJfUFbhAd', 'w145AA0P8opGRji1OzdLlyxA2W6fdqwEONlryr6A0kfucE8NwS');
 			\Codebird\Codebird::setConsumerKey(CONSUMER_KEY, CONSUMER_SECRET);
