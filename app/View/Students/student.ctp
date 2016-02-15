@@ -322,7 +322,7 @@ onload = function(){
 <?php
 		$limit = 5;
 		$count = count($data);
-		$last = ($count-$count%$limit)/$limit+1;
+		$last = ($count-($count-1)%$limit-1)/$limit+1;
 ?>
 
 <script>
