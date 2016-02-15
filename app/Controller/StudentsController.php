@@ -109,55 +109,7 @@ class StudentsController extends AppController {
 					$_SESSION['is_circle'] = false;
 					$_SESSION['tw_screen_name'] = $me->screen_name;
 					$_SESSION['tw_image_url'] = $me->profile_image_url;
-					/*
-					if(isset($_SESSION['fav_id'])){
-						$fav_circles = $this->Favorite->find('all', array(
-						'conditions' => array('user_id' => $tw_user_id,'circle_id' => $_SESSION['fav_id'])
-						));
-						$circle = $this->Circle->find('all', array(
-						'conditions' => array('id' => $_SESSION['fav_id'])
-						));
-						
-						if (!empty($fav_circles)) {
-							$this->Session->setFlash(__('すでにお気に入り登録されています'));
-						}else{
-						//$this->Favorite->create();
 					
-							$this->Favorite->save([
-						  'user_id' => $tw_user_id,
-						  'circle_id' => $_SESSION['fav_id'],
-							]);
-							$circle_value = $circle[0]['Circle']['value'];
-							$circle_value1 = $circle[0]['Circle']['value1'];
-							$circle_value2 = $circle[0]['Circle']['value2'];
-							$circle_value3 = $circle[0]['Circle']['value3'];
-							$circle_value4 = $circle[0]['Circle']['value4'];
-							$circle_value5 = $circle[0]['Circle']['value5'];
-							$circle_value6 = $circle[0]['Circle']['value6'];
-							$circle_value7 = $circle[0]['Circle']['value7'];
-							$circle_value += 1;
-							$circle_value1 += 1;
-							$circle_value2 += 1;
-							$circle_value3 += 1;
-							$circle_value4 += 1;
-							$circle_value5 += 1;
-							$circle_value6 += 1;
-							$circle_value7 += 1;
-							$circle[0]['Circle']['value'] = $circle_value;
-							$circle[0]['Circle']['value1'] = $circle_value1;
-							$circle[0]['Circle']['value2'] = $circle_value2;
-							$circle[0]['Circle']['value3'] = $circle_value3;
-							$circle[0]['Circle']['value4'] = $circle_value4;
-							$circle[0]['Circle']['value5'] = $circle_value5;
-							$circle[0]['Circle']['value6'] = $circle_value6;
-							$circle[0]['Circle']['value7'] = $circle_value7;
-							$this->Circle->save($circle[0]['Circle']);
-						
-							$this->Session->setFlash(__('お気に入り登録しました'));
-						}
-						
-					}
-					*/
 					
 					$this->redirect(array('action' => 'student_edit'));		//生徒編集ページに移動
 				
@@ -247,19 +199,21 @@ class StudentsController extends AppController {
 				}
 				if(!$local_user){ //取得したユーザーの情報がデータベースになければ 
 					$sql = "insert into circles 
-					(tw_user_id,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_access_token) 
+					(tw_user_id,tw_screen_name,tw_profile_image_url,tw_profile_banner_url,tw_access_token,circle_name,pr) 
 					values
-					(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_profile_banner_url,:tw_access_token)";
+					(:tw_user_id,:tw_screen_name,:tw_profile_image_url,:tw_profile_banner_url,:tw_access_token,:circle_name,:pr)";
 					$stmt = $dbh->prepare($sql);
 					$params = array(
 					":tw_user_id" => $me->id_str,
 					":tw_screen_name" => $me->screen_name,
 					":tw_profile_image_url" => $me->profile_image_url,
 					":tw_profile_banner_url" => $me->profile_banner_url,
-					":tw_access_token" => $reply->oauth_token
+					":tw_access_token" => $reply->oauth_token,
+					":circle_name" => $me->name,
+					":pr" => $me->description,
 					);
 					$stmt->execute($params);
-
+					
 					$sql = "select * from circles where tw_user_id = :tw_user_id limit 1"; 
 					$stmt = $dbh->prepare($sql);
 					$stmt->execute(array(":tw_user_id" => $me->id_str)); //prepareでsql文を入れ、executeで実行する
@@ -271,7 +225,7 @@ class StudentsController extends AppController {
 					$_SESSION['tw_screen_name'] = $me->screen_name; //サークルの場合は、tw_screen_nameも格納する。これでサークルかどうか判断
 					$_SESSION['tw_image_url'] = $me->profile_image_url;
 			
-					$this->redirect(array('action' => 'circle_resister'));
+					$this->redirect(array('action' => 'circle_edit'));
 				//データベースにすでに存在するがsessionはなかった時
 				}else{
 					$tw_user_id = $me->id_str;
@@ -683,7 +637,7 @@ class StudentsController extends AppController {
     
     
   }//event_idの終わり
-	
+	/*
 	public function circle_resister() {
 	
 		$this->modelClass = null;
@@ -708,6 +662,8 @@ class StudentsController extends AppController {
 						$this->Session->setFlash(__('登録に失敗しました。もう一度やり直してください。'));
 						//debug($this->Circle->validationErrors);
 					}
+				}else{ //postのelse
+					$this->request->data=Sanitize::clean($this->Circle->read(null,$circleid), array('remove_html' => true,'escape' =>false));		//更新画面の表示
 				}
 			}else{
 				//サークルじゃなかったら
@@ -720,7 +676,7 @@ class StudentsController extends AppController {
 		}
 		
 	}//circle_resisterの終わり
-	
+	*/
 	
 	public function circle_edit_main(){
 		if(isset($_SESSION['tw_user_id'])){
@@ -982,7 +938,7 @@ class StudentsController extends AppController {
 					$this->Session->setFlash(__('更新に失敗しました。'));
 				}
 			}else{ //postのelse
-				$this->request->data=$this->Circle->read(null,$id);//更新画面の表示
+				$this->request->data=Sanitize::clean($this->Circle->read(null,$id), array('remove_html' => true,'escape' =>false));
 			}
 		}else{
 			//不正なアクセス
