@@ -335,7 +335,7 @@ onload = function(){
 </script>
 
 <?php for($i=1; $i<$last+1; $i++){ ?>
-	<input type="button" value="<?php echo $i; ?>" onclick="
+	<input type="button" value="<?php echo $i; ?>" id="pager" onclick="
 	<?php for($j=1; $j<$count+1; $j++){ ?>
 		document.getElementById('list<?php echo $j; ?>').style.display = 'none';
 	<?php } ?>

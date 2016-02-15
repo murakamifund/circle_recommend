@@ -452,6 +452,15 @@ form input#search_submit1:hover,form input#search_submit2:hover{
 	background-color: #ff3333;
 }
 
+input#pager{
+	color: #6666ff;
+	border-width: 1px;
+	border-color: #ccccff;
+	padding: 0px;
+	width: 30px;
+	height: 30px;
+}
+
 /* Students/circle‚ÅŽg‚¤ */
 #powerpoint_wrapper{
 	position: relative;
