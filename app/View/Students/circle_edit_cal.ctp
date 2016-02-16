@@ -11,7 +11,7 @@ onload = function(){
 }
 </script>
 
-<h2> <?php echo $circle_name; ?> さんのマイページ</h2>
+<h2> <?php echo htmlentities($circle_name); ?> さんのマイページ</h2>
 <font color ="#ff0000"><?=$this->Session->flash();?></font>
 
 <h3>イベントを新規作成</h3>
@@ -130,11 +130,11 @@ onload = function(){
 	
 	
 	$('#fc1').fullCalendar({
-		defaultDate: '2015-11-12',
+		defaultDate: '2016-02-12',
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			selectable: false,
-			events:<?php echo  $json; ?>
+			events:<?php echo $json; ?>
 			
 			
 	});

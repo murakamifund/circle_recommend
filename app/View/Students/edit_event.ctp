@@ -6,7 +6,7 @@ onload = function(){
 }
 </script>
 
-<h2> <?php echo $circle_name; ?> "<?php echo $title; ?>" の予定を編集</h2>
+<h2> <?php echo  htmlentities($circle_name); ?> "<?php echo htmlentities($title); ?>" の予定を編集</h2>
 <font color ="#ff0000"><?php
     echo $this->Session->flash();
 ?></font>

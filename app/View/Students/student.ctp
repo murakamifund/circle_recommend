@@ -172,14 +172,14 @@ onload = function(){
 		</div>
 		<div class="list_right">
 			<div class="list_right_top">
-				<div class="list_catch_phrase"><?php echo $top_datum['Circle']['phrase']; ?></div>
-				<div class="list_name"><a href="../Students/circle_id/<?php echo $top_datum['Circle']['id']; ?>"><?php echo $top_datum['Circle']['circle_name']; ?></a></div>
+				<div class="list_catch_phrase"><?php echo htmlentities($top_datum['Circle']['phrase']); ?></div>
+				<div class="list_name"><a href="../Students/circle_id/<?php echo htmlentities($top_datum['Circle']['id']); ?>"><?php echo htmlentities($top_datum['Circle']['circle_name']); ?></a></div>
 			</div>
 			<div class="list_right_middle">
-				<div class="list_pr"><?php echo str_replace("\\n","",$top_datum['Circle']['pr']); ?></div>
-				<div class="list_tags">#<?php echo $top_datum['Circle']['activity']; ?></div>
-				<div class="list_tags">#場所:<?php echo $top_datum['Circle']['place']; ?></div>
-				<div class="list_tags">#<?php echo $top_datum['Circle']['intercollege']; ?></div>
+				<div class="list_pr"><?php echo str_replace("\\n","",htmlentities($top_datum['Circle']['pr'])); ?></div>
+				<div class="list_tags">#<?php echo htmlentities($top_datum['Circle']['activity']); ?></div>
+				<div class="list_tags">#場所:<?php echo htmlentities($top_datum['Circle']['place']); ?></div>
+				<div class="list_tags">#<?php echo htmlentities($top_datum['Circle']['intercollege']); ?></div>
 			</div>
 			<div class="list_right_bottom">
 <?php
@@ -187,14 +187,14 @@ onload = function(){
 				;
 			}else if($top_datum['Circle']['favored']==true){		//すでにお気に入りされていたら
 ?>
-				<form action="unfav/<?php echo $top_datum['Circle']['id'];?>" method="post">
+				<form action="unfav/<?php echo htmlentities($top_datum['Circle']['id']);?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri.png" onmouseover="this.src='../img/okiniiri_1.png'" onmouseout="this.src='../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
 			}else if(isset($_SESSION['tw_user_id'])){		//お気に入りされていなくて生徒でのログインであったら
 ?>
-				<form action="fav/<?php echo $top_datum['Circle']['id'];?>" method="post">
+				<form action="fav/<?php echo htmlentities($top_datum['Circle']['id']);?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
@@ -207,8 +207,8 @@ onload = function(){
 <?php
 			}
 ?>
-			<div class="list_twitter"><a href="https://twitter.com/<?php echo $top_datum['Circle']['tw_screen_name']; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $top_datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
-			<div class="list_bottan"><a href="../Students/circle_id/<?php echo $top_datum['Circle']['id']; ?>">詳細はこちら！</a></div>
+			<div class="list_twitter"><a href="https://twitter.com/<?php echo htmlentities($top_datum['Circle']['tw_screen_name']); ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $top_datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+			<div class="list_bottan"><a href="../Students/circle_id/<?php echo htmlentities($top_datum['Circle']['id']); ?>">詳細はこちら！</a></div>
 			</div>
 	</div>
 </div>
@@ -277,14 +277,14 @@ onload = function(){
 		</div>
 		<div class="list_right">
 			<div class="list_right_top">
-				<div class="list_catch_phrase"><?php echo $datum['Circle']['phrase']; ?></div>
-				<div class="list_name"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>"><?php echo $datum['Circle']['circle_name']; ?></a></div>
+				<div class="list_catch_phrase"><?php echo htmlentities($datum['Circle']['phrase']); ?></div>
+				<div class="list_name"><a href="../Students/circle_id/<?php echo htmlentities($datum['Circle']['id']); ?>"><?php echo htmlentities($datum['Circle']['circle_name']); ?></a></div>
 			</div>
 			<div class="list_right_middle">
-				<div class="list_pr"><?php echo str_replace("\\n","",$datum['Circle']['pr']); ?></div>
-				<div class="list_tags">#<?php echo $datum['Circle']['activity']; ?></div>
-				<div class="list_tags">#場所:<?php echo $datum['Circle']['place']; ?></div>
-				<div class="list_tags">#<?php echo $datum['Circle']['intercollege']; ?></div>
+				<div class="list_pr"><?php echo str_replace("\\n","",htmlentities($datum['Circle']['pr'])); ?></div>
+				<div class="list_tags">#<?php echo htmlentities($datum['Circle']['activity']); ?></div>
+				<div class="list_tags">#場所:<?php echo htmlentities($datum['Circle']['place']); ?></div>
+				<div class="list_tags">#<?php echo htmlentities($datum['Circle']['intercollege']); ?></div>
 			</div>
 			<div class="list_right_bottom">
 <?php
@@ -292,14 +292,14 @@ onload = function(){
 				;
 			}else if($datum['Circle']['favored']==true){
 ?>
-				<form action="unfav/<?php echo $datum['Circle']['id'];?>" method="post">
+				<form action="unfav/<?php echo htmlentities($datum['Circle']['id']);?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri.png" onmouseover="this.src='../img/okiniiri_1.png'" onmouseout="this.src='../img/okiniiri.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
 <?php
 			}else if(isset($_SESSION['tw_user_id'])){
 ?>
-				<form action="fav/<?php echo $datum['Circle']['id'];?>" method="post">
+				<form action="fav/<?php echo htmlentities($datum['Circle']['id']);?>" method="post">
 					<input type="hidden" name="address" value="student">
 					<input type="image" src="../img/okiniiri_1.png" onmouseover="this.src='../img/okiniiri.png'" onmouseout="this.src='../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 				</form>
@@ -310,8 +310,8 @@ onload = function(){
 <?php
 			}
 ?>
-			<div class="list_twitter"><a href="https://twitter.com/<?php echo $datum['Circle']['tw_screen_name']; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
-			<div class="list_bottan"><a href="../Students/circle_id/<?php echo $datum['Circle']['id']; ?>">詳細はこちら！</a></div>
+			<div class="list_twitter"><a href="https://twitter.com/<?php echo htmlentities($datum['Circle']['tw_screen_name']); ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $datum['Circle']['circle_name']; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+			<div class="list_bottan"><a href="../Students/circle_id/<?php echo htmlentities($datum['Circle']['id']); ?>">詳細はこちら！</a></div>
 			</div>
 		</div>
 	</div>
