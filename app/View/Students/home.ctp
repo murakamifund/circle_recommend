@@ -12,7 +12,7 @@ onload = function(){
 	<p>
 		UT-Circleをご利用いただきありがとうございます。<br><br>
 		UT-Circleは、東京大学のサークルを紹介するWebサービスです。Twitterと連携し、「SNS上での新歓」というスタイリッシュな新歓を提供します。<br>
-		現在、当サイトの登録ユーザー数は <span class="strong_num"><?php echo $total_user;?></span> 名、登録団体数は <span class="strong_num"><?php echo $total_circle;?></span> 件です。<br>
+		現在、当サイトの登録ユーザー数は <span class="strong_num"><?php echo htmlentities($total_user);?></span> 名、登録団体数は <span class="strong_num"><?php echo htmlentities($total_circle);?></span> 件です。<br>
 	</p>
 </section>
 

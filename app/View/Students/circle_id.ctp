@@ -74,8 +74,8 @@ $act=array(
 <!--ここからhtml-->
 <font color ="#0000ff"><?php echo $this->Session->flash(); ?></font>
 <div id="circle_top">
-	<div id="circle_name"><?php echo $circle_name; ?></div>
-	<a href="https://twitter.com/<?php echo $tw_screen_name; ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo $circle_name; ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<div id="circle_name"><?php echo htmlentities($circle_name); ?></div>
+	<a href="https://twitter.com/<?php echo htmlentities($tw_screen_name); ?>" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large" data-dnt="true"><?php echo htmlentities($circle_name); ?>さんをフォロー</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 	
 <?php
 	if(isset($_SESSION['is_circle']) && $_SESSION['is_circle'] == true){
@@ -89,7 +89,7 @@ $act=array(
 <?php
 	}else if(isset($_SESSION['tw_user_id'])){
 ?>
-	<form action="../fav/<?php echo $circle_id;?>" method="post">
+	<form action="../fav/<?php echo htmlentities($circle_id);?>" method="post">
 		<input type="hidden" name="address" value="circle_id">
 		<input type="image" src="../../img/okiniiri_1.png" onmouseover="this.src='../../img/okiniiri.png'" onmouseout="this.src='../../img/okiniiri_1.png'" width="150" height="28" alt="おすすめ" class="icon"/>
 	</form>
@@ -105,13 +105,13 @@ $act=array(
 <div id="circle_left">
 	
 	<div id="circle_photo">
-		<img id="circle_photo_on" src=<?php echo $tw_profile_banner_url; ?> width="400px" height="150px" onerror="this.src='../../img/noimage.jpg'">
+		<img id="circle_photo_on" src=<?php echo htmlentities($tw_profile_banner_url); ?> width="400px" height="150px" onerror="this.src='../../img/noimage.jpg'">
 	</div>
 	
 	<h4>活動紹介</h4>
 	<div id="circle_pr">
 	<?php if($pr != NULL){
-				echo str_replace("\\n","<br>",$pr);
+				echo str_replace("\\n","<br>",htmlentities($pr));
 			}
 			else{
 				echo "情報がありません。";
@@ -124,7 +124,7 @@ $act=array(
 	<?php
 		if($url != ""){
 	?>
-		<a href="<?=$url?>"><font color = "#0000ff"><?=$url?></font></a>
+		<a href="<?=$url?>"><font color = "#0000ff"><?=htmlentities($url)?></font></a>
 	<?php
 		}else{
 			echo 'ホームページが登録されていません';
@@ -136,7 +136,7 @@ $act=array(
 	<h4>活動内容</h4>
 	<div>
 	<?php if($activity != NULL){
-				echo $activity;
+				echo htmlentities($activity);
 			}
 			else{
 				echo "情報がありません。";
@@ -147,14 +147,14 @@ $act=array(
 	<h4>場所</h4>
 	<div>
 	<?php if($place != NULL and $placetext != NULL){
-				echo $place;
-				echo $placetext;
+				echo htmlentities($place);
+				echo htmlentities($placetext);
 			}
 			else if($place != NULL){
-				echo $place;
+				echo htmlentities($place);
 			}
 			else if($placetext != NULL){
-				echo $placetext;
+				echo htmlentities($placetext);
 			}
 			else{
 				echo "情報がありません。";
@@ -165,7 +165,7 @@ $act=array(
 	<h4>曜日</h4>
 	<div>
 	<?php if($day_chosen != NULL){
-				echo $day_chosen;
+				echo htmlentities($day_chosen);
 			}
 			else{
 				echo "情報がありません。";
@@ -176,7 +176,7 @@ $act=array(
 	<h4>費用</h4>
 	<div>入会費：
 	<?php if($cost_in != NULL){ ?>
-	<?php			echo $cost_in; ?>円
+	<?php			echo htmlentities($cost_in); ?>円
 	<?php		}
 			else{
 				echo "情報がありません。";
@@ -185,7 +185,7 @@ $act=array(
 	<br>
 	年間費：
 	<?php if($cost != NULL){ ?>
-	<?php			echo $cost; ?>円
+	<?php			echo htmlentities($cost); ?>円
 	<?php		}
 			else{
 				echo "情報がありません。";
@@ -196,7 +196,7 @@ $act=array(
 	<h4>メンバー構成</h4>
 	<div>
 	<?php if($intercollege != NULL){
-				echo $intercollege;
+				echo htmlentities($intercollege);
 			}
 			else{
 				echo "情報がありません。";
@@ -207,7 +207,7 @@ $act=array(
 	<h4>男女比</h4>
 	<div>
 	<?php	if($man != NULL and $woman != NULL){ ?>
-	<table><tr><td id="man_ratio"><?php echo $man; ?></td><td id="woman_ratio"><?php echo $woman; ?></td></tr></table>
+	<table><tr><td id="man_ratio"><?php echo htmlentities($man); ?></td><td id="woman_ratio"><?php echo htmlentities($woman); ?></td></tr></table>
 	<?php	}else{
 			echo "情報がありません。";
 	?>
@@ -219,7 +219,7 @@ $act=array(
 	<h4>雰囲気</h4>
 	<div>飲み会頻度：
 	<?php if($nomi_chosen != NULL){
-				echo $nomi_chosen;
+				echo htmlentities($nomi_chosen);
 			}
 			else{
 				echo "情報がありません。";
@@ -228,7 +228,7 @@ $act=array(
 	<br>
 	活動の雰囲気：
 	<?php if($mazime_chosen != NULL){
-				echo $mazime_chosen;
+				echo htmlentities($mazime_chosen);
 			}
 			else{
 				echo "情報がありません。";

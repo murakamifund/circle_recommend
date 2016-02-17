@@ -13,7 +13,7 @@ onload = function(){
 
 <title>UT-Circle サークル情報の編集</title>
 
-<h2> <?php echo $circle_name; ?> さんのマイページ</h2>
+<h2> <?php echo htmlentities($circle_name); ?> さんのマイページ</h2>
 <h3>情報を編集</h3>
 
 

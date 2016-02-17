@@ -22,9 +22,9 @@ class StudentsController extends AppController {
 		
 		require_once('config.php');
 		require_once('codebird.php');
-		//echo 'DSN';
+		
 		try{ //例外処理
-			//\Codebird\Codebird::setConsumerKey('hyj7wJ2xfSkADK6bhJfUFbhAd', 'w145AA0P8opGRji1OzdLlyxA2W6fdqwEONlryr6A0kfucE8NwS');
+
 			\Codebird\Codebird::setConsumerKey(CONSUMER_KEY, CONSUMER_SECRET);
 			$cb = \Codebird\Codebird::getInstance();
 			
@@ -63,10 +63,9 @@ class StudentsController extends AppController {
 
 					//データベースにアカウント情報を格納
 					try{ //まずはデータベースに接続
-						//$dbh = new PDO('mysql:host=127.0.0.1;dbname=circlerecommend;charset=utf8','root','');
+						
 						$dbh = new PDO(DSN,DB_USER,DB_PASSWORD);
-						//本番環境はこちら
-						//$dbh = new PDO('mysql:host=mysql496.db.sakura.ne.jp;dbname=blackjack-utokyo_ut_circle;charset=utf8','blackjack-utokyo','NR8tpuTcadCJ7p');
+						
 					}catch(PDOException $e){
 						echo $e->getMessage();
 						exit;
@@ -140,7 +139,7 @@ class StudentsController extends AppController {
 		require_once('codebird.php');
 		
 		try{ //例外処理
-		//\Codebird\Codebird::setConsumerKey('hyj7wJ2xfSkADK6bhJfUFbhAd', 'w145AA0P8opGRji1OzdLlyxA2W6fdqwEONlryr6A0kfucE8NwS');
+		
 		\Codebird\Codebird::setConsumerKey(CONSUMER_KEY, CONSUMER_SECRET);
 		$cb = \Codebird\Codebird::getInstance();
 		
@@ -180,10 +179,9 @@ class StudentsController extends AppController {
 
 				//データベースにアカウント情報を格納
 				try{ //まずはデータベースに接続
-					//$dbh = new PDO('mysql:host=127.0.0.1;dbname=circlerecommend;charset=utf8','root','');
+					
 					$dbh = new PDO(DSN,DB_USER,DB_PASSWORD);
-					//本番環境
-					//$dbh = new PDO('mysql:host=mysql496.db.sakura.ne.jp;dbname=blackjack-utokyo_ut_circle;charset=utf8','blackjack-utokyo','NR8tpuTcadCJ7p');
+					
 				}catch(PDOException $e){
 					echo $e->getMessage();
 					exit;

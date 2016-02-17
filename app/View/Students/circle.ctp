@@ -18,6 +18,14 @@ onload = function(){
 	</div>
 </p>
 <br>
+
+<br>
+
+<h2 class="mb1em">サービス紹介スライド</h2>
+<div id="powerpoint_wrapper">
+	<iframe style="border:none" src="https://onedrive.live.com/embed?cid=947CBD1A848EEC83&resid=947CBD1A848EEC83%21107&authkey=AIsJc0ouy8A0cGI&em=2" width="576" height="384" frameborder="0" scrolling="no" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+	<!--<iframe style="border:none" src="http://files.photosnack.com/iframejs/embed.html?hash=pdzp2m8jo&t=1444874503" width="576" height="384" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>-->
+</div>
 <h2 class="mb1em">UT-Circleの使い方とポイント</h2>
 
 <h4>Twitterで自分のサークル名で検索してみる</h4>
@@ -37,11 +45,3 @@ onload = function(){
 
 <h4>UT-CircleのTwitterアカウントをフォローしよう</h4>
 Twitter上の関係を分析し、UT-CircleのTwitterアカウントをフォローしてくださっている団体を優先するようになっています。
-
-<br><br><br>
-
-<h2 class="mb1em">サービス紹介スライド</h2>
-<div id="powerpoint_wrapper">
-	<iframe style="border:none" src="https://onedrive.live.com/embed?cid=947CBD1A848EEC83&resid=947CBD1A848EEC83%21107&authkey=AIsJc0ouy8A0cGI&em=2" width="576" height="384" frameborder="0" scrolling="no" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-	<!--<iframe style="border:none" src="http://files.photosnack.com/iframejs/embed.html?hash=pdzp2m8jo&t=1444874503" width="576" height="384" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>-->
-</div>
