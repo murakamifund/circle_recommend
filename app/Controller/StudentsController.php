@@ -1027,6 +1027,7 @@ class StudentsController extends AppController {
 	
 	//検索アルゴリズム
     
+    //各種目について選択されているかをデータ化
     $check1 = isset($this -> data["check1"]) ?
 	 "On" : "Off";
 	$check2 = isset($this -> data["check2"]) ?
@@ -1105,6 +1106,7 @@ class StudentsController extends AppController {
 	 "On" : "Off";
 	$nochoice2 = isset($this -> data["nochoice2"]) ?
 	 "On" : "Off";
+	//検索データが入っていない時valueが高いものから順に三つのサークルを表示
 	$top_data = $this->Circle->find('all', array('conditions' => array('NOT' => array('circle_name' => null)),'limit' => 3, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
 	//サークルの名前が入っていないものは含めない
 	$this -> set('top_data',$top_data);
@@ -1237,6 +1239,7 @@ class StudentsController extends AppController {
 		"75"=>'芸能',
 		"81"=>'その他'
 	);
+	//チェックした種目のみを含めた配列を作る
 	$activity2 = array();
 	$a = 0;
 	for($i=0;$i<37;$i++):
@@ -1249,6 +1252,7 @@ class StudentsController extends AppController {
 	$in=array("学内","インカレ","");
 	if ($this -> request -> data){
 		$this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
+		//検索条件
 		if($this -> data["keyword"] != ""){
 			$opt = array(
 				array(
@@ -1272,6 +1276,7 @@ class StudentsController extends AppController {
 				'Circle.activity' => $activity2
 			);
 		}
+		//検索結果表示順
 		if($sort == "練習したい"){
 			$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value1 DESC', 'Circle.man + Circle.woman DESC')));
 		}
