@@ -1100,10 +1100,6 @@ class StudentsController extends AppController {
 	 "On" : "Off";
 	$check81 = isset($this -> data["check81"]) ?
 	 "On" : "Off";
-	$nochoice1 = isset($this -> data["nochoice1"]) ?
-	 "On" : "Off";
-	$nochoice2 = isset($this -> data["nochoice2"]) ?
-	 "On" : "Off";
 	//検索データが入っていない時valueが高いものから順に三つのサークルを表示
 	$top_data = $this->Circle->find('all', array('conditions' => array('NOT' => array('circle_name' => null)),'limit' => 3, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
 	//サークルの名前が入っていないものは含めない
