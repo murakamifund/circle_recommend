@@ -1103,6 +1103,26 @@ class StudentsController extends AppController {
 	//検索データが入っていない時valueが高いものから順に三つのサークルを表示
 	$top_data = $this->Circle->find('all', array('conditions' => array('NOT' => array('circle_name' => null)),'limit' => 3, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
 	//サークルの名前が入っていないものは含めない
+	    $i = 0;
+    if(isset($_SESSION['tw_user_id'])){
+        $tw_user_id = $_SESSION['tw_user_id'];
+        foreach($top_data as $top_datum){
+            $top_favored = $this->Favorite->find('count', array(
+                'conditions' => array('user_id' => $tw_user_id,'circle_id' => $top_datum['Circle']['id'])
+            ));
+            if($top_favored>0){
+                $top_data[$i]['Circle']['favored'] = true;
+            }else{
+                $top_data[$i]['Circle']['favored'] = false;
+            }
+            $i++;
+        }
+    }else{
+        for(;$i<count($top_data);$i++){
+            $top_data[$i]['Circle']['favored'] = false;
+        }
+    }
+
 	$this -> set('top_data',$top_data);
 	
 	if ($this -> request -> data){
