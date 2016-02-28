@@ -1104,6 +1104,7 @@ class StudentsController extends AppController {
 	$top_data = $this->Circle->find('all', array('conditions' => array('NOT' => array('circle_name' => null)),'limit' => 3, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
 	//サークルの名前が入っていないものは含めない
 	    $i = 0;
+	//top_data内のサークルがお気に入りされているかをチェック
     if(isset($_SESSION['tw_user_id'])){
         $tw_user_id = $_SESSION['tw_user_id'];
         foreach($top_data as $top_datum){
@@ -1125,6 +1126,7 @@ class StudentsController extends AppController {
 
 	$this -> set('top_data',$top_data);
 	
+	//検索条件を変数化
 	if ($this -> request -> data){
 		if($this -> data["keyword"]){
 			$word = $this -> data["keyword"];
@@ -1137,6 +1139,7 @@ class StudentsController extends AppController {
 	else{
 		$word = "";
 	}
+	//サークルごとに活動日を表示
 	if (isset($data)):
 		$day =array(
 			Circle.day1,
@@ -1385,6 +1388,7 @@ class StudentsController extends AppController {
 	//circleのIdに一致するイベントを列挙
 	
 
+	//検索順にイベントを配列に加えていく
 	$events = array();
 	for($i=0; $i<count($circles); $i++){
 		$event_add = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $circles[$i]['Circle']['id'])));
@@ -1400,6 +1404,7 @@ class StudentsController extends AppController {
 	$rows = array();
 	$first = array();
 	$second = array();
+	//イベントの日付がすでにsecondに入っていたらイベントを表示しない
 	for ( $a=0; count( $events) > $a; $a++) {
 		
 		if(!in_array($events[$a]['Event']['day'], $second)){
@@ -1428,6 +1433,7 @@ class StudentsController extends AppController {
 		
 	}
 	}
+	
 
 }//クラス
 	

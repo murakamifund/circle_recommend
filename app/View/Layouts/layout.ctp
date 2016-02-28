@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="copyright" content="Template Party">
+<meta name="google-site-verification" content="kkmurRXm3WfyniTsWlAeV8K93An4MSfcEX1y8ubDUIA" /> 
 <title><?= $title_for_layout ?></title>
 <!--<meta name="description" content="東京大学の部活動、サークル活動を紹介する情報サイト。その他東大生の大学生活に役に立つバイト情報やインターン情報を提供。">--->
 <?= $this->fetch('meta') ?>
