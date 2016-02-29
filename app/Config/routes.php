@@ -29,6 +29,10 @@
  * ...and connect the rest of 'Pages' controller's URLs.
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+	
+	//サイトマップ
+	Router::parseExtensions();
+	Router::connect('/sitemap.xml', array('controller' => 'Sitemaps', 'action' => 'index'));
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on
@@ -41,3 +45,4 @@
  * the built-in default routes.
  */
 	require CAKE . 'Config' . DS . 'routes.php';
+?>
