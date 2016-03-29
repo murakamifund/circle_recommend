@@ -226,6 +226,19 @@ class StudentsController extends AppController {
 					$this->redirect(array('action' => 'circle_edit'));
 				//データベースにすでに存在するがsessionはなかった時
 				}else{
+					
+					//update
+					$sql = "UPDATE circles SET tw_screen_name = :tw_screen_name, tw_profile_image_url = :tw_profile_image_url, tw_profile_banner_url = :tw_profile_banner_url, tw_access_token = :tw_access_token where tw_user_id = :tw_user_id";
+					$stmt = $dbh->prepare($sql);
+					$params = array(
+					":tw_user_id" => $me->id_str,
+					":tw_screen_name" => $me->screen_name,
+					":tw_profile_image_url" => $me->profile_image_url,
+					":tw_profile_banner_url" => $me->profile_banner_url,
+					":tw_access_token" => $reply->oauth_token,
+					);
+					$stmt->execute($params);
+					
 					$tw_user_id = $me->id_str;
 					$_SESSION['tw_user_id'] = $tw_user_id; //ユーザー情報をセッションに格納
 					$_SESSION['is_circle'] = true;
