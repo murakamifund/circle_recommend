@@ -1,5 +1,6 @@
 <?php session_start();?>
 <?php
+ini_set("memory_limit","512M");
 App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
 
