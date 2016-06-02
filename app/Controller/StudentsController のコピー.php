@@ -1035,35 +1035,91 @@ class StudentsController extends AppController {
 	public function student() {
 
 	    $this->modelClass = null;
-	
-		//検索wordを受け取り、分割
-		if ($this -> request -> data){
-			//サニタイズ
-			$this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
-			if($this -> data["keyword"]){
-				$keywords = $this -> data["keyword"];
-				$kw = mb_convert_kana($keywords, 's');
-				$words = preg_split('/[\s]+/', $kw, -1, PREG_SPLIT_NO_EMPTY);
-				
-			}
-			else{
-				$words = "";
-			}
-			$conditions['OR'] = array();
-			foreach ($words as $count => $word) {
-				$condition = array('OR' => array(array('Circle.circle_name LIKE' => '%'.$word.'%'),array('Circle.activity LIKE' => '%'.$word.'%'),array('Circle.pr LIKE' => '%'.$word.'%')));
-				array_push($conditions['OR'], $condition);
-			}
-			//条件文
-			
-			$top_data = $this->Circle->find('all', array('conditions' => $conditions['OR'], 'order' => array('value' => 'desc'),'limit' => 100));
-		}else/*検索をしていない場合*/{
-			//検索データが入っていない時valueが高いものから順に全てのサークルを表示
-			$top_data = $this->Circle->find('all', array('order' => array('value' => 'desc'),'limit' => 100));
-		}
-
-		//top_data内のサークルがお気に入りされているかをチェック
+		
+		/*
+		//検索アルゴリズム
+	    
+	    //各種目について選択されているかをデータ化
+	    $check1 = isset($this -> data["check1"]) ?
+		 "On" : "Off";
+		$check2 = isset($this -> data["check2"]) ?
+		 "On" : "Off";
+		$check3 = isset($this -> data["check3"]) ?
+		 "On" : "Off";
+		$check4 = isset($this -> data["check4"]) ?
+		 "On" : "Off";
+		$check5 = isset($this -> data["check5"]) ?
+		 "On" : "Off";
+		$check6 = isset($this -> data["check6"]) ?
+		 "On" : "Off";
+		$check7 = isset($this -> data["check7"]) ?
+		 "On" : "Off";
+		$check8 = isset($this -> data["check8"]) ?
+		 "On" : "Off";
+		$check9 = isset($this -> data["check9"]) ?
+		 "On" : "Off";
+		$check10 = isset($this -> data["check10"]) ?
+		 "On" : "Off";
+		$check11 = isset($this -> data["check11"]) ?
+		 "On" : "Off";
+		$check12 = isset($this -> data["check12"]) ?
+		 "On" : "Off";
+		$check13 = isset($this -> data["check13"]) ?
+		 "On" : "Off";
+		$check14 = isset($this -> data["check14"]) ?
+		 "On" : "Off";
+		$check15 = isset($this -> data["check15"]) ?
+		 "On" : "Off";
+		$check31 = isset($this -> data["check31"]) ?
+		 "On" : "Off";
+		$check32 = isset($this -> data["check32"]) ?
+		 "On" : "Off";
+		$check33 = isset($this -> data["check33"]) ?
+		 "On" : "Off";
+		$check34 = isset($this -> data["check34"]) ?
+		 "On" : "Off";
+		$check35 = isset($this -> data["check35"]) ?
+		 "On" : "Off";
+		$check36 = isset($this -> data["check36"]) ?
+		 "On" : "Off";
+		$check37 = isset($this -> data["check37"]) ?
+		 "On" : "Off";
+		$check38 = isset($this -> data["check38"]) ?
+		 "On" : "Off";
+		$check51 = isset($this -> data["check51"]) ?
+		 "On" : "Off";
+		$check52 = isset($this -> data["check52"]) ?
+		 "On" : "Off";
+		$check53 = isset($this -> data["check53"]) ?
+		 "On" : "Off";
+		$check54 = isset($this -> data["check54"]) ?
+		 "On" : "Off";
+		$check61 = isset($this -> data["check61"]) ?
+		 "On" : "Off";
+		$check62 = isset($this -> data["check62"]) ?
+		 "On" : "Off";
+		$check63 = isset($this -> data["check63"]) ?
+		 "On" : "Off";
+		$check64 = isset($this -> data["check64"]) ?
+		 "On" : "Off";
+		$check71 = isset($this -> data["check71"]) ?
+		 "On" : "Off";
+		$check72 = isset($this -> data["check72"]) ?
+		 "On" : "Off";
+		$check73 = isset($this -> data["check73"]) ?
+		 "On" : "Off";
+		$check74 = isset($this -> data["check74"]) ?
+		 "On" : "Off";
+		$check75 = isset($this -> data["check75"]) ?
+		 "On" : "Off";
+		$check81 = isset($this -> data["check81"]) ?
+		 "On" : "Off";
+		//検索データが入っていない時valueが高いものから順に全てのサークルを表示
+		*/
+		$top_data = $this->Circle->find('all', array('order' => array('value' => 'desc'),'limit' => 100));
 		$i = 0;
+		//top_data内のサークルがお気に入りされているかをチェック
+		
 	    if(isset($_SESSION['tw_user_id'])){
 	        $tw_user_id = $_SESSION['tw_user_id'];
 	        foreach($top_data as $top_datum){
@@ -1084,9 +1140,317 @@ class StudentsController extends AppController {
 	    }
 		
 		$this -> set('top_data',$top_data);
-
+		/*
+		//検索条件を変数化
+		if ($this -> request -> data){
+			if($this -> data["keyword"]){
+				$word = $this -> data["keyword"];
+			}
+			else{
+				$word = "";
+			}
+			$sort = $this -> data["radio1"];//検索条件決定用変数
+		}
+		else{
+			$word = "";
+		}
+		//サークルごとに活動日を表示
+		if (isset($data)):
+			$day =array(
+				Circle.day1,
+				Circle.day2,
+				Circle.day3,
+				Circle.day4,
+				Circle.day5,
+				Circle.day6,
+				Circle.day7
+			);
+			$day2=array(
+				"月",
+				"火",
+				"水",
+				"木",
+				"金",
+				"土",
+				"日"
+			);
+			$c=0;
+			for ($i=0;$i<7;$i++):
+				if ($day[$i]=="1"):
+					if ($c==0):
+						echo $day2[$i];
+						$c=$c+1;
+					else:
+						echo ",";
+						echo $day2[$i];
+					endif;
+				endif;
+			endfor;
+		endif;
+		$activity = array(
+			$check1,
+			$check2,
+			$check3,
+			$check4,
+			$check5,
+			$check6,
+			$check7,
+			$check8,
+			$check9,
+			$check10,
+			$check11,
+			$check12,
+			$check13,
+			$check14,
+			$check15,
+			$check31,
+			$check32,
+			$check33,
+			$check34,
+			$check35,
+			$check36,
+			$check37,
+			$check38,
+			$check51,
+			$check52,
+			$check53,
+			$check54,
+			$check61,
+			$check62,
+			$check63,
+			$check64,
+			$check71,
+			$check72,
+			$check73,
+			$check74,
+			$check75,
+			$check81,
+		);
+		$this->set("word",$word);
+		$counts = array(
+			1,2,3,4,5,6,7,8,9,10,
+			11,12,13,14,15,31,32,33,34,35,
+			36,37,38,51,52,53,54,61,62,63,
+			64,71,72,73,74,75,81);
+		$act=array(
+			"1"=>'テニス',
+			"2"=>'卓球',
+			"3"=>'サッカー',
+			"4"=>'野球',
+			"5"=>'バスケ',
+			"6"=>'バレー',
+			"7"=>'バドミントン',
+			"8"=>'ラグビー',
+			"9"=>'ホッケー',
+			"10"=>'水泳',
+			"11"=>'武道',
+			"12"=>'ダンス',
+			"13"=>'登山',
+			"14"=>'乗り物',
+			"15"=>'スキー',
+			"31"=>'政治・経済',
+			"32"=>'放送・広告',
+			"33"=>'語学',
+			"34"=>'国際',
+			"35"=>'コンピュータ',
+			"36"=>'自然科学',
+			"37"=>'法学',
+			"38"=>'企業',
+			"51"=>'ロック',
+			"52"=>'ジャズ',
+			"53"=>'クラシック',
+			"54"=>'コーラス',
+			"61"=>'映画・写真',
+			"62"=>'演劇・お笑い',
+			"63"=>'美術',
+			"64"=>'文芸',
+			"71"=>'旅行',
+			"72"=>'アウトドア',
+			"73"=>'ゲーム',
+			"74"=>'グルメ',
+			"75"=>'芸能',
+			"81"=>'その他'
+		);
+		//チェックした種目のみを含めた配列を作る
+		$activity2 = array();
+		$a = 0;
+		for($i=0;$i<37;$i++):
+			if($activity[$i]=="On"):
+				$activity2[$a]=$act[$counts[$i]];
+				$a = $a+1;
+			endif;
+		endfor;
+		$p=array("駒場","本郷","");
+		$in=array("学内","インカレ","");
+		if ($this -> request -> data){
+			$this->data = Sanitize::clean($this->data, array('remove_html' => true,'escape' =>false));
+			//検索条件
+			if($this -> data["keyword"] != ""){
+				$opt = array(
+					array(
+						'OR' => array(
+							array(
+								'OR' => array(
+									array('Circle.circle_name LIKE' => '%'.$word.'%'),
+									array('Circle.activity LIKE' => '%'.$word.'%'),
+									array('Circle.phrase LIKE' => '%'.$word.'%'),
+								)
+							),
+							array(
+								array('Circle.activity' => $activity2),
+							)
+						),
+					),
+				);
+			}
+			else{
+				$opt = array(
+					'Circle.activity' => $activity2
+				);
+			}
+			//検索結果表示順
+			if($sort == "練習したい"){
+				$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value1 DESC', 'Circle.man + Circle.woman DESC')));
+			}
+			else if($sort == "楽な方がいい"){
+				$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value2 DESC', 'Circle.man + Circle.woman DESC')));
+			}
+			else if($sort == "飲みたい"){
+				$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value3 DESC', 'Circle.man + Circle.woman DESC')));
+			}
+			else if($sort == "飲みたくない"){
+				$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value4 DESC', 'Circle.man + Circle.woman DESC')));
+			}
+			else if($sort == "インカレがいい"){
+				$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value5 DESC', 'Circle.man + Circle.woman DESC')));
+			}
+			else if($sort == "学内がいい"){
+				$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value6 DESC', 'Circle.man + Circle.woman DESC')));
+			}
+			else if($sort == "人数重視"){
+				$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value7 DESC', 'Circle.man + Circle.woman DESC')));
+			}
+			else{
+				$data = $this->Circle->find('all' , array('conditions' => $opt, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
+			}
+			
+			//favの情報
+			$i = 0;
+			if(isset($_SESSION['tw_user_id'])){
+				$tw_user_id = $_SESSION['tw_user_id'];
+				foreach($data as $datum){
+					$favored = $this->Favorite->find('count', array(
+						'conditions' => array('user_id' => $tw_user_id,'circle_id' => $datum['Circle']['id'])
+					));
+					if($favored>0){
+						$data[$i]['Circle']['favored'] = true;
+					}else{
+						$data[$i]['Circle']['favored'] = false;
+					}
+					$i++;
+				}
+			}else{
+				for(;$i<count($data);$i++){
+					$data[$i]['Circle']['favored'] = false;
+				}
+			}
+			
+			$this -> set('data',$data);
+			
+			$this -> set("activity",$activity);
+			if (isset($day)):
+				$this -> set("day",$day);
+				$this -> set("day2",$day2);
+			endif;
+			$this -> set("p",$p);
+			$this -> set("in",$in);
+			
+			
+			
+			
+			//検索結果カレンダー
 		
+		//circleのIdに一致するイベントを列挙
+		$count = 10;		//10このサークルの予定だけを表示
+		if($sort == "練習したい"){
+			$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value1 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		else if($sort == "楽な方がいい"){
+			$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value2 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		else if($sort == "飲みたい"){
+			$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value3 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		else if($sort == "飲みたくない"){
+			$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value4 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		else if($sort == "インカレがいい"){
+			$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value5 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		else if($sort == "学内がいい"){
+			$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value6 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		else if($sort == "人数重視"){
+			$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value7 DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		else{
+			$circles = $this->Circle->find( 'all', array( 'fields' => 'id','limit' => $count,'conditions' => $opt, 'order' => array('Circle.value DESC', 'Circle.man + Circle.woman DESC')));
+		}
+		//10個のサークルのidを配列に入れる
+		
+		
+		
+		//circleのIdに一致するイベントを列挙
+		
+
+		//検索順にイベントを配列に加えていく
+		$events = array();
+		for($i=0; $i<count($circles); $i++){
+			$event_add = $this->Event->find( 'all', array( 'conditions' => array('Event.circle_id' => $circles[$i]['Circle']['id'])));
+			$events = array_merge($events, $event_add);
+		}
+		//var_dump($events);
+		
+		//$events = $this->Event->find('all');
+		$title = array();
+		$day = array();
+		
+		// SQLのレスポンスをもとにデータ作成
+		$rows = array();
+		$first = array();
+		$second = array();
+		//イベントの日付がすでにsecondに入っていたらイベントを表示しない
+		for ( $a=0; count( $events) > $a; $a++) {
+			
+			if(!in_array($events[$a]['Event']['day'], $second)){
+				if(in_array($events[$a]['Event']['day'], $first)){
+					$second[] = $events[$a]['Event']['day'];
+				}
+				if($this->Event->find('count', array('conditions' => array('Event.day' => $events[$a]['Event']['day']))) > 2){
+					$first[] = $events[$a]['Event']['day'];
+				}
+				$rows[] = array(
+					'id' => $events[$a]['Event']['id'],
+					//'circle_id' => $events[$a]['Event']['circle_id'],
+					//'circle_name' => $events[$a]['Event']['circle_name'],
+					'title' => $events[$a]['Event']['circle_name'].":".$events[$a]['Event']['title'],
+					'start' => date('Y-m-d', strtotime($events[$a]['Event']['day'])),
+					'end' => $events[$a]['Event']['day'],
+					'url' => "../Students/event_id/".$events[$a]['Event']['id'],
+					//'allDay' => $events[$a]['Event']['allday'],
+				);
+			}
+		}
+		//var_dump($rows);
+		// JSONへ変換
+		$this->set("json", json_encode($rows));
+			
+			
+		}
+		*/
 	}
+	
+
 }//クラス
 	
 

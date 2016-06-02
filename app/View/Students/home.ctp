@@ -8,6 +8,10 @@ onload = function(){
 </script>
 
 <section>
+	<h1>東大の人気サークル、部活を見つけよう!</h1>
+</section>
+
+<section>
 	<h2>UT-Circleへようこそ!!</h2>
 	<p>
 		UT-Circleをご利用いただきありがとうございます。<br><br>

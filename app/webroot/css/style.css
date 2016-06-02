@@ -326,6 +326,21 @@ nav.menubar ul li#current a {
 	width: 700px;	/*メインコンテンツ幅*/
 	padding-bottom: 30px;
 }
+/*mainコンテンツのh1タグの設定*/
+#main h1 {
+	background-color: #4169e1;	/*背景色（古いブラウザだとここの色のみが出ます）*/
+	#background-image: url(../img/bg1.png), -webkit-gradient(linear, left top, left bottom, from(#454746), to(#2b2c2e));	/*グラデーション*/
+	#background-image: url(../img/bg1.png), -webkit-linear-gradient(#454746, #2b2c2e);	/*同上*/
+	#background-image: url(../img/bg1.png), linear-gradient(#454746, #2b2c2e);			/*同上*/
+	-webkit-box-shadow: 1px 2px 5px #191970;	/*影の設定。それぞれ右へ、下へ、ぼかし幅、色の設定。*/
+	box-shadow: 1px 2px 5px #191970;			/*同上*/
+	font-size: 30px;
+	color: #FFF;	/*文字色*/
+	padding: 5px 10px 5px 15px;	/*左から、上、右、下、左側への余白*/
+	clear: both;
+	border-bottom: 5px solid #191970;	/*下側の線の幅、線種、色*/
+}
+
 /*mainコンテンツのh2タグの設定*/
 #main h2 {
 	background-color: #2b2c2e;	/*背景色（古いブラウザだとここの色のみが出ます）*/

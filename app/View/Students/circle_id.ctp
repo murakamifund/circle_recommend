@@ -67,11 +67,10 @@ $act=array(
 	"81"=>'その他'
 );
 
- ?>
+?>
  
- 
-
 <!--ここからhtml-->
+<h1><?php echo htmlentities($circle_name); ?></h1>
 <font color ="#0000ff"><?php echo $this->Session->flash(); ?></font>
 <div id="circle_top">
 	<div id="circle_name"><?php echo htmlentities($circle_name); ?></div>
